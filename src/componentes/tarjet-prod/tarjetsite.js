@@ -28,17 +28,18 @@ const TarjetSite = ({usuarios}) => {
         dots: true,
         arrows: false,
         infinite: true,
-        speed: 4000,
+        autoplaySpeed: 6000,
         autoplay: true,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        rtl: true
     };
 
     const settings2 = {
         dots: false,
         arrows: true,
         infinite: true,
-        speed: 4500,
+        autoplaySpeed: 6000,
         autoplay: true,
         slidesToShow: 1,
         slidesToScroll: 1
@@ -192,32 +193,32 @@ const TarjetSite = ({usuarios}) => {
             <div className='row justify-content-center masServicios'>
                 <div className='col-11 col-md-4'>
                     <h5>Más de mis servicios</h5>
-                    <Slider {...settings2}>
-                        <div className='cuerpo'>
-                            <p>
-                                Desarrollamos software en medida de tus necesidades.
-                            </p>
-                            <img src={AlbertoServicios1} className='img-fluid'/>
-                        </div>
-                        <div className='cuerpo'>
-                            <p>
-                                Creamos y configuramos tu tienda virtual lista para vender.
-                            </p>
-                            <img src={AlbertoServicios2} className='img-fluid'/>
-                        </div>
-                        <div className='cuerpo'>
-                            <p>
-                                Configuramos para que los metodos de pago en tu tienda virtual sean seguros y confiables.
-                            </p>
-                            <img src={AlbertoServicios3} className='img-fluid'/>
-                        </div>
-                        <div className='cuerpo'>
-                            <p>
-                                Somos especialistas en puntos de Venta y control de Inventarios para tu Negocio
-                            </p>
-                            <img src={AlbertoServicios4} className='img-fluid'/>
-                        </div>
-                    </Slider>
+                    
+                    <div className='cuerpo'>
+                        <p>
+                            Desarrollamos software en medida de tus necesidades.
+                        </p>
+                        <img src={AlbertoServicios1} className='img-fluid'/>
+                    </div>
+                    <div className='cuerpo'>
+                        <p>
+                            Creamos y configuramos tu tienda virtual lista para vender.
+                        </p>
+                        <img src={AlbertoServicios2} className='img-fluid'/>
+                    </div>
+                    <div className='cuerpo'>
+                        <p>
+                            Configuramos para que los metodos de pago en tu tienda virtual sean seguros y confiables.
+                        </p>
+                        <img src={AlbertoServicios3} className='img-fluid'/>
+                    </div>
+                    <div className='cuerpo'>
+                        <p>
+                            Somos especialistas en puntos de Venta y control de Inventarios para tu Negocio
+                        </p>
+                        <img src={AlbertoServicios4} className='img-fluid'/>
+                    </div>
+                    
                 </div>
             </div>
 

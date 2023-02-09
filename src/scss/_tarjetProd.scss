@@ -92,6 +92,9 @@ $colorRadar: #cfaa06;
                 font-size: 19px;
             }
         }
+        p{
+            font-size: 13px;
+        }
     }
     .banner{
         img{
@@ -209,12 +212,17 @@ $colorRadar: #cfaa06;
             color: #212529;
         }
         .cuerpo{
-            background: #fff;
+            // background: #fff;
             border-radius: 11px;
             padding: 10px 15px;
-            height: 350px;
-            @media screen and (max-width: 575px){
-                height: 330px;
+            // height: 350px;
+            // @media screen and (max-width: 575px){
+            //     height: 330px;
+            // }
+
+            img{
+                display: block;
+                margin: auto;
             }
         }
         .slick-prev:before, .slick-next:before{

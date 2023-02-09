@@ -83,7 +83,12 @@ const TarjetProd = ({usuarios}) => {
                     
                     <NavLink to={"/tarjetsite/"+usuario.id}>
                         {   usuario.id == '001' &&
-                            <div className='TarjetaContenedorVista'>
+                            <motion.div className='TarjetaContenedorVista'
+                                initial={{opacity:0}}
+                                whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
+                                viewport={{once:true}}
+                                transition={{delay: 2, duration:1, type: "spring", damping:30}}
+                            >
                                 <img src={CirculoLink} className="circulo"/>
                                 <motion.img 
                                     src={Mano3D} 
@@ -91,10 +96,15 @@ const TarjetProd = ({usuarios}) => {
                                     animate={{rotate: [0,20,0]}}
                                     transition={{repeat: Infinity, repeatDelay:2}}
                                 />
-                            </div>
+                            </motion.div>
                         }
                         {   usuario.id == '002' &&
-                            <div className='TarjetaContenedorVista TarjetaPaco'>
+                            <motion.div className='TarjetaContenedorVista TarjetaPaco'
+                                initial={{opacity:0}}
+                                whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
+                                viewport={{once:true}}
+                                transition={{delay: 2, duration:1, type: "spring", damping:30}}
+                            >
                                 <img src={CirculoLink} className="circulo"/>
                                 <motion.img 
                                     src={Mano3D} 
@@ -102,10 +112,15 @@ const TarjetProd = ({usuarios}) => {
                                     animate={{rotate: [0,20,0]}}
                                     transition={{repeat: Infinity, repeatDelay:2}}
                                 />
-                            </div>
+                            </motion.div>
                         }
                         {   usuario.id == '003' &&
-                            <div className='TarjetaContenedorVista TarjetaFelipe'>
+                            <motion.div className='TarjetaContenedorVista TarjetaFelipe'
+                                initial={{opacity:0}}
+                                whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
+                                viewport={{once:true}}
+                                transition={{delay: 2, duration:1, type: "spring", damping:30}}
+                            >
                                 <img src={CirculoLink} className="circulo"/>
                                 <motion.img 
                                     src={Mano3D} 
@@ -113,10 +128,15 @@ const TarjetProd = ({usuarios}) => {
                                     animate={{rotate: [0,20,0]}}
                                     transition={{repeat: Infinity, repeatDelay:2}}
                                 />
-                            </div>
+                            </motion.div>
                         }
                         {   usuario.id == '004' &&
-                            <div className='TarjetaContenedorVista TarjetaBrenda'>
+                            <motion.div className='TarjetaContenedorVista TarjetaBrenda'
+                                initial={{opacity:0}}
+                                whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
+                                viewport={{once:true}}
+                                transition={{delay: 2, duration:1, type: "spring", damping:30}}
+                            >
                                 <img src={CirculoLink} className="circulo"/>
                                 <motion.img 
                                     src={Mano3D} 
@@ -124,7 +144,7 @@ const TarjetProd = ({usuarios}) => {
                                     animate={{rotate: [0,20,0]}}
                                     transition={{repeat: Infinity, repeatDelay:2}}
                                 />
-                            </div>
+                            </motion.div>
                         }
                         
                     </NavLink>
@@ -140,10 +160,13 @@ const TarjetProd = ({usuarios}) => {
                 <div className='teEnvio'>
                     <h3>Hola!</h3>
                     <h4>Te envío mi tarjeta de presentación</h4>
+                    <p>
+                        Dale clic a mi tarjeta para más información
+                    </p>
                 </div>
             </div>
 
-            <div className='row mt-2 justify-content-center'>
+            <div className='row mt-2 justify-content-center mt-5'>
                 <div className='col-11 col-md-4 banner'>
                     <img src={BannerTarjetaVirtual} className="img-fluid" />
                 </div>
