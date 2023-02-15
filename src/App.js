@@ -19,6 +19,7 @@ const App = () => {
   const usuarios = [
     {
       id: '00001',
+      token: '7997Wz120',
       empresaId: '1400',
       nombre: 'Alberto Mérida', 
       telefono: '5621287997', 
@@ -33,6 +34,7 @@ const App = () => {
     },
     {
       id: '00002', 
+      token: '6069Lg944',
       empresaId: '1400',
       nombre: 'Francisco López', 
       telefono: '5574936069', 
@@ -47,6 +49,7 @@ const App = () => {
     },
     {
       id: '00003', 
+      token: '8218Dh975',
       empresaId: '1400',
       nombre: 'Felipe Aguilar', 
       telefono: '5560078218', 
@@ -62,6 +65,7 @@ const App = () => {
     },
     {
       id: '00004', 
+      token: '2691Fi247',
       empresaId: '1400',
       nombre: 'Brenda Gracida', 
       telefono: '5564782691', 
@@ -84,7 +88,7 @@ const App = () => {
       </div>
 
 
-      <div style={{overflow: 'hidden'}}>
+      <div className='container-fluid' style={{overflow: 'hidden'}}>
         <Routes>
           {/* <Route path='*' element={<VistaInicio />}/>          
           <Route path='/' element={<VistaInicio />}/>    */}
@@ -93,12 +97,13 @@ const App = () => {
           <Route path='/' element={<BannerPrincipal />}/>
           
           
-          <Route path='/:empresaId/:pageId' element={<TarjetProd usuarios={usuarios}/>}/>   
           {/* <Route path='/tarjet/1400/:pageId' element={<TarjetProd usuarios={usuarios}/>}/>    */}
           {/* <Route path='/tarjetsite/001' element={<TarjetSiteProd />}/> */}
           {/* <Route path='/tarjetsite/:pageId' element={<TarjetSiteProd usuarios={usuarios}/>}/> */}
-          <Route path='/:pageId' element={<TarjetSiteProd usuarios={usuarios}/>}/>
+          <Route path='/:pageId' element={<TarjetProd usuarios={usuarios}/>}/>   
+          <Route path='/:empresaId/:pageId' element={<TarjetSiteProd usuarios={usuarios}/>}/>
           <Route path='/mi-tarjetero/:pageId' element={<MiTarjetero usuarios={usuarios}/>}/>
+          <Route path='/:pageId/qr' element={<MiTarjetero usuarios={usuarios}/>}/>
           
 
           <Route path='/tarjetSite' element={<TarjetSite />}/>

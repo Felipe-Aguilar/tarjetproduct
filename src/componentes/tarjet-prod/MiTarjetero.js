@@ -1,16 +1,16 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+
 import { motion } from 'framer-motion';
 
 import Mano3D from '../../assets/Mano3D.png';
 import CirculoLink from '../../assets/CirculoLink.png';
 
 const MiTarjetero = () => {
-
     
+    const [compartir, setCompartir] = useState(false);
 
     return (
-        <div className='miTarjetero'>
+        <div className='miTarjetero' >
 
             <div className='row justify-content-center tarjeta'>
                 <div className='col-11 col-md-4 p-0'>
@@ -43,7 +43,22 @@ const MiTarjetero = () => {
                             <i className="bi bi-link-45deg"></i>
                         </div>
                         <div>
-                            <i className="bi bi-box-arrow-up-right"></i>
+                            <i 
+                                className="bi bi-box-arrow-right"
+                                onClick={()=>setCompartir(!compartir)}
+                            ></i>
+                            { compartir &&
+                                <motion.div className='compartir'
+                                    initial={{scale:0}}
+                                    animate={{scale: 1}}
+                                >
+                                    <i className="bi bi-facebook facebook"></i>
+                                    <i className="bi bi-whatsapp whats"></i>
+                                    <i className="bi bi-instagram instagram"></i>
+                                    <i className="bi bi-telegram telegram"></i>
+                                    <i className="bi bi-twitter twitter"></i>
+                                </motion.div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -58,8 +73,8 @@ const MiTarjetero = () => {
                         <form>
                             <label>Mostrar por:</label>
                             <select>
-                                <option value="segmento" key="">Segmento</option>
-                                <option value="nombres" key="">Nombres</option>
+                                <option value="segmento" >Segmento</option>
+                                <option value="nombres" >Nombres</option>
                             </select>
                             <div className='d-flex align-items-center mt-2'>
                                 <label>Buscar por nombre:</label>
@@ -69,9 +84,9 @@ const MiTarjetero = () => {
                             <div className='mt-2'>
                                 <label>Resultados por página: </label>
                                 <select>
-                                    <option value="5" key="">5</option>
-                                    <option value="5" key="">10</option>
-                                    <option value="5" key="">15</option>
+                                    <option value="5" >5</option>
+                                    <option value="5" >10</option>
+                                    <option value="5" >15</option>
                                 </select>
                             </div>
                         </form>

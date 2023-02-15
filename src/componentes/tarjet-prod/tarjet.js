@@ -22,9 +22,8 @@ import CirculoLink from '../../assets/CirculoLink.png';
 const TarjetProd = ({usuarios}) => {
     
     const { pageId } = useParams();
-    const { empresaId } = useParams();
 
-    const usuario = usuarios.find(usuario => usuario.id === atob(pageId) && usuario.empresaId === atob(empresaId));
+    const usuario = usuarios.find(usuario => usuario.token === atob(pageId));
 
     if (!usuario) return null;
 
@@ -85,7 +84,7 @@ const TarjetProd = ({usuarios}) => {
                     <p>
                         Toca la tarjeta para más información
                     </p>
-                    <NavLink to={`/${btoa(usuario.id)}`}>
+                    <NavLink to={`/${btoa(usuario.token)}`}>
                         {   usuario.id == '00001' &&
                             <motion.div className='TarjetaContenedorVista'
                                 initial={{opacity:0}}

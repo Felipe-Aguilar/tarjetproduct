@@ -20,9 +20,10 @@ const TarjetSite = ({usuarios}) => {
     const navigate = useNavigate();
 
     const { pageId } = useParams();
-    const usuario = usuarios.find(usuario => usuario.id === atob(pageId));
+    const { empresaId } = useParams();
+    
+    const usuario = usuarios.find(usuario => usuario.token === atob(pageId) && usuario.empresaId === atob(empresaId));
 
-    console.log(btoa('A7997CGA'));
 
     if (!usuario) return null;
 
