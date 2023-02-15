@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import EncabezadoAlberto from '../../assets/EncabezadoAlberto.jpg';
-import EncabezadoBrenda from '../../assets/EncabezadoBrenda.jpg';
+import EncabezadoBrenda from '../../assets/EncabezadoBrenda2.jpg';
 import EncabezadoFelipe from '../../assets/EncabezadoFelipe.jpg';
 import EncabezadoPaco from '../../assets/EncabezadoPaco.jpg';
 
@@ -20,7 +20,9 @@ const TarjetSite = ({usuarios}) => {
     const navigate = useNavigate();
 
     const { pageId } = useParams();
-    const usuario = usuarios.find(usuario => usuario.id === pageId);
+    const usuario = usuarios.find(usuario => usuario.id === atob(pageId));
+
+    console.log(btoa('A7997CGA'));
 
     if (!usuario) return null;
 
@@ -28,43 +30,34 @@ const TarjetSite = ({usuarios}) => {
         dots: true,
         arrows: false,
         infinite: true,
-        speed: 4000,
+        autoplaySpeed: 6000,
         autoplay: true,
         slidesToShow: 1,
-        slidesToScroll: 1
-    };
-
-    const settings2 = {
-        dots: false,
-        arrows: true,
-        infinite: true,
-        speed: 4500,
-        autoplay: true,
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        rtl: true
     };
 
     return ( 
-        <div className='tarjetSite'>
+        <div className='tarjetSite' style={{background: usuario.fondo}}>
             <div className='row justify-content-center encabezado'>
-                <div className='col-11 col-md-4 p-0'>
-                    {   usuario.id == '001' &&
+                <div className='col-12 col-md-4 p-0'>
+                    {   usuario.id == '00001' &&
                         <img src={EncabezadoAlberto} className='img-fluid'/>
                     }
-                    {   usuario.id == '002' &&
+                    {   usuario.id == '00002' &&
                         <img src={EncabezadoPaco} className='img-fluid'/>
                     }
-                    {   usuario.id == '003' &&
+                    {   usuario.id == '00003' &&
                         <img src={EncabezadoFelipe} className='img-fluid'/>
                     }
-                    {   usuario.id == '004' &&
+                    {   usuario.id == '00004' &&
                         <img src={EncabezadoBrenda} className='img-fluid'/>
                     }
                 </div>
             </div>
 
             <div className='row mt-3 justify-content-center'>
-                <div className='col-11 col-md-4 contacto'>
+                <div className='col-md-4 contacto'>
                     <div className='d-flex justify-content-between align-items-center'>
                         <div>
                             <h6>Envíame un WhatsApp</h6>
@@ -192,32 +185,32 @@ const TarjetSite = ({usuarios}) => {
             <div className='row justify-content-center masServicios'>
                 <div className='col-11 col-md-4'>
                     <h5>Más de mis servicios</h5>
-                    <Slider {...settings2}>
-                        <div className='cuerpo'>
-                            <p>
-                                Desarrollamos software en medida de tus necesidades.
-                            </p>
-                            <img src={AlbertoServicios1} className='img-fluid'/>
-                        </div>
-                        <div className='cuerpo'>
-                            <p>
-                                Creamos y configuramos tu tienda virtual lista para vender.
-                            </p>
-                            <img src={AlbertoServicios2} className='img-fluid'/>
-                        </div>
-                        <div className='cuerpo'>
-                            <p>
-                                Configuramos para que los metodos de pago en tu tienda virtual sean seguros y confiables.
-                            </p>
-                            <img src={AlbertoServicios3} className='img-fluid'/>
-                        </div>
-                        <div className='cuerpo'>
-                            <p>
-                                Somos especialistas en puntos de Venta y control de Inventarios para tu Negocio
-                            </p>
-                            <img src={AlbertoServicios4} className='img-fluid'/>
-                        </div>
-                    </Slider>
+                    
+                    <div className='cuerpo'>
+                        <p>
+                            Desarrollamos software en medida de tus necesidades.
+                        </p>
+                        <img src={AlbertoServicios1} className='img-fluid'/>
+                    </div>
+                    <div className='cuerpo'>
+                        <p>
+                            Creamos y configuramos tu tienda virtual lista para vender.
+                        </p>
+                        <img src={AlbertoServicios2} className='img-fluid'/>
+                    </div>
+                    <div className='cuerpo'>
+                        <p>
+                            Configuramos para que los metodos de pago en tu tienda virtual sean seguros y confiables.
+                        </p>
+                        <img src={AlbertoServicios3} className='img-fluid'/>
+                    </div>
+                    <div className='cuerpo'>
+                        <p>
+                            Somos especialistas en puntos de Venta y control de Inventarios para tu Negocio
+                        </p>
+                        <img src={AlbertoServicios4} className='img-fluid'/>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -228,8 +221,8 @@ const TarjetSite = ({usuarios}) => {
             </div>
 
             <div className='row mt-2 justify-content-center redesSociales'>
-                <div className='col-11 col-md-4'>
-                    <h5>Mis redes sociales</h5>
+                <div className='col-12 col-md-4'>
+                    <h5 className='p-2'>Mis redes sociales</h5>
                     <div className='d-flex justify-content-around cuerpo'>
                         <div>
                             <button onClick={()=> navigate("/tarjet/1400/001")}>

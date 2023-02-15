@@ -1,0 +1,119 @@
+$BordeColor: #c0c0c0aa;
+
+.miTarjetero{
+    overflow: hidden!important;
+    margin-top: 6rem;
+
+    .tarjeta{
+        width: 397px;
+        height: 227px;
+        padding: 10px;
+        background: url("../assets/TarjetaAlberto.png");
+        background-size: cover;
+        display: block;
+        margin: auto;
+        border-radius: 11px;
+        box-shadow:
+        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        100px 100px 80px rgba(0, 0, 0, 0.07)
+        ;
+
+        @media screen and (max-width: 575px){
+            width: 100%;
+            height: 195px;
+        }
+
+        .circulo{
+            width: 55px;
+            height: 50px;
+            position: relative;
+            right: 0px;
+            top: 150px;
+
+            @media screen and (max-width: 575px){
+                top: 120px;
+                right: 80px;
+            }
+        }
+
+        .mano{
+            position: relative;
+            width: 50px;
+            height: 50px;
+            right: 75px;
+            top: 170px;
+
+            @media screen and (max-width: 575px){
+                top: 140px;
+                right: 160px;
+            }
+        }
+    }
+
+    .opciones{
+        .cuerpo{
+            // background: #fff;
+            padding: 10px;
+
+            i{
+                font-size: 1.8rem;
+            }
+        }
+    }
+
+    .MiTarjeteroPersonal{
+        .cuerpo{
+            background: #fff;
+            padding: 20px 15px;
+            box-shadow:
+            0.3px 0.3px 2.2px rgba(0, 0, 0, 0.02),
+            0.7px 0.7px 5.3px rgba(0, 0, 0, 0.028),
+            1.3px 1.3px 10px rgba(0, 0, 0, 0.035),
+            2.2px 2.2px 17.9px rgba(0, 0, 0, 0.042),
+            4.2px 4.2px 33.4px rgba(0, 0, 0, 0.05),
+            10px 10px 80px rgba(0, 0, 0, 0.07)
+            ;
+
+            h5{
+                text-align: center;
+                font-size: 18px;
+            }
+            form{
+                label{
+                    margin-right: 10px;
+                }
+    
+                select, input{
+                    border: 1px solid $BordeColor;
+                    outline: none;
+                    padding: 5px;
+                    border-radius: 6px;
+                }
+                input[type=text]{
+                    border: none;
+                    border-radius: 0px;
+                    border-bottom: 1px solid $BordeColor;
+                    width: 30%;
+                    margin-right: 10px;
+
+                    @media screen and (max-width: 575px){
+                        width: 50%;
+                    }
+                }
+                button{
+                    outline: none;
+                    border: none;
+                    padding: 0 20px;
+                    font-weight: bold;
+                    background: none;
+                    color: #3dbaf0;
+                }
+            }
+        }
+    }
+
+}
