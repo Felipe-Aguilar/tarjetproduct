@@ -164,6 +164,9 @@ const TarjetProd = ({usuarios}) => {
                 <div className='teEnvio'>
                     <h3>Hola!</h3>
                     <h4>Te envío mi tarjeta de presentación</h4>
+                    <p>
+                        Dale clic a mi tarjeta para más información
+                    </p>
                 </div>
             </div>
 
