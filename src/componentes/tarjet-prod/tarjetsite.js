@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import EncabezadoAlberto from '../../assets/EncabezadoAlberto.jpg';
-import EncabezadoBrenda from '../../assets/EncabezadoBrenda2.jpg';
+import EncabezadoBrenda from '../../assets/EncabezadoBrenda.jpg';
 import EncabezadoFelipe from '../../assets/EncabezadoFelipe.jpg';
 import EncabezadoPaco from '../../assets/EncabezadoPaco.jpg';
 
@@ -20,10 +20,7 @@ const TarjetSite = ({usuarios}) => {
     const navigate = useNavigate();
 
     const { pageId } = useParams();
-    const { empresaId } = useParams();
-    
-    const usuario = usuarios.find(usuario => usuario.token === atob(pageId) && usuario.empresaId === atob(empresaId));
-
+    const usuario = usuarios.find(usuario => usuario.id === pageId);
 
     if (!usuario) return null;
 
@@ -38,27 +35,37 @@ const TarjetSite = ({usuarios}) => {
         rtl: true
     };
 
+    const settings2 = {
+        dots: false,
+        arrows: true,
+        infinite: true,
+        autoplaySpeed: 6000,
+        autoplay: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+
     return ( 
-        <div className='tarjetSite' style={{background: usuario.fondo}}>
+        <div className='tarjetSite'>
             <div className='row justify-content-center encabezado'>
-                <div className='col-12 col-md-4 p-0'>
-                    {   usuario.id == '00001' &&
+                <div className='col-11 col-md-4 p-0'>
+                    {   usuario.id == '001' &&
                         <img src={EncabezadoAlberto} className='img-fluid'/>
                     }
-                    {   usuario.id == '00002' &&
+                    {   usuario.id == '002' &&
                         <img src={EncabezadoPaco} className='img-fluid'/>
                     }
-                    {   usuario.id == '00003' &&
+                    {   usuario.id == '003' &&
                         <img src={EncabezadoFelipe} className='img-fluid'/>
                     }
-                    {   usuario.id == '00004' &&
+                    {   usuario.id == '004' &&
                         <img src={EncabezadoBrenda} className='img-fluid'/>
                     }
                 </div>
             </div>
 
             <div className='row mt-3 justify-content-center'>
-                <div className='col-md-4 contacto'>
+                <div className='col-11 col-md-4 contacto'>
                     <div className='d-flex justify-content-between align-items-center'>
                         <div>
                             <h6>Envíame un WhatsApp</h6>
@@ -222,8 +229,8 @@ const TarjetSite = ({usuarios}) => {
             </div>
 
             <div className='row mt-2 justify-content-center redesSociales'>
-                <div className='col-12 col-md-4'>
-                    <h5 className='p-2'>Mis redes sociales</h5>
+                <div className='col-11 col-md-4'>
+                    <h5>Mis redes sociales</h5>
                     <div className='d-flex justify-content-around cuerpo'>
                         <div>
                             <button onClick={()=> navigate("/tarjet/1400/001")}>

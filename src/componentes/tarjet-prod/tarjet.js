@@ -22,8 +22,7 @@ import CirculoLink from '../../assets/CirculoLink.png';
 const TarjetProd = ({usuarios}) => {
     
     const { pageId } = useParams();
-
-    const usuario = usuarios.find(usuario => usuario.token === atob(pageId));
+    const usuario = usuarios.find(usuario => usuario.id === pageId);
 
     if (!usuario) return null;
 
@@ -81,11 +80,9 @@ const TarjetProd = ({usuarios}) => {
                 <div className='col-11 col-md-4 p-0'>
                     {/* <canvas ref={canvasRef} width={'397px'} height={'238px'}>
                     </canvas> */}
-                    <p>
-                        Toca la tarjeta para más información
-                    </p>
-                    <NavLink to={`/${btoa(usuario.token)}`}>
-                        {   usuario.id == '00001' &&
+                    
+                    <NavLink to={"/tarjetsite/"+usuario.id}>
+                        {   usuario.id == '001' &&
                             <motion.div className='TarjetaContenedorVista'
                                 initial={{opacity:0}}
                                 whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
@@ -101,7 +98,7 @@ const TarjetProd = ({usuarios}) => {
                                 />
                             </motion.div>
                         }
-                        {   usuario.id == '00002' &&
+                        {   usuario.id == '002' &&
                             <motion.div className='TarjetaContenedorVista TarjetaPaco'
                                 initial={{opacity:0}}
                                 whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
@@ -117,7 +114,7 @@ const TarjetProd = ({usuarios}) => {
                                 />
                             </motion.div>
                         }
-                        {   usuario.id == '00003' &&
+                        {   usuario.id == '003' &&
                             <motion.div className='TarjetaContenedorVista TarjetaFelipe'
                                 initial={{opacity:0}}
                                 whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
@@ -133,7 +130,7 @@ const TarjetProd = ({usuarios}) => {
                                 />
                             </motion.div>
                         }
-                        {   usuario.id == '00004' &&
+                        {   usuario.id == '004' &&
                             <motion.div className='TarjetaContenedorVista TarjetaBrenda'
                                 initial={{opacity:0}}
                                 whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
@@ -172,9 +169,6 @@ const TarjetProd = ({usuarios}) => {
             <div className='row mt-2 justify-content-center mt-5'>
                 <div className='col-11 col-md-4 banner'>
                     <img src={BannerTarjetaVirtual} className="img-fluid" />
-                    <p>
-                        Promoción válida únicamente para tarjetas personales, si necesita tarjetas para su empresa visite la sección Empresas en donde encontrará descuentos especiales.
-                    </p>
                 </div>
             </div>
 

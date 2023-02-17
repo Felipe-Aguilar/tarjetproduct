@@ -5,7 +5,7 @@ import TarjetBlanco from '../assets/TarjetBlanco.png';
 
 const Footer = () => {
     return ( 
-        <FooterContenedor className='row justify-content-center'>
+        <FooterContenedor className='row mt-4 justify-content-center'>
 
             <div className='col-12'>
                 <img src={TarjetBlanco} alt="Tarjet | Tu tarjeta de presentación Online" />
