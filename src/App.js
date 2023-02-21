@@ -76,13 +76,8 @@ const App = () => {
       <div className='container-fluid p-0'>
         <Header />
       </div>
-      <div className='container-fluid'>
-
-<<<<<<< HEAD
-
+      
       <div style={{overflow: 'hidden'}}>
-=======
->>>>>>> 5b14c10ab64050ab00cb1e2b858e9169de460872
         <Routes>
           {/* <Route path='*' element={<VistaInicio />}/>          
           <Route path='/' element={<VistaInicio />}/>    */}
