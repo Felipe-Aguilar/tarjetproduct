@@ -22,7 +22,8 @@ import CirculoLink from '../../assets/CirculoLink.png';
 const TarjetProd = ({usuarios}) => {
     
     const { pageId } = useParams();
-    const usuario = usuarios.find(usuario => usuario.id === pageId);
+
+    const usuario = usuarios.find(usuario => usuario.token === atob(pageId));
 
     if (!usuario) return null;
 
@@ -74,7 +75,6 @@ const TarjetProd = ({usuarios}) => {
     //     setCanvasContext(context);
     // });
 
-<<<<<<< HEAD
     return (
 
         <div className='container-fluid'>
@@ -154,80 +154,6 @@ const TarjetProd = ({usuarios}) => {
                             }
                             
                         </NavLink>
-=======
-    return ( 
-        <div className='tarjetProd'>
-            <div className='row justify-content-center pruebas'>
-                <div className='col-11 col-md-4 p-0'>
-                    {/* <canvas ref={canvasRef} width={'397px'} height={'238px'}>
-                    </canvas> */}
-                    
-                    <NavLink to={"/tarjetsite/"+usuario.id}>
-                        {   usuario.id == '001' &&
-                            <motion.div className='TarjetaContenedorVista'
-                                initial={{opacity:0}}
-                                whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
-                                viewport={{once:true}}
-                                transition={{delay: 2, duration:1, type: "spring", damping:30}}
-                            >
-                                <img src={CirculoLink} className="circulo"/>
-                                <motion.img 
-                                    src={Mano3D} 
-                                    className="mano"
-                                    animate={{rotate: [0,20,0]}}
-                                    transition={{repeat: Infinity, repeatDelay:2}}
-                                />
-                            </motion.div>
-                        }
-                        {   usuario.id == '002' &&
-                            <motion.div className='TarjetaContenedorVista TarjetaPaco'
-                                initial={{opacity:0}}
-                                whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
-                                viewport={{once:true}}
-                                transition={{delay: 2, duration:1, type: "spring", damping:30}}
-                            >
-                                <img src={CirculoLink} className="circulo"/>
-                                <motion.img 
-                                    src={Mano3D} 
-                                    className="mano"
-                                    animate={{rotate: [0,20,0]}}
-                                    transition={{repeat: Infinity, repeatDelay:2}}
-                                />
-                            </motion.div>
-                        }
-                        {   usuario.id == '003' &&
-                            <motion.div className='TarjetaContenedorVista TarjetaFelipe'
-                                initial={{opacity:0}}
-                                whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
-                                viewport={{once:true}}
-                                transition={{delay: 2, duration:1, type: "spring", damping:30}}
-                            >
-                                <img src={CirculoLink} className="circulo"/>
-                                <motion.img 
-                                    src={Mano3D} 
-                                    className="mano"
-                                    animate={{rotate: [0,20,0]}}
-                                    transition={{repeat: Infinity, repeatDelay:2}}
-                                />
-                            </motion.div>
-                        }
-                        {   usuario.id == '004' &&
-                            <motion.div className='TarjetaContenedorVista TarjetaBrenda'
-                                initial={{opacity:0}}
-                                whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
-                                viewport={{once:true}}
-                                transition={{delay: 2, duration:1, type: "spring", damping:30}}
-                            >
-                                <img src={CirculoLink} className="circulo"/>
-                                <motion.img 
-                                    src={Mano3D} 
-                                    className="mano"
-                                    animate={{rotate: [0,20,0]}}
-                                    transition={{repeat: Infinity, repeatDelay:2}}
-                                />
-                            </motion.div>
-                        }
->>>>>>> 5b14c10ab64050ab00cb1e2b858e9169de460872
                         
                     </div>
                     <div className='col-11 col-md-8 d-none p-0' id='canvasMobile'>
@@ -246,7 +172,6 @@ const TarjetProd = ({usuarios}) => {
                     </div>
                 </div>
 
-<<<<<<< HEAD
                 <div className='row mt-2 justify-content-center mt-5'>
                     <div className='col-11 col-md-4 banner'>
                         <img src={BannerTarjetaVirtual} className="img-fluid" />
@@ -254,11 +179,6 @@ const TarjetProd = ({usuarios}) => {
                             Promoción válida únicamente para tarjetas personales, si necesita tarjetas para su empresa visite la sección Empresas en donde encontrará descuentos especiales.
                         </p>
                     </div>
-=======
-            <div className='row mt-2 justify-content-center mt-5'>
-                <div className='col-11 col-md-4 banner'>
-                    <img src={BannerTarjetaVirtual} className="img-fluid" />
->>>>>>> 5b14c10ab64050ab00cb1e2b858e9169de460872
                 </div>
 
                 <div className='row justify-content-center boton'>
