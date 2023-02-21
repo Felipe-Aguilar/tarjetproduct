@@ -88,7 +88,7 @@ const App = () => {
       </div>
 
 
-      <div className='container-fluid' style={{overflow: 'hidden'}}>
+      <div style={{overflow: 'hidden'}}>
         <Routes>
           {/* <Route path='*' element={<VistaInicio />}/>          
           <Route path='/' element={<VistaInicio />}/>    */}

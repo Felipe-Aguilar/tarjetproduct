@@ -9,11 +9,13 @@ const BannerPrincipal = () => {
     const navigate = useNavigate();
 
     return ( 
-        <BannerContenedor className='row justify-content-center align-items-center'>
-            <div className='col-11'>
-                <Imagen src={banner}/>
-            </div>
-        </BannerContenedor>
+        <div className='container-fluid'>
+            <BannerContenedor className='row justify-content-center align-items-center'>
+                <div className='col-11'>
+                    <Imagen src={banner}/>
+                </div>
+            </BannerContenedor>
+        </div>
     );
 }
 

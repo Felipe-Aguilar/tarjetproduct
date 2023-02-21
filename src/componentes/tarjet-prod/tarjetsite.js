@@ -129,7 +129,7 @@ const TarjetSite = ({usuarios}) => {
                             <h6>Ver mi tarjeta</h6>
                         </div>
                         <div>
-                            <a onClick={()=>navigate("/tarjet/1400/001")}>
+                            <a onClick={()=>navigate("/"+btoa(usuario.token))}>
                                 <i className="bi bi-person-badge-fill tarjeta"></i>
                             </a>
                         </div>
@@ -226,7 +226,7 @@ const TarjetSite = ({usuarios}) => {
                     <h5 className='p-2'>Mis redes sociales</h5>
                     <div className='d-flex justify-content-around cuerpo'>
                         <div>
-                            <button onClick={()=> navigate("/tarjet/1400/001")}>
+                            <button onClick={()=> navigate("/"+btoa(usuario.token))}>
                                 <i className="bi bi-person-badge-fill"></i>
                             </button>
                         </div>

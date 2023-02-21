@@ -59,9 +59,12 @@ $BordeColor: #c0c0c0aa;
             // background: #fff;
             padding: 10px;
 
-            i{
-                font-size: 1.8rem;
+            img{
+                width: 50%;
                 cursor: pointer;
+                @media screen and (max-width: 575px){
+                    width: 75%;
+                }
             }
             .compartir{
                 display: flex;
