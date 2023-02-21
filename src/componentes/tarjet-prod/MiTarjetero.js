@@ -20,10 +20,11 @@ const MiTarjetero = ({ usuarios }) => {
     const navigate = useNavigate();
     // onClick={()=> navigate("/"+btoa(usuario.token))}
 
+    const imagenSrc = 'https://tarjet.site/imagenes-pruebas/AlbertoServicios3.png';
+
     return (
         <div className='container-fluid'>
             <div className='miTarjetero' >
-
                 <div className='row justify-content-center tarjeta'>
                     <div className='col-11 col-md-4 p-0'>
                         <img src={CirculoLink} className="circulo"/>
@@ -38,10 +39,10 @@ const MiTarjetero = ({ usuarios }) => {
 
                 <div className='row mt-4 justify-content-center opciones'>
                     <div className='col-11 col-md-4'>
-                        <div className='d-flex justify-content-around align-items-center cuerpo'>
-                            <div>
+                        <div className='d-flex justify-content-between align-items-center cuerpo'>
+                            {/* <div>
                                 <img src={icono6}/>
-                            </div>
+                            </div> */}
                             <div>
                                 <img src={icono2} />
                             </div>
@@ -110,6 +111,13 @@ const MiTarjetero = ({ usuarios }) => {
                         <a href="">Sr David Rodriguez Sánchez</a>
                         <p>Albañil</p>
                     </div>
+                </div>
+            </div>
+
+            <div className='row'>
+                <div className='col-12'>
+                    <img src={imagenSrc} alt="" />
+
                 </div>
 
             </div>

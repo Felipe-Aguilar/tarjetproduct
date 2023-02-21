@@ -62,6 +62,8 @@ $BordeColor: #c0c0c0aa;
             img{
                 width: 50%;
                 cursor: pointer;
+                display: block;
+                margin: auto;
                 @media screen and (max-width: 575px){
                     width: 75%;
                 }
@@ -76,6 +78,7 @@ $BordeColor: #c0c0c0aa;
                 gap: 15px;
                 border-radius: 20px;
                 right: 30px;
+                
 
                 i{
                     text-align: center;
