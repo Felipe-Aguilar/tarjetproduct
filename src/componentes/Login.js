@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import LogoTarjet from '../assets/TarjetNegro.png';
 
@@ -9,6 +10,8 @@ const Login = ({usuarios}) => {
     
     const [usuarioForm, setUsuarioForm] = useState('');
     const [passwordForm, setPasswordForm] = useState('');
+
+    const navigate = useNavigate();
 
     const comprobar = (e) => {
         e.preventDefault();
@@ -25,6 +28,7 @@ const Login = ({usuarios}) => {
                 setErrorLogin2(true);
             }else{
                 setErrorLogin2(false);
+                navigate('/mi-tarjetero/' + btoa(sesion.token));
             }
         }
     }
