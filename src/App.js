@@ -1,13 +1,10 @@
 import React from 'react';
-import Header from './componentes/Header';
-import VistaInicio from './componentes/VistaInicio';
-import TarjetSite from './componentes/TarjetSite';
-import Footer from './componentes/Footer';
 import { Route, Routes } from 'react-router-dom';
 
-import QueEsTarjet from './componentes/QueEsTarjet';
-import HaztePremium from './componentes/HaztePremium';
-import Canvas from './componentes/Canvas';
+import Header from './componentes/Header';
+import Footer from './componentes/Footer';
+
+import Login from './componentes/Login';
 
 import TarjetProd from './componentes/tarjet-prod/tarjet';
 import TarjetSiteProd from './componentes/tarjet-prod/tarjetsite';
@@ -20,6 +17,8 @@ const App = () => {
     {
       id: '00001',
       token: '7997Wz120',
+      usuarioNombre: 'alberto',
+      usuarioPassword: '123456',
       empresaId: '1400',
       nombre: 'Alberto Mérida', 
       telefono: '5621287997', 
@@ -35,6 +34,8 @@ const App = () => {
     {
       id: '00002', 
       token: '6069Lg944',
+      usuarioNombre: 'francisco',
+      usuarioPassword: '123456',
       empresaId: '1400',
       nombre: 'Francisco López', 
       telefono: '5574936069', 
@@ -50,6 +51,8 @@ const App = () => {
     {
       id: '00003', 
       token: '8218Dh975',
+      usuarioNombre: 'felipe',
+      usuarioPassword: '123456',
       empresaId: '1400',
       nombre: 'Felipe Aguilar', 
       telefono: '5560078218', 
@@ -66,6 +69,8 @@ const App = () => {
     {
       id: '00004', 
       token: '2691Fi247',
+      usuarioNombre: 'brenda',
+      usuarioPassword: '123456',
       empresaId: '1400',
       nombre: 'Brenda Gracida', 
       telefono: '5564782691', 
@@ -92,6 +97,8 @@ const App = () => {
         <Routes>
           {/* <Route path='*' element={<VistaInicio />}/>          
           <Route path='/' element={<VistaInicio />}/>    */}
+
+          <Route path='/login' element={<Login usuarios={usuarios}/>}/>
           
           <Route path='*' element={<BannerPrincipal />}/>          
           <Route path='/' element={<BannerPrincipal />}/>
@@ -104,12 +111,6 @@ const App = () => {
           <Route path='/:empresaId/:pageId' element={<TarjetSiteProd usuarios={usuarios}/>}/>
           <Route path='/mi-tarjetero/:pageId' element={<MiTarjetero usuarios={usuarios}/>}/>
           <Route path='/:pageId/qr' element={<MiTarjetero usuarios={usuarios}/>}/>
-          
-
-          <Route path='/tarjetSite' element={<TarjetSite />}/>
-          <Route path='/que-es-tarjet' element={<QueEsTarjet />}/>
-          <Route path='/hazte-premium' element={<HaztePremium />}/>
-          <Route path='/canvas/*' element={<Canvas />}/>
 
         </Routes>
 

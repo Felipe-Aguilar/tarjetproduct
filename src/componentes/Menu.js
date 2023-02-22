@@ -16,18 +16,12 @@ const Menu = ({cambioMenu}) => {
 
                 <div className='links'>
                     <NavLink to="/" onClick={()=>cambioMenu(true)}>Inicio</NavLink>
-                    {/* <NavLink to="/que-es-tarjet" className={'desactivate'} onClick={()=>cambioMenu(true)}>¿Qué es Tarjet?</NavLink> */}
-                    {/* <a href="#" className={'desactivate'}>Tienda de Productos</a> */}
-                    {/* <a href="#" className={'desactivate'}>Mi Perfil</a> */}
+                    <NavLink to="/login" onClick={()=>cambioMenu(true)}>Iniciar Sesión</NavLink>
+                    
                     <a href="#">Empresas</a>
-                    {/* <NavLink to="/hazte-premium" onClick={()=>cambioMenu(true)}
-                        className='d-flex align-items-center corona desactivate'
-                    >
-                        Hazte Premium
-                        <img src={Corona} alt="Tarjet | Tu tarjeta de presentación Online"/>
-                    </NavLink> */}
+                    
                     <a href="#">Contacto</a>
-                    {/* <NavLink to="/canvas" className={'desactivate'} onClick={()=>cambioMenu(true)}>Canvas</NavLink> */}
+
                 </div>
 
                 <div className='sesion d-flex justify-content-center align-items-end'>
