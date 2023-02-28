@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { Sesion } from './contextos/Sesion';
+import { Usuarios } from './contextos/Usuarios';
 
 import LogoTarjet from '../assets/TarjetNegro.png';
 
-const Login = ({usuarios}) => {
+const Login = () => {
+
+    // Estado Global de la sesión 
+    const {sesionTrue} = useContext(Sesion);
+    // Estado Global de los usuarios
+    const {usuarios} = useContext(Usuarios);
     
     const [errorLogin, setErrorLogin] = useState();
     const [errorLogin2, setErrorLogin2] = useState();
@@ -28,7 +36,9 @@ const Login = ({usuarios}) => {
                 setErrorLogin2(true);
             }else{
                 setErrorLogin2(false);
-                navigate('/mi-tarjetero/' + btoa(sesion.token));
+                navigate('/' + btoa(sesion.token));
+                sesionTrue();
+                
             }
         }
     }

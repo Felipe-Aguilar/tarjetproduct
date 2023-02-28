@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Corona from '../assets/corona.svg';
 import { NavLink } from 'react-router-dom';
 
+import { Sesion } from './contextos/Sesion';
+
 const Menu = ({cambioMenu}) => {
+
+    const sesion = useContext(Sesion);
+
+    const sesionLocal = localStorage.getItem('sesion');
+
     return ( 
         <>
             <MenuContenedor className=''>
@@ -16,7 +23,9 @@ const Menu = ({cambioMenu}) => {
 
                 <div className='links'>
                     <NavLink to="/" onClick={()=>cambioMenu(true)}>Inicio</NavLink>
-                    <NavLink to="/login" onClick={()=>cambioMenu(true)}>Iniciar Sesión</NavLink>
+                    { !sesionLocal && 
+                        <NavLink to="/login">Iniciar Sesion</NavLink>
+                    }
                     
                     <a href="#">Empresas</a>
                     

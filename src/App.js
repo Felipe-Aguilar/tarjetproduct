@@ -11,6 +11,8 @@ import TarjetSiteProd from './componentes/tarjet-prod/tarjetsite';
 import BannerPrincipal from './componentes/tarjet-prod/BannerPrincipal';
 import MiTarjetero from './componentes/tarjet-prod/MiTarjetero';
 
+import VistaSesion from './componentes/VistaSesion';
+
 const App = () => {
 
   const usuarios = [
@@ -107,11 +109,12 @@ const App = () => {
           {/* <Route path='/tarjet/1400/:pageId' element={<TarjetProd usuarios={usuarios}/>}/>    */}
           {/* <Route path='/tarjetsite/001' element={<TarjetSiteProd />}/> */}
           {/* <Route path='/tarjetsite/:pageId' element={<TarjetSiteProd usuarios={usuarios}/>}/> */}
-          <Route path='/:pageId' element={<TarjetProd usuarios={usuarios}/>}/>   
-          <Route path='/:empresaId/:pageId' element={<TarjetSiteProd usuarios={usuarios}/>}/>
-          <Route path='/mi-tarjetero/:pageId' element={<MiTarjetero usuarios={usuarios}/>}/>
-          <Route path='/:pageId/qr' element={<MiTarjetero usuarios={usuarios}/>}/>
 
+          {/* <Route path='/:pageId' element={<TarjetProd usuarios={usuarios}/>}/>    */}
+          <Route path='/:pageId' element={<VistaSesion />}/>   
+          <Route path='/:empresaId/:pageId' element={<TarjetSiteProd usuarios={usuarios}/>}/>
+          {/* <Route path='/mi-tarjetero/:pageId' element={<MiTarjetero usuarios={usuarios}/>}/> */}
+          <Route path='/:pageId/qr' element={<MiTarjetero usuarios={usuarios}/>}/>
         </Routes>
 
         <Footer />

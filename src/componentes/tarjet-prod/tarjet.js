@@ -1,6 +1,8 @@
-import React, {useState,useEffect, useRef} from 'react';
+import React, {useState,useEffect, useRef, useContext} from 'react';
 import { motion } from 'framer-motion';
 import { NavLink, useParams } from 'react-router-dom';
+
+import { Usuarios } from '../contextos/Usuarios';
 
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
@@ -19,7 +21,9 @@ import TarjetaPaco from '../../assets/TarjetaPaco.jpg';
 import Mano3D from '../../assets/Mano3D.png';
 import CirculoLink from '../../assets/CirculoLink.png';
 
-const TarjetProd = ({usuarios}) => {
+const TarjetProd = () => {
+
+    const { usuarios } = useContext(Usuarios);
     
     const { pageId } = useParams();
 
@@ -88,70 +92,23 @@ const TarjetProd = ({usuarios}) => {
                         </p>
                         {/* <NavLink to={`/${btoa(usuario.empresaId)+btoa(usuario.token)}`}> */}
                         <NavLink to={'/'+btoa(usuario.empresaId)+'/'+btoa(usuario.token)}>
-                            {   usuario.id == '00001' &&
-                                <motion.div className='TarjetaContenedorVista'
-                                    initial={{opacity:0}}
-                                    whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
-                                    viewport={{once:true}}
-                                    transition={{delay: 2, duration:1, type: "spring", damping:30}}
-                                >
-                                    <img src={CirculoLink} className="circulo"/>
-                                    <motion.img 
-                                        src={Mano3D} 
-                                        className="mano"
-                                        animate={{rotate: [0,20,0]}}
-                                        transition={{repeat: Infinity, repeatDelay:2}}
-                                    />
-                                </motion.div>
-                            }
-                            {   usuario.id == '00002' &&
-                                <motion.div className='TarjetaContenedorVista TarjetaPaco'
-                                    initial={{opacity:0}}
-                                    whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
-                                    viewport={{once:true}}
-                                    transition={{delay: 2, duration:1, type: "spring", damping:30}}
-                                >
-                                    <img src={CirculoLink} className="circulo"/>
-                                    <motion.img 
-                                        src={Mano3D} 
-                                        className="mano"
-                                        animate={{rotate: [0,20,0]}}
-                                        transition={{repeat: Infinity, repeatDelay:2}}
-                                    />
-                                </motion.div>
-                            }
-                            {   usuario.id == '00003' &&
-                                <motion.div className='TarjetaContenedorVista TarjetaFelipe'
-                                    initial={{opacity:0}}
-                                    whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
-                                    viewport={{once:true}}
-                                    transition={{delay: 2, duration:1, type: "spring", damping:30}}
-                                >
-                                    <img src={CirculoLink} className="circulo"/>
-                                    <motion.img 
-                                        src={Mano3D} 
-                                        className="mano"
-                                        animate={{rotate: [0,20,0]}}
-                                        transition={{repeat: Infinity, repeatDelay:2}}
-                                    />
-                                </motion.div>
-                            }
-                            {   usuario.id == '00004' &&
-                                <motion.div className='TarjetaContenedorVista TarjetaBrenda'
-                                    initial={{opacity:0}}
-                                    whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
-                                    viewport={{once:true}}
-                                    transition={{delay: 2, duration:1, type: "spring", damping:30}}
-                                >
-                                    <img src={CirculoLink} className="circulo"/>
-                                    <motion.img 
-                                        src={Mano3D} 
-                                        className="mano"
-                                        animate={{rotate: [0,20,0]}}
-                                        transition={{repeat: Infinity, repeatDelay:2}}
-                                    />
-                                </motion.div>
-                            }
+                            
+                            <motion.div className='TarjetaContenedorVista'
+                                style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+usuario.fondoTarjeta})`}}
+                                initial={{opacity:0}}
+                                whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
+                                viewport={{once:true}}
+                                transition={{delay: 2, duration:1, type: "spring", damping:30}}
+                            >
+                                <img src={CirculoLink} className="circulo"/>
+                                <motion.img 
+                                    src={Mano3D} 
+                                    className="mano"
+                                    animate={{rotate: [0,20,0]}}
+                                    transition={{repeat: Infinity, repeatDelay:2}}
+                                />
+                            </motion.div>
+                            
                             
                         </NavLink>
                         

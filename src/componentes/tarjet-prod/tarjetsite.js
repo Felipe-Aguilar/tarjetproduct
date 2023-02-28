@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import { Usuarios } from '../contextos/Usuarios';
 
 import EncabezadoAlberto from '../../assets/EncabezadoAlberto.jpg';
 import EncabezadoBrenda from '../../assets/EncabezadoBrenda2.jpg';
@@ -15,17 +17,19 @@ import AlbertoServicios2 from '../../assets/AlbertoServicios2.png';
 import AlbertoServicios3 from '../../assets/AlbertoServicios3.png';
 import AlbertoServicios4 from '../../assets/AlbertoServicios4.png';
 
-const TarjetSite = ({usuarios}) => {
+const TarjetSite = () => {
 
     const navigate = useNavigate();
 
     const { pageId } = useParams();
     const { empresaId } = useParams();
+
+    const { usuarios } = useContext(Usuarios);
     
     const usuario = usuarios.find(usuario => usuario.token === atob(pageId) && usuario.empresaId === atob(empresaId));
-
-
     if (!usuario) return null;
+
+    const imagenSRC = 'https://tarjet.site/imagenes/';
 
     const settings = {
         dots: true,
@@ -42,18 +46,7 @@ const TarjetSite = ({usuarios}) => {
         <div className='tarjetSite' style={{background: usuario.fondo}}>
             <div className='row justify-content-center encabezado'>
                 <div className='col-12 col-md-4 p-0'>
-                    {   usuario.id == '00001' &&
-                        <img src={EncabezadoAlberto} className='img-fluid'/>
-                    }
-                    {   usuario.id == '00002' &&
-                        <img src={EncabezadoPaco} className='img-fluid'/>
-                    }
-                    {   usuario.id == '00003' &&
-                        <img src={EncabezadoFelipe} className='img-fluid'/>
-                    }
-                    {   usuario.id == '00004' &&
-                        <img src={EncabezadoBrenda} className='img-fluid'/>
-                    }
+                    <img src={imagenSRC+usuario.encabezadoImagen} className='img-fluid'/>
                 </div>
             </div>
 
