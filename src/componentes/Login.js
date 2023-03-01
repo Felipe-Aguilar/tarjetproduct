@@ -1,34 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { Sesion } from './contextos/Sesion';
+import { LoginPost } from './contextos/LoginPost';
+import { MiTarjeteroGet } from './contextos/MiTarjeteroGet';
 
 import LogoTarjet from '../assets/TarjetNegro.png';
 
-const Login = ({usuarios}) => {
+const Login = () => {
+
+    // Estado Global de LoginPost
+    const { enviarPostLogin } = useContext(LoginPost);
+    // Estado Global de MiTarjeteroGet
+    const { obtenerMiTarjeteroGet } = useContext(MiTarjeteroGet);
+
+    // Estado Global de la sesión 
+    const {sesionTrue} = useContext(Sesion);
+    
+    const [usuarioForm, setUsuarioForm] = useState('');
+    const [passwordForm, setPasswordForm] = useState('');
     
     const [errorLogin, setErrorLogin] = useState();
     const [errorLogin2, setErrorLogin2] = useState();
     
-    const [usuarioForm, setUsuarioForm] = useState('');
-    const [passwordForm, setPasswordForm] = useState('');
 
     const navigate = useNavigate();
 
-    const comprobar = (e) => {
+    const comprobar = async (e) => {
         e.preventDefault();
-
 
         if (usuarioForm | passwordForm == '') {
             setErrorLogin(true);
         }else{
+            
             setErrorLogin(false);
 
-            const sesion = usuarios.find(usuario => usuario.usuarioNombre === usuarioForm && usuario.usuarioPassword === passwordForm );
+            const datosLogin = await enviarPostLogin(usuarioForm, passwordForm);
 
-            if (!sesion){
+            console.log(datosLogin);
+
+            if (!datosLogin.Acceso){
                 setErrorLogin2(true);
             }else{
                 setErrorLogin2(false);
-                navigate('/mi-tarjetero/' + btoa(sesion.token));
+
+                const datosUsuario = await obtenerMiTarjeteroGet(datosLogin.usuId);
+                console.log(datosUsuario);
+                navigate('/' + btoa(datosUsuario.UsuToken));
+                
+                sesionTrue();
             }
         }
     }
@@ -60,6 +80,7 @@ const Login = ({usuarios}) => {
                                     Iniciar sesión
                                 </button>
                             </form>
+                            
                             { errorLogin ?
                                 <div className='error-cuerpo'>
                                     <p>Falta uno o más campos por llenar</p>

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+import { Usuarios } from '../contextos/Usuarios';
 
 import { motion } from 'framer-motion';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Mano3D from '../../assets/Mano3D.png';
 import CirculoLink from '../../assets/CirculoLink.png';
@@ -13,19 +15,23 @@ import icono4 from '../../assets/icono4.png';
 import icono5 from '../../assets/icono5.png';
 import icono6 from '../../assets/icono6.png';
 
-const MiTarjetero = ({ usuarios }) => {
+const MiTarjetero = () => {
+
+    const { usuarios } = useContext(Usuarios);
     
     const [compartir, setCompartir] = useState(false);
 
     const navigate = useNavigate();
-    // onClick={()=> navigate("/"+btoa(usuario.token))}
+    
+    const { pageId } = useParams();
+    const usuario = usuarios.find(usuario => usuario.token === atob(pageId));
 
-    const imagenSrc = 'https://tarjet.site/imagenes-pruebas/AlbertoServicios3.png';
+    if (!usuario) return null;
 
     return (
         <div className='container-fluid'>
             <div className='miTarjetero' >
-                <div className='row justify-content-center tarjeta'>
+                <div className='row justify-content-center tarjeta' style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+usuario.fondoTarjeta})`}}>
                     <div className='col-11 col-md-4 p-0'>
                         <img src={CirculoLink} className="circulo"/>
                         <motion.img 
@@ -112,14 +118,6 @@ const MiTarjetero = ({ usuarios }) => {
                         <p>Albañil</p>
                     </div>
                 </div>
-            </div>
-
-            <div className='row'>
-                <div className='col-12'>
-                    <img src={imagenSrc} alt="" />
-
-                </div>
-
             </div>
         </div>
     );

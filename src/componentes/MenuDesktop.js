@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+import { Sesion } from './contextos/Sesion';
+
 const MenuDesktop = () => {
+
+    const sesion = useContext(Sesion);
+
+    const sesionLocal = localStorage.getItem('sesion');
+
+
     return ( 
         <MenuDesktopContenedor>
             
             <NavLink to="">Empresas</NavLink>
             <NavLink to="">Contacto</NavLink>
 
-            <NavLink to="/login">Iniciar Sesion</NavLink>
+            { !sesion.estadoSesion && 
+                <NavLink to="/login">Iniciar Sesion</NavLink>
+            }
             
         </MenuDesktopContenedor>
     );
