@@ -15,6 +15,10 @@ const Proveedor = ({ children }) => {
 
     useEffect(()=>{
         localStorage.setItem('sesion', estadoSesion);
+<<<<<<< HEAD
+=======
+        console.log(localStorage.getItem('sesion'));
+>>>>>>> e45715f9637d00eb8d4e591a4ede269bba9b6840
     },[estadoSesion]);
 
     return ( 
