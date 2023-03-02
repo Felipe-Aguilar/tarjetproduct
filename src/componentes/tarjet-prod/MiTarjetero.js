@@ -1,9 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
-import { Usuarios } from '../contextos/Usuarios';
+import { DatosUsuarioSesion } from '../contextos/DatosUsuarioSesion';
+import { ConsultaTarjetero, ConsultaTarjeteroFiltro } from '../contextos/ConsultaTarjetero';
+import { ConsultaSegmento } from '../contextos/ConsultaSegmento';
 
 import { motion } from 'framer-motion';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Mano3D from '../../assets/Mano3D.png';
 import CirculoLink from '../../assets/CirculoLink.png';
@@ -17,21 +19,40 @@ import icono6 from '../../assets/icono6.png';
 
 const MiTarjetero = () => {
 
-    const { usuarios } = useContext(Usuarios);
+    const { datosUsuario } = useContext(DatosUsuarioSesion);
+    const { datosUsuarioId } = useContext(DatosUsuarioSesion);
+    const [datosMiTarjetero, setDatosMiTarjetero ] = useState([]);
+    const [datosSegmentos, setDatosSegmentos ] = useState([]);
+
+    useEffect(()=>{
+
+        const Consulta = async () =>{
+            const datosTarjeteroGuardado = await ConsultaTarjetero(datosUsuarioId);
+            const datosSeg = await ConsultaSegmento(datosUsuarioId);
+    
+            setDatosMiTarjetero(datosTarjeteroGuardado.SDTTarjetsG);
+            setDatosSegmentos(datosSeg.SDTSegmentos);
+        }
+
+        Consulta();
+    }, []);
     
     const [compartir, setCompartir] = useState(false);
 
     const navigate = useNavigate();
     
-    const { pageId } = useParams();
-    const usuario = usuarios.find(usuario => usuario.token === atob(pageId));
+    const [opcionSelected, setOpcionSelected] = useState('');
 
-    if (!usuario) return null;
+    const ConsultaFiltro = (e) =>{
+        setOpcionSelected(e.target.value);
+        console.log(opcionSelected);
+        ConsultaTarjeteroFiltro(datosUsuarioId ,opcionSelected);
+    }
 
     return (
         <div className='container-fluid'>
             <div className='miTarjetero' >
-                <div className='row justify-content-center tarjeta' style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+usuario.fondoTarjeta})`}}>
+                <div className='row justify-content-center tarjeta' style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+datosUsuario.UsuFondoF})`}}>
                     <div className='col-11 col-md-4 p-0'>
                         <img src={CirculoLink} className="circulo"/>
                         <motion.img 
@@ -84,14 +105,19 @@ const MiTarjetero = () => {
                 <div className='row mt-4 justify-content-center MiTarjeteroPersonal'>
                     <div className='col-11 col-md-4'>
                         <div className='cuerpo'>
-                            <h5>Mi Tarjetero personal (00)</h5>
+                            <h5>Mi Tarjetero personal ({datosMiTarjetero.length})</h5>
                             <hr/>
 
                             <form>
                                 <label>Mostrar por:</label>
-                                <select>
-                                    <option value="segmento" >Segmento</option>
-                                    <option value="nombres" >Nombres</option>
+                                <select value={opcionSelected} onChange={ConsultaFiltro}>
+                                    <option value="">Seleccione</option>
+                                    { datosSegmentos.map((segmento)=>(
+                                        <option key={segmento.SegmentoId} value={segmento.SegmentoId}>
+                                            {segmento.SegmentoDesc}
+                                        </option>
+                                    ))
+                                    }
                                 </select>
                                 <div className='d-flex align-items-center mt-2'>
                                     <label>Buscar por nombre:</label>

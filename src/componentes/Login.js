@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Sesion } from './contextos/Sesion';
 import { LoginPost } from './contextos/LoginPost';
 import { MiTarjeteroGet } from './contextos/MiTarjeteroGet';
+import { DatosUsuarioSesion } from './contextos/DatosUsuarioSesion';
 
 import LogoTarjet from '../assets/TarjetNegro.png';
 
@@ -13,6 +14,8 @@ const Login = () => {
     const { enviarPostLogin } = useContext(LoginPost);
     // Estado Global de MiTarjeteroGet
     const { obtenerMiTarjeteroGet } = useContext(MiTarjeteroGet);
+
+    const { setDatosUsuario, setDatosUsuarioId } = useContext(DatosUsuarioSesion);
 
     // Estado Global de la sesión 
     const {sesionTrue} = useContext(Sesion);
@@ -46,6 +49,9 @@ const Login = () => {
 
                 const datosUsuario = await obtenerMiTarjeteroGet(datosLogin.usuId);
                 console.log(datosUsuario);
+                setDatosUsuario(datosUsuario);
+                setDatosUsuarioId(datosLogin.usuId);
+
                 navigate('/' + btoa(datosUsuario.UsuToken));
                 
                 sesionTrue();
