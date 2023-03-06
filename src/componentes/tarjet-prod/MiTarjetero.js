@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { DatosUsuarioSesion } from '../contextos/DatosUsuarioSesion';
 import { ConsultaTarjetero, ConsultaTarjeteroFiltro, ConsultaTarjeteroNombre } from '../contextos/ConsultaTarjetero';
 import { ConsultaSegmento } from '../contextos/ConsultaSegmento';
+import { ConsultaClicUsuario } from '../contextos/ConsultaClicUsuario';
 
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -69,20 +70,43 @@ const MiTarjetero = () => {
         setReBusNombre(resultadoNombre.SDTTarjetsG);
     }
 
+    const [busquedaUsuario, setBusquedaUsuario] = useState(false);
+    const [usuarioBuscado, setUsuarioBuscado] = useState([]);
+
+    const ConsultaUsuarioClic = async (IdTarjet) =>{
+        const respuesta = await ConsultaClicUsuario(IdTarjet);
+        setBusquedaUsuario(true);
+        setUsuarioBuscado(respuesta);
+    }
+
     return (
         <div className='container-fluid'>
             <div className='miTarjetero' >
-                <div className='row justify-content-center tarjeta' style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+datosUsuario.UsuFondoF})`}}>
-                    <div className='col-11 col-md-4 p-0'>
-                        <img src={CirculoLink} className="circulo"/>
-                        <motion.img 
-                            src={Mano3D} 
-                            className="mano"
-                            animate={{rotate: [0,20,0]}}
-                            transition={{repeat: Infinity, repeatDelay:2}}
-                        />
+                { !busquedaUsuario ?
+                    <div className='row justify-content-center tarjeta' style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+datosUsuario.UsuFondoF})`}}>
+                        <div className='col-11 col-md-4 p-0'>
+                            <img src={CirculoLink} className="circulo"/>
+                            <motion.img 
+                                src={Mano3D} 
+                                className="mano"
+                                animate={{rotate: [0,20,0]}}
+                                transition={{repeat: Infinity, repeatDelay:2}}
+                            />
+                        </div>
                     </div>
-                </div>
+                :
+                    <div className='row justify-content-center tarjeta' style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+usuarioBuscado.UsuFondoF})`}}>
+                        <div className='col-11 col-md-4 p-0'>
+                            <img src={CirculoLink} className="circulo"/>
+                            <motion.img 
+                                src={Mano3D} 
+                                className="mano"
+                                animate={{rotate: [0,20,0]}}
+                                transition={{repeat: Infinity, repeatDelay:2}}
+                            />
+                        </div>
+                    </div>
+                }
 
                 <div className='row mt-4 justify-content-center opciones'>
                     <div className='col-11 col-md-4'>
@@ -207,6 +231,7 @@ const MiTarjetero = () => {
                                             <button 
                                                 className='resultado' 
                                                 key={index}
+                                                onClick={()=>ConsultaUsuarioClic(segmento.IdTarjet)}
                                             >
                                                 {segmento.NombreCompleto}
                                                 <span>{segmento.UsuActividad}</span>
@@ -233,7 +258,11 @@ const MiTarjetero = () => {
                                         <p>Mostrando: Todos</p>
                                         <hr/>
                                         { datosMiTarjetero.map((dato, index)=>(
-                                            <button className='resultado' key={index}>
+                                            <button 
+                                                className='resultado' 
+                                                key={index}
+                                                onClick={()=>ConsultaUsuarioClic(dato.IdTarjet)}
+                                            >
                                                 {dato.NombreCompleto}
                                                 <span>{dato.UsuActividad}</span>
                                             </button>
@@ -246,7 +275,11 @@ const MiTarjetero = () => {
                                         <p>Mostrando: {capturaNombre}</p>
                                         <hr/>
                                         { reBusNombre.map((dato, index)=>(
-                                            <button className='resultado' key={index}>
+                                            <button 
+                                                className='resultado' 
+                                                key={index}
+                                                onClick={()=>ConsultaUsuarioClic(dato.IdTarjet)}
+                                            >
                                                 {dato.NombreCompleto}
                                                 <span>{dato.UsuActividad}</span>
                                             </button>
