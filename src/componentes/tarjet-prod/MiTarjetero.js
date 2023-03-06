@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 
 import { DatosUsuarioSesion } from '../contextos/DatosUsuarioSesion';
-import { ConsultaTarjetero, ConsultaTarjeteroFiltro } from '../contextos/ConsultaTarjetero';
+import { ConsultaTarjetero, ConsultaTarjeteroFiltro, ConsultaTarjeteroNombre } from '../contextos/ConsultaTarjetero';
 import { ConsultaSegmento } from '../contextos/ConsultaSegmento';
 
 import { motion } from 'framer-motion';
@@ -43,10 +43,30 @@ const MiTarjetero = () => {
     
     const [opcionSelected, setOpcionSelected] = useState('');
 
-    const ConsultaFiltro = (e) =>{
-        setOpcionSelected(e.target.value);
-        console.log(opcionSelected);
-        ConsultaTarjeteroFiltro(datosUsuarioId ,opcionSelected);
+
+    const [busquedaSegmento, setBusquedaSegmento] = useState(false);
+    const [reBusSegmento, setReBusSegmento ] = useState([]);
+    const [nomSeg, setNomSeg] = useState();
+
+    const ConsultaFiltroSegmento = async(SegmentoId) =>{
+        setBusquedaSegmento(true);
+        const resultadosSegmento = await ConsultaTarjeteroFiltro(datosUsuarioId , SegmentoId);
+
+        setReBusSegmento(resultadosSegmento.SDTTarjetsG);
+        setNomSeg(resultadosSegmento.SDTTarjetsG[0].SegmentoDesc);
+    }
+
+    const [capturaNombre, setCapturaNombre] = useState('');
+    const [busquedaNombre, setBusquedaNombre ] = useState(false);
+    const [reBusNombre, setReBusNombre] = useState([]);
+
+    const ConsultaNombre = async (e) => {
+        setBusquedaNombre(true);
+        setCapturaNombre(e.target.value);
+        
+        const resultadoNombre = await ConsultaTarjeteroNombre(datosUsuarioId, capturaNombre);
+
+        setReBusNombre(resultadoNombre.SDTTarjetsG);
     }
 
     return (
@@ -110,19 +130,24 @@ const MiTarjetero = () => {
 
                             <form>
                                 <label>Mostrar por:</label>
-                                <select value={opcionSelected} onChange={ConsultaFiltro}>
+                                <select value={opcionSelected} onChange={(e)=>setOpcionSelected(e.target.value)}>
                                     <option value="">Seleccione</option>
-                                    { datosSegmentos.map((segmento)=>(
-                                        <option key={segmento.SegmentoId} value={segmento.SegmentoId}>
-                                            {segmento.SegmentoDesc}
-                                        </option>
-                                    ))
-                                    }
+                                    <option value="segmento">Segmento</option>
+                                    <option value="nombre">Nombre</option>
                                 </select>
+                            </form>
+                            <form>
                                 <div className='d-flex align-items-center mt-2'>
                                     <label>Buscar por nombre:</label>
-                                    <input type="text" />
-                                    <button>Go</button>
+                                    { opcionSelected == 'segmento' | opcionSelected == '' ? 
+                                        <input type="text" value={capturaNombre} disabled/>
+                                    :
+                                        <input 
+                                            type="text"
+                                            value={capturaNombre}
+                                            onChange={ConsultaNombre}
+                                        />
+                                    }
                                 </div>
                                 <div className='mt-2'>
                                     <label>Resultados por página: </label>
@@ -137,11 +162,110 @@ const MiTarjetero = () => {
                     </div>
                 </div>
 
-                <div className='row mt-4 my-4 justify-content-center Informacion'>
+                <div className='row mt-4 my-4 justify-content-center Datos'>
                     <div className='col-11 col-md-4'>
-                        <h5>Construcción</h5>
-                        <a href="">Sr David Rodriguez Sánchez</a>
-                        <p>Albañil</p>
+                        { opcionSelected == '' &&
+                            <>
+                                <h6>
+                                    <i className="bi bi-search"></i>
+                                    Resultados de búsqueda
+                                </h6>
+                                <hr/>
+                                <p>
+                                    Para mostrar los resultados de búsqueda seleccione una opción mostrar por: (segmento o nombre).
+                                </p>
+                            </>
+                        }
+                        {  opcionSelected == 'segmento' &&
+                            <>
+                                <h6>
+                                    <i className="bi bi-search"></i>
+                                    Resultados de búsqueda por segmento
+                                </h6>
+                                { !busquedaSegmento &&
+                                    <>
+                                        <p>Mostrando: Todos</p>
+                                        <hr/>
+
+                                        {   datosSegmentos.map((segmento)=>(
+                                            <button 
+                                                className='resultado' 
+                                                key={segmento.SegmentoId}
+                                                onClick={() => ConsultaFiltroSegmento(segmento.SegmentoId)}
+                                            >
+                                                {segmento.SegmentoDesc}
+                                            </button>
+                                        ))
+                                        }
+                                    </>
+                                }
+                                { busquedaSegmento && 
+                                    <>
+                                        <p>Mostrando: {nomSeg}</p>
+                                        <hr/>
+                                        {   reBusSegmento.map((segmento, index)=>(
+                                            <button 
+                                                className='resultado' 
+                                                key={index}
+                                            >
+                                                {segmento.NombreCompleto}
+                                                <span>{segmento.UsuActividad}</span>
+                                            </button>
+                                        ))
+                                        }
+                                        <button className='regresar' onClick={()=>setBusquedaSegmento(false)}>
+                                            <i className="bi bi-arrow-left-circle-fill"></i>
+                                            Regresar
+                                        </button>
+                                    </>
+                                }
+                                
+                            </>
+                        }
+                        { opcionSelected == 'nombre' && 
+                            <>
+                                <h6>
+                                    <i className="bi bi-search"></i>
+                                    Resultados de búsqueda por nombre
+                                </h6>
+                                { !busquedaNombre &&
+                                    <>
+                                        <p>Mostrando: Todos</p>
+                                        <hr/>
+                                        { datosMiTarjetero.map((dato, index)=>(
+                                            <button className='resultado' key={index}>
+                                                {dato.NombreCompleto}
+                                                <span>{dato.UsuActividad}</span>
+                                            </button>
+                                        ))
+                                        }
+                                    </>
+                                }
+                                { busquedaNombre &&
+                                    <>
+                                        <p>Mostrando: {capturaNombre}</p>
+                                        <hr/>
+                                        { reBusNombre.map((dato, index)=>(
+                                            <button className='resultado' key={index}>
+                                                {dato.NombreCompleto}
+                                                <span>{dato.UsuActividad}</span>
+                                            </button>
+                                        ))
+                                        }
+                                        { reBusNombre.length == 0 &&
+                                            <p className='noEncontrado'>
+                                                <i className="bi bi-exclamation-circle"></i>
+                                                No se encontraron resultados para <b>{capturaNombre}</b>
+                                            </p>
+                                        }
+                                        <button className='regresar' onClick={()=>setBusquedaNombre(false)}>
+                                            <i className="bi bi-arrow-left-circle-fill"></i>
+                                            Regresar
+                                        </button>
+                                    </>
+                                }
+                            </>
+                        }
                     </div>
                 </div>
             </div>

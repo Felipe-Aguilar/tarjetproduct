@@ -158,4 +158,41 @@ $BordeColor: #c0c0c0aa;
         }
     }
 
+    .Datos{
+        h6, i{
+            margin-bottom: none;
+        }
+        i{
+            margin-right: 10px;
+        }
+        p{
+            font-size: 14px;
+            font-style: italic;
+        }
+        .resultado{
+            font-size: 16px;
+            font-style: normal;
+            border: none;
+            outline: none;
+            background: none;
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+            span{
+                font-size: 14px;
+                font-weight: bold;
+                display: block;
+            }
+        }
+        .noEncontrado{
+            color: #dc1313;
+        }
+        .regresar{
+            font-size: 14px;
+            outline: none;
+            border: none;
+            float: right;
+        }
+    }
+
 }
