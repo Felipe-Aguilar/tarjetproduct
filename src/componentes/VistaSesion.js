@@ -9,11 +9,11 @@ const VistaSesion = () => {
 
     const sesion = useContext(Sesion);
 
-    const sesionLocal = localStorage.getItem('sesion');
+    const sesionLocal = localStorage.getItem('UsuarioSesion');
 
     return ( 
         <>
-            { sesion.estadoSesion ? 
+            { sesion.estadoSesion || sesionLocal ? 
                 <MiTarjetero />
             :
                 <TarjetProd />

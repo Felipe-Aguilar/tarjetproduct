@@ -6,10 +6,8 @@ import { Sesion } from './contextos/Sesion';
 
 const MenuDesktop = () => {
 
-    const sesion = useContext(Sesion);
-
-    const sesionLocal = localStorage.getItem('sesion');
-
+    const sesionLocal = localStorage.getItem('UsuarioSesion');
+    const { sesionFalse } = useContext(Sesion);
 
     return ( 
         <MenuDesktopContenedor>
@@ -17,7 +15,7 @@ const MenuDesktop = () => {
             <NavLink to="">Empresas</NavLink>
             <NavLink to="">Contacto</NavLink>
 
-            { !sesion.estadoSesion && 
+            { !sesionLocal && 
                 <NavLink to="/login">Iniciar Sesion</NavLink>
             }
             

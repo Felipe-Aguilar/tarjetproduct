@@ -2,18 +2,14 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Sesion } from './contextos/Sesion';
-import { LoginPost } from './contextos/LoginPost';
-import { MiTarjeteroGet } from './contextos/MiTarjeteroGet';
+import { enviarPostLogin } from './contextos/EnviarPostLogin';
+import { DatosUsuario } from './contextos/ComprobarUsuario';
+
 import { DatosUsuarioSesion } from './contextos/DatosUsuarioSesion';
 
 import LogoTarjet from '../assets/TarjetNegro.png';
 
 const Login = () => {
-
-    // Estado Global de LoginPost
-    const { enviarPostLogin } = useContext(LoginPost);
-    // Estado Global de MiTarjeteroGet
-    const { obtenerMiTarjeteroGet } = useContext(MiTarjeteroGet);
 
     const { setDatosUsuario, setDatosUsuarioId } = useContext(DatosUsuarioSesion);
 
@@ -47,7 +43,7 @@ const Login = () => {
             }else{
                 setErrorLogin2(false);
 
-                const datosUsuario = await obtenerMiTarjeteroGet(datosLogin.usuId);
+                const datosUsuario = await DatosUsuario(datosLogin.usuId);
                 console.log(datosUsuario);
                 setDatosUsuario(datosUsuario);
                 setDatosUsuarioId(datosLogin.usuId);
@@ -55,6 +51,8 @@ const Login = () => {
                 navigate('/' + btoa(datosUsuario.UsuToken));
                 
                 sesionTrue();
+                localStorage.setItem('DatosSesion', JSON.stringify(datosUsuario));
+                localStorage.setItem('IdDatosSesion', JSON.stringify(datosLogin));
             }
         }
     }

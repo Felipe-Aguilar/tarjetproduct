@@ -8,14 +8,16 @@ const Proveedor = ({ children }) => {
 
     const sesionTrue = () =>{
         setEstadoSesion(true);
+        localStorage.setItem('UsuarioSesion', true);
     }
     const sesionFalse = () =>{
         setEstadoSesion(false);
+        localStorage.setItem('UsuarioSesion', false);
     }
 
-    useEffect(()=>{
-        localStorage.setItem('sesion', estadoSesion);
-    },[estadoSesion]);
+    // useEffect(()=>{
+    //     localStorage.setItem('sesion', estadoSesion);
+    // },[estadoSesion]);
 
     return ( 
         <Sesion.Provider value={{estadoSesion, sesionTrue, sesionFalse}}>

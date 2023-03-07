@@ -1,9 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { DatosUsuarioSesion } from '../contextos/DatosUsuarioSesion';
 import { ConsultaTarjetero, ConsultaTarjeteroFiltro, ConsultaTarjeteroNombre } from '../contextos/ConsultaTarjetero';
 import { ConsultaSegmento } from '../contextos/ConsultaSegmento';
 import { ConsultaClicUsuario } from '../contextos/ConsultaClicUsuario';
+
+import { ComprobarUsuario ,DatosUsuario } from '../contextos/ComprobarUsuario';
 
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -20,23 +23,40 @@ import icono6 from '../../assets/icono6.png';
 
 const MiTarjetero = () => {
 
-    const { datosUsuario } = useContext(DatosUsuarioSesion);
-    const { datosUsuarioId } = useContext(DatosUsuarioSesion);
+    const { pageId } = useParams();
+    const [comprobarUsuario, setComprobarUsuario] = useState([]);
+    const [ usuario, setUsuario ] = useState([]);
+
+    const usuarioSesion = JSON.parse(localStorage.getItem('DatosSesion'));
+    const idUsuarioSesion = JSON.parse(localStorage.getItem('IdDatosSesion'));
+
     const [datosMiTarjetero, setDatosMiTarjetero ] = useState([]);
     const [datosSegmentos, setDatosSegmentos ] = useState([]);
 
     useEffect(()=>{
 
-        const Consulta = async () =>{
-            const datosTarjeteroGuardado = await ConsultaTarjetero(datosUsuarioId);
-            const datosSeg = await ConsultaSegmento(datosUsuarioId);
+        const ConsultaDatos = async () => {
+            const comprobarUsuario = await ComprobarUsuario(atob(pageId));
+            setComprobarUsuario(comprobarUsuario);
+            
+            const resultados = await DatosUsuario(comprobarUsuario.usuId);
+            setUsuario(resultados);
+        }
+
+        const ConsultaMiTarjetero = async () =>{
+            const datosTarjeteroGuardado = await ConsultaTarjetero(idUsuarioSesion.usuId);
+            const datosSeg = await ConsultaSegmento(idUsuarioSesion.usuId);
     
             setDatosMiTarjetero(datosTarjeteroGuardado.SDTTarjetsG);
             setDatosSegmentos(datosSeg.SDTSegmentos);
         }
 
-        Consulta();
-    }, []);
+        ConsultaDatos();
+        ConsultaMiTarjetero();
+    },[]);
+
+    // TODO BIEN AQUÍ
+    
     
     const [compartir, setCompartir] = useState(false);
 
@@ -51,7 +71,7 @@ const MiTarjetero = () => {
 
     const ConsultaFiltroSegmento = async(SegmentoId) =>{
         setBusquedaSegmento(true);
-        const resultadosSegmento = await ConsultaTarjeteroFiltro(datosUsuarioId , SegmentoId);
+        const resultadosSegmento = await ConsultaTarjeteroFiltro(idUsuarioSesion.usuId , SegmentoId);
 
         setReBusSegmento(resultadosSegmento.SDTTarjetsG);
         setNomSeg(resultadosSegmento.SDTTarjetsG[0].SegmentoDesc);
@@ -65,7 +85,7 @@ const MiTarjetero = () => {
         setBusquedaNombre(true);
         setCapturaNombre(e.target.value);
         
-        const resultadoNombre = await ConsultaTarjeteroNombre(datosUsuarioId, capturaNombre);
+        const resultadoNombre = await ConsultaTarjeteroNombre(idUsuarioSesion.usuId, capturaNombre);
 
         setReBusNombre(resultadoNombre.SDTTarjetsG);
     }
@@ -79,11 +99,14 @@ const MiTarjetero = () => {
         setUsuarioBuscado(respuesta);
     }
 
+    // Comprobando si existe o no
+    if(comprobarUsuario.usuId === 0) return null;
+
     return (
         <div className='container-fluid'>
             <div className='miTarjetero' >
                 { !busquedaUsuario ?
-                    <div className='row justify-content-center tarjeta' style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+datosUsuario.UsuFondoF})`}}>
+                    <div className='row justify-content-center tarjeta' style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+ usuario.UsuFondoF})`}}>
                         <div className='col-11 col-md-4 p-0'>
                             <img src={CirculoLink} className="circulo"/>
                             <motion.img 

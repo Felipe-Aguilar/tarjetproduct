@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { NavLink, useParams } from 'react-router-dom';
 
 import { Usuarios } from '../contextos/Usuarios';
+import { ComprobarUsuario, DatosUsuario } from '../contextos/ComprobarUsuario';
 
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
@@ -13,24 +14,29 @@ import celularPromo2 from '../../assets/celularPromo2.png';
 import celularPromo3 from '../../assets/celularPromo3.png';
 import BannerTarjetaVirtual from '../../assets/BannerTuTarjetaVirtual.png';
 
-import tarjetaAlberto from '../../assets/TarjetaAlberto.png';
-import TarjetaBrenda from '../../assets/TarjetaBrenda.jpg';
-import TarjetaFelipe from '../../assets/TarjetaFelipe.jpg';
-import TarjetaPaco from '../../assets/TarjetaPaco.jpg';
-
 import Mano3D from '../../assets/Mano3D.png';
 import CirculoLink from '../../assets/CirculoLink.png';
 
 const TarjetProd = () => {
-
-    const { usuarios } = useContext(Usuarios);
     
     const { pageId } = useParams();
+    const [usuarioInfo, setUsuarioInfo]  = useState([]);
+    const [usuario, setUsuario] = useState([]);
+    
+    useEffect(() => {
+        const UsuarioComprueba = async () => {
+            const respuesta = await ComprobarUsuario(atob( pageId ));
+            setUsuarioInfo(respuesta);
+    
+            const datos = await DatosUsuario(respuesta.usuId);
+            setUsuario(datos);
+        }
 
-    const usuario = usuarios.find(usuario => usuario.token === atob(pageId));
-
-    if (!usuario) return null;
-
+        UsuarioComprueba();
+    },[]);
+    
+    
+    if ( usuarioInfo.usuId === 0 ) return null;
     
     const settings = {
         dots: false,
@@ -94,7 +100,7 @@ const TarjetProd = () => {
                         <NavLink to={'/'+btoa(usuario.empresaId)+'/'+btoa(usuario.token)}>
                             
                             <motion.div className='TarjetaContenedorVista'
-                                style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+usuario.fondoTarjeta})`}}
+                                style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+usuario.UsuFondoF})`}}
                                 initial={{opacity:0}}
                                 whileInView={{opacity:1 , rotate: [0,-5,5,0]}}
                                 viewport={{once:true}}
