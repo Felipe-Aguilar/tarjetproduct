@@ -2,8 +2,11 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Corona from '../assets/corona.svg';
 import { NavLink } from 'react-router-dom';
+import { Sesion } from './contextos/Sesion';
 
 const Menu = ({cambioMenu}) => {
+
+    const { sesionFalse } = useContext(Sesion);
 
     const sesionLocal = localStorage.getItem('UsuarioSesion');
 
@@ -19,8 +22,10 @@ const Menu = ({cambioMenu}) => {
 
                 <div className='links'>
                     <NavLink to="/" onClick={()=>cambioMenu(true)}>Inicio</NavLink>
-                    { !sesionLocal && 
+                    { !sesionLocal ?
                         <NavLink to="/login" onClick={()=>cambioMenu(true)}>Iniciar Sesion</NavLink>
+                    :
+                        <button onClick={()=>{sesionFalse(); cambioMenu(true);}}>Cerrar sesión</button>
                     }
                     
                     <a href="#">Empresas</a>
@@ -78,6 +83,15 @@ const MenuContenedor = styled.div`
                 width: 20px;
                 margin-left: 8px;
             }
+        }
+
+        button{
+            background: none;
+            color: #191c1f;
+            border: none;
+            outline: none;
+            padding: 0;
+            font-weight: 500;
         }
 
         .desactivate{

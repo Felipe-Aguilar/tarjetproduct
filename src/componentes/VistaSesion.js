@@ -9,6 +9,7 @@ const VistaSesion = () => {
 
     const sesion = useContext(Sesion);
 
+    
     const sesionLocal = localStorage.getItem('UsuarioSesion');
 
     return ( 

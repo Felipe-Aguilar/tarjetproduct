@@ -8,6 +8,8 @@ import { ConsultaClicUsuario } from '../contextos/ConsultaClicUsuario';
 
 import { ComprobarUsuario ,DatosUsuario } from '../contextos/ComprobarUsuario';
 
+import { GuardarTarjet } from '../contextos/GuardarTarjet';
+
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -99,6 +101,10 @@ const MiTarjetero = () => {
         setUsuarioBuscado(respuesta);
     }
 
+    const GuardarTarjetero = () => {
+        GuardarTarjet(idUsuarioSesion.usuId, comprobarUsuario.usuId);
+    }
+
     // Comprobando si existe o no
     if(comprobarUsuario.usuId === 0) return null;
 
@@ -138,10 +144,19 @@ const MiTarjetero = () => {
                                 <img src={icono6}/>
                             </div> */}
                             <div>
-                                <img src={icono2} />
+                                <img 
+                                    src={icono2} 
+                                    onClick={GuardarTarjetero}
+                                />
                             </div>
                             <div>
-                                <img src={icono1} />
+                                <img 
+                                    src={icono1} 
+                                    onClick={()=>{
+                                        navigate('/'+btoa(usuarioSesion.UsuToken)); 
+                                        window.location.reload();
+                                    }}
+                                />
                             </div>
                             <div>
                                 <img src={icono3}/>

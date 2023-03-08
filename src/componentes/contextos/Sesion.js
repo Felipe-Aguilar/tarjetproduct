@@ -11,8 +11,9 @@ const Proveedor = ({ children }) => {
         localStorage.setItem('UsuarioSesion', true);
     }
     const sesionFalse = () =>{
+        localStorage.removeItem('UsuarioSesion');
         setEstadoSesion(false);
-        localStorage.setItem('UsuarioSesion', false);
+        window.location.reload();
     }
 
     // useEffect(()=>{

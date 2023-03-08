@@ -15,9 +15,12 @@ const MenuDesktop = () => {
             <NavLink to="">Empresas</NavLink>
             <NavLink to="">Contacto</NavLink>
 
-            { !sesionLocal && 
+            { !sesionLocal ? 
                 <NavLink to="/login">Iniciar Sesion</NavLink>
+            :
+                <button onClick={sesionFalse}>Cerrar Sesion</button>
             }
+
             
         </MenuDesktopContenedor>
     );
@@ -29,6 +32,12 @@ const MenuDesktopContenedor = styled.div`
     a{
         color: #191c1f;
         text-decoration: none;
+    }
+    button{
+        background: none;
+        border: none;
+        color: #191c1f;
+        outline: none;
     }
     .desactivate{
         color: #696969;
