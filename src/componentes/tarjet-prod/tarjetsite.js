@@ -1,16 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+
+import { ComprobarUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
 
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import { Usuarios } from '../contextos/Usuarios';
-
-import EncabezadoAlberto from '../../assets/EncabezadoAlberto.jpg';
-import EncabezadoBrenda from '../../assets/EncabezadoBrenda2.jpg';
-import EncabezadoFelipe from '../../assets/EncabezadoFelipe.jpg';
-import EncabezadoPaco from '../../assets/EncabezadoPaco.jpg';
 
 import AlbertoServicios1 from '../../assets/AlbertoServicios1.png';
 import AlbertoServicios2 from '../../assets/AlbertoServicios2.png';
@@ -22,14 +17,27 @@ const TarjetSite = () => {
     const navigate = useNavigate();
 
     const { pageId } = useParams();
-    const { empresaId } = useParams();
-
-    const { usuarios } = useContext(Usuarios);
+    const [comprobarUsuario, setComprobarUsuario] = useState([]);
+    const [ usuario, setUsuario ] = useState([]);
     
-    const usuario = usuarios.find(usuario => usuario.token === atob(pageId) && usuario.empresaId === atob(empresaId));
-    if (!usuario) return null;
+    useEffect(()=>{
+
+        const ConsultaUsuario = async () => {
+            const comprobar = await ComprobarUsuario(atob(pageId));
+            setComprobarUsuario(comprobar);
+
+            const resultados = await DatosUsuarioTarjetSite(comprobarUsuario.usuId);
+            setUsuario(resultados.SDTSite);
+            console.log(usuario);
+        }
+
+        ConsultaUsuario();
+    },[]);
 
     const imagenSRC = 'https://tarjet.site/imagenes/';
+    
+    // Comprobando si existe o no
+    if(comprobarUsuario.usuId === 0) return null;
 
     const settings = {
         dots: true,
@@ -46,7 +54,7 @@ const TarjetSite = () => {
         <div className='tarjetSite' style={{background: usuario.fondo}}>
             <div className='row justify-content-center encabezado'>
                 <div className='col-12 col-md-4 p-0'>
-                    <img src={imagenSRC+usuario.encabezadoImagen} className='img-fluid'/>
+                    <img src={imagenSRC+usuario.UsuFondoF} className='img-fluid'/>
                 </div>
             </div>
 
@@ -56,11 +64,11 @@ const TarjetSite = () => {
                         <div>
                             <h6>Envíame un WhatsApp</h6>
                             <p>
-                                {usuario.telefono}
+                                {usuario.SiteTelefono2}
                             </p>
                         </div>
                         <div>
-                            <a href={"https://wa.me/"+usuario.telefono} target={"_blank"}>
+                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"}>
                                 <i className="bi bi-whatsapp whats"></i>
                             </a>
                         </div>
@@ -79,11 +87,11 @@ const TarjetSite = () => {
                         <div>
                             <h6>Contáctame por mail</h6>
                             <p className='usuarioEmail'>
-                                {usuario.email}
+                                {usuario.SiteMail}
                             </p>
                         </div>
                         <div>
-                            <a href={"mailto: "+usuario.mail}>
+                            <a href={"mailto: "+usuario.SiteMail}>
                                 <i className="bi bi-envelope-fill email"></i>
                             </a>
                         </div>

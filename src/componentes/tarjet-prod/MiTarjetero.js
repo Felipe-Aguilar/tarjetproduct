@@ -6,12 +6,14 @@ import { ConsultaTarjetero, ConsultaTarjeteroFiltro, ConsultaTarjeteroNombre } f
 import { ConsultaSegmento } from '../contextos/ConsultaSegmento';
 import { ConsultaClicUsuario } from '../contextos/ConsultaClicUsuario';
 
-import { ComprobarUsuario ,DatosUsuario } from '../contextos/ComprobarUsuario';
+import { ComprobarUsuario , DatosUsuario } from '../contextos/ComprobarUsuario';
 
 import { GuardarTarjet } from '../contextos/GuardarTarjet';
 
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+
+import { toast, Toaster } from 'react-hot-toast';
 
 import Mano3D from '../../assets/Mano3D.png';
 import CirculoLink from '../../assets/CirculoLink.png';
@@ -103,6 +105,11 @@ const MiTarjetero = () => {
 
     const GuardarTarjetero = () => {
         GuardarTarjet(idUsuarioSesion.usuId, comprobarUsuario.usuId);
+
+        toast.success('Tarjeta guardada con éxito',{
+            duration: 4500,
+            position: 'top-center',
+        });
     }
 
     // Comprobando si existe o no
@@ -112,7 +119,11 @@ const MiTarjetero = () => {
         <div className='container-fluid'>
             <div className='miTarjetero' >
                 { !busquedaUsuario ?
-                    <div className='row justify-content-center tarjeta' style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+ usuario.UsuFondoF})`}}>
+                    <div 
+                        className='row justify-content-center tarjeta' 
+                        style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+ usuario.UsuFondoF})`}}
+                        onClick={()=>navigate('/st/'+btoa(usuario.UsuToken))}
+                    >
                         <div className='col-11 col-md-4 p-0'>
                             <img src={CirculoLink} className="circulo"/>
                             <motion.img 
@@ -124,7 +135,11 @@ const MiTarjetero = () => {
                         </div>
                     </div>
                 :
-                    <div className='row justify-content-center tarjeta' style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+usuarioBuscado.UsuFondoF})`}}>
+                    <div 
+                        className='row justify-content-center tarjeta' 
+                        style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+usuarioBuscado.UsuFondoF})`}}
+                        onClick={()=>navigate('/st/'+btoa(usuarioBuscado.UsuToken))}
+                    >
                         <div className='col-11 col-md-4 p-0'>
                             <img src={CirculoLink} className="circulo"/>
                             <motion.img 
@@ -148,6 +163,7 @@ const MiTarjetero = () => {
                                     src={icono2} 
                                     onClick={GuardarTarjetero}
                                 />
+                                <Toaster />
                             </div>
                             <div>
                                 <img 

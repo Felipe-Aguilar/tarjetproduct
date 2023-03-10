@@ -27,4 +27,17 @@ const DatosUsuario = async (idUsuario) => {
     return dataUsuario;
 }
 
-export { ComprobarUsuario, DatosUsuario };
+const DatosUsuarioTarjetSite = async (idUsuario) => {
+    const response = await fetch(`http://192.168.0.9/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/ConsultaMiSite?Siteusuid=${idUsuario}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const dataUsuario = await response.json();
+
+    return dataUsuario;
+}
+
+export { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite };

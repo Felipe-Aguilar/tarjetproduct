@@ -112,7 +112,7 @@ const App = () => {
 
           {/* <Route path='/:pageId' element={<TarjetProd usuarios={usuarios}/>}/>    */}
           <Route path='/:pageId' element={<VistaSesion />}/>   
-          <Route path='/:empresaId/:pageId' element={<TarjetSiteProd usuarios={usuarios}/>}/>
+          <Route path='/st/:pageId' element={<TarjetSiteProd />}/>
           {/* <Route path='/mi-tarjetero/:pageId' element={<MiTarjetero usuarios={usuarios}/>}/> */}
           <Route path='/:pageId/qr' element={<MiTarjetero usuarios={usuarios}/>}/>
         </Routes>
