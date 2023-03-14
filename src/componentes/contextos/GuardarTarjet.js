@@ -1,5 +1,5 @@
 const GuardarTarjet = (IdSesion, IdTarjet) => {
-    fetch('http://192.168.0.9/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/GuardaTarjet', {
+    fetch('http://192.168.0.4/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/GuardaTarjet', {
         method: 'POST',
         mode: 'no-cors',
         headers: {

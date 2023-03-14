@@ -1,5 +1,5 @@
 const ComprobarUsuario = async (tokenURL) => {
-    const response = await fetch('http://192.168.0.9/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/ConsultaUsuXToken', {
+    const response = await fetch('http://192.168.0.4/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/ConsultaUsuXToken', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -15,7 +15,7 @@ const ComprobarUsuario = async (tokenURL) => {
 }
 
 const DatosUsuario = async (idUsuario) => {
-    const response = await fetch(`http://192.168.0.9/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/ConsultaMiTarjet/?Usutarjetid=${idUsuario}`, {
+    const response = await fetch(`http://192.168.0.4/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/ConsultaMiTarjet/?Usutarjetid=${idUsuario}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ const DatosUsuario = async (idUsuario) => {
 }
 
 const DatosUsuarioTarjetSite = async (idUsuario) => {
-    const response = await fetch(`http://192.168.0.9/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/ConsultaMiSite?Siteusuid=${idUsuario}`, {
+    const response = await fetch(`http://192.168.0.4/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/ConsultaMiSite?Siteusuid=${idUsuario}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

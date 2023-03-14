@@ -26,15 +26,15 @@ const TarjetSite = () => {
             const comprobar = await ComprobarUsuario(atob(pageId));
             setComprobarUsuario(comprobar);
 
-            const resultados = await DatosUsuarioTarjetSite(comprobarUsuario.usuId);
-            setUsuario(resultados.SDTSite);
-            console.log(usuario);
-        }
 
+            const resultados = await DatosUsuarioTarjetSite(comprobar.usuId);
+            setUsuario(resultados.SDTSite);
+        }
+        
         ConsultaUsuario();
     },[]);
 
-    const imagenSRC = 'https://tarjet.site/imagenes/';
+    const imagenSRC = 'https://tarjet.site/imagenes/encabezados/';
     
     // Comprobando si existe o no
     if(comprobarUsuario.usuId === 0) return null;
@@ -50,28 +50,35 @@ const TarjetSite = () => {
         rtl: true
     };
 
+    // Servicios
+    const servicios = usuario.Serv.filter(servicio => servicio.TipoServSiteId === 1).map(servicio => servicio.SiteServDescrip);
+
     return ( 
-        <div className='tarjetSite' style={{background: usuario.fondo}}>
+        <div className='tarjetSite' style={{background: usuario.SiteFondo}}>
             <div className='row justify-content-center encabezado'>
                 <div className='col-12 col-md-4 p-0'>
-                    <img src={imagenSRC+usuario.UsuFondoF} className='img-fluid'/>
+                    <img src={imagenSRC+usuario.SiteImgEncabezado} className='img-fluid'/>
                 </div>
             </div>
 
             <div className='row mt-3 justify-content-center'>
                 <div className='col-md-4 contacto'>
                     <div className='d-flex justify-content-between align-items-center'>
-                        <div>
-                            <h6>Envíame un WhatsApp</h6>
-                            <p>
-                                {usuario.SiteTelefono2}
-                            </p>
-                        </div>
-                        <div>
-                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"}>
-                                <i className="bi bi-whatsapp whats"></i>
-                            </a>
-                        </div>
+                        { !usuario.SiteTelefono2 == '' &&
+                            <>
+                                <div>
+                                    <h6>Envíame un WhatsApp</h6>
+                                    <p>
+                                        {usuario.SiteTelefono2}
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"}>
+                                        <i className="bi bi-whatsapp whats"></i>
+                                    </a>
+                                </div>
+                            </>
+                        }
                     </div>
 
                     {/* <div className='d-flex'>
@@ -84,45 +91,57 @@ const TarjetSite = () => {
                     </div> */}
 
                     <div className='d-flex justify-content-between align-items-center'>
-                        <div>
-                            <h6>Contáctame por mail</h6>
-                            <p className='usuarioEmail'>
-                                {usuario.SiteMail}
-                            </p>
-                        </div>
-                        <div>
-                            <a href={"mailto: "+usuario.SiteMail}>
-                                <i className="bi bi-envelope-fill email"></i>
-                            </a>
-                        </div>
+                        { !usuario.SiteMail == '' &&
+                            <>
+                                <div>
+                                    <h6>Contáctame por mail</h6>
+                                    <p className='usuarioEmail'>
+                                        {usuario.SiteMail}
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href={"mailto: "+usuario.SiteMail}>
+                                        <i className="bi bi-envelope-fill email"></i>
+                                    </a>
+                                </div>
+                            </>
+                        }
                     </div>
 
                     <div className='d-flex justify-content-between align-items-center'>
-                        <div>
-                            <h6>Visítame en mi oficina </h6>
-                            <p>
-                                {usuario.direccion}
-                            </p>
-                        </div>
-                        <div>
-                            <a href="https://goo.gl/maps/J3z4Ssm7E2AogXoZ9" target={"_blank"}>
-                                <i className="bi bi-geo-alt-fill ubication"></i>
-                            </a>
-                        </div>
+                        { !usuario.SiteTextoUbica == '' &&
+                            <>
+                                <div>
+                                    <h6>Visítame en mi oficina </h6>
+                                    <p>
+                                        {usuario.SiteTextoUbica}
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href={usuario.SiteTextoUbica} target={"_blank"}>
+                                        <i className="bi bi-geo-alt-fill ubication"></i>
+                                    </a>
+                                </div>
+                            </>
+                        }
                     </div>
 
                     <div className='d-flex justify-content-between align-items-center'>
-                        <div>
-                            <h6>Mi página web </h6>
-                            <p>
-                                www.tekrobot.com.mx
-                            </p>
-                        </div>
-                        <div>
-                            <a href="http://tekrobot.com.mx/" target={'_blank'}>
-                                <i className="bi bi-globe-americas world"></i>
-                            </a>
-                        </div>
+                        { !usuario.SiteWeb == '' &&
+                            <>
+                                <div>
+                                    <h6>Mi página web </h6>
+                                    <a href={usuario.SiteWeb}>
+                                        {usuario.SiteWeb}
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="http://tekrobot.com.mx/" target={'_blank'}>
+                                        <i className="bi bi-globe-americas world"></i>
+                                    </a>
+                                </div>
+                            </>
+                        }
                     </div>
 
                     <div className='d-flex justify-content-between align-items-center'>
@@ -150,30 +169,22 @@ const TarjetSite = () => {
                 <div className='col-11 col-md-4'>
                     <h5>Mis Servicios</h5>
                     <Slider {...settings}>
-                        <div className='cuerpo'>
+                        { servicios.map((servicio, index)=>(
+                            <div className='cuerpo' key={index}>
+                                <p>
+                                    {servicio}
+                                </p>
+                            </div>
+                        ))
+                        }
+                        {/* <div className='cuerpo'>
                             <p>
                                 Somos un grupo de desarrolladores de software, con una experiencia de más de 15 años.
                             </p>
                             <p>
                                 Creamos y diseñamos cualquier sitio web que se te ocurra, con una funcionalidad fuera de serie y un diseño increíble.
                             </p>
-                        </div>
-                        <div className='cuerpo'>
-                            <p>
-                                Somos un grupo de desarrolladores de software, con una experiencia de más de 15 años.
-                            </p>
-                            <p>
-                                Creamos y diseñamos cualquier sitio web que se te ocurra, con una funcionalidad fuera de serie y un diseño increíble.
-                            </p>
-                        </div>
-                        <div className='cuerpo'>
-                            <p>
-                                Somos un grupo de desarrolladores de software, con una experiencia de más de 15 años.
-                            </p>
-                            <p>
-                                Creamos y diseñamos cualquier sitio web que se te ocurra, con una funcionalidad fuera de serie y un diseño increíble.
-                            </p>
-                        </div>
+                        </div> */}
                     </Slider>
                 </div>
             </div>
@@ -231,26 +242,42 @@ const TarjetSite = () => {
                                 <i className="bi bi-person-badge-fill"></i>
                             </button>
                         </div>
-                        <div>
-                            <a >
-                                <i className="bi bi-facebook facebook"></i>
-                            </a>
-                        </div>
-                        <div>
-                            <a >
-                                <i className="bi bi-twitter twitter"></i>
-                            </a>
-                        </div>
-                        <div>
-                            <a >
-                                <i className="bi bi-telegram telegram"></i>
-                            </a>
-                        </div>
-                        <div>
-                            <a >
-                                <i className="bi bi-instagram instagram"></i>
-                            </a>
-                        </div>
+                        {   !usuario.SiteFacebook == '' &&
+                            <>
+                                <div>
+                                    <a href={usuario.SiteFacebook}>
+                                        <i className="bi bi-facebook facebook"></i>
+                                    </a>
+                                </div>    
+                            </>
+                        }
+                        { !usuario.SiteTwitter == '' &&
+                            <>
+                                <div>
+                                    <a href={usuario.SiteTwitter}>
+                                        <i className="bi bi-twitter twitter"></i>
+                                    </a>
+                                </div>
+                            </>
+                        }
+                        { !usuario.SiteTelegram == '' &&
+                            <>
+                                <div>
+                                    <a href={usuario.SiteTelegram}>
+                                        <i className="bi bi-telegram telegram"></i>
+                                    </a>
+                                </div>
+                            </>
+                        }
+                        {   !usuario.SiteInstagram == '' &&
+                            <>
+                                <div>
+                                    <a href={usuario.SiteInstagram}>
+                                        <i className="bi bi-instagram instagram"></i>
+                                    </a>
+                                </div>
+                            </>
+                        }
                     </div>
                 </div>
             </div>
