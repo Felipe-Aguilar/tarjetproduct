@@ -19,6 +19,10 @@ const TarjetSite = () => {
     const { pageId } = useParams();
     const [comprobarUsuario, setComprobarUsuario] = useState([]);
     const [ usuario, setUsuario ] = useState([]);
+
+    const [servicios, setServicios] = useState([]);
+    const [descServicios, setDescServicios] = useState([]);
+    const [imagenServicios, setImagenServicios] = useState([]);
     
     useEffect(()=>{
 
@@ -27,17 +31,32 @@ const TarjetSite = () => {
             setComprobarUsuario(comprobar);
 
 
-            const resultados = await DatosUsuarioTarjetSite(comprobar.usuId);
-            setUsuario(resultados.SDTSite);
+            const datosUsuarios = await DatosUsuarioTarjetSite(comprobar.usuId);
+            setUsuario(datosUsuarios.SDTSite);
+
+            // Servicios
+            const datosServicios = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 1).map(servicio => servicio.SiteServDescrip);
+            setServicios(datosServicios);
+
+            // Servicios Descripción Imagen
+            const datosServiciosImagen = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 2).map(servicio => servicio.SiteServDescrip);
+            setDescServicios(datosServiciosImagen);
+
+            // Servicios Imagen
+            const imagenServiciosImagen = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 2).map(servicio => servicio.SiteServIMG);
+            setImagenServicios(imagenServiciosImagen);
         }
         
         ConsultaUsuario();
     },[]);
 
     const imagenSRC = 'https://tarjet.site/imagenes/encabezados/';
+    const imagenServicio = 'https://tarjet.site/imagenes/servicios/';
+    
     
     // Comprobando si existe o no
     if(comprobarUsuario.usuId === 0) return null;
+
 
     const settings = {
         dots: true,
@@ -49,9 +68,6 @@ const TarjetSite = () => {
         slidesToScroll: 1,
         rtl: true
     };
-
-    // Servicios
-    const servicios = usuario.Serv.filter(servicio => servicio.TipoServSiteId === 1).map(servicio => servicio.SiteServDescrip);
 
     return ( 
         <div className='tarjetSite' style={{background: usuario.SiteFondo}}>
@@ -163,75 +179,59 @@ const TarjetSite = () => {
                 </div>
             </div>
 
-            
+            { servicios.length > 0 &&
+                <>
+                <div className='row justify-content-center sliderServicios'>
+                    <div className='col-11 col-md-4'>
+                        <h5>Mis Servicios</h5>
 
-            <div className='row justify-content-center sliderServicios'>
-                <div className='col-11 col-md-4'>
-                    <h5>Mis Servicios</h5>
-                    <Slider {...settings}>
-                        { servicios.map((servicio, index)=>(
+                        <Slider {...settings}>
+                            { servicios.map((servicio, index)=>(
+                                <div className='cuerpo' key={index}>
+                                    <p>
+                                        {servicio}
+                                    </p>
+                                </div>
+                            ))
+                            }
+                        </Slider>
+                    </div>
+                </div>
+
+                <div className='row mt-4 justify-content-center'>
+                    <div className='col-11 col-md-4 p-0'>
+                        <hr/>
+                    </div>
+                </div>
+                </>
+            }
+
+            {   descServicios.length > 0 &&
+                <>
+                <div className='row justify-content-center masServicios'>
+                    <div className='col-11 col-md-4'>
+                        <h5>Más de mis servicios</h5>
+
+                        { descServicios.map((servicio, index)=>(
                             <div className='cuerpo' key={index}>
                                 <p>
                                     {servicio}
                                 </p>
+                                <img src={imagenServicio+imagenServicios[index]} className='img-fluid'/>
                             </div>
                         ))
                         }
-                        {/* <div className='cuerpo'>
-                            <p>
-                                Somos un grupo de desarrolladores de software, con una experiencia de más de 15 años.
-                            </p>
-                            <p>
-                                Creamos y diseñamos cualquier sitio web que se te ocurra, con una funcionalidad fuera de serie y un diseño increíble.
-                            </p>
-                        </div> */}
-                    </Slider>
+                    </div>
                 </div>
-            </div>
 
-            <div className='row mt-4 justify-content-center'>
-                <div className='col-11 col-md-4 p-0'>
-                    <hr/>
+                <div className='row mt-1 justify-content-center'>
+                    <div className='col-11 col-md-4 p-0'>
+                        <hr/>
+                    </div>
                 </div>
-            </div>
+                </>
+            }
 
-            <div className='row justify-content-center masServicios'>
-                <div className='col-11 col-md-4'>
-                    <h5>Más de mis servicios</h5>
-                    
-                    <div className='cuerpo'>
-                        <p>
-                            Desarrollamos software en medida de tus necesidades.
-                        </p>
-                        <img src={AlbertoServicios1} className='img-fluid'/>
-                    </div>
-                    <div className='cuerpo'>
-                        <p>
-                            Creamos y configuramos tu tienda virtual lista para vender.
-                        </p>
-                        <img src={AlbertoServicios2} className='img-fluid'/>
-                    </div>
-                    <div className='cuerpo'>
-                        <p>
-                            Configuramos para que los metodos de pago en tu tienda virtual sean seguros y confiables.
-                        </p>
-                        <img src={AlbertoServicios3} className='img-fluid'/>
-                    </div>
-                    <div className='cuerpo'>
-                        <p>
-                            Somos especialistas en puntos de Venta y control de Inventarios para tu Negocio
-                        </p>
-                        <img src={AlbertoServicios4} className='img-fluid'/>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div className='row mt-1 justify-content-center'>
-                <div className='col-11 col-md-4 p-0'>
-                    <hr/>
-                </div>
-            </div>
 
             <div className='row mt-2 justify-content-center redesSociales'>
                 <div className='col-12 col-md-4'>
