@@ -5,7 +5,7 @@ import { Sesion } from './contextos/Sesion';
 import TarjetProd from './tarjet-prod/tarjet';
 import MiTarjetero from './tarjet-prod/MiTarjetero';
 
-const VistaSesion = () => {
+const VistaSesion = ({servicioToken}) => {
 
     const sesion = useContext(Sesion);
 
@@ -15,9 +15,9 @@ const VistaSesion = () => {
     return ( 
         <>
             { sesion.estadoSesion || sesionLocal ? 
-                <MiTarjetero />
+                <MiTarjetero servicioToken={servicioToken}/>
             :
-                <TarjetProd />
+                <TarjetProd servicioToken={servicioToken}/>
             }
         
         </>

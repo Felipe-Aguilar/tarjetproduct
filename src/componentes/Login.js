@@ -9,7 +9,7 @@ import { DatosUsuarioSesion } from './contextos/DatosUsuarioSesion';
 
 import LogoTarjet from '../assets/TarjetNegro.png';
 
-const Login = () => {
+const Login = ({ servicioToken }) => {
 
     const { setDatosUsuario, setDatosUsuarioId } = useContext(DatosUsuarioSesion);
 

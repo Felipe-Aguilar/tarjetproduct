@@ -1,8 +1,9 @@
 const enviarPostLogin = async (usuarioForm, passwordForm) => {
+
     const response = await fetch('http://192.168.0.4/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/Login', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: JSON.stringify({
             "Cuenta": usuarioForm,
