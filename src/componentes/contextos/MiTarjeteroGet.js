@@ -6,7 +6,7 @@ const ProveedorMiTarjeteroGet = ( { children } ) => {
 
     const obtenerMiTarjeteroGet = async(idUsuario) => {
         
-        const response = await fetch(`http://192.168.0.4/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/ConsultaMiTarjet/?Usutarjetid=${idUsuario}`, {
+        const response = await fetch(`https://systemweb.ddns.net/WebTarjet/APIUsuDtos/ConsultaMiTarjet/?Usutarjetid=${idUsuario}`, {
                 method: 'GET',
                 mode: 'cors',
                 headers: {

@@ -9,7 +9,7 @@ const ProveedorLogin = ( { children } ) => {
 
     const enviarPostLogin = async(usuarioForm, passwordForm) => {
 
-        const response = await fetch('http://192.168.0.4/Tarjet_v1.NETFrameworkEnvironment/APIUsuDtos/Login', {
+        const response = await fetch('https://systemweb.ddns.net/WebTarjet/APIUsuDtos/Login', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {

@@ -97,7 +97,7 @@ const TarjetProd = () => {
                             Toca la tarjeta para más información
                         </p>
                         {/* <NavLink to={`/${btoa(usuario.empresaId)+btoa(usuario.token)}`}> */}
-                        <NavLink to={'/'+btoa(usuario.empresaId)+'/'+btoa(usuario.token)}>
+                        <NavLink to={'/st/'+btoa(usuario.UsuToken)}>
                             
                             <motion.div className='TarjetaContenedorVista'
                                 style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+usuario.UsuFondoF})`}}
