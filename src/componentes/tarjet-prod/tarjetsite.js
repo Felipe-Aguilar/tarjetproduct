@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { ComprobarUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
+import { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
 
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import AlbertoServicios1 from '../../assets/AlbertoServicios1.png';
-import AlbertoServicios2 from '../../assets/AlbertoServicios2.png';
-import AlbertoServicios3 from '../../assets/AlbertoServicios3.png';
-import AlbertoServicios4 from '../../assets/AlbertoServicios4.png';
 
 const TarjetSite = () => {
 
@@ -19,6 +14,7 @@ const TarjetSite = () => {
     const { pageId } = useParams();
     const [comprobarUsuario, setComprobarUsuario] = useState([]);
     const [ usuario, setUsuario ] = useState([]);
+    const [ token, setToken ] = useState([]);
 
     const [servicios, setServicios] = useState([]);
     const [descServicios, setDescServicios] = useState([]);
@@ -34,6 +30,10 @@ const TarjetSite = () => {
             const datosUsuarios = await DatosUsuarioTarjetSite(comprobar.usuId);
             setUsuario(datosUsuarios.SDTSite);
 
+            // Token Usuario
+            const datoToken = await DatosUsuario(comprobar.usuId);
+            setToken(datoToken.UsuToken);
+
             // Servicios
             const datosServicios = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 1).map(servicio => servicio.SiteServDescrip);
             setServicios(datosServicios);
@@ -45,6 +45,7 @@ const TarjetSite = () => {
             // Servicios Imagen
             const imagenServiciosImagen = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 2).map(servicio => servicio.SiteServIMG);
             setImagenServicios(imagenServiciosImagen);
+
         }
         
         ConsultaUsuario();
@@ -53,10 +54,8 @@ const TarjetSite = () => {
     const imagenSRC = 'https://tarjet.site/imagenes/encabezados/';
     const imagenServicio = 'https://tarjet.site/imagenes/servicios/';
     
-    
     // Comprobando si existe o no
     if(comprobarUsuario.usuId === 0) return null;
-
 
     const settings = {
         dots: true,
@@ -165,7 +164,7 @@ const TarjetSite = () => {
                             <h6>Ver mi tarjeta</h6>
                         </div>
                         <div>
-                            <a onClick={()=>navigate("/"+btoa(usuario.token))}>
+                            <a onClick={()=>navigate("/"+btoa(token))}>
                                 <i className="bi bi-person-badge-fill tarjeta"></i>
                             </a>
                         </div>
@@ -238,7 +237,7 @@ const TarjetSite = () => {
                     <h5 className='p-2'>Mis redes sociales</h5>
                     <div className='d-flex justify-content-around cuerpo'>
                         <div>
-                            <button onClick={()=> navigate("/"+btoa(usuario.token))}>
+                            <button onClick={()=> navigate("/"+btoa(token))}>
                                 <i className="bi bi-person-badge-fill"></i>
                             </button>
                         </div>

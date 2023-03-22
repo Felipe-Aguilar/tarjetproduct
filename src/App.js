@@ -12,6 +12,7 @@ import BannerPrincipal from './componentes/tarjet-prod/BannerPrincipal';
 import MiTarjetero from './componentes/tarjet-prod/MiTarjetero';
 
 import VistaSesion from './componentes/VistaSesion';
+import Error from './componentes/404';
 
 
 const App = () => {
@@ -42,7 +43,7 @@ const App = () => {
         <Routes>
           <Route path='/login' element={<Login />}/>
           
-          <Route path='*' element={<BannerPrincipal />}/>          
+          <Route path='*' element={<Error />}/>          
           <Route path='/' element={<BannerPrincipal />}/>
 
           <Route path='/:pageId' element={<VistaSesion />}/>   
