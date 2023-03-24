@@ -7,6 +7,14 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import iconoFacebook from '../../assets/iconoFacebook.png';
+import iconoInstagram from '../../assets/iconoInstagram.png';
+import iconoTelegram from '../../assets/iconoTelegram.png';
+import iconoTwitter from '../../assets/iconoTwitter.png';
+import iconoYoutube from '../../assets/iconoYoutube.png';
+import iconoTiktok from '../../assets/iconoTiktok.png';
+import iconoTarjet from '../../assets/iconoTarjet.png';
+
 const TarjetSite = () => {
 
     const navigate = useNavigate();
@@ -67,6 +75,15 @@ const TarjetSite = () => {
         slidesToScroll: 1,
         rtl: true
     };
+
+    const settings2 = {
+        dots: false,
+        arrows: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    }
 
     return ( 
         <div className='tarjetSite' style={{background: usuario.SiteFondo}}>
@@ -186,7 +203,7 @@ const TarjetSite = () => {
 
                         <Slider {...settings}>
                             { servicios.map((servicio, index)=>(
-                                <div className='cuerpo' key={index}>
+                                <div className='cuerpo d-flex align-items-center' key={index}>
                                     <p>
                                         {servicio}
                                     </p>
@@ -231,8 +248,8 @@ const TarjetSite = () => {
                 </>
             }
 
-
-            <div className='row mt-2 justify-content-center redesSociales'>
+            {/* Redes sociales funcionalidad antigua */}
+            {/* <div className='row mt-2 justify-content-center redesSociales'>
                 <div className='col-12 col-md-4'>
                     <h5 className='p-2'>Mis redes sociales</h5>
                     <div className='d-flex justify-content-around cuerpo'>
@@ -248,13 +265,18 @@ const TarjetSite = () => {
                                         <i className="bi bi-facebook facebook"></i>
                                     </a>
                                 </div>    
+                                <div>
+                                    <a href={usuario.SiteFacebook}>
+                                        <i className="bi bi-facebook facebook"></i>
+                                    </a>
+                                </div>    
                             </>
                         }
-                        { !usuario.SiteTwitter == '' &&
+                        {   !usuario.SiteInstagram == '' &&
                             <>
                                 <div>
-                                    <a href={usuario.SiteTwitter}>
-                                        <i className="bi bi-twitter twitter"></i>
+                                    <a href={usuario.SiteInstagram}>
+                                        <i className="bi bi-instagram instagram"></i>
                                     </a>
                                 </div>
                             </>
@@ -268,16 +290,85 @@ const TarjetSite = () => {
                                 </div>
                             </>
                         }
-                        {   !usuario.SiteInstagram == '' &&
+                        { !usuario.SiteTwitter == '' &&
                             <>
                                 <div>
-                                    <a href={usuario.SiteInstagram}>
-                                        <i className="bi bi-instagram instagram"></i>
+                                    <a href={usuario.SiteTwitter}>
+                                        <i className="bi bi-twitter twitter"></i>
                                     </a>
                                 </div>
                             </>
                         }
                     </div>
+                </div>
+            </div> */}
+
+
+            <div className='row mt-2 justify-content-center redesSociales'>
+                <div className='col-12 col-md-4'>
+                    <h5 className='p-2'>Mis redes sociales</h5>
+                    <Slider {...settings2}>
+                    <div className='d-flex justify-content-around cuerpo'>
+
+                            <div>
+                                <button onClick={()=> navigate("/"+btoa(token))}>
+                                    <img src={iconoTarjet} className='img-fluid' />
+                                </button>
+                            </div>
+                            
+                            { !usuario.SiteFacebook == '' &&
+                                <>
+                                    <div className='d-flex align-items-center'>
+                                        <a href={usuario.SiteFacebook} className={ usuario.SiteFacebook == undefined ? 'desactivado' : ''}>
+                                            <img src={iconoFacebook} className='img-fluid' />
+                                        </a>
+                                    </div>    
+                                </>
+                            }
+
+                            { !usuario.SiteInstagram == '' &&
+                                <>
+                                    <div className='d-flex align-items-center'>
+                                        <a href={usuario.SiteInstagram} className={ usuario.SiteInstagram == undefined ? 'desactivado' : ''}>
+                                            <img src={iconoInstagram} className='img-fluid' />
+                                        </a>
+                                    </div>
+                                </>
+                            }
+
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteTelegram} className={ usuario.SiteTelegram == undefined ? 'desactivado' : ''}>
+                                    <img 
+                                        src={iconoTelegram} 
+                                        className='img-fluid'
+                                    />
+                                </a>
+                            </div>
+                            
+                    </div>
+                    <div className='d-flex justify-content-around cuerpo'>
+                        <div className='d-flex align-items-center'>
+                            <a href={usuario.SiteTwitter} className={ usuario.SiteTwitter == undefined ? 'desactivado' : ''}>
+                                <img src={iconoTwitter} className='img-fluid' />
+                            </a>
+                        </div>
+                        
+                        <div className='d-flex align-items-center'>
+                            <a href={usuario.SiteYoutube} className={ usuario.SiteYoutube == undefined ? 'desactivado' : ''}>
+                                <img 
+                                    src={iconoYoutube} 
+                                    className='img-fluid' 
+                                />
+                            </a>
+                        </div>       
+
+                        <div className='d-flex align-items-center'>
+                            <a href={usuario.SiteInstagram} className={ usuario.SiteInstagram == undefined ? 'desactivado' : ''}>
+                                <img src={iconoTiktok} className='img-fluid' />
+                            </a>
+                        </div>
+                    </div>
+                    </Slider>
                 </div>
             </div>
         </div>

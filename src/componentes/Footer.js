@@ -71,7 +71,7 @@ const FooterContenedor = styled.footer`
     
     .links-mobile{
         margin-top: 20px;
-        text-align: center;
+        text-align: left;
         a{
             display: block;
             color:#fff;

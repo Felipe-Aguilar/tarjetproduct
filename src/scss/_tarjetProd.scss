@@ -11,7 +11,6 @@ $colorRadar: #cfaa06;
             width: 397px;
             height: 227px;
             padding: 10px;
-            background: url("../assets/TarjetaAlberto.png");
             background-size: cover;
             display: block;
             margin: auto;
@@ -213,9 +212,11 @@ $colorRadar: #cfaa06;
         }
         .cuerpo{
             padding: 0 10px;
-            height: 180px;
+            // height: 180px;
+            height: 130px;
             @media screen and (max-width: 575px){
-                height: 230px;
+                // height: 230px;
+                height: 150px;
             }
         }
     }
@@ -255,57 +256,48 @@ $colorRadar: #cfaa06;
 
     .redesSociales{
         .cuerpo{
-            background: #fff;
+            // background: #fff;
             // border-radius: 10px;
             padding: 10px;
 
-            box-shadow:
-            2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
-            6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-            12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
-            22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-            41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
-            100px 100px 80px rgba(0, 0, 0, 0.07)
-            ;
+            // box-shadow:
+            // 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+            // 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+            // 12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+            // 22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+            // 41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+            // 100px 100px 80px rgba(0, 0, 0, 0.07)
+            // ;
             
             a{
                 text-decoration: none;
                 color: #212529;
 
                 i{
-                    font-size: 31px;
+                    font-size: 40px;
                     margin-bottom: 0;
                 }
+                img{
+                    width: 60px;
+                }
+            }
+            .desactivado{
+                pointer-events: none;
+                img{
+                    filter: grayscale(100%);
+                }
+                filter: grayscale(100%);
             }
             button{
                 background: none;
                 outline: none;
                 border: none;
                 color: #212529;
-                i{
-                    font-size: 31px;
-                    margin-bottom: 0;
+                padding: 0;
+                img{
+                    padding: none;
+                    width: 60px;
                 }
-            }
-            .facebook{
-                color: #1877f2;
-                color: $colorGris;
-                pointer-events: none;
-            }
-            .twitter{
-                color: #1ab2e8;
-                color: $colorGris;
-                pointer-events: none;
-            }
-            .telegram{
-                color: #24abed;
-                color: $colorGris;
-                pointer-events: none;
-            }
-            .instagram{
-                color: #fe0457;
-                color: $colorGris;
-                pointer-events: none;
             }
         }
     }
