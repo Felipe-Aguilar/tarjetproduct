@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
 
 import Qr from './Qr';
+import Compartir from './Compartir';
 
 import Mano3D from '../../assets/Mano3D.png';
 import CirculoLink from '../../assets/CirculoLink.png';
@@ -27,6 +28,7 @@ import icono4 from '../../assets/icono4.png';
 import icono5 from '../../assets/icono5.png';
 import icono6 from '../../assets/icono6.png';
 import miniTarjetero from '../../assets/miniTarjetero.jpg';
+import MiTarjeteroTitulo from '../../assets/MiTarjetero.png';
 
 const MiTarjetero = () => {
 
@@ -249,20 +251,12 @@ const MiTarjetero = () => {
                                     <img src={icono4}/>
                                 </div>
                                 <div>
-                                    <img src={icono5} onClick={()=>setCompartir(!compartir)}/>
-                                        
+                                    <img src={icono5} onClick={()=>setCompartir(true)}/>
+                                    
                                     { compartir &&
-                                        <motion.div className='compartir'
-                                            initial={{scale:0}}
-                                            animate={{scale: 1}}
-                                        >
-                                            <i className="bi bi-facebook facebook"></i>
-                                            <i className="bi bi-whatsapp whats"></i>
-                                            <i className="bi bi-instagram instagram"></i>
-                                            <i className="bi bi-telegram telegram"></i>
-                                            <i className="bi bi-twitter twitter"></i>
-                                        </motion.div>
+                                        <Compartir />
                                     }
+                                    
                                 </div>
                             </div>
                         </div>
@@ -313,8 +307,16 @@ const MiTarjetero = () => {
 
                 <div className='row mt-4 justify-content-center MiTarjeteroPersonal2'>
                     <div className='col-12 col-md-4 p-0'>
+                        <div className='imagen-titulo'>
+                            <img src={MiTarjeteroTitulo} />
+                        </div>
                         <div className='cuerpo'>
-                            <div className='d-flex justify-content-start mb-2'>
+                            <div className='d-flex justify-content-center mb-2'>
+                                <div className=''>
+                                    <h6>Actualmente ({datosMiTarjetero.length}) Tarjets</h6>
+                                </div>
+                            </div>
+                            {/* <div className='d-flex justify-content-start mb-2'>
                                 <div className='col-md-4 col-5 p-0'>
                                     <img src={miniTarjetero} className='img-fluid' />
                                 </div>
@@ -322,7 +324,7 @@ const MiTarjetero = () => {
                                     <h5>mi Tarjetero personal</h5>
                                     <h6>Actualmente ({datosMiTarjetero.length}) Tarjets</h6>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <form>
                                 <label>Mostrar por:</label>
@@ -360,28 +362,28 @@ const MiTarjetero = () => {
 
                 <div className='row mt-4 my-4 justify-content-center Datos'>
                     <div className='col-11 col-md-4'>
-                        { opcionSelected == '' &&
+                        {/* { opcionSelected == '' &&
                             <>
                                 <h6>
                                     <i className="bi bi-search"></i>
                                     Resultados de búsqueda
                                 </h6>
                                 <hr/>
-                                {/* <p>
+                                <p>
                                     Para mostrar los resultados de búsqueda seleccione una opción mostrar por: (segmento o nombre).
-                                </p> */}
+                                </p>
                             </>
-                        }
+                        } */}
                         {  opcionSelected == 'segmento' &&
                             <>
-                                <h6>
+                                {/* <h6>
                                     <i className="bi bi-search"></i>
                                     Resultados de búsqueda por segmento
-                                </h6>
+                                </h6> */}
                                 { !busquedaSegmento &&
                                     <>
-                                        <p>Mostrando: Todos</p>
-                                        <hr/>
+                                        {/* <p>Mostrando: Todos</p>
+                                        <hr/> */}
 
                                         {   datosSegmentos.map((segmento)=>(
                                             <button 
@@ -397,8 +399,8 @@ const MiTarjetero = () => {
                                 }
                                 { busquedaSegmento && 
                                     <>
-                                        <p>Mostrando: {nomSeg}</p>
-                                        <hr/>
+                                        {/* <p>Mostrando: {nomSeg}</p>
+                                        <hr/> */}
                                         {   reBusSegmento.map((segmento, index)=>(
                                             <button 
                                                 className='resultado' 
@@ -421,14 +423,14 @@ const MiTarjetero = () => {
                         }
                         { opcionSelected == 'nombre' && 
                             <>
-                                <h6>
+                                {/* <h6>
                                     <i className="bi bi-search"></i>
                                     Resultados de búsqueda por nombre
-                                </h6>
+                                </h6> */}
                                 { !busquedaNombre &&
                                     <>
-                                        <p>Mostrando: Todos</p>
-                                        <hr/>
+                                        {/* <p>Mostrando: Todos</p>
+                                        <hr/> */}
                                         { datosMiTarjetero.map((dato, index)=>(
                                             <button 
                                                 className='resultado' 
@@ -444,8 +446,8 @@ const MiTarjetero = () => {
                                 }
                                 { busquedaNombre &&
                                     <>
-                                        <p>Mostrando: {capturaNombre}</p>
-                                        <hr/>
+                                        {/* <p>Mostrando: {capturaNombre}</p>
+                                        <hr/> */}
                                         { reBusNombre.map((dato, index)=>(
                                             <button 
                                                 className='resultado' 

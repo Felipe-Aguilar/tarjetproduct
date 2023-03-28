@@ -217,6 +217,17 @@ $BordeColor: #c0c0c0aa;
     }
 
     .MiTarjeteroPersonal2{
+        .imagen-titulo{
+            img{
+                width: 60%;
+                display: block;
+                margin: auto;
+                margin-bottom: 20px;
+                @media screen and (max-width: 575px){
+                    width: 80%;
+                }
+            }
+        }
         .cuerpo{
             // background: #fff;
             padding: 20px 15px;
