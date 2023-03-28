@@ -312,7 +312,7 @@ const MiTarjetero = () => {
 
 
                 <div className='row mt-4 justify-content-center MiTarjeteroPersonal2'>
-                    <div className='col-11 col-md-4 p-0'>
+                    <div className='col-12 col-md-4 p-0'>
                         <div className='cuerpo'>
                             <div className='d-flex justify-content-start mb-2'>
                                 <div className='col-md-4 col-5 p-0'>
@@ -367,9 +367,9 @@ const MiTarjetero = () => {
                                     Resultados de búsqueda
                                 </h6>
                                 <hr/>
-                                <p>
+                                {/* <p>
                                     Para mostrar los resultados de búsqueda seleccione una opción mostrar por: (segmento o nombre).
-                                </p>
+                                </p> */}
                             </>
                         }
                         {  opcionSelected == 'segmento' &&
