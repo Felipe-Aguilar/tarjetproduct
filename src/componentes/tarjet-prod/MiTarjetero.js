@@ -15,6 +15,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { toast, Toaster } from 'react-hot-toast';
 
+import Qr from './Qr';
+
 import Mano3D from '../../assets/Mano3D.png';
 import CirculoLink from '../../assets/CirculoLink.png';
 
@@ -24,6 +26,7 @@ import icono3 from '../../assets/icono3.png';
 import icono4 from '../../assets/icono4.png';
 import icono5 from '../../assets/icono5.png';
 import icono6 from '../../assets/icono6.png';
+import miniTarjetero from '../../assets/miniTarjetero.jpg';
 
 const MiTarjetero = () => {
 
@@ -101,6 +104,11 @@ const MiTarjetero = () => {
         const respuesta = await ConsultaClicUsuario(IdTarjet);
         setBusquedaUsuario(true);
         setUsuarioBuscado(respuesta);
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     }
 
     const GuardarTarjetero = () => {
@@ -110,6 +118,12 @@ const MiTarjetero = () => {
             duration: 4500,
             position: 'top-center',
         });
+    }
+
+    const [qr, setQr] = useState(false);
+
+    const setQrEstado = () => {
+        setQr(!qr);
     }
 
     // Comprobando si existe o no
@@ -152,12 +166,10 @@ const MiTarjetero = () => {
                     </div>
                 }
 
-                <div className='row mt-4 justify-content-center opciones'>
+                {/* Opciones de tarjetero antiguas */}
+                {/* <div className='row mt-4 justify-content-center opciones'>
                     <div className='col-11 col-md-4'>
                         <div className='d-flex justify-content-between align-items-center cuerpo'>
-                            {/* <div>
-                                <img src={icono6}/>
-                            </div> */}
                             <div>
                                 <img 
                                     src={icono2} 
@@ -198,9 +210,67 @@ const MiTarjetero = () => {
                             </div>
                         </div>
                     </div>
+                </div> */}
+
+                <div className='row mt-4 justify-content-center opciones2'>
+                    <div className='col-11 col-md-4 p-0'>
+
+                        <div className='d-flex justify-content-between'>
+                            <div className='d-flex justify-content-around align-items-center cuerpo'>
+                                <div>
+                                    <img 
+                                        src={icono2} 
+                                        onClick={GuardarTarjetero}
+                                    />
+                                    <Toaster />
+                                </div>
+                                <div>
+                                    <img 
+                                        src={icono1} 
+                                        onClick={()=>{
+                                            navigate('/'+btoa(usuarioSesion.UsuToken)); 
+                                            window.location.reload();
+                                        }}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className='d-flex justify-content-around align-items-center cuerpo'>
+                                <div>
+                                    <img 
+                                        src={icono3}
+                                        onClick={()=>setQr(true)}
+                                    />
+                                    { qr &&
+                                        <Qr showQr={qr} cerrarQr={setQrEstado}/>
+                                    }
+                                </div>
+                                <div>
+                                    <img src={icono4}/>
+                                </div>
+                                <div>
+                                    <img src={icono5} onClick={()=>setCompartir(!compartir)}/>
+                                        
+                                    { compartir &&
+                                        <motion.div className='compartir'
+                                            initial={{scale:0}}
+                                            animate={{scale: 1}}
+                                        >
+                                            <i className="bi bi-facebook facebook"></i>
+                                            <i className="bi bi-whatsapp whats"></i>
+                                            <i className="bi bi-instagram instagram"></i>
+                                            <i className="bi bi-telegram telegram"></i>
+                                            <i className="bi bi-twitter twitter"></i>
+                                        </motion.div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div className='row mt-4 justify-content-center MiTarjeteroPersonal'>
+                {/* Mi tarjetero opciones */}
+                {/* <div className='row mt-4 justify-content-center MiTarjeteroPersonal'>
                     <div className='col-11 col-md-4'>
                         <div className='cuerpo'>
                             <h5>Mi Tarjetero personal ({datosMiTarjetero.length})</h5>
@@ -235,6 +305,54 @@ const MiTarjetero = () => {
                                         <option value="5" >15</option>
                                     </select>
                                 </div>
+                            </form>
+                        </div>
+                    </div>
+                </div> */}
+
+
+                <div className='row mt-4 justify-content-center MiTarjeteroPersonal2'>
+                    <div className='col-11 col-md-4 p-0'>
+                        <div className='cuerpo'>
+                            <div className='d-flex justify-content-start mb-2'>
+                                <div className='col-md-4 col-5 p-0'>
+                                    <img src={miniTarjetero} className='img-fluid' />
+                                </div>
+                                <div className='col-md-6 col-6 p-0 ml-3'>
+                                    <h5>mi Tarjetero personal</h5>
+                                    <h6>Actualmente ({datosMiTarjetero.length}) Tarjets</h6>
+                                </div>
+                            </div>
+
+                            <form>
+                                <label>Mostrar por:</label>
+                                <select value={opcionSelected} onChange={(e)=>setOpcionSelected(e.target.value)}>
+                                    <option value="">Seleccione</option>
+                                    <option value="segmento">Segmento</option>
+                                    <option value="nombre">Nombre</option>
+                                </select>
+                            </form>
+                            <form>
+                                <div className='mt-3'>
+                                    <label className='lbl-nombre'>Buscar por nombre:</label>
+                                    { opcionSelected == 'segmento' | opcionSelected == '' ? 
+                                        <input type="text" value={capturaNombre} disabled/>
+                                    :
+                                        <input 
+                                            type="text"
+                                            value={capturaNombre}
+                                            onChange={ConsultaNombre}
+                                        />
+                                    }
+                                </div>
+                                {/* <div className='mt-2'>
+                                    <label>Resultados por página: </label>
+                                    <select>
+                                        <option value="5" >5</option>
+                                        <option value="5" >10</option>
+                                        <option value="5" >15</option>
+                                    </select>
+                                </div> */}
                             </form>
                         </div>
                     </div>
