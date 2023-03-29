@@ -65,9 +65,6 @@ const MiTarjetero = () => {
     },[]);
 
     // TODO BIEN AQUÍ
-    
-    
-    const [compartir, setCompartir] = useState(false);
 
     const navigate = useNavigate();
     
@@ -123,9 +120,28 @@ const MiTarjetero = () => {
     }
 
     const [qr, setQr] = useState(false);
+    const [compartir, setCompartir] = useState(false);
 
     const setQrEstado = () => {
         setQr(!qr);
+    }
+
+    const setCompartirEstado = () => {
+        setCompartir(!compartir);
+    }
+
+    const copiarPortapapeles = () => {
+        const el = document.createElement('textarea');
+        el.value = window.location.href;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+
+        toast('Copiado en el portapapeles',{
+            duration: 4500,
+            position: 'top-center',
+        });
     }
 
     // Comprobando si existe o no
@@ -248,13 +264,13 @@ const MiTarjetero = () => {
                                     }
                                 </div>
                                 <div>
-                                    <img src={icono4}/>
+                                    <img src={icono4} onClick={copiarPortapapeles}/>
                                 </div>
                                 <div>
                                     <img src={icono5} onClick={()=>setCompartir(true)}/>
                                     
                                     { compartir &&
-                                        <Compartir />
+                                        <Compartir showCompartir={compartir} cerrarCompartir={setCompartirEstado}/>
                                     }
                                     
                                 </div>
@@ -382,8 +398,8 @@ const MiTarjetero = () => {
                                 </h6> */}
                                 { !busquedaSegmento &&
                                     <>
-                                        {/* <p>Mostrando: Todos</p>
-                                        <hr/> */}
+                                        <p>Mostrando: Todos</p>
+                                        <hr/>
 
                                         {   datosSegmentos.map((segmento)=>(
                                             <button 
@@ -399,8 +415,8 @@ const MiTarjetero = () => {
                                 }
                                 { busquedaSegmento && 
                                     <>
-                                        {/* <p>Mostrando: {nomSeg}</p>
-                                        <hr/> */}
+                                        <p>Mostrando: {nomSeg}</p>
+                                        <hr/>
                                         {   reBusSegmento.map((segmento, index)=>(
                                             <button 
                                                 className='resultado' 
@@ -429,8 +445,8 @@ const MiTarjetero = () => {
                                 </h6> */}
                                 { !busquedaNombre &&
                                     <>
-                                        {/* <p>Mostrando: Todos</p>
-                                        <hr/> */}
+                                        <p>Mostrando: Todos</p>
+                                        <hr/>
                                         { datosMiTarjetero.map((dato, index)=>(
                                             <button 
                                                 className='resultado' 
@@ -446,8 +462,8 @@ const MiTarjetero = () => {
                                 }
                                 { busquedaNombre &&
                                     <>
-                                        {/* <p>Mostrando: {capturaNombre}</p>
-                                        <hr/> */}
+                                        <p>Mostrando: {capturaNombre}</p>
+                                        <hr/>
                                         { reBusNombre.map((dato, index)=>(
                                             <button 
                                                 className='resultado' 

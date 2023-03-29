@@ -13,6 +13,7 @@ import MiTarjetero from './componentes/tarjet-prod/MiTarjetero';
 
 import VistaSesion from './componentes/VistaSesion';
 import Error from './componentes/404';
+import AvisoPrivacidad from './componentes/AvisoPrivacidad';
 
 
 const App = () => {
@@ -49,7 +50,7 @@ const App = () => {
           <Route path='/:pageId' element={<VistaSesion />}/>   
           <Route path='/st/:pageId' element={<TarjetSiteProd />}/>
           
-          <Route path='/:pageId/qr' element={<MiTarjetero />}/>
+          <Route path='/aviso-privacidad' element={<AvisoPrivacidad />}/>
         </Routes>
 
         <Footer />

@@ -320,12 +320,14 @@ $BordeColor: #c0c0c0aa;
             outline: none;
             background: none;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             text-align: left;
+            color: #060846;
             span{
                 font-size: 14px;
                 font-weight: bold;
                 display: block;
+                color: #000;
             }
         }
         .noEncontrado{
