@@ -44,6 +44,11 @@ const MiTarjetero = () => {
 
     useEffect(()=>{
 
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
         const ConsultaDatos = async () => {
             const comprobarUsuario = await ComprobarUsuario(atob(pageId));
             setComprobarUsuario(comprobarUsuario);
