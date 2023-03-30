@@ -144,10 +144,9 @@ const TarjetSite = () => {
                         { !usuario.SiteTextoUbica == '' &&
                             <>
                                 <div>
-                                    <h6>Visítame en mi oficina </h6>
-                                    <p>
+                                    <h6>
                                         {usuario.SiteTextoUbica}
-                                    </p>
+                                    </h6>
                                 </div>
                                 <div>
                                     <a href={usuario.SiteTextoUbica} target={"_blank"}>

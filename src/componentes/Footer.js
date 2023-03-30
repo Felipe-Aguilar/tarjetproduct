@@ -1,9 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 import TarjetBlanco from '../assets/TarjetBlanco.png';
 
+
 const Footer = () => {
+    
+    const navigate = useNavigate();
+
     return ( 
         <FooterContenedor className='row mt-4 justify-content-center'>
 
@@ -12,7 +17,7 @@ const Footer = () => {
             </div>
 
             <div className='col-12 links'>
-                <a href="">Aviso de Privacidad</a>
+                <a onClick={()=>navigate('/aviso-privacidad')}>Aviso de Privacidad</a>
                 <a href="">Tienda</a>
                 <a href="">Contáctanos</a>
                 <a href="">Registro</a>
@@ -21,7 +26,7 @@ const Footer = () => {
             </div>
 
                 <div className='col-6 d-block d-md-none links-mobile'>
-                    <a href="">Aviso de Privacidad</a>
+                    <a onClick={()=>navigate('/aviso-privacidad')}>Aviso de Privacidad</a>
                     <a href="">Tienda</a>
                     <a href="">Contáctanos</a>
                 </div>
@@ -66,6 +71,7 @@ const FooterContenedor = styled.footer`
         
         a{
             color:#fff;
+            cursor: pointer;
         }
     }
     
@@ -75,6 +81,7 @@ const FooterContenedor = styled.footer`
         a{
             display: block;
             color:#fff;
+            cursor: pointer;
         }
     }
 
