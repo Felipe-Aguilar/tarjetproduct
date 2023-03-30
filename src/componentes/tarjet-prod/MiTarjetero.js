@@ -260,7 +260,7 @@ const MiTarjetero = () => {
                                         onClick={()=>setQr(true)}
                                     />
                                     { qr &&
-                                        <Qr showQr={qr} cerrarQr={setQrEstado}/>
+                                        <Qr showQr={qr} cerrarQr={setQrEstado} imagenQr={usuario.UsuImagenQR}/>
                                     }
                                 </div>
                                 <div>
@@ -424,7 +424,7 @@ const MiTarjetero = () => {
                                                 onClick={()=>ConsultaUsuarioClic(segmento.IdTarjet)}
                                             >
                                                 {segmento.NombreCompleto}
-                                                <span>{segmento.UsuActividad}</span>
+                                                <span>{segmento.UsuEncabezado}</span>
                                             </button>
                                         ))
                                         }
@@ -454,7 +454,7 @@ const MiTarjetero = () => {
                                                 onClick={()=>ConsultaUsuarioClic(dato.IdTarjet)}
                                             >
                                                 {dato.NombreCompleto}
-                                                <span>{dato.UsuActividad}</span>
+                                                <span>{dato.UsuEncabezado}</span>
                                             </button>
                                         ))
                                         }

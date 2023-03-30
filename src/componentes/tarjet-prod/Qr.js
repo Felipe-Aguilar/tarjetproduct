@@ -4,6 +4,8 @@ import codigoQr from '../../assets/codigoQr.png';
 
 const Qr = (props) => {
 
+    const imagen = 'tarjet.site/imagenes/Qr/'+props.imagenQr;
+
     return ( 
         <AnimatePresence>
             {props.showQr &&
@@ -21,7 +23,7 @@ const Qr = (props) => {
                         transition={{delay:0.7}}
                     >
                         <div>
-                            <img src={codigoQr} />
+                            <img src={imagen} />
                             <p>
                                 Escanea con tu smarthphone
                             </p>

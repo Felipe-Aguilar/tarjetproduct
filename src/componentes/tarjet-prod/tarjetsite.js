@@ -141,7 +141,7 @@ const TarjetSite = () => {
                     </div>
 
                     <div className='d-flex justify-content-between align-items-center'>
-                        { !usuario.SiteTextoUbica == '' &&
+                        { usuario.SiteVerUbica == 1 &&
                             <>
                                 <div>
                                     <h6>
