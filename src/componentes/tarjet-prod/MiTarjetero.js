@@ -136,13 +136,23 @@ const MiTarjetero = () => {
     }
 
     const copiarPortapapeles = () => {
-        const el = document.createElement('textarea');
-        el.value = window.location.href;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
 
+        if (!busquedaUsuario) {
+            const el = document.createElement('textarea');
+            el.value = window.location.href;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+        }else{
+            const el = document.createElement('textarea');
+            el.value = 'https://tarjet.site/#/' + btoa(usuarioBuscado.UsuToken);
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+        }
         toast('Copiado en el portapapeles',{
             duration: 4500,
             position: 'top-center',
@@ -275,7 +285,7 @@ const MiTarjetero = () => {
                                     <img src={icono5} onClick={()=>setCompartir(true)}/>
                                     
                                     { compartir &&
-                                        <Compartir showCompartir={compartir} cerrarCompartir={setCompartirEstado}/>
+                                        <Compartir showCompartir={compartir} cerrarCompartir={setCompartirEstado} busquedaUsuario={busquedaUsuario} usuarioBuscado={usuarioBuscado}/>
                                     }
                                     
                                 </div>

@@ -3,7 +3,13 @@ import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, T
 
 const Compartir = (props) => {
 
-    const url = window.location.href;
+    var url = '';
+
+    if (!props.busquedaUsuario) {
+        url = window.location.href;
+    }else{
+        url = 'https://tarjet.site/#/'+btoa(props.usuarioBuscado.UsuToken);
+    }
 
     return ( 
         <AnimatePresence>

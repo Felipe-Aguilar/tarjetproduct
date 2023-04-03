@@ -61,6 +61,8 @@ const TarjetSite = () => {
 
     const imagenSRC = 'https://tarjet.site/imagenes/encabezados/';
     const imagenServicio = 'https://tarjet.site/imagenes/servicios/';
+
+    const urlMaps = `https://www.google.com/maps?q=${usuario.SiteFondo}`;
     
     // Comprobando si existe o no
     if(comprobarUsuario.usuId === 0) return null;
@@ -149,7 +151,7 @@ const TarjetSite = () => {
                                     </h6>
                                 </div>
                                 <div>
-                                    <a href={usuario.SiteTextoUbica} target={"_blank"}>
+                                    <a href={urlMaps} target={"_blank"}>
                                         <i className="bi bi-geo-alt-fill ubication"></i>
                                     </a>
                                 </div>
@@ -315,25 +317,19 @@ const TarjetSite = () => {
                                 </button>
                             </div>
                             
-                            { !usuario.SiteFacebook == '' &&
-                                <>
-                                    <div className='d-flex align-items-center'>
-                                        <a href={usuario.SiteFacebook} className={ usuario.SiteFacebook == undefined ? 'desactivado' : ''}>
-                                            <img src={iconoFacebook} className='img-fluid' />
-                                        </a>
-                                    </div>    
-                                </>
-                            }
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteFacebook} className={ usuario.SiteFacebook == '' ? 'desactivado' : ''}>
+                                    <img src={iconoFacebook} className='img-fluid' />
+                                </a>
+                            </div>    
 
-                            { !usuario.SiteInstagram == '' &&
-                                <>
-                                    <div className='d-flex align-items-center'>
-                                        <a href={usuario.SiteInstagram} className={ usuario.SiteInstagram == undefined ? 'desactivado' : ''}>
-                                            <img src={iconoInstagram} className='img-fluid' />
-                                        </a>
-                                    </div>
-                                </>
-                            }
+                            
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteInstagram} className={ usuario.SiteInstagram == '' ? 'desactivado' : ''}>
+                                    <img src={iconoInstagram} className='img-fluid' />
+                                </a>
+                            </div>
+                                
 
                             <div className='d-flex align-items-center'>
                                 <a href={usuario.SiteTelegram} className={ usuario.SiteTelegram == undefined ? 'desactivado' : ''}>
@@ -346,26 +342,33 @@ const TarjetSite = () => {
                             
                     </div>
                     <div className='d-flex justify-content-around cuerpo'>
-                        <div className='d-flex align-items-center'>
-                            <a href={usuario.SiteTwitter} className={ usuario.SiteTwitter == undefined ? 'desactivado' : ''}>
-                                <img src={iconoTwitter} className='img-fluid' />
-                            </a>
-                        </div>
-                        
-                        <div className='d-flex align-items-center'>
-                            <a href={usuario.SiteYoutube} className={ usuario.SiteYoutube == undefined ? 'desactivado' : ''}>
-                                <img 
-                                    src={iconoYoutube} 
-                                    className='img-fluid' 
-                                />
-                            </a>
-                        </div>       
 
-                        <div className='d-flex align-items-center'>
-                            <a href={usuario.SiteInstagram} className={ usuario.SiteInstagram == undefined ? 'desactivado' : ''}>
-                                <img src={iconoTiktok} className='img-fluid' />
-                            </a>
-                        </div>
+                        { !usuario.SiteTwitter == '' &&
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteTwitter} >
+                                    <img src={iconoTwitter} className='img-fluid' />
+                                </a>
+                            </div>
+                        }
+                        
+                        { !usuario.SiteYoutube == '' &&
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteYoutube} >
+                                    <img 
+                                        src={iconoYoutube} 
+                                        className='img-fluid' 
+                                    />
+                                </a>
+                            </div>       
+                        }
+                        
+                        { !usuario.SiteInstagram == '' &&
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteInstagram} >
+                                    <img src={iconoTiktok} className='img-fluid' />
+                                </a>
+                            </div>
+                        }
                     </div>
                     </Slider>
                 </div>
