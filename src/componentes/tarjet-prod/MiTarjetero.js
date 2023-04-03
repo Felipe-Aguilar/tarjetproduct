@@ -275,7 +275,7 @@ const MiTarjetero = () => {
                                         onClick={()=>setQr(true)}
                                     />
                                     { qr &&
-                                        <Qr showQr={qr} cerrarQr={setQrEstado} imagenQr={usuario.UsuImagenQR}/>
+                                        <Qr showQr={qr} cerrarQr={setQrEstado} imagenQr={usuario.UsuImagenQR} busquedaUsuario={busquedaUsuario} buscadoQr={usuarioBuscado.UsuImagenQR}/>
                                     }
                                 </div>
                                 <div>

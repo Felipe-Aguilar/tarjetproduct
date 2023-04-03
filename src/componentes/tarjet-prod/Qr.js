@@ -4,7 +4,11 @@ import codigoQr from '../../assets/codigoQr.png';
 
 const Qr = (props) => {
 
-    const imagen = 'tarjet.site/imagenes/Qr/'+props.imagenQr;
+    if (!props.busquedaUsuario) {
+        var imagen = 'tarjet.site/imagenes/Qr/'+props.imagenQr;
+    }else{
+        var imagen = 'tarjet.site/imagenes/Qr/'+props.buscadoQr;
+    }
 
     return ( 
         <AnimatePresence>
