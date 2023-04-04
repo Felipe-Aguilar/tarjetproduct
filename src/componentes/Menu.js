@@ -4,6 +4,7 @@ import Corona from '../assets/corona.svg';
 import { NavLink } from 'react-router-dom';
 import { Sesion } from './contextos/Sesion';
 
+
 const Menu = ({cambioMenu}) => {
 
     const { sesionFalse } = useContext(Sesion);
@@ -21,23 +22,29 @@ const Menu = ({cambioMenu}) => {
                 </div>
 
                 <div className='links'>
+                    
                     <NavLink to="/" onClick={()=>cambioMenu(true)}>Inicio</NavLink>
+                    <a href="https://tarjet.mx/#/que-es-tarjet">¿Qué es Tarjet?</a>
+                    <a href="https://tarjet.mx/#/tienda">Tienda de Porductos</a>
+                    <a href="https://tarjet.mx/#/empresas">Empresas</a>
+                    <a href="https://tarjet.mx/#/empresas">
+                        Hazte Premium
+                        <img src={Corona}/>
+                    </a>
+                    
+                    <a href="#">Contacto</a>
                     { !sesionLocal ?
                         <NavLink to="/login" onClick={()=>cambioMenu(true)}>Iniciar Sesion</NavLink>
                     :
                         <button onClick={()=>{sesionFalse(); cambioMenu(true);}}>Cerrar sesión</button>
                     }
-                    
-                    <a href="#">Empresas</a>
-                    
-                    <a href="#">Contacto</a>
 
                 </div>
 
-                <div className='sesion d-flex justify-content-center align-items-end'>
+                {/* <div className='sesion d-flex justify-content-center align-items-end'>
                     <a href="#" className='registro'>Registro</a>
                     <a href="#" className='iniciarSesion'>Iniciar Sesión</a>
-                </div>
+                </div> */}
             </MenuContenedor>
         </>
     );

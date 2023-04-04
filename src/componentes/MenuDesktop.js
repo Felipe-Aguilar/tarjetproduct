@@ -12,7 +12,10 @@ const MenuDesktop = () => {
     return ( 
         <MenuDesktopContenedor>
             
-            <NavLink to="">Empresas</NavLink>
+            <a href="https://tarjet.mx/#/que-es-tarjet">Qué es Tarjet</a>
+            <a href="https://tarjet.mx/#/tienda">Tienda</a>
+            <a href="https://tarjet.mx/#/hazte-premium">Premium</a>
+            <a href='https://tarjet.mx/#/empresas'>Empresas</a>
             <NavLink to="">Contacto</NavLink>
 
             { !sesionLocal ? 

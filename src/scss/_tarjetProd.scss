@@ -104,6 +104,13 @@ $colorRadar: #cfaa06;
             margin: 0;
             margin-top: 5px;
         }
+        a{
+            text-decoration: none;
+            padding: 5px 10px;
+            color: #fff;
+            border-radius: 6px;
+            background: $colorVerde;
+        }
     }
 
     .slider{

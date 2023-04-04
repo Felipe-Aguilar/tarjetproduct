@@ -129,14 +129,23 @@ const TarjetProd = () => {
                     <div className='teEnvio'>
                         <h3>Hola!</h3>
                         <h4>Te envío mi tarjeta de presentación</h4>
-                        <p>
-                            Dale clic a mi tarjeta para más información
-                        </p>
                     </div>
                 </div>
 
-                <div className='row mt-2 justify-content-center mt-5'>
+
+
+                <div className='row justify-content-center mt-4'>
                     <div className='col-11 col-md-4 banner'>
+                        <motion.div 
+                            className='mb-4 text-center'
+                            transition={{repeat: Infinity, duration: 3}}
+                            animate={{x: [0,-10,10,0]}}
+                        >
+                            <a href="https://wa.me/5586763895" target={"_blank"}>
+                                Solicita aquí tu tarjeta 
+                                <i className="bi bi-chevron-right"></i> 
+                            </a>
+                        </motion.div>
                         <img src={BannerTarjetaVirtual} className="img-fluid" />
                         <p>
                             Promoción válida únicamente para tarjetas personales, si necesita tarjetas para su empresa visite la sección Empresas en donde encontrará descuentos especiales.
@@ -145,11 +154,14 @@ const TarjetProd = () => {
                 </div>
 
                 <div className='row justify-content-center boton'>
-                    <div>
+                    <motion.div
+                        transition={{repeat: Infinity, duration: 3}}
+                        animate={{x: [0,-10,10,0]}}
+                    >
                         <a href="https://wa.me/5586763895" target={"_blank"}>
                             Quiero mi Tarjet Gratis <i className="bi bi-chevron-right"></i>
                         </a>
-                    </div>
+                    </motion.div>
                 </div>
 
                 <div className='row justify-content-center slider'>
