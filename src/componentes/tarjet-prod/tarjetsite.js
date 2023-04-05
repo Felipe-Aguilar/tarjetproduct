@@ -62,7 +62,7 @@ const TarjetSite = () => {
     const imagenSRC = 'https://tarjet.site/imagenes/encabezados/';
     const imagenServicio = 'https://tarjet.site/imagenes/servicios/';
 
-    const urlMaps = `https://www.google.com/maps?q=${usuario.SiteFondo}`;
+    const urlMaps = `https://www.google.com/maps?q=${usuario.UsuMapsCoord}`;
     
     // Comprobando si existe o no
     if(comprobarUsuario.usuId === 0) return null;
@@ -147,7 +147,7 @@ const TarjetSite = () => {
                             <>
                                 <div>
                                     <h6>
-                                        {usuario.SiteTextoUbica}
+                                        {usuario.SiteTextoUbica + '' + usuario.UsuColonia}
                                     </h6>
                                 </div>
                                 <div>
@@ -230,7 +230,7 @@ const TarjetSite = () => {
                         <h5>Más de mis servicios</h5>
 
                         { descServicios.map((servicio, index)=>(
-                            <div className='cuerpo' key={index}>
+                            <div className='cuerpo mb-5' key={index}>
                                 <p>
                                     {servicio}
                                 </p>
@@ -303,6 +303,20 @@ const TarjetSite = () => {
                     </div>
                 </div>
             </div> */}
+
+            <div className='row mt-1 justify-content-center'>
+                <div className='col-12 col-md-4 btn-contacto p-0'>
+                    <button
+                        onClick={()=>window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        })}
+                    >
+                        ¡Contáctame ahora!
+                    </button>
+                    <hr/>
+                </div>
+            </div>
 
 
             <div className='row mt-2 justify-content-center redesSociales'>

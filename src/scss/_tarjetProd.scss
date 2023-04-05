@@ -261,6 +261,18 @@ $colorRadar: #cfaa06;
         }
     }
 
+    .btn-contacto{
+        button{
+            background: transparent;
+            display: block;
+            margin: auto;
+            border: 1px solid rgba(128, 128, 128, 0.478);
+            padding: 3px 10px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            outline: none;
+        }
+    }
+
     .redesSociales{
         .cuerpo{
             // background: #fff;
