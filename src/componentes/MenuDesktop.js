@@ -16,7 +16,7 @@ const MenuDesktop = () => {
             <a href="https://tarjet.mx/#/tienda">Tienda</a>
             <a href="https://tarjet.mx/#/hazte-premium">Premium</a>
             <a href='https://tarjet.mx/#/empresas'>Empresas</a>
-            <NavLink to="">Contacto</NavLink>
+            <a href='https://wa.me/5586763895' target='_blank'>Contacto</a>
 
             { !sesionLocal ? 
                 <NavLink to="/login">Iniciar Sesion</NavLink>

@@ -32,7 +32,7 @@ const Menu = ({cambioMenu}) => {
                         <img src={Corona}/>
                     </a>
                     
-                    <a href="#">Contacto</a>
+                    <a href="https://wa.me/5586763895" target='_blank'>Contacto</a>
                     { !sesionLocal ?
                         <NavLink to="/login" onClick={()=>cambioMenu(true)}>Iniciar Sesion</NavLink>
                     :
