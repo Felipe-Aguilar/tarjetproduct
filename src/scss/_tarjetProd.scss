@@ -236,6 +236,15 @@ $colorRadar: #cfaa06;
             // background: #fff;
             border-radius: 11px;
             padding: 10px 15px;
+            p{
+                text-align: center;
+                font-size: 1.1rem;
+            }
+            .subtitulo{
+                text-align: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
             // height: 350px;
             // @media screen and (max-width: 575px){
             //     height: 330px;

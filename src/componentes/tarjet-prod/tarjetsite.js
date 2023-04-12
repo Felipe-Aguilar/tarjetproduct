@@ -27,6 +27,7 @@ const TarjetSite = () => {
     const [servicios, setServicios] = useState([]);
     const [descServicios, setDescServicios] = useState([]);
     const [imagenServicios, setImagenServicios] = useState([]);
+    const [imagenSubtitulo, setImagenSubtitulo] = useState([]);
     
     useEffect(()=>{
 
@@ -43,7 +44,7 @@ const TarjetSite = () => {
             setToken(datoToken.UsuToken);
 
             // Servicios
-            const datosServicios = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 1).map(servicio => servicio.SiteServDescrip);
+            const datosServicios = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 1).map(servicio => servicio);
             setServicios(datosServicios);
 
             // Servicios Descripción Imagen
@@ -54,6 +55,9 @@ const TarjetSite = () => {
             const imagenServiciosImagen = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 2).map(servicio => servicio.SiteServIMG);
             setImagenServicios(imagenServiciosImagen);
 
+            // Servicios Imagen subtítulo
+            const datosServiciosImagenSubtitulo = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 2).map(servicio => servicio.SiteServSubTitulo);
+            setImagenSubtitulo(datosServiciosImagenSubtitulo);
         }
         
         ConsultaUsuario();
@@ -200,13 +204,25 @@ const TarjetSite = () => {
                 <>
                 <div className='row justify-content-center sliderServicios'>
                     <div className='col-11 col-md-4'>
-                        <h5>Mis Servicios</h5>
+                        <h5>
+                            { usuario.SiteTituloServ == '' ?
+                                "Mis Servicios"
+                            :
+                                usuario.SiteTituloServ
+                            }
+                        </h5>
 
                         <Slider {...settings}>
                             { servicios.map((servicio, index)=>(
-                                <div className='cuerpo d-flex align-items-center' key={index}>
+                                // <div className='cuerpo d-flex align-items-center' key={index}>
+                                <div className='cuerpo ' key={index}>
+                                    { !servicio.SiteServSubTitulo[index] == '' &&
+                                        <p className='d-block'>
+                                            {servicio.SiteServSubTitulo}
+                                        </p>
+                                    }
                                     <p>
-                                        {servicio}
+                                        {servicio.SiteServDescrip}
                                     </p>
                                 </div>
                             ))
@@ -227,10 +243,26 @@ const TarjetSite = () => {
                 <>
                 <div className='row justify-content-center masServicios'>
                     <div className='col-11 col-md-4'>
-                        <h5>Más de mis servicios</h5>
+                        <h5>
+                            { usuario.SiteTituloServ2 == '' ?
+                                "Más de mis servicios"
+                            :
+                                usuario.SiteTituloServ2
+                            }
+                            
+                        </h5>
 
                         { descServicios.map((servicio, index)=>(
                             <div className='cuerpo mb-5' key={index}>
+
+                                { !imagenSubtitulo[index] == '' &&
+                                    <p className='subtitulo'>
+                                        <span>
+                                            {imagenSubtitulo[index]}
+                                        </span>
+                                    </p>
+                                }
+
                                 <p>
                                     {servicio}
                                 </p>
