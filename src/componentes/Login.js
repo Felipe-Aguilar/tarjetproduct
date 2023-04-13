@@ -11,6 +11,18 @@ import LogoTarjet from '../assets/TarjetNegro.png';
 
 const Login = ({ servicioToken }) => {
 
+    const navigate = useNavigate();
+
+    // Actualización Mi perfil tarjet.mx 
+    useEffect(()=>{
+        const localUsuarioSesion = localStorage.getItem('UsuarioSesion');
+        const localUsuarioToken = JSON.parse(localStorage.getItem('DatosSesion'));
+    
+        if (localUsuarioSesion === 'true' ) {
+            navigate('/'+ btoa(localUsuarioToken.UsuToken));
+        }
+    },[]);
+
     const { setDatosUsuario, setDatosUsuarioId } = useContext(DatosUsuarioSesion);
 
     // Estado Global de la sesión 
@@ -21,9 +33,6 @@ const Login = ({ servicioToken }) => {
     
     const [errorLogin, setErrorLogin] = useState();
     const [errorLogin2, setErrorLogin2] = useState();
-    
-
-    const navigate = useNavigate();
 
     const comprobar = async (e) => {
         e.preventDefault();

@@ -14,6 +14,7 @@ import iconoTwitter from '../../assets/iconoTwitter.png';
 import iconoYoutube from '../../assets/iconoYoutube.png';
 import iconoTiktok from '../../assets/iconoTiktok.png';
 import iconoTarjet from '../../assets/iconoTarjet.png';
+import Video from '../../assets/video.mp4';
 
 const TarjetSite = () => {
 
@@ -251,6 +252,15 @@ const TarjetSite = () => {
                             }
                             
                         </h5>
+
+                        {/* Video */}
+                        <video 
+                            width="100%"
+                            src={Video}
+                            autoPlay
+                            loop
+                            controls
+                        ></video>
 
                         { descServicios.map((servicio, index)=>(
                             <div className='cuerpo mb-5' key={index}>
