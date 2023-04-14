@@ -29,6 +29,7 @@ const TarjetSite = () => {
     const [descServicios, setDescServicios] = useState([]);
     const [imagenServicios, setImagenServicios] = useState([]);
     const [imagenSubtitulo, setImagenSubtitulo] = useState([]);
+    const [serviciosVideo, setServiciosVideo] = useState([]);
     
     useEffect(()=>{
 
@@ -59,6 +60,10 @@ const TarjetSite = () => {
             // Servicios Imagen subtítulo
             const datosServiciosImagenSubtitulo = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 2).map(servicio => servicio.SiteServSubTitulo);
             setImagenSubtitulo(datosServiciosImagenSubtitulo);
+
+            // Servicios Video
+            const datosServiciosVideo = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 3).map(servicio => servicio);
+            setServiciosVideo(datosServiciosVideo);
         }
         
         ConsultaUsuario();
@@ -66,6 +71,7 @@ const TarjetSite = () => {
 
     const imagenSRC = 'https://tarjet.site/imagenes/encabezados/';
     const imagenServicio = 'https://tarjet.site/imagenes/servicios/';
+    const videoURL = 'https://tarjet.site/imagenes/videos/';
 
     const urlMaps = `https://www.google.com/maps?q=${usuario.UsuMapsCoord}`;
     
@@ -253,14 +259,25 @@ const TarjetSite = () => {
                             
                         </h5>
 
-                        {/* Video */}
-                        <video 
-                            width="100%"
-                            src={Video}
-                            autoPlay
-                            loop
-                            controls
-                        ></video>
+                        { serviciosVideo && 
+                            <>
+                                { serviciosVideo.map((servicio, index) => (
+                                    <div className='cuerpo mb-5'>
+                                        <p>
+                                            {servicio.SiteServDescrip}
+                                        </p>
+                                        <video 
+                                            width="100%"
+                                            src={videoURL+servicio.SiteServIMG}
+                                            autoPlay
+                                            loop
+                                            controls
+                                        ></video>
+                                    </div>
+                                    ))
+                                }
+                            </>
+                        }
 
                         { descServicios.map((servicio, index)=>(
                             <div className='cuerpo mb-5' key={index}>

@@ -13,9 +13,9 @@ const MenuDesktop = () => {
         <MenuDesktopContenedor>
             
             <a href="https://tarjet.mx/#/que-es-tarjet">Qué es Tarjet</a>
-            <a href="https://tarjet.mx/#/tienda">Tienda</a>
+            <a href="https://tarjet.mx/#/tienda" className='disabled'>Tienda</a>
             <a href="https://tarjet.mx/#/hazte-premium">Premium</a>
-            <a href='https://tarjet.mx/#/empresas'>Empresas</a>
+            <a href='https://tarjet.mx/#/empresas' className='disabled'>Empresas</a>
             <a href='https://wa.me/5586763895' target='_blank'>Contacto</a>
 
             { !sesionLocal ? 
@@ -42,7 +42,7 @@ const MenuDesktopContenedor = styled.div`
         color: #191c1f;
         outline: none;
     }
-    .desactivate{
+    .disabled{
         color: #696969;
         pointer-events: none;
     }

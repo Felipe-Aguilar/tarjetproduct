@@ -14,20 +14,20 @@ const Menu = ({cambioMenu}) => {
     return ( 
         <>
             <MenuContenedor className=''>
-                <div className='d-flex justify-content-center'>
+                {/* <div className='d-flex justify-content-center'>
                     <div className='buscar' for="Buscar">
                         <i className="bi bi-search"></i>
                         <input type="search" placeholder="Buscar Tarjet's" id='Buscar'/>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='links'>
                     
-                    <NavLink to="/" onClick={()=>cambioMenu(true)}>Inicio</NavLink>
+                    <a href='https://tarjet.mx'>Inicio</a>
                     <a href="https://tarjet.mx/#/que-es-tarjet">¿Qué es Tarjet?</a>
-                    <a href="https://tarjet.mx/#/tienda">Tienda de Porductos</a>
-                    <a href="https://tarjet.mx/#/empresas">Empresas</a>
-                    <a href="https://tarjet.mx/#/empresas">
+                    <a href="https://tarjet.mx/#/tienda" className='disabled'>Tienda de Porductos</a>
+                    <a href="https://tarjet.mx/#/empresas" className='disabled'>Empresas</a>
+                    <a href="https://tarjet.mx/#/hazte-premium">
                         Hazte Premium
                         <img src={Corona}/>
                     </a>
@@ -90,6 +90,10 @@ const MenuContenedor = styled.div`
                 width: 20px;
                 margin-left: 8px;
             }
+        }
+        .disabled{
+            color: gray;
+            pointer-events: none;
         }
 
         button{
