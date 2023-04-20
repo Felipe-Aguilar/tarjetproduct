@@ -14,6 +14,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 import { toast, Toaster } from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 import Qr from './Qr';
 import Compartir from './Compartir';
@@ -163,7 +164,22 @@ const MiTarjetero = () => {
     if(comprobarUsuario.usuId === 0) return null;
 
     return (
+
         <div className='container-fluid'>
+
+            <Helmet>
+                <meta
+                    name="description"
+                    content="Tarjet | ¡Hola! Te proporciono mi tarjeta de presentación virtual, entra para saber más sobre mí y ver mis trabajos"
+                />
+
+                <meta property="og:description" content="Descripción para WhatsApp" />
+                <meta property="og:image" content={`https://tarjet.site/imagenes/${usuario.UsuFondoF}`} />
+
+                <link rel="apple-touch-icon" href={`https://tarjet.site/imagenes/${usuario.UsuFondoF}`} />
+            </Helmet>
+
+
             <div className='miTarjetero' >
                 { !busquedaUsuario ?
                     <div 
@@ -275,7 +291,7 @@ const MiTarjetero = () => {
                                         onClick={()=>setQr(true)}
                                     />
                                     { qr &&
-                                        <Qr showQr={qr} cerrarQr={setQrEstado} imagenQr={usuario.UsuImagenQR} busquedaUsuario={busquedaUsuario} buscadoQr={usuarioBuscado.UsuImagenQR}/>
+                                        <Qr showQr={qr} cerrarQr={setQrEstado} usuarioQr={usuario.UsuToken} busquedaUsuario={busquedaUsuario} buscadoQr={usuarioBuscado.UsuToken}/>
                                     }
                                 </div>
                                 <div>

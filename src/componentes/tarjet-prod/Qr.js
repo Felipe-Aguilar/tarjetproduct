@@ -1,13 +1,16 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import { QRCodeSVG } from 'qrcode.react';
 
 import codigoQr from '../../assets/codigoQr.png';
 
 const Qr = (props) => {
 
+    console.log(props);
+
     if (!props.busquedaUsuario) {
-        var imagen = 'tarjet.site/imagenes/Qr/'+props.imagenQr;
+        var url = 'https://tarjet.site/#/'+ btoa(props.usuarioQr);
     }else{
-        var imagen = 'tarjet.site/imagenes/Qr/'+props.buscadoQr;
+        var url = 'https://tarjet.site/#/'+ btoa(props.buscadoQr);
     }
 
     return ( 
@@ -27,7 +30,12 @@ const Qr = (props) => {
                         transition={{delay:0.7}}
                     >
                         <div>
-                            <img src={imagen} />
+                            {/* <img src={imagen} /> */}
+
+                            <QRCodeSVG value={url}
+                                style={{display: 'block', margin: 'auto'}}
+                            />
+
                             <p>
                                 Escanea con tu smarthphone
                             </p>
