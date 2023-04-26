@@ -122,6 +122,10 @@ const MiTarjetero = () => {
             duration: 4500,
             position: 'top-center',
         });
+
+        setInterval(()=>{
+            window.location.reload();
+        },3000);
     }
 
     const [qr, setQr] = useState(false);
@@ -163,7 +167,9 @@ const MiTarjetero = () => {
     if(comprobarUsuario.usuId === 0) return null;
 
     return (
+
         <div className='container-fluid'>
+
             <div className='miTarjetero' >
                 { !busquedaUsuario ?
                     <div 
@@ -275,7 +281,7 @@ const MiTarjetero = () => {
                                         onClick={()=>setQr(true)}
                                     />
                                     { qr &&
-                                        <Qr showQr={qr} cerrarQr={setQrEstado} imagenQr={usuario.UsuImagenQR} busquedaUsuario={busquedaUsuario} buscadoQr={usuarioBuscado.UsuImagenQR}/>
+                                        <Qr showQr={qr} cerrarQr={setQrEstado} usuarioQr={usuario.UsuToken} busquedaUsuario={busquedaUsuario} buscadoQr={usuarioBuscado.UsuToken}/>
                                     }
                                 </div>
                                 <div>

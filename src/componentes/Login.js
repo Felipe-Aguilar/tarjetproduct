@@ -9,7 +9,7 @@ import { DatosUsuarioSesion } from './contextos/DatosUsuarioSesion';
 
 import LogoTarjet from '../assets/TarjetNegro.png';
 
-const Login = ({ servicioToken }) => {
+const Login = () => {
 
     const navigate = useNavigate();
 
@@ -37,7 +37,7 @@ const Login = ({ servicioToken }) => {
     const comprobar = async (e) => {
         e.preventDefault();
 
-        if (usuarioForm | passwordForm == '') {
+        if (usuarioForm == '' || passwordForm == '') {
             setErrorLogin(true);
         }else{
             

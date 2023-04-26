@@ -158,8 +158,11 @@ const TarjetSite = () => {
                             <>
                                 <div>
                                     <h6>
-                                        {usuario.SiteTextoUbica + '' + usuario.UsuColonia}
+                                        {usuario.SiteTextoUbica}
                                     </h6>
+                                    <p>
+                                        {usuario.UsuColonia}
+                                    </p>
                                 </div>
                                 <div>
                                     <a href={urlMaps} target={"_blank"}>
@@ -175,7 +178,7 @@ const TarjetSite = () => {
                             <>
                                 <div>
                                     <h6>Mi página web </h6>
-                                    <a href={usuario.SiteWeb}>
+                                    <a href={usuario.SiteWeb} target='_blank'>
                                         {usuario.SiteWeb}
                                     </a>
                                 </div>
