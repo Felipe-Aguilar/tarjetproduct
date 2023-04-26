@@ -14,6 +14,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 import { toast, Toaster } from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 import Qr from './Qr';
 import Compartir from './Compartir';
