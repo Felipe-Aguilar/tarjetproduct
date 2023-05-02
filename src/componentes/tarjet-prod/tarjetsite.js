@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
 
+import ImageModal from './ImageModal';
+
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -30,6 +32,9 @@ const TarjetSite = () => {
     const [imagenServicios, setImagenServicios] = useState([]);
     const [imagenSubtitulo, setImagenSubtitulo] = useState([]);
     const [serviciosVideo, setServiciosVideo] = useState([]);
+
+    const [vistaImageModal, setVistaImageModal] = useState(false);
+    const [imgModal, setImgModal] = useState('');
     
     useEffect(()=>{
 
@@ -98,6 +103,16 @@ const TarjetSite = () => {
         slidesToScroll: 1
     }
 
+    // Imagen Modal
+    const abrirImagen = async(imagen) =>{
+        const img = await imagen;
+        setImgModal(img);
+        setVistaImageModal(true);
+    }
+    const cerrarImagen = () => {
+        setVistaImageModal(false);
+    }
+
     return ( 
         <div className='tarjetSite' style={{background: usuario.SiteFondo}}>
             <div className='row justify-content-center encabezado'>
@@ -126,14 +141,24 @@ const TarjetSite = () => {
                         }
                     </div>
 
-                    {/* <div className='d-flex'>
-                        <div>
-                            <h6>Más números de contacto</h6>
-                            <a href="">
-                                55 687 9144
-                            </a>
-                        </div>
-                    </div> */}
+                    <div className='d-flex justify-content-between align-items-center'>
+                        { !usuario.SiteTelefono3 == '' &&
+                            <>
+                                <div>
+                                    <h6>Envíame un WhatsApp</h6>
+                                    <p>
+                                        {usuario.SiteTelefono3}
+                                    </p>
+                                </div>
+                                <div>
+                                    <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"}>
+                                        <i className="bi bi-whatsapp whats"></i>
+                                    </a>
+                                </div>
+                            </>
+                        }
+                    </div>
+
 
                     <div className='d-flex justify-content-between align-items-center'>
                         { !usuario.SiteMail == '' &&
@@ -227,7 +252,10 @@ const TarjetSite = () => {
                                 // <div className='cuerpo d-flex align-items-center' key={index}>
                                 <div className='cuerpo ' key={index}>
                                     { !servicio.SiteServSubTitulo[index] == '' &&
-                                        <p className='d-block'>
+                                        <p 
+                                            className='d-block text-center' 
+                                            style={{marginTop: '16px', fontWeight: 'bold', textTransform: 'uppercase'}}
+                                        >
                                             {servicio.SiteServSubTitulo}
                                         </p>
                                     }
@@ -296,12 +324,20 @@ const TarjetSite = () => {
                                 <p>
                                     {servicio}
                                 </p>
-                                <img src={imagenServicio+imagenServicios[index]} className='img-fluid'/>
+                                <img 
+                                    src={imagenServicio+imagenServicios[index]} 
+                                    className='img-fluid'
+                                    onClick={()=>abrirImagen(imagenServicio+imagenServicios[index])}
+                                />
                             </div>
                         ))
                         }
                     </div>
                 </div>
+
+                { vistaImageModal && 
+                    <ImageModal imgModal={imgModal} cerrarImagen={cerrarImagen}/>
+                }
 
                 <div className='row mt-1 justify-content-center'>
                     <div className='col-11 col-md-4 p-0'>
@@ -310,61 +346,6 @@ const TarjetSite = () => {
                 </div>
                 </>
             }
-
-            {/* Redes sociales funcionalidad antigua */}
-            {/* <div className='row mt-2 justify-content-center redesSociales'>
-                <div className='col-12 col-md-4'>
-                    <h5 className='p-2'>Mis redes sociales</h5>
-                    <div className='d-flex justify-content-around cuerpo'>
-                        <div>
-                            <button onClick={()=> navigate("/"+btoa(token))}>
-                                <i className="bi bi-person-badge-fill"></i>
-                            </button>
-                        </div>
-                        {   !usuario.SiteFacebook == '' &&
-                            <>
-                                <div>
-                                    <a href={usuario.SiteFacebook}>
-                                        <i className="bi bi-facebook facebook"></i>
-                                    </a>
-                                </div>    
-                                <div>
-                                    <a href={usuario.SiteFacebook}>
-                                        <i className="bi bi-facebook facebook"></i>
-                                    </a>
-                                </div>    
-                            </>
-                        }
-                        {   !usuario.SiteInstagram == '' &&
-                            <>
-                                <div>
-                                    <a href={usuario.SiteInstagram}>
-                                        <i className="bi bi-instagram instagram"></i>
-                                    </a>
-                                </div>
-                            </>
-                        }
-                        { !usuario.SiteTelegram == '' &&
-                            <>
-                                <div>
-                                    <a href={usuario.SiteTelegram}>
-                                        <i className="bi bi-telegram telegram"></i>
-                                    </a>
-                                </div>
-                            </>
-                        }
-                        { !usuario.SiteTwitter == '' &&
-                            <>
-                                <div>
-                                    <a href={usuario.SiteTwitter}>
-                                        <i className="bi bi-twitter twitter"></i>
-                                    </a>
-                                </div>
-                            </>
-                        }
-                    </div>
-                </div>
-            </div> */}
 
             <div className='row mt-1 justify-content-center'>
                 <div className='col-12 col-md-4 btn-contacto p-0'>
