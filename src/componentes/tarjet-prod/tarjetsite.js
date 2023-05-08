@@ -203,12 +203,12 @@ const TarjetSite = () => {
                             <>
                                 <div>
                                     <h6>Mi página web </h6>
-                                    <a href={usuario.SiteWeb} target='_blank'>
+                                    <a href={`https://${usuario.SiteWeb}`} target='_blank'>
                                         {usuario.SiteWeb}
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="http://tekrobot.com.mx/" target={'_blank'}>
+                                    <a href={`https://${usuario.SiteWeb}`} target={'_blank'}>
                                         <i className="bi bi-globe-americas world"></i>
                                     </a>
                                 </div>
