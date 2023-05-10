@@ -35,6 +35,8 @@ const TarjetSite = () => {
 
     const [vistaImageModal, setVistaImageModal] = useState(false);
     const [imgModal, setImgModal] = useState('');
+
+    const [popGuardar, setPopGuardar] = useState(false);
     
     useEffect(()=>{
 
@@ -70,6 +72,10 @@ const TarjetSite = () => {
             const datosServiciosVideo = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 3).map(servicio => servicio);
             setServiciosVideo(datosServiciosVideo);
         }
+        
+        setTimeout(()=>{
+            setPopGuardar(true);
+        },3000);
         
         ConsultaUsuario();
     },[]);
@@ -111,6 +117,21 @@ const TarjetSite = () => {
     }
     const cerrarImagen = () => {
         setVistaImageModal(false);
+    }
+
+    // Guardar teléfono
+
+    const guardarTelefono = () =>{
+        navigator.contacts.select(['name', 'tel'], { multiple: false })
+        .then((contacts) => {
+            if (contacts.length > 0) {
+            const selectedContact = contacts[0];
+            console.log(selectedContact);
+            }
+        })
+        .catch((error) => {
+            console.error('Error al seleccionar un contacto', error);
+        });
     }
 
     return ( 
@@ -337,6 +358,23 @@ const TarjetSite = () => {
 
                 { vistaImageModal && 
                     <ImageModal imgModal={imgModal} cerrarImagen={cerrarImagen}/>
+                }
+
+                { popGuardar &&
+                    <div className='popup-guardar'>
+                        <div className='cuerpo'>
+                            <div className='encabezado'>
+                                <button onClick={()=>setPopGuardar(false)}>
+                                    <i className="bi bi-x-circle"></i>
+                                </button>
+                            </div>
+                            <div className='cuerpo-guardar'>
+                                <h6>¿Deseas guardar este contacto ahora?</h6>
+                            </div>
+                            <hr/>
+                            <button onClick={guardarTelefono}>Guardar</button>
+                        </div>
+                    </div>
                 }
 
                 <div className='row mt-1 justify-content-center'>
