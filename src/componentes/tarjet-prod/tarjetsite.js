@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
 
@@ -37,6 +38,7 @@ const TarjetSite = () => {
     const [imgModal, setImgModal] = useState('');
 
     const [popGuardar, setPopGuardar] = useState(false);
+    const localSesion = localStorage.getItem('UsuarioSesion');
     
     useEffect(()=>{
 
@@ -72,10 +74,12 @@ const TarjetSite = () => {
             const datosServiciosVideo = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 3).map(servicio => servicio);
             setServiciosVideo(datosServiciosVideo);
         }
-        
-        setTimeout(()=>{
-            setPopGuardar(true);
-        },3000);
+
+        if (!localSesion) {
+            setTimeout(()=>{
+                setPopGuardar(true);
+            },3000);
+        }
         
         ConsultaUsuario();
     },[]);
@@ -117,21 +121,6 @@ const TarjetSite = () => {
     }
     const cerrarImagen = () => {
         setVistaImageModal(false);
-    }
-
-    // Guardar teléfono
-
-    const guardarTelefono = () =>{
-        navigator.contacts.select(['name', 'tel'], { multiple: false })
-        .then((contacts) => {
-            if (contacts.length > 0) {
-            const selectedContact = contacts[0];
-            console.log(selectedContact);
-            }
-        })
-        .catch((error) => {
-            console.error('Error al seleccionar un contacto', error);
-        });
     }
 
     return ( 
@@ -362,18 +351,24 @@ const TarjetSite = () => {
 
                 { popGuardar &&
                     <div className='popup-guardar'>
-                        <div className='cuerpo'>
+                        <motion.div
+                            className='cuerpo'
+                            initial={{scale:0, opacity:0}}
+                            animate={{opacity:1, scale:1}}
+                        >
                             <div className='encabezado'>
                                 <button onClick={()=>setPopGuardar(false)}>
-                                    <i className="bi bi-x-circle"></i>
+                                    <i className="bi bi-x"></i>
                                 </button>
                             </div>
                             <div className='cuerpo-guardar'>
                                 <h6>¿Deseas guardar este contacto ahora?</h6>
                             </div>
                             <hr/>
-                            <button onClick={guardarTelefono}>Guardar</button>
-                        </div>
+                            <div className='text-center'>
+                                <a href={`tel:${usuario.SiteTelefono2}`}>Guardar</a>
+                            </div>
+                        </motion.div>
                     </div>
                 }
 
