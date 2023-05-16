@@ -122,3 +122,62 @@
         }
     }
 }
+
+.popup-guardar{
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.631);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .cuerpo{
+        background-color: white;
+        border-radius: 20px;
+        padding: 10px;
+        width: auto;
+
+        @media screen and (max-width: 575px){
+            width: 90%;
+        }
+
+        .encabezado{
+            display: flex;
+            justify-content: end;
+            padding: 0 20px;
+            @media screen and (max-width: 575px){
+                padding: 0 20px;
+            }
+            
+
+            button{
+                width: 5%;
+                border: none;
+                background: transparent;
+                outline: none!important;
+            }
+        }
+
+        .cuerpo-guardar{
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        a{
+            display: block;
+            width: 100%;
+            padding: 5px;
+            margin: auto;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #212529;
+            color: #fff;
+            background: #212529;
+        }
+    }
+}

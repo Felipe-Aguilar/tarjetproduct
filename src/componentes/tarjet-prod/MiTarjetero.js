@@ -106,6 +106,7 @@ const MiTarjetero = () => {
     const [usuarioBuscado, setUsuarioBuscado] = useState([]);
 
     const ConsultaUsuarioClic = async (IdTarjet) =>{
+        console.log(IdTarjet);
         const respuesta = await ConsultaClicUsuario(IdTarjet);
         setBusquedaUsuario(true);
         setUsuarioBuscado(respuesta);
@@ -443,7 +444,7 @@ const MiTarjetero = () => {
                                             <button 
                                                 className='resultado' 
                                                 key={index}
-                                                onClick={()=>ConsultaUsuarioClic(segmento.IdTarjet)}
+                                                onClick={()=>ConsultaUsuarioClic(segmento.IdUsuario)}
                                             >
                                                 {segmento.NombreCompleto}
                                                 <span>{segmento.UsuEncabezado}</span>
@@ -473,7 +474,7 @@ const MiTarjetero = () => {
                                             <button 
                                                 className='resultado' 
                                                 key={index}
-                                                onClick={()=>ConsultaUsuarioClic(dato.IdTarjet)}
+                                                onClick={()=>ConsultaUsuarioClic(dato.IdUsuario)}
                                             >
                                                 {dato.NombreCompleto}
                                                 <span>{dato.UsuEncabezado}</span>

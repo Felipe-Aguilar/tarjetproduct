@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
 
@@ -9,6 +10,8 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import FileSaver from 'file-saver';
+
 import iconoFacebook from '../../assets/iconoFacebook.png';
 import iconoInstagram from '../../assets/iconoInstagram.png';
 import iconoTelegram from '../../assets/iconoTelegram.png';
@@ -16,7 +19,6 @@ import iconoTwitter from '../../assets/iconoTwitter.png';
 import iconoYoutube from '../../assets/iconoYoutube.png';
 import iconoTiktok from '../../assets/iconoTiktok.png';
 import iconoTarjet from '../../assets/iconoTarjet.png';
-import Video from '../../assets/video.mp4';
 
 const TarjetSite = () => {
 
@@ -35,6 +37,9 @@ const TarjetSite = () => {
 
     const [vistaImageModal, setVistaImageModal] = useState(false);
     const [imgModal, setImgModal] = useState('');
+
+    const [popGuardar, setPopGuardar] = useState(false);
+    const localSesion = localStorage.getItem('UsuarioSesion');
     
     useEffect(()=>{
 
@@ -70,6 +75,12 @@ const TarjetSite = () => {
             const datosServiciosVideo = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 3).map(servicio => servicio);
             setServiciosVideo(datosServiciosVideo);
         }
+
+        // if (!localSesion) {
+        //     setTimeout(()=>{
+        //         setPopGuardar(true);
+        //     },3000);
+        // }
         
         ConsultaUsuario();
     },[]);
@@ -111,6 +122,34 @@ const TarjetSite = () => {
     }
     const cerrarImagen = () => {
         setVistaImageModal(false);
+    }
+
+    // Guardar contacto
+    const GuardaContacto = () => {
+
+        const data = {
+            firstName: 'Felipe',
+            lastName: 'Aguilar',
+            title: 'Desarrollador Web',
+            email: 'felipe@correo.com',
+            mobile: '5560078218',
+            work: 'TekRobot',
+            location: 'México'
+        };
+
+        const content = `BEGIN:VCARD
+        VERSION:3.0
+        N:${data.lastName};${data.firstName};;;
+        FN:${data.firstName} ${data.lastName}
+        TITLE:${data.title};
+        EMAIL;type=INTERNET;type=pref:${data.email}
+        TEL;type=MAIN:${data.work}
+        TEL;type=CELL;type=VOICE;type=pref:${data.mobile}
+        ADR;type=WORK;type=pref:;;;${data.location};;;
+        END:VCARD`;
+
+        const blob = new Blob([content], { type: "text/vcard;charset=utf-8" });
+        FileSaver.saveAs(blob, `${data.firstName}${data.lastName}.vcf`, true);
     }
 
     return ( 
@@ -203,12 +242,12 @@ const TarjetSite = () => {
                             <>
                                 <div>
                                     <h6>Mi página web </h6>
-                                    <a href={usuario.SiteWeb} target='_blank'>
+                                    <a href={`https://${usuario.SiteWeb}`} target='_blank'>
                                         {usuario.SiteWeb}
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="http://tekrobot.com.mx/" target={'_blank'}>
+                                    <a href={`https://${usuario.SiteWeb}`} target={'_blank'}>
                                         <i className="bi bi-globe-americas world"></i>
                                     </a>
                                 </div>
@@ -337,6 +376,29 @@ const TarjetSite = () => {
 
                 { vistaImageModal && 
                     <ImageModal imgModal={imgModal} cerrarImagen={cerrarImagen}/>
+                }
+
+                { popGuardar &&
+                    <div className='popup-guardar'>
+                        <motion.div
+                            className='cuerpo'
+                            initial={{scale:0, opacity:0}}
+                            animate={{opacity:1, scale:1}}
+                        >
+                            <div className='encabezado'>
+                                <button onClick={()=>setPopGuardar(false)}>
+                                    <i className="bi bi-x"></i>
+                                </button>
+                            </div>
+                            <div className='cuerpo-guardar'>
+                                <h6>¿Deseas guardar este contacto ahora?</h6>
+                            </div>
+                            <hr/>
+                            <div className='text-center'>
+                                <button onClick={GuardaContacto} >Guardar</button>
+                            </div>
+                        </motion.div>
+                    </div>
                 }
 
                 <div className='row mt-1 justify-content-center'>
