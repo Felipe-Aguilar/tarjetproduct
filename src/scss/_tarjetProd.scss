@@ -144,7 +144,7 @@ $colorRadar: #cfaa06;
     margin:0;
     margin-top: 4.5rem;
     padding-bottom: 3rem;
-    background: #DFFEF5;
+    // background: #DFFEF5;
 
     .encabezado {
         img{
@@ -210,6 +210,33 @@ $colorRadar: #cfaa06;
         .usuarioEmail{
             @media screen and (max-width: 575px){
                 font-size: 13px;
+            }
+        }
+    }
+
+    .contacto2{
+        margin: -40px;
+        margin-bottom: 20px;
+        
+        div{
+            background: #f7bd97;
+            padding: 0px 0px 0px 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: between;
+
+            a{
+                display: flex;
+                width: 87%;
+                align-items: center;
+                text-decoration: none;
+                color: #fff;
+            }
+            .icon{
+                width: 13%;
+                background: #f7995b;
+                justify-content: center;
+                border-radius: 0px 8px 8px 0px;
             }
         }
     }

@@ -161,7 +161,7 @@ const TarjetSite = () => {
             </div>
 
             <div className='row mt-3 justify-content-center'>
-                <div className='col-md-4 contacto'>
+                {/* <div className='col-md-4 contacto'>
                     <div className='d-flex justify-content-between align-items-center'>
                         { !usuario.SiteTelefono2 == '' &&
                             <>
@@ -265,6 +265,74 @@ const TarjetSite = () => {
                             </a>
                         </div>
                     </div>
+                </div> */}
+
+                <div className='col-md-4 contacto2'>
+
+                    <div className='mb-2'>
+                        <a href="">
+                            Guardar Contacto
+                        </a>
+                        <a href="" className='icon'>
+                            <i className="bi bi-download"></i>
+                        </a>
+                    </div>
+
+                    { !usuario.SiteTelefono2 == '' &&
+                        <div className='mb-2' style={{background: '#a1d9d6'}}>
+                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"}>
+                                Envíame un WhatsApp
+                            </a>
+                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"} className='icon' style={{background: '#79cbc7'}}>
+                                <i className="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
+                    }
+
+                    { !usuario.SiteTelefono3 == '' &&
+                        <div className='mb-2' style={{background: '#a1d9d6'}}>
+                            <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"}>
+                                Envíame un WhatsApp
+                            </a>
+                            <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"} className='icon' style={{background: '#79cbc7'}}>
+                                <i className="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
+                    }
+
+                    { !usuario.SiteMail == '' &&
+                        <div className='mb-2'>
+                            <a href={"mailto: "+usuario.SiteMail}>
+                                {usuario.SiteMail}
+                            </a>
+                            <a href={"mailto: "+usuario.SiteMail} className='icon'>
+                                <i className="bi bi-envelope-fill"></i>
+                            </a>
+                        </div>
+                    }
+
+                    { usuario.SiteVerUbica == 1 &&
+                        <div className='mb-2' style={{background: '#c4686b'}}>
+                            <a href={urlMaps} target={"_blank"}>
+                                {usuario.SiteTextoUbica}: {usuario.UsuColonia}
+                            </a>
+                            <a href={urlMaps} target={"_blank"} className='icon' style={{background: '#c54e52'}}>
+                                <i className="bi bi-geo-alt-fill"></i>
+                            </a>
+                        </div>
+                    }
+
+                    { !usuario.SiteWeb == '' &&
+                        <div style={{background: '#9795bd'}}>
+                            <a href={`https://${usuario.SiteWeb}`} target='_blank'>
+                            {usuario.SiteWeb}
+                            </a>
+                            <a href={`https://${usuario.SiteWeb}`} target='_blank' className='icon' style={{background: '#7a75b5'}}>
+                                <i className="bi bi-globe-americas"></i>
+                            </a>
+                        </div>
+                    }
+
                 </div>
             </div>
 
