@@ -28,6 +28,7 @@ const TarjetSite = () => {
     const [comprobarUsuario, setComprobarUsuario] = useState([]);
     const [ usuario, setUsuario ] = useState([]);
     const [ token, setToken ] = useState([]);
+    const [datos, setDatos] = useState([]);
 
     const [servicios, setServicios] = useState([]);
     const [descServicios, setDescServicios] = useState([]);
@@ -50,9 +51,10 @@ const TarjetSite = () => {
 
             const datosUsuarios = await DatosUsuarioTarjetSite(comprobar.usuId);
             setUsuario(datosUsuarios.SDTSite);
-
+            
             // Token Usuario
             const datoToken = await DatosUsuario(comprobar.usuId);
+            setDatos(datoToken);
             setToken(datoToken.UsuToken);
 
             // Servicios
@@ -126,7 +128,7 @@ const TarjetSite = () => {
 
     // Guardar contacto
     const GuardaContacto = () => {
-
+        console.log(datos);
         const data = {
             firstName: 'Felipe',
             lastName: 'Aguilar',
@@ -140,16 +142,16 @@ const TarjetSite = () => {
         const content = `BEGIN:VCARD
         VERSION:3.0
         N:${data.lastName};${data.firstName};;;
-        FN:${data.firstName} ${data.lastName}
+        FN:${datos.NombreCompleto}
         TITLE:${data.title};
-        EMAIL;type=INTERNET;type=pref:${data.email}
-        TEL;type=MAIN:${data.work}
-        TEL;type=CELL;type=VOICE;type=pref:${data.mobile}
-        ADR;type=WORK;type=pref:;;;${data.location};;;
+        EMAIL;type=INTERNET;type=pref:${usuario.SiteMail}
+        TEL;type=MAIN:${datos.UsuEncabezado}
+        TEL;type=CELL;type=VOICE;type=pref:${usuario.SiteTelefono2}
+        ADR;type=WORK;type=pref:;;;${usuario.UsuColonia};;;
         END:VCARD`;
 
         const blob = new Blob([content], { type: "text/vcard;charset=utf-8" });
-        FileSaver.saveAs(blob, `${data.firstName}${data.lastName}.vcf`, true);
+        FileSaver.saveAs(blob, `${datos.NombreCompleto}.vcf`, true);
     }
 
     return ( 
@@ -269,69 +271,119 @@ const TarjetSite = () => {
 
                 <div className='col-md-4 contacto2'>
 
-                    <div className='mb-2'>
-                        <a href="">
+                    <motion.div 
+                        className='mb-3'
+                        initial={{ opacity:0 , y:-20}}
+                        whileInView={{opacity: 1, y:0}}
+                        transition={{delay: 0.5}}
+                    >
+                        <a onClick={GuardaContacto} className='save'>
                             Guardar Contacto
                         </a>
-                        <a href="" className='icon'>
+                        <a onClick={GuardaContacto} className='icon save'>
                             <i className="bi bi-download"></i>
                         </a>
-                    </div>
+                    </motion.div>
 
                     { !usuario.SiteTelefono2 == '' &&
-                        <div className='mb-2' style={{background: '#a1d9d6'}}>
+                        <motion.div 
+                            className='mb-3' 
+                            style={{background: '#0F8C54'}}
+                            initial={{opacity:0 , y:-20}}
+                            whileInView={{opacity: 1, y:0}}
+                            transition={{delay: 1}}
+                        >
                             <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"}>
                                 Envíame un WhatsApp
                             </a>
-                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"} className='icon' style={{background: '#79cbc7'}}>
+                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"} className='icon' style={{background: '#00A859'}}>
                                 <i className="bi bi-whatsapp"></i>
                             </a>
-                        </div>
+                        </motion.div>
                     }
 
                     { !usuario.SiteTelefono3 == '' &&
-                        <div className='mb-2' style={{background: '#a1d9d6'}}>
+                        <motion.div 
+                            className='mb-3' 
+                            style={{background: '#9e4446'}}
+                            initial={{ opacity:0 , y:-20}}
+                            whileInView={{opacity: 1, y:0}}
+                            transition={{delay: 1.2}}
+                        >
                             <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"}>
                                 Envíame un WhatsApp
                             </a>
                             <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"} className='icon' style={{background: '#79cbc7'}}>
                                 <i className="bi bi-whatsapp"></i>
                             </a>
-                        </div>
+                        </motion.div>
                     }
 
                     { !usuario.SiteMail == '' &&
-                        <div className='mb-2'>
+                        <motion.div 
+                            className='mb-3'
+                            initial={{opacity:0 , y:-20}}
+                            whileInView={{opacity: 1, y:0}}
+                            transition={{delay: 1.5}}
+                            style={{background: '#434E9B'}}
+                        >
                             <a href={"mailto: "+usuario.SiteMail}>
                                 {usuario.SiteMail}
                             </a>
-                            <a href={"mailto: "+usuario.SiteMail} className='icon'>
+                            <a href={"mailto: "+usuario.SiteMail} className='icon' style={{background: '#6F6BAF'}}>
                                 <i className="bi bi-envelope-fill"></i>
                             </a>
-                        </div>
+                        </motion.div>
                     }
 
                     { usuario.SiteVerUbica == 1 &&
-                        <div className='mb-2' style={{background: '#c4686b'}}>
+                        <motion.div 
+                            className='mb-3' 
+                            style={{background: '#A93538'}}
+                            initial={{ opacity:0 , y:-20}}
+                            whileInView={{opacity: 1, y:0}}
+                            transition={{delay: 2}}
+                        >
                             <a href={urlMaps} target={"_blank"}>
-                                {usuario.SiteTextoUbica}: {usuario.UsuColonia}
+                                {usuario.SiteTextoUbica} <br/>
+                                {usuario.UsuColonia}
                             </a>
-                            <a href={urlMaps} target={"_blank"} className='icon' style={{background: '#c54e52'}}>
+                            <a href={urlMaps} target={"_blank"} className='icon' style={{background: '#7F2E2F'}}>
                                 <i className="bi bi-geo-alt-fill"></i>
                             </a>
-                        </div>
+                        </motion.div>
                     }
 
                     { !usuario.SiteWeb == '' &&
-                        <div style={{background: '#9795bd'}}>
+                        <motion.div 
+                            className='mb-3'
+                            style={{background: '#434E9B'}}
+                            initial={{opacity:0 , y:-20}}
+                            whileInView={{opacity: 1, y:0}}
+                            transition={{delay: 2.3}}
+                        >
                             <a href={`https://${usuario.SiteWeb}`} target='_blank'>
                             {usuario.SiteWeb}
                             </a>
-                            <a href={`https://${usuario.SiteWeb}`} target='_blank' className='icon' style={{background: '#7a75b5'}}>
+                            <a href={`https://${usuario.SiteWeb}`} target='_blank' className='icon' style={{background: '#6F6BAF'}}>
                                 <i className="bi bi-globe-americas"></i>
                             </a>
-                        </div>
+                        </motion.div>
                     }
+
+                    <motion.div 
+                        initial={{ opacity:0 , y:-20}}
+                        whileInView={{opacity: 1, y:0}}
+                        transition={{delay: 2.5}}
+                        style={{background: '#99c748'}}
+                    >
+                        <a onClick={()=>navigate("/"+btoa(token))} className='save'>
+                            Ver mi tarjeta
+                        </a>
+                        <a onClick={()=>navigate("/"+btoa(token))} className='icon save' style={{background: '#678731'}}>
+                            <i className="bi bi-person-vcard"></i>
+                        </a>
+                    </motion.div>
 
                 </div>
             </div>
@@ -492,7 +544,7 @@ const TarjetSite = () => {
             </div>
 
 
-            <div className='row mt-2 justify-content-center redesSociales'>
+            {/* <div className='row mt-2 justify-content-center redesSociales'>
                 <div className='col-12 col-md-4'>
                     <h5 className='p-2'>Mis redes sociales</h5>
                     <Slider {...settings2}>
@@ -558,6 +610,106 @@ const TarjetSite = () => {
                         }
                     </div>
                     </Slider>
+                </div>
+            </div> */}
+
+            <div className='row mt-2 justify-content-center redesSociales2'>
+                <div className='col-12 col-md-4 contenedor'>
+                    <h5 className='p-2'>Mis redes sociales</h5>
+                    <div className='d-flex cuerpo'>
+
+                            <div>
+                                <button onClick={()=> navigate("/"+btoa(token))}>
+                                    <img src={iconoTarjet} className='img-fluid' />
+                                </button>
+                            </div>
+                            
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteFacebook} className={ usuario.SiteFacebook == '' ? 'desactivado' : ''}>
+                                    <img src={iconoFacebook} className='img-fluid' />
+                                </a>
+                            </div>    
+
+                            
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteInstagram} className={ usuario.SiteInstagram == '' ? 'desactivado' : ''}>
+                                    <img src={iconoInstagram} className='img-fluid' />
+                                </a>
+                            </div>
+                                
+
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteTelegram} className={ usuario.SiteTelegram == undefined ? 'desactivado' : ''}>
+                                    <img 
+                                        src={iconoTelegram} 
+                                        className='img-fluid'
+                                    />
+                                </a>
+                            </div>
+
+                            { usuario.SiteTwitter == '' &&
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteTwitter} 
+                                    className={usuario.SiteTwitter == '' ? 'desactivado' : ''}
+                                >
+                                    <img src={iconoTwitter} className='img-fluid' />
+                                </a>
+                            </div>
+                            }
+                            
+                            { usuario.SiteYoutube == '' &&
+                                <div className='d-flex align-items-center'>
+                                    <a href={usuario.SiteYoutube} 
+                                        className={usuario.SiteYoutube == '' ? 'desactivado' : ''}
+                                    >
+                                        <img 
+                                            src={iconoYoutube} 
+                                            className='img-fluid' 
+                                        />
+                                    </a>
+                                </div>       
+                            }
+                            
+                            { usuario.SiteInstagram == '' &&
+                                <div className='d-flex align-items-center'>
+                                    <a href={usuario.SiteInstagram} 
+                                        className={usuario.SiteInstagram == '' ? 'desactivado' : ''}
+                                    >
+                                        <img src={iconoTiktok} className='img-fluid' />
+                                    </a>
+                                </div>
+                            }
+                    </div>
+                    {/* <div className='d-flex justify-content-around cuerpo'>
+
+                        { !usuario.SiteTwitter == '' &&
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteTwitter} >
+                                    <img src={iconoTwitter} className='img-fluid' />
+                                </a>
+                            </div>
+                        }
+                        
+                        { !usuario.SiteYoutube == '' &&
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteYoutube} >
+                                    <img 
+                                        src={iconoYoutube} 
+                                        className='img-fluid' 
+                                    />
+                                </a>
+                            </div>       
+                        }
+                        
+                        { !usuario.SiteInstagram == '' &&
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteInstagram} >
+                                    <img src={iconoTiktok} className='img-fluid' />
+                                </a>
+                            </div>
+                        }
+                    </div> */}
+                    
                 </div>
             </div>
         </div>

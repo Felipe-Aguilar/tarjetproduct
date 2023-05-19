@@ -144,7 +144,7 @@ $colorRadar: #cfaa06;
     margin:0;
     margin-top: 4.5rem;
     padding-bottom: 3rem;
-    // background: #DFFEF5;
+    background: #fff;
 
     .encabezado {
         img{
@@ -217,13 +217,19 @@ $colorRadar: #cfaa06;
     .contacto2{
         margin: -40px;
         margin-bottom: 20px;
+
+        @media screen and (max-width: 575px){
+            padding: 0px 30px ;
+        }
         
         div{
-            background: #f7bd97;
+            background: #1C5B77;
             padding: 0px 0px 0px 10px;
-            border-radius: 8px;
+            border-radius: 15px;
             display: flex;
             justify-content: between;
+            height: 50px;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
             a{
                 display: flex;
@@ -234,9 +240,15 @@ $colorRadar: #cfaa06;
             }
             .icon{
                 width: 13%;
-                background: #f7995b;
+                background: #0F8C54;
                 justify-content: center;
-                border-radius: 0px 8px 8px 0px;
+                border-radius: 0px 15px 15px 0px;
+            }
+            .save{
+                cursor: pointer;
+                &:hover{
+                    color: #fff;
+                }
             }
         }
     }
@@ -334,6 +346,57 @@ $colorRadar: #cfaa06;
             // 100px 100px 80px rgba(0, 0, 0, 0.07)
             // ;
             
+            a{
+                text-decoration: none;
+                color: #212529;
+
+                i{
+                    font-size: 40px;
+                    margin-bottom: 0;
+                }
+                img{
+                    width: 60px;
+                }
+            }
+            .desactivado{
+                pointer-events: none;
+                img{
+                    filter: grayscale(100%);
+                }
+                filter: grayscale(100%);
+            }
+            button{
+                background: none;
+                outline: none;
+                border: none;
+                color: #212529;
+                padding: 0;
+                img{
+                    padding: none;
+                    width: 60px;
+                }
+            }
+        }
+    }
+
+    .redesSociales2{
+        .contenedor{
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .cuerpo{
+            padding: 10px;
+            flex-wrap: wrap;
+            gap: 40px;
+            // justify-content: center;
+
+            @media screen and (max-width: 575px){
+                gap: 30px;
+                justify-content: start;
+            }
+
             a{
                 text-decoration: none;
                 color: #212529;

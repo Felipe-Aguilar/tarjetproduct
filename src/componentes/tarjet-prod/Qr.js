@@ -1,8 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { QRCodeSVG } from 'qrcode.react';
 
-import codigoQr from '../../assets/codigoQr.png';
-
 const Qr = (props) => {
 
     console.log(props);
@@ -29,22 +27,23 @@ const Qr = (props) => {
                         animate={{opacity:1, scale:1}}
                         transition={{delay:0.7}}
                     >
+                        <div className='d-flex justify-content-end'>
+                            <button onClick={props.cerrarQr}>
+                                <i className="bi bi-x-lg"></i>
+                            </button>
+                        </div>
                         <div>
                             {/* <img src={imagen} /> */}
 
-                            <QRCodeSVG value={url}
+                            <QRCodeSVG 
+                                value={url}
                                 style={{display: 'block', margin: 'auto'}}
+                                size={170}
                             />
 
-                            <p>
+                            <p style={{marginBottom: '0'}}>
                                 Escanea con tu smarthphone
                             </p>
-                        </div>
-                        <div>
-                            <hr/>
-                            <button onClick={props.cerrarQr}>
-                                Listo
-                            </button>
                         </div>
                     </motion.div>
                 </motion.div>
