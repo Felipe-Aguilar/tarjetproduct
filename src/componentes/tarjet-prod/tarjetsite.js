@@ -140,15 +140,15 @@ const TarjetSite = () => {
         };
 
         const content = `BEGIN:VCARD
-        VERSION:3.0
-        N:${data.lastName};${data.firstName};;;
-        FN:${datos.NombreCompleto}
-        TITLE:${data.title};
-        EMAIL;type=INTERNET;type=pref:${usuario.SiteMail}
-        TEL;type=MAIN:${datos.UsuEncabezado}
-        TEL;type=CELL;type=VOICE;type=pref:${usuario.SiteTelefono2}
-        ADR;type=WORK;type=pref:;;;${usuario.UsuColonia};;;
-        END:VCARD`;
+VERSION:3.0
+N:${datos.NombreCompleto};;;
+FN:${datos.NombreCompleto}
+TITLE:${datos.UsuEncabezado};
+EMAIL;type=INTERNET;type=pref:${usuario.SiteMail}
+TEL;type=MAIN:${datos.UsuActividad}
+TEL;type=CELL;type=VOICE;type=pref:${usuario.SiteTelefono2}
+ADR;type=WORK;type=pref:;;;${usuario.UsuColonia};;;
+END:VCARD`;
 
         const blob = new Blob([content], { type: "text/vcard;charset=utf-8" });
         FileSaver.saveAs(blob, `${datos.NombreCompleto}.vcf`, true);
@@ -276,11 +276,16 @@ const TarjetSite = () => {
                         initial={{ opacity:0 , y:-20}}
                         whileInView={{opacity: 1, y:0}}
                         transition={{delay: 0.5}}
+                        style={usuario.SiteColorBton1 ? {background: `${usuario.SiteColorBton1}`} : {background: '#1C5B77'}}
                     >
                         <a onClick={GuardaContacto} className='save'>
                             Guardar Contacto
                         </a>
-                        <a onClick={GuardaContacto} className='icon save'>
+                        <a 
+                            onClick={GuardaContacto} 
+                            className='icon save'
+                            style={usuario.SiteColorBton2 ? {background: `${usuario.SiteColorBton2}`} : {background: '#0F8C54'}}
+                        >
                             <i className="bi bi-download"></i>
                         </a>
                     </motion.div>

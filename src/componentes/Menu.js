@@ -78,7 +78,8 @@ const MenuContenedor = styled.div`
         margin-top: 25px;
 
         a{
-            margin: 5px 0;
+            /* margin: 5px 0; */
+            margin-bottom: 20px;
             color: #191c1f;
             font-weight: 500;
             transition: all .3s ease;

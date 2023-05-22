@@ -75,6 +75,7 @@ const Header = () => {
 const Encabezado = styled.div`
     padding: 15px 100px;
     backdrop-filter: blur(16px);
+    backdrop-filter: blur(3px);
     background-color: rgba(234, 237, 240, 0.8);
     width: 100%;
     position: fixed;

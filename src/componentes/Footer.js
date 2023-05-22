@@ -82,6 +82,7 @@ const FooterContenedor = styled.footer`
             display: block;
             color:#fff;
             cursor: pointer;
+            margin-bottom: 10px;
         }
     }
 
