@@ -6,10 +6,10 @@ import Footer from './componentes/Footer';
 
 import Login from './componentes/Login';
 
-import TarjetProd from './componentes/tarjet-prod/tarjet';
 import TarjetSiteProd from './componentes/tarjet-prod/tarjetsite';
+import Empresas from './componentes/tarjet-prod/Empresas';
 import BannerPrincipal from './componentes/tarjet-prod/BannerPrincipal';
-import MiTarjetero from './componentes/tarjet-prod/MiTarjetero';
+
 
 import VistaSesion from './componentes/VistaSesion';
 import Error from './componentes/404';
@@ -17,21 +17,6 @@ import AvisoPrivacidad from './componentes/AvisoPrivacidad';
 
 
 const App = () => {
-
-  // const Token = async() => {
-  //   const response2 = await fetch('http://192.168.0.4/Tarjet_v1.NETFrameworkEnvironment/oauth/access_token', {
-  //       method: 'POST',
-  //       headers: {
-  //           'Content-Type': 'application/x-www-form-urlencoded',
-  //       },
-  //       body: 
-  //           "client_id=956336b456664f94a1153c6ecbe1fb5a&grand_type=password&scope=FullControl&username=admin&password=admin123"
-  //       });
-  //       const data2 = await response2.json();
-  //       console.log(data2.access_token);
-  // }
-
-  // Token();
 
   return ( 
     <>
@@ -49,6 +34,8 @@ const App = () => {
 
           <Route path='/:pageId' element={<VistaSesion />}/>   
           <Route path='/st/:pageId' element={<TarjetSiteProd />}/>
+          {/* <Route path='/empresas/:pageId' element={<TarjetSiteProd />}/> */}
+          <Route path='/empresas/001' element={<Empresas />}/>
           
           <Route path='/aviso-privacidad' element={<AvisoPrivacidad />}/>
         </Routes>

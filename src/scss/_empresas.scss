@@ -1,0 +1,48 @@
+.empresas{
+    margin-top: 4.5rem;
+    padding-bottom: 3rem;
+    background: #fff;
+
+    i{
+        font-size: 28px;
+    }
+
+    .contacto{
+        margin: -20px;
+        margin-bottom: 20px;
+
+        @media screen and (max-width: 575px){
+            padding: 0px 30px ;
+        }
+        
+        div{
+            background: #1C5B77;
+            padding: 0px 0px 0px 10px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: between;
+            height: 50px;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+            a{
+                display: flex;
+                width: 87%;
+                align-items: center;
+                text-decoration: none;
+                color: #fff;
+            }
+            .icon{
+                width: 13%;
+                background: #0F8C54;
+                justify-content: center;
+                border-radius: 0px 15px 15px 0px;
+            }
+            .save{
+                cursor: pointer;
+                &:hover{
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

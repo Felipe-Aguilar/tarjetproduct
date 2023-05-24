@@ -77,12 +77,6 @@ const TarjetSite = () => {
             const datosServiciosVideo = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 3).map(servicio => servicio);
             setServiciosVideo(datosServiciosVideo);
         }
-
-        // if (!localSesion) {
-        //     setTimeout(()=>{
-        //         setPopGuardar(true);
-        //     },3000);
-        // }
         
         ConsultaUsuario();
     },[]);
@@ -106,15 +100,6 @@ const TarjetSite = () => {
         slidesToScroll: 1,
         rtl: true
     };
-
-    const settings2 = {
-        dots: false,
-        arrows: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    }
 
     // Imagen Modal
     const abrirImagen = async(imagen) =>{
@@ -275,7 +260,7 @@ END:VCARD`;
                         className='mb-3'
                         initial={{ opacity:0 , y:-20}}
                         whileInView={{opacity: 1, y:0}}
-                        transition={{delay: 0.5}}
+                        transition={{delay: 0.2}}
                         style={usuario.SiteColorBton1 ? {background: `${usuario.SiteColorBton1}`} : {background: '#1C5B77'}}
                     >
                         <a onClick={GuardaContacto} className='save'>
@@ -296,7 +281,7 @@ END:VCARD`;
                             style={{background: '#0F8C54'}}
                             initial={{opacity:0 , y:-20}}
                             whileInView={{opacity: 1, y:0}}
-                            transition={{delay: 1}}
+                            transition={{delay: 0.4}}
                         >
                             <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"}>
                                 Envíame un WhatsApp
@@ -310,15 +295,15 @@ END:VCARD`;
                     { !usuario.SiteTelefono3 == '' &&
                         <motion.div 
                             className='mb-3' 
-                            style={{background: '#9e4446'}}
+                            style={{background: '#0F8C54'}}
                             initial={{ opacity:0 , y:-20}}
                             whileInView={{opacity: 1, y:0}}
-                            transition={{delay: 1.2}}
+                            transition={{delay: 0.5}}
                         >
                             <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"}>
                                 Envíame un WhatsApp
                             </a>
-                            <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"} className='icon' style={{background: '#79cbc7'}}>
+                            <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"} className='icon' style={{background: '#00A859'}}>
                                 <i className="bi bi-whatsapp"></i>
                             </a>
                         </motion.div>
@@ -329,7 +314,7 @@ END:VCARD`;
                             className='mb-3'
                             initial={{opacity:0 , y:-20}}
                             whileInView={{opacity: 1, y:0}}
-                            transition={{delay: 1.5}}
+                            transition={{delay: 0.6}}
                             style={{background: '#434E9B'}}
                         >
                             <a href={"mailto: "+usuario.SiteMail}>
@@ -347,7 +332,7 @@ END:VCARD`;
                             style={{background: '#A93538'}}
                             initial={{ opacity:0 , y:-20}}
                             whileInView={{opacity: 1, y:0}}
-                            transition={{delay: 2}}
+                            transition={{delay: 0.8}}
                         >
                             <a href={urlMaps} target={"_blank"}>
                                 {usuario.SiteTextoUbica} <br/>
@@ -365,7 +350,7 @@ END:VCARD`;
                             style={{background: '#434E9B'}}
                             initial={{opacity:0 , y:-20}}
                             whileInView={{opacity: 1, y:0}}
-                            transition={{delay: 2.3}}
+                            transition={{delay: 1}}
                         >
                             <a href={`https://${usuario.SiteWeb}`} target='_blank'>
                             {usuario.SiteWeb}
@@ -379,7 +364,7 @@ END:VCARD`;
                     <motion.div 
                         initial={{ opacity:0 , y:-20}}
                         whileInView={{opacity: 1, y:0}}
-                        transition={{delay: 2.5}}
+                        transition={{delay: 1.2}}
                         style={{background: '#99c748'}}
                     >
                         <a onClick={()=>navigate("/"+btoa(token))} className='save'>
