@@ -1,5 +1,7 @@
 import empresas from '../../assets/empresas1.jpg';
 import perfil from '../../assets/CirculoLink.png';
+import perfilFatima from '../../assets/PerfilFatima.jpeg';
+import perfilJazmin from '../../assets/PerfilJazmin.jpeg';
 
 const Empresas = () => {
     return ( 
@@ -74,7 +76,7 @@ const Empresas = () => {
 
                         <div className='cuerpo'>
                             <div className='w-50'>
-                                <img src={perfil} className='img-fluid' />
+                                <img src={perfilJazmin} className='img-fluid' />
                             </div>
                             <div className='w-50'>
                                 <h3>Jazmín</h3>
@@ -93,7 +95,7 @@ const Empresas = () => {
 
                         <div className='cuerpo'>
                             <div className='w-50'>
-                                <img src={perfil} className='img-fluid' />
+                                <img src={perfilFatima} className='img-fluid' />
                             </div>
                             <div className='w-50'>
                                 <h3>Fatima</h3>
@@ -105,7 +107,7 @@ const Empresas = () => {
                         </div>
                     </div>
 
-                    <div className='vendedora'>
+                    {/* <div className='vendedora'>
 
                         <div className='green'>
                         </div>
@@ -141,10 +143,10 @@ const Empresas = () => {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className='fondo fondo2'>
-                        <h5>Envíos a toda la republica!</h5>
+                        <h5>Envíos a toda la república!</h5>
                     </div>
                 </div>
             </div>

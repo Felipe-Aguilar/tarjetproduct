@@ -9,18 +9,34 @@ import { DatosUsuarioSesion } from './contextos/DatosUsuarioSesion';
 
 import LogoTarjet from '../assets/TarjetNegro.png';
 
+import GoogleLogin from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
+import { gapi } from 'gapi-script';
+
 const Login = () => {
 
     const navigate = useNavigate();
+    const ClientId = '393133257698-k2hpihl9oq7frjeg0ak8a49vus22g8rs.apps.googleusercontent.com';
 
     // Actualización Mi perfil tarjet.mx 
     useEffect(()=>{
+
         const localUsuarioSesion = localStorage.getItem('UsuarioSesion');
         const localUsuarioToken = JSON.parse(localStorage.getItem('DatosSesion'));
     
         if (localUsuarioSesion === 'true' ) {
             navigate('/'+ btoa(localUsuarioToken.UsuToken));
         }
+
+        // Botón de Google
+        const start = () => {
+            gapi.auth2.init({
+                clientId: ClientId
+            });
+        }
+
+        gapi.load("client: auth2", start);
+
     },[]);
 
     const { setDatosUsuario, setDatosUsuarioId } = useContext(DatosUsuarioSesion);
@@ -65,6 +81,10 @@ const Login = () => {
             }
         }
     }
+
+    // const responseGoogle = (response) => {
+    //     console.log(response);
+    // };
 
     return ( 
         <div className='container-fluid vh-100 login'>
@@ -112,6 +132,18 @@ const Login = () => {
                                 ¿Aún no tienes una cuenta? <a href='https://wa.me/5586763895' target={'_blank'}> Contáctanos</a>
                             </p>
                         </div>
+
+                        {/* Botones Google y Facebook
+                        <div>
+                            <GoogleLogin 
+                                clientId={ClientId}
+                                buttonText="Iniciar sesión con Google"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                            />
+                        </div> */}
+
                     </div>
             </div>
         </div>
