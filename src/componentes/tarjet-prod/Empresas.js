@@ -1,4 +1,5 @@
 import empresas from '../../assets/empresas1.jpg';
+import perfil from '../../assets/CirculoLink.png';
 
 const Empresas = () => {
     return ( 
@@ -58,6 +59,94 @@ const Empresas = () => {
                     <h5>Somos una empresa 100% mexicana</h5>
                 </div>
 
+            </div>
+
+            <div className='row justify-content-center'>
+                <div className='col-12 col-md-4 title'>
+                    <div className='fondo'>
+                        <h5>Contacta a nuestro <br/> equipo de ventas</h5>
+                    </div>
+
+                    <div className='vendedora'>
+
+                        <div className='green'>
+                        </div>
+
+                        <div className='cuerpo'>
+                            <div className='w-50'>
+                                <img src={perfil} className='img-fluid' />
+                            </div>
+                            <div className='w-50'>
+                                <h3>Jazmín</h3>
+                                <h5>Ventas</h5>
+                                <p>
+                                    Será un placer atenderte!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='vendedora'>
+
+                        <div className='green'>
+                        </div>
+
+                        <div className='cuerpo'>
+                            <div className='w-50'>
+                                <img src={perfil} className='img-fluid' />
+                            </div>
+                            <div className='w-50'>
+                                <h3>Fatima</h3>
+                                <h5>Ventas</h5>
+                                <p>
+                                    Siempre a tus órdenes
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='vendedora'>
+
+                        <div className='green'>
+                        </div>
+
+                        <div className='cuerpo'>
+                            <div className='w-50'>
+                                <img src={perfil} className='img-fluid' />
+                            </div>
+                            <div className='w-50'>
+                                <h3>Erendira</h3>
+                                <h5>Ventas</h5>
+                                <p>
+                                    Siempre alegre!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='vendedora'>
+
+                        <div className='green'>
+                        </div>
+
+                        <div className='cuerpo'>
+                            <div className='w-50'>
+                                <img src={perfil} className='img-fluid' />
+                            </div>
+                            <div className='w-50'>
+                                <h3>Rubí</h3>
+                                <h5>Ventas</h5>
+                                <p>
+                                    Tus deseos son órdenes!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='fondo fondo2'>
+                        <h5>Envíos a toda la republica!</h5>
+                    </div>
+                </div>
             </div>
 
         </div>
