@@ -3,6 +3,14 @@ import perfil from '../../assets/CirculoLink.png';
 import perfilFatima from '../../assets/PerfilFatima.jpeg';
 import perfilJazmin from '../../assets/PerfilJazmin.jpeg';
 
+import iconoFacebook from '../../assets/iconoFacebook.png';
+import iconoInstagram from '../../assets/iconoInstagram.png';
+import iconoTelegram from '../../assets/iconoTelegram.png';
+import iconoTwitter from '../../assets/iconoTwitter.png';
+import iconoYoutube from '../../assets/iconoYoutube.png';
+import iconoTiktok from '../../assets/iconoTiktok.png';
+import iconoTarjet from '../../assets/iconoTarjet.png';
+
 const Empresas = () => {
     return ( 
         <div className="empresas">
@@ -148,6 +156,106 @@ const Empresas = () => {
                     <div className='fondo fondo2'>
                         <h5>Envíos a toda la república!</h5>
                     </div>
+                </div>
+            </div>
+
+            <div className='row mt-2 justify-content-center redesSociales2'>
+                <div className='col-12 col-md-4 contenedor'>
+                    <h5 className='p-2'>Mis redes sociales</h5>
+                    <div className='d-flex cuerpo'>
+
+                            {/* <div>
+                                <button onClick={()=> navigate("/"+btoa(token))}>
+                                    <img src={iconoTarjet} className='img-fluid' />
+                                </button>
+                            </div> */}
+                            
+                            <div className='d-flex align-items-center'>
+                                <a  className={ 'desactivado'}>
+                                    <img src={iconoFacebook} className='img-fluid' />
+                                </a>
+                            </div>    
+
+                            
+                            <div className='d-flex align-items-center'>
+                                <a  className={ 'desactivado'}>
+                                    <img src={iconoInstagram} className='img-fluid' />
+                                </a>
+                            </div>
+                                
+
+                            <div className='d-flex align-items-center'>
+                                <a  className={ 'desactivado'}>
+                                    <img 
+                                        src={iconoTelegram} 
+                                        className='img-fluid'
+                                    />
+                                </a>
+                            </div>
+
+                            
+                            <div className='d-flex align-items-center'>
+                                <a  
+                                    className={'desactivado'}
+                                >
+                                    <img src={iconoTwitter} className='img-fluid' />
+                                </a>
+                            </div>
+                            
+                            
+                            
+                                <div className='d-flex align-items-center'>
+                                    <a  
+                                        className={'desactivado'}
+                                    >
+                                        <img 
+                                            src={iconoYoutube} 
+                                            className='img-fluid' 
+                                        />
+                                    </a>
+                                </div>       
+                            
+                            
+                            
+                                <div className='d-flex align-items-center'>
+                                    <a  
+                                        className={'desactivado'}
+                                    >
+                                        <img src={iconoTiktok} className='img-fluid' />
+                                    </a>
+                                </div>
+                            
+                    </div>
+                    {/* <div className='d-flex justify-content-around cuerpo'>
+
+                        { !usuario.SiteTwitter == '' &&
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteTwitter} >
+                                    <img src={iconoTwitter} className='img-fluid' />
+                                </a>
+                            </div>
+                        }
+                        
+                        { !usuario.SiteYoutube == '' &&
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteYoutube} >
+                                    <img 
+                                        src={iconoYoutube} 
+                                        className='img-fluid' 
+                                    />
+                                </a>
+                            </div>       
+                        }
+                        
+                        { !usuario.SiteInstagram == '' &&
+                            <div className='d-flex align-items-center'>
+                                <a href={usuario.SiteInstagram} >
+                                    <img src={iconoTiktok} className='img-fluid' />
+                                </a>
+                            </div>
+                        }
+                    </div> */}
+                    
                 </div>
             </div>
 

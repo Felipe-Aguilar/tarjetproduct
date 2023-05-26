@@ -103,4 +103,55 @@
         }
     }
 
+    .redesSociales2{
+        .contenedor{
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .cuerpo{
+            padding: 10px;
+            flex-wrap: wrap;
+            gap: 40px;
+            // justify-content: center;
+
+            @media screen and (max-width: 575px){
+                gap: 30px;
+                justify-content: start;
+            }
+
+            a{
+                text-decoration: none;
+                color: #212529;
+
+                i{
+                    font-size: 40px;
+                    margin-bottom: 0;
+                }
+                img{
+                    width: 60px;
+                }
+            }
+            .desactivado{
+                pointer-events: none;
+                img{
+                    filter: grayscale(100%);
+                }
+                filter: grayscale(100%);
+            }
+            button{
+                background: none;
+                outline: none;
+                border: none;
+                color: #212529;
+                padding: 0;
+                img{
+                    padding: none;
+                    width: 60px;
+                }
+            }
+        }
+    }
+
 }

@@ -13,6 +13,10 @@ import GoogleLogin from 'react-google-login';
 import { GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
 
+import { LoginSocialFacebook } from 'reactjs-social-login';
+import { FacebookLoginButton } from 'react-social-login-buttons';
+
+
 const Login = () => {
 
     const navigate = useNavigate();
@@ -34,8 +38,8 @@ const Login = () => {
                 clientId: ClientId
             });
         }
-
         gapi.load("client: auth2", start);
+
 
     },[]);
 
@@ -82,9 +86,13 @@ const Login = () => {
         }
     }
 
-    // const responseGoogle = (response) => {
-    //     console.log(response);
-    // };
+    const responseGoogle = (response) => {
+        console.log(response);
+    };
+
+    const respuestaFacebook = (response) => {
+        console.log(response);
+    }
 
     return ( 
         <div className='container-fluid vh-100 login'>
@@ -133,8 +141,8 @@ const Login = () => {
                             </p>
                         </div>
 
-                        {/* Botones Google y Facebook
-                        <div>
+                        {/* Botones Google y Facebook */}
+                        {/* <div>
                             <GoogleLogin 
                                 clientId={ClientId}
                                 buttonText="Iniciar sesión con Google"
@@ -142,6 +150,14 @@ const Login = () => {
                                 onFailure={responseGoogle}
                                 cookiePolicy={'single_host_origin'}
                             />
+                            
+                            <LoginSocialFacebook
+                                appId='659119219442397'
+                                onResolve={respuestaFacebook}
+                            >
+                                <FacebookLoginButton />
+                            </LoginSocialFacebook>
+
                         </div> */}
 
                     </div>
