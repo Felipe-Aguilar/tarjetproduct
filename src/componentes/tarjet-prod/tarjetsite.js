@@ -139,6 +139,13 @@ END:VCARD`;
         FileSaver.saveAs(blob, `${datos.NombreCompleto}.vcf`, true);
     }
 
+    const redesSociales = () => {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+
     return ( 
         <div className='tarjetSite' style={{background: usuario.SiteFondo}}>
             <div className='row justify-content-center encabezado'>
@@ -362,6 +369,7 @@ END:VCARD`;
                     }
 
                     <motion.div 
+                        className='mb-3'
                         initial={{ opacity:0 , y:-20}}
                         whileInView={{opacity: 1, y:0}}
                         transition={{delay: 1.2}}
@@ -372,6 +380,24 @@ END:VCARD`;
                         </a>
                         <a onClick={()=>navigate("/"+btoa(token))} className='icon save' style={{background: '#678731'}}>
                             <i className="bi bi-person-vcard"></i>
+                        </a>
+                    </motion.div>
+
+                    <motion.div 
+                        initial={{ opacity:0 , y:-20}}
+                        whileInView={{opacity: 1, y:0}}
+                        transition={{delay: 1.4}}
+                        style={{background: '#00203d'}}
+                    >
+                        <a onClick={redesSociales} className='save'>
+                            Mis Redes Sociales
+                        </a>
+                        <a 
+                            onClick={redesSociales} 
+                            className='icon save'
+                            style={{background: '#003f7a'}}
+                        >
+                            <i className="bi bi-link-45deg"></i>
                         </a>
                     </motion.div>
 
@@ -615,21 +641,27 @@ END:VCARD`;
                             </div>
                             
                             <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteFacebook} className={ usuario.SiteFacebook == '' ? 'desactivado' : ''}>
+                                <a href={`https://www.facebook.com/${usuario.SiteFacebook}`} target='_blank' className={ usuario.SiteFacebook == '' ? 'desactivado' : ''}>
                                     <img src={iconoFacebook} className='img-fluid' />
                                 </a>
                             </div>    
 
                             
                             <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteInstagram} className={ usuario.SiteInstagram == '' ? 'desactivado' : ''}>
+                                <a href={`https://www.instagram.com/${usuario.SiteInstagram}`} 
+                                    className={ usuario.SiteInstagram == '' ? 'desactivado' : ''}
+                                    target='_blank'
+                                >
                                     <img src={iconoInstagram} className='img-fluid' />
                                 </a>
                             </div>
                                 
 
                             <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteTelegram} className={ usuario.SiteTelegram == undefined ? 'desactivado' : ''}>
+                                <a href={`https://msng.link/o?${usuario.SiteTelegram}=tg`} 
+                                    className={ usuario.SiteTelegram == undefined ? 'desactivado' : ''}
+                                    target='_blank'
+                                >
                                     <img 
                                         src={iconoTelegram} 
                                         className='img-fluid'
@@ -639,8 +671,9 @@ END:VCARD`;
 
                             { usuario.SiteTwitter == '' &&
                             <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteTwitter} 
+                                <a href={`https://twitter.com/${usuario.SiteTwitter}`} 
                                     className={usuario.SiteTwitter == '' ? 'desactivado' : ''}
+                                    target='_blank'
                                 >
                                     <img src={iconoTwitter} className='img-fluid' />
                                 </a>
@@ -649,8 +682,9 @@ END:VCARD`;
                             
                             { usuario.SiteYoutube == '' &&
                                 <div className='d-flex align-items-center'>
-                                    <a href={usuario.SiteYoutube} 
+                                    <a href={`https://www.youtube.com/${usuario.SiteYoutube}`} 
                                         className={usuario.SiteYoutube == '' ? 'desactivado' : ''}
+                                        target='_blank'
                                     >
                                         <img 
                                             src={iconoYoutube} 
@@ -662,8 +696,9 @@ END:VCARD`;
                             
                             { usuario.SiteInstagram == '' &&
                                 <div className='d-flex align-items-center'>
-                                    <a href={usuario.SiteInstagram} 
+                                    <a href={`https://www.tiktok.com/${usuario.SiteInstagram}`} 
                                         className={usuario.SiteInstagram == '' ? 'desactivado' : ''}
+                                        target='_blank'
                                     >
                                         <img src={iconoTiktok} className='img-fluid' />
                                     </a>

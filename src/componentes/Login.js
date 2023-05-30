@@ -13,15 +13,14 @@ import GoogleLogin from 'react-google-login';
 import { GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
 
-import { LoginSocialFacebook } from 'reactjs-social-login';
-import { FacebookLoginButton } from 'react-social-login-buttons';
+import ReactFacebookLogin from 'react-facebook-login';
 
 
 const Login = () => {
 
     const navigate = useNavigate();
     const ClientId = '393133257698-k2hpihl9oq7frjeg0ak8a49vus22g8rs.apps.googleusercontent.com';
-
+    
     // Actualización Mi perfil tarjet.mx 
     useEffect(()=>{
 
@@ -39,7 +38,6 @@ const Login = () => {
             });
         }
         gapi.load("client: auth2", start);
-
 
     },[]);
 
@@ -90,7 +88,7 @@ const Login = () => {
         console.log(response);
     };
 
-    const respuestaFacebook = (response) => {
+    const responseFacebook = (response) => {
         console.log(response);
     }
 
@@ -150,14 +148,13 @@ const Login = () => {
                                 onFailure={responseGoogle}
                                 cookiePolicy={'single_host_origin'}
                             />
-                            
-                            <LoginSocialFacebook
-                                appId='659119219442397'
-                                onResolve={respuestaFacebook}
-                            >
-                                <FacebookLoginButton />
-                            </LoginSocialFacebook>
 
+                            <ReactFacebookLogin 
+                                appId='659119219442397'
+                                autoLoad={false}
+                                fields="name,email,picture"
+                                callback={responseFacebook}
+                            />
                         </div> */}
 
                     </div>
