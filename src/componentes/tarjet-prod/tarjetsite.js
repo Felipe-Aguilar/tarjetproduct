@@ -266,7 +266,7 @@ END:VCARD`;
                     <motion.div 
                         className='mb-3'
                         initial={{ opacity:0 , y:-20}}
-                        whileInView={{opacity: 1, y:0}}
+                        animate={{opacity: 1, y:0}}
                         transition={{delay: 0.2}}
                         style={usuario.SiteColorBton1 ? {background: `${usuario.SiteColorBton1}`} : {background: '#1C5B77'}}
                     >
@@ -287,7 +287,7 @@ END:VCARD`;
                             className='mb-3' 
                             style={{background: '#0F8C54'}}
                             initial={{opacity:0 , y:-20}}
-                            whileInView={{opacity: 1, y:0}}
+                            animate={{opacity: 1, y:0}}
                             transition={{delay: 0.4}}
                         >
                             <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"}>
@@ -304,7 +304,7 @@ END:VCARD`;
                             className='mb-3' 
                             style={{background: '#0F8C54'}}
                             initial={{ opacity:0 , y:-20}}
-                            whileInView={{opacity: 1, y:0}}
+                            animate={{opacity: 1, y:0}}
                             transition={{delay: 0.5}}
                         >
                             <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"}>
@@ -320,7 +320,7 @@ END:VCARD`;
                         <motion.div 
                             className='mb-3'
                             initial={{opacity:0 , y:-20}}
-                            whileInView={{opacity: 1, y:0}}
+                            animate={{opacity: 1, y:0}}
                             transition={{delay: 0.6}}
                             style={{background: '#434E9B'}}
                         >
@@ -338,7 +338,7 @@ END:VCARD`;
                             className='mb-3' 
                             style={{background: '#A93538'}}
                             initial={{ opacity:0 , y:-20}}
-                            whileInView={{opacity: 1, y:0}}
+                            animate={{opacity: 1, y:0}}
                             transition={{delay: 0.8}}
                         >
                             <a href={urlMaps} target={"_blank"}>
@@ -356,7 +356,7 @@ END:VCARD`;
                             className='mb-3'
                             style={{background: '#434E9B'}}
                             initial={{opacity:0 , y:-20}}
-                            whileInView={{opacity: 1, y:0}}
+                            animate={{opacity: 1, y:0}}
                             transition={{delay: 1}}
                         >
                             <a href={`https://${usuario.SiteWeb}`} target='_blank'>
@@ -371,7 +371,7 @@ END:VCARD`;
                     <motion.div 
                         className='mb-3'
                         initial={{ opacity:0 , y:-20}}
-                        whileInView={{opacity: 1, y:0}}
+                        animate={{opacity: 1, y:0}}
                         transition={{delay: 1.2}}
                         style={{background: '#99c748'}}
                     >
@@ -385,7 +385,7 @@ END:VCARD`;
 
                     <motion.div 
                         initial={{ opacity:0 , y:-20}}
-                        whileInView={{opacity: 1, y:0}}
+                        animate={{opacity: 1, y:0}}
                         transition={{delay: 1.4}}
                         style={{background: '#00203d'}}
                     >
