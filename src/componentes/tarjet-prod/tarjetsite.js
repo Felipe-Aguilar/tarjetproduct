@@ -499,7 +499,10 @@ END:VCARD`;
                                 <p>
                                     {servicio}
                                 </p>
-                                <img 
+                                <motion.img
+                                    initial={{opacity: 0}}
+                                    whileInView={{opacity:1}}
+                                    viewport={{ once: true }}
                                     src={imagenServicio+imagenServicios[index]} 
                                     className='img-fluid'
                                     onClick={()=>abrirImagen(imagenServicio+imagenServicios[index])}
