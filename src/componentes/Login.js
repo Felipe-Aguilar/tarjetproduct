@@ -9,8 +9,8 @@ import { DatosUsuarioSesion } from './contextos/DatosUsuarioSesion';
 
 import LogoTarjet from '../assets/TarjetNegro.png';
 
-import GoogleLogin from 'react-google-login';
-import { GoogleLogout } from 'react-google-login';
+// import GoogleLogin from 'react-google-login';
+// import { GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
 
 // import ReactFacebookLogin from 'react-facebook-login';
@@ -84,13 +84,13 @@ const Login = () => {
         }
     }
 
-    const responseGoogle = (response) => {
-        console.log(response);
-    };
+    // const responseGoogle = (response) => {
+    //     console.log(response);
+    // };
 
-    const responseFacebook = (response) => {
-        console.log(response);
-    }
+    // const responseFacebook = (response) => {
+    //     console.log(response);
+    // }
 
     return ( 
         <div className='container-fluid vh-100 login'>
@@ -138,6 +138,24 @@ const Login = () => {
                                 ¿Aún no tienes una cuenta? <a href='https://wa.me/5586763895' target={'_blank'}> Contáctanos</a>
                             </p>
                         </div>
+
+                        {/* Botones Google y Facebook */}
+                        {/* <div>
+                            <GoogleLogin 
+                                clientId={ClientId}
+                                buttonText="Iniciar sesión con Google"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                            />
+
+                            <ReactFacebookLogin 
+                                appId='659119219442397'
+                                autoLoad={false}
+                                fields="name,email,picture"
+                                callback={responseFacebook}
+                            />
+                        </div> */}
 
                     </div>
             </div>
