@@ -13,7 +13,7 @@ import GoogleLogin from 'react-google-login';
 import { GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
 
-import ReactFacebookLogin from 'react-facebook-login';
+// import ReactFacebookLogin from 'react-facebook-login';
 
 
 const Login = () => {
@@ -138,24 +138,6 @@ const Login = () => {
                                 ¿Aún no tienes una cuenta? <a href='https://wa.me/5586763895' target={'_blank'}> Contáctanos</a>
                             </p>
                         </div>
-
-                        {/* Botones Google y Facebook */}
-                        {/* <div>
-                            <GoogleLogin 
-                                clientId={ClientId}
-                                buttonText="Iniciar sesión con Google"
-                                onSuccess={responseGoogle}
-                                onFailure={responseGoogle}
-                                cookiePolicy={'single_host_origin'}
-                            />
-
-                            <ReactFacebookLogin 
-                                appId='659119219442397'
-                                autoLoad={false}
-                                fields="name,email,picture"
-                                callback={responseFacebook}
-                            />
-                        </div> */}
 
                     </div>
             </div>
