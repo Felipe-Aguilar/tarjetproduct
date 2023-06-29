@@ -33,14 +33,21 @@ const MenuDesktopContenedor = styled.div`
     display: flex;
     gap: 25px;
     a{
-        color: #191c1f;
         text-decoration: none;
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        color: #48657c;
+        letter-spacing: 0;
     }
     button{
         background: none;
         border: none;
-        color: #191c1f;
         outline: none;
+
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        color: #48657c;
+        letter-spacing: 0;
     }
     .disabled{
         color: #696969;

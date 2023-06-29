@@ -20,6 +20,8 @@ import iconoYoutube from '../../assets/iconoYoutube.png';
 import iconoTiktok from '../../assets/iconoTiktok.png';
 import iconoTarjet from '../../assets/iconoTarjet.png';
 
+import perfilTemporal from '../../assets/perfiltemporal.jpg';
+
 const TarjetSite = () => {
 
     const navigate = useNavigate();
@@ -154,112 +156,19 @@ END:VCARD`;
                 </div>
             </div>
 
+            <div className='row justify-content-center perfil'>
+                <div className='col-12 col-md-4 contenedor'>
+                    <img src={perfilTemporal} />
+                    <div>
+                        <h5>Ricardo  Martínez Wenceslao</h5>
+                        <p>
+                            Peluquera Canina
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div className='row mt-3 justify-content-center'>
-                {/* <div className='col-md-4 contacto'>
-                    <div className='d-flex justify-content-between align-items-center'>
-                        { !usuario.SiteTelefono2 == '' &&
-                            <>
-                                <div>
-                                    <h6>Envíame un WhatsApp</h6>
-                                    <p>
-                                        {usuario.SiteTelefono2}
-                                    </p>
-                                </div>
-                                <div>
-                                    <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"}>
-                                        <i className="bi bi-whatsapp whats"></i>
-                                    </a>
-                                </div>
-                            </>
-                        }
-                    </div>
-
-                    <div className='d-flex justify-content-between align-items-center'>
-                        { !usuario.SiteTelefono3 == '' &&
-                            <>
-                                <div>
-                                    <h6>Envíame un WhatsApp</h6>
-                                    <p>
-                                        {usuario.SiteTelefono3}
-                                    </p>
-                                </div>
-                                <div>
-                                    <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"}>
-                                        <i className="bi bi-whatsapp whats"></i>
-                                    </a>
-                                </div>
-                            </>
-                        }
-                    </div>
-
-
-                    <div className='d-flex justify-content-between align-items-center'>
-                        { !usuario.SiteMail == '' &&
-                            <>
-                                <div>
-                                    <h6>Contáctame por mail</h6>
-                                    <p className='usuarioEmail'>
-                                        {usuario.SiteMail}
-                                    </p>
-                                </div>
-                                <div>
-                                    <a href={"mailto: "+usuario.SiteMail}>
-                                        <i className="bi bi-envelope-fill email"></i>
-                                    </a>
-                                </div>
-                            </>
-                        }
-                    </div>
-
-                    <div className='d-flex justify-content-between align-items-center'>
-                        { usuario.SiteVerUbica == 1 &&
-                            <>
-                                <div>
-                                    <h6>
-                                        {usuario.SiteTextoUbica}
-                                    </h6>
-                                    <p>
-                                        {usuario.UsuColonia}
-                                    </p>
-                                </div>
-                                <div>
-                                    <a href={urlMaps} target={"_blank"}>
-                                        <i className="bi bi-geo-alt-fill ubication"></i>
-                                    </a>
-                                </div>
-                            </>
-                        }
-                    </div>
-
-                    <div className='d-flex justify-content-between align-items-center'>
-                        { !usuario.SiteWeb == '' &&
-                            <>
-                                <div>
-                                    <h6>Mi página web </h6>
-                                    <a href={`https://${usuario.SiteWeb}`} target='_blank'>
-                                        {usuario.SiteWeb}
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href={`https://${usuario.SiteWeb}`} target={'_blank'}>
-                                        <i className="bi bi-globe-americas world"></i>
-                                    </a>
-                                </div>
-                            </>
-                        }
-                    </div>
-
-                    <div className='d-flex justify-content-between align-items-center'>
-                        <div>
-                            <h6>Ver mi tarjeta</h6>
-                        </div>
-                        <div>
-                            <a onClick={()=>navigate("/"+btoa(token))}>
-                                <i className="bi bi-person-badge-fill tarjeta"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div> */}
 
                 <div className='col-md-4 contacto2'>
 

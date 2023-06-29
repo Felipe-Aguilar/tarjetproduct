@@ -51,28 +51,6 @@ const Menu = ({cambioMenu}) => {
 }
 
 const MenuContenedor = styled.div`
-    .buscar{
-        background: #171717;
-        background: #e9e9e9;
-        background: #f3f3f4;
-        width: 300px;
-        display: flex;
-        align-items: center;
-        padding: 10px 20px;
-        border-radius: 10px;
-
-        &:hover{
-            cursor: text;
-        }
-
-        input{
-            width: 90%;
-            outline: none;
-            border: none;
-            padding: 0px 10px;
-            background: transparent;
-        }
-    }
 
     .links{
         margin-top: 25px;
@@ -80,13 +58,13 @@ const MenuContenedor = styled.div`
         a{
             /* margin: 5px 0; */
             margin-bottom: 20px;
-            color: #191c1f;
-            font-weight: 500;
             transition: all .3s ease;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            color: #48657c;
+            letter-spacing: 0;
+            text-decoration: none;
 
-            &:hover{
-                text-decoration: underline;
-            }
             img{
                 width: 20px;
                 margin-left: 8px;
@@ -99,11 +77,13 @@ const MenuContenedor = styled.div`
 
         button{
             background: none;
-            color: #191c1f;
             border: none;
             outline: none;
             padding: 0;
-            font-weight: 500;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            color: #48657c;
+            letter-spacing: 0;
         }
 
         .desactivate{

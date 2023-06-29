@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
 import { AnimatePresence ,motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+
 import Menu from './Menu';
 import MenuDesktop from './MenuDesktop';
 
 import TarjetNegro from '../assets/TarjetNegro.png';
+import LogoTarjet from '../assets/logo-tarjet.svg';
 
 const Header = () => {
 
@@ -15,9 +17,8 @@ const Header = () => {
         <>
             <Encabezado className='row m-0 justify-content-between justify-content-md-around align-items-center'>
                 <div className='w-auto'>
-                    {/* <h1>Tarjet.</h1> */}
                     <a href="https://tarjet.mx/">
-                        <img src={TarjetNegro} alt="Tarjet | Tu tarjeta de presentación Online" onClick={()=> cambioMenu(true)}/>
+                        <img src={LogoTarjet} alt="Tarjet | Tu tarjeta de presentación Online" onClick={()=> cambioMenu(true)}/>
                     </a>
                 </div>
                 <div className='w-auto d-block d-lg-none'>
@@ -88,10 +89,6 @@ const Encabezado = styled.div`
 
     img{
         width: 120px;
-    }
-
-    h1{
-        font-weight: bold;
     }
 
     .Icon{
