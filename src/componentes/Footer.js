@@ -1,8 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-
-import TarjetBlanco from '../assets/TarjetBlanco.png';
+import LogoGris from '../assets/logotarjet-gris.svg';
 
 
 const Footer = () => {
@@ -10,91 +7,29 @@ const Footer = () => {
     const navigate = useNavigate();
 
     return ( 
-        <FooterContenedor className='row mt-4 justify-content-center'>
-
-            <div className='col-12'>
-                <img src={TarjetBlanco} alt="Tarjet | Tu tarjeta de presentación Online" />
+        <footer>
+            <div className='logo'>
+                <img src={LogoGris} alt="TarjetMx Logo" />
             </div>
 
-            <div className='col-12 links'>
-                <a onClick={()=>navigate('/aviso-privacidad')}>Aviso de Privacidad</a>
-                <a href="">Tienda</a>
-                <a href="">Contáctanos</a>
-                <a href="">Registro</a>
-                <a href="">Empresas</a>
-                <a href="">Preguntas Frecuentes</a>
-            </div>
-
-                <div className='col-6 d-block d-md-none links-mobile'>
-                    <a onClick={()=>navigate('/aviso-privacidad')}>Aviso de Privacidad</a>
-                    <a href="">Tienda</a>
-                    <a href="">Contáctanos</a>
-                </div>
-                <div className='col-6 d-block d-md-none links-mobile'>
-                    <a href="">Registro</a>
-                    <a href="">Empresas</a>
-                    <a href="">Preguntas Frecuentes</a>
-                </div>
-
-            <div className='w-auto p-3 text-center'>
-                <p>
-                    © Todos los Derechos Reservados | 2022
-                </p>
-                <a href="https://tekrobot.com.mx/" target={'_blank'}>
-                    Powered By TekRobot
+            <div className='redes'>
+                <a href="" target='_blank'>
+                    <i className="bi bi-facebook"></i>
+                </a>
+                <a href="" target='_blank'>
+                    <i className="bi bi-instagram"></i>
                 </a>
             </div>
-        </FooterContenedor>
+
+            <div className='nav'>
+                <a href="">Política de Envío</a>
+                <a href="">Términos y Condiciones</a>
+                <a href="">Política de Devoluciones</a>
+                <a onClick={()=>navigate('/aviso-privacidad')}>Aviso de Privacidad</a>
+                <a href="">Facturación</a>
+            </div>
+        </footer>
     );
 }
-
-const FooterContenedor = styled.footer`
-    background: #212529;
-    color: #fff;
-    padding: 20px 10px;
-
-    img{
-        width: 100px;
-        display: block;
-        margin: auto;
-    }
-
-    .links{
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        gap: 20px;
-
-        @media screen and (max-width: 575px){
-            display: none;
-        }
-        
-        a{
-            color:#fff;
-            cursor: pointer;
-        }
-    }
-    
-    .links-mobile{
-        margin-top: 20px;
-        text-align: left;
-        a{
-            display: block;
-            color:#fff;
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
-    }
-
-    p, a{
-        margin:0;
-        font-size: 13px;
-    }
-    a{
-        color: #00a859;
-        transition: all .3s ease;
-        text-decoration: none;
-    }
-`;
 
 export default Footer;

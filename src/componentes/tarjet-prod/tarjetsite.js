@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-
 import { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
-
-import ImageModal from './ImageModal';
-
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import FileSaver from 'file-saver';
 
+
+import ImageModal from './ImageModal';
 import iconoFacebook from '../../assets/iconoFacebook.png';
 import iconoInstagram from '../../assets/iconoInstagram.png';
 import iconoTelegram from '../../assets/iconoTelegram.png';
@@ -21,6 +18,7 @@ import iconoTiktok from '../../assets/iconoTiktok.png';
 import iconoTarjet from '../../assets/iconoTarjet.png';
 
 import perfilTemporal from '../../assets/perfiltemporal.jpg';
+
 
 const TarjetSite = () => {
 
