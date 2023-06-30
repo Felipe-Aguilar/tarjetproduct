@@ -148,6 +148,12 @@ END:VCARD`;
         });
     }
 
+    const animacionBtn = {
+        initial :{opacity:0 , y: -20},
+        whileInView:{y:0, opacity: 1},
+        viewport: {once:true}
+    }
+
     return ( 
         <div className='tarjetSite' style={{background: usuario.SiteFondo}}>
             <div className='row justify-content-center encabezado'>
@@ -160,9 +166,9 @@ END:VCARD`;
                 <div className='col-12 col-md-4 contenedor'>
                     <img src={perfilTemporal} />
                     <div>
-                        <h5>Ricardo  Martínez Wenceslao</h5>
+                        <h5>{datos.NombreCompleto}</h5>
                         <p>
-                            Peluquera Canina
+                            {datos.UsuEncabezado}
                         </p>
                     </div>
                 </div>
@@ -174,10 +180,9 @@ END:VCARD`;
 
                     <motion.div 
                         className='mb-3'
-                        initial={{ opacity:0 , y:-20}}
-                        animate={{opacity: 1, y:0}}
+                        {...animacionBtn}
                         transition={{delay: 0.2}}
-                        style={usuario.SiteColorBton1 ? {background: `${usuario.SiteColorBton1}`} : {background: '#1C5B77'}}
+                        style={usuario.SiteColorBton1 ? {background: `${usuario.SiteColorBton1}`} : {background: '#dce6ec'}}
                     >
                         <a onClick={GuardaContacto} className='save'>
                             Guardar Contacto
@@ -185,7 +190,7 @@ END:VCARD`;
                         <a 
                             onClick={GuardaContacto} 
                             className='icon save'
-                            style={usuario.SiteColorBton2 ? {background: `${usuario.SiteColorBton2}`} : {background: '#0F8C54'}}
+                            style={usuario.SiteColorBton2 ? {background: `${usuario.SiteColorBton2}`} : {background: '#4186a0'}}
                         >
                             <i className="bi bi-download"></i>
                         </a>
@@ -194,15 +199,14 @@ END:VCARD`;
                     { !usuario.SiteTelefono2 == '' &&
                         <motion.div 
                             className='mb-3' 
-                            style={{background: '#0F8C54'}}
-                            initial={{opacity:0 , y:-20}}
-                            animate={{opacity: 1, y:0}}
+                            style={{background: '#d0ead6'}}
+                            {...animacionBtn}
                             transition={{delay: 0.4}}
                         >
                             <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"}>
                                 Envíame un WhatsApp
                             </a>
-                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"} className='icon' style={{background: '#00A859'}}>
+                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"} className='icon' style={{background: '#00943e'}}>
                                 <i className="bi bi-whatsapp"></i>
                             </a>
                         </motion.div>
@@ -211,33 +215,15 @@ END:VCARD`;
                     { !usuario.SiteTelefono3 == '' &&
                         <motion.div 
                             className='mb-3' 
-                            style={{background: '#0F8C54'}}
-                            initial={{ opacity:0 , y:-20}}
-                            animate={{opacity: 1, y:0}}
+                            style={{background: '#d0ead6'}}
+                            {...animacionBtn}
                             transition={{delay: 0.5}}
                         >
                             <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"}>
                                 Envíame un WhatsApp
                             </a>
-                            <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"} className='icon' style={{background: '#00A859'}}>
+                            <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"} className='icon' style={{background: '#00943e'}}>
                                 <i className="bi bi-whatsapp"></i>
-                            </a>
-                        </motion.div>
-                    }
-
-                    { !usuario.SiteMail == '' &&
-                        <motion.div 
-                            className='mb-3'
-                            initial={{opacity:0 , y:-20}}
-                            animate={{opacity: 1, y:0}}
-                            transition={{delay: 0.6}}
-                            style={{background: '#434E9B'}}
-                        >
-                            <a href={"mailto: "+usuario.SiteMail}>
-                                {usuario.SiteMail}
-                            </a>
-                            <a href={"mailto: "+usuario.SiteMail} className='icon' style={{background: '#6F6BAF'}}>
-                                <i className="bi bi-envelope-fill"></i>
                             </a>
                         </motion.div>
                     }
@@ -245,17 +231,46 @@ END:VCARD`;
                     { usuario.SiteVerUbica == 1 &&
                         <motion.div 
                             className='mb-3' 
-                            style={{background: '#A93538'}}
-                            initial={{ opacity:0 , y:-20}}
-                            animate={{opacity: 1, y:0}}
-                            transition={{delay: 0.8}}
+                            style={{background: '#ffecd2'}}
+                            {...animacionBtn}
+                            transition={{delay: 0.6}}
                         >
                             <a href={urlMaps} target={"_blank"}>
                                 {usuario.SiteTextoUbica} <br/>
                                 {usuario.UsuColonia}
                             </a>
-                            <a href={urlMaps} target={"_blank"} className='icon' style={{background: '#7F2E2F'}}>
+                            <a href={urlMaps} target={"_blank"} className='icon' style={{background: '#ffa200'}}>
                                 <i className="bi bi-geo-alt-fill"></i>
+                            </a>
+                        </motion.div>
+                    }
+
+                        <motion.div 
+                            className='mb-3' 
+                            style={{background: '#e1dcf4'}}
+                            {...animacionBtn}
+                            transition={{delay: 0.8}}
+                        >
+                            <a href={urlMaps} target={"_blank"}>
+                                Comparte mi tarjeta
+                            </a>
+                            <a href={urlMaps} target={"_blank"} className='icon' style={{background: '#5060c6'}}>
+                                <i className="bi bi-geo-alt-fill"></i>
+                            </a>
+                        </motion.div>
+
+                    { !usuario.SiteMail == '' &&
+                        <motion.div 
+                            className='mb-3'
+                            {...animacionBtn}
+                            transition={{delay: 1}}
+                            style={{background: '#d4e0f6'}}
+                        >
+                            <a href={"mailto: "+usuario.SiteMail}>
+                                {usuario.SiteMail}
+                            </a>
+                            <a href={"mailto: "+usuario.SiteMail} className='icon' style={{background: '#0073ce'}}>
+                                <i className="bi bi-envelope-fill"></i>
                             </a>
                         </motion.div>
                     }
@@ -263,15 +278,14 @@ END:VCARD`;
                     { !usuario.SiteWeb == '' &&
                         <motion.div 
                             className='mb-3'
-                            style={{background: '#434E9B'}}
-                            initial={{opacity:0 , y:-20}}
-                            animate={{opacity: 1, y:0}}
-                            transition={{delay: 1}}
+                            style={{background: '#e1dcf4'}}
+                            {...animacionBtn}
+                            transition={{delay: 1.2}}
                         >
                             <a href={`https://${usuario.SiteWeb}`} target='_blank'>
                             {usuario.SiteWeb}
                             </a>
-                            <a href={`https://${usuario.SiteWeb}`} target='_blank' className='icon' style={{background: '#6F6BAF'}}>
+                            <a href={`https://${usuario.SiteWeb}`} target='_blank' className='icon' style={{background: '#5060c6'}}>
                                 <i className="bi bi-globe-americas"></i>
                             </a>
                         </motion.div>
@@ -279,9 +293,8 @@ END:VCARD`;
 
                     <motion.div 
                         className='mb-3'
-                        initial={{ opacity:0 , y:-20}}
-                        animate={{opacity: 1, y:0}}
-                        transition={{delay: 1.2}}
+                        {...animacionBtn}
+                        transition={{delay: 1.4}}
                         style={{background: '#99c748'}}
                     >
                         <a onClick={()=>navigate("/"+btoa(token))} className='save'>
@@ -293,10 +306,9 @@ END:VCARD`;
                     </motion.div>
 
                     <motion.div 
-                        initial={{ opacity:0 , y:-20}}
-                        animate={{opacity: 1, y:0}}
-                        transition={{delay: 1.4}}
-                        style={{background: '#00203d'}}
+                        {...animacionBtn}
+                        transition={{delay: 1.6}}
+                        style={{background: '#f1d1d9'}}
                     >
                         <a onClick={redesSociales} className='save'>
                             Mis Redes Sociales
@@ -304,7 +316,7 @@ END:VCARD`;
                         <a 
                             onClick={redesSociales} 
                             className='icon save'
-                            style={{background: '#003f7a'}}
+                            style={{background: '#9b034f'}}
                         >
                             <i className="bi bi-link-45deg"></i>
                         </a>
