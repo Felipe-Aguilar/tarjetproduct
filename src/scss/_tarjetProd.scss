@@ -251,6 +251,107 @@ $colorRadar: #cfaa06;
         }
     }
 
+    .Servicios1{
+        padding: 20px 0;
+        h5{
+            text-align: center;
+            font-family: 'IvyModeRegular', sans-serif;
+            font-weight: bold;
+        }
+
+        img{
+            width: 15%;
+            display: block;
+            margin: auto;
+            padding: 20px 0;
+
+            @media screen and (max-width: 575px){
+                width: 25%;
+            }
+        }
+        h6{
+            font-weight: bold;
+        }
+        ul{
+            margin-bottom: 0;
+        }
+    }
+
+    .Servicios2{
+        padding: 20px 0;
+
+        .icon{
+            img{
+                width: 15%;
+                display: block;
+                margin: auto;
+
+                @media screen and (max-width: 575px){
+                    width: 25%;
+                }
+            }
+        }
+        h5{
+            font-family: 'IvyModeRegular', sans-serif;
+            text-align: center;
+            font-weight: bold;
+            padding: 20px 0;
+            margin-bottom: 0;
+        }
+        img{
+            display: block;
+            margin: auto;
+            width: 75%;
+            border-radius: 35px;
+            margin-bottom: 20px;
+
+            @media screen and (max-width: 575px){
+                width: 100%;
+            }
+        }
+        h6{
+            text-align: center;
+            font-size: 1.2rem;
+        }
+    }
+
+    .redesRediseño{
+        padding: 20px;
+
+        h5{
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .iconos{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+
+            .desactivado{
+                pointer-events: none;
+            }
+
+            img{
+                width: 50%;
+                display: block;
+                margin: auto;
+                cursor: pointer;
+
+                @media screen and (max-width: 575px){
+                    width: 65%;
+                }
+            }
+            button{
+                width: 50%;
+                border: none;
+                padding: 0;
+                margin: 0;
+
+            }
+        }
+    }
+
     .sliderServicios{
         i{
             color: #212529;
@@ -266,6 +367,114 @@ $colorRadar: #cfaa06;
         }
     }
 
+    .Promo{
+        padding: 20px 0;
+
+        h4{
+            text-align: center;
+            font-family: 'IvyModeRegular',sans-serif;
+            font-weight: bold;
+            color: #055b7d;
+        }
+        p{
+            text-transform: uppercase;
+            color: #57585f;
+            text-align: center;
+
+            span{
+                font-size: 1.4rem;
+                text-transform: lowercase;
+            }
+        }
+
+        .cuerpo{
+            width: 100%;
+            border-radius: 30px;
+            background: #ecf0f8;
+            padding: 40px 20px;
+            text-align: center;
+
+            img{
+                display: block;
+                margin: auto;
+                margin-bottom: 20px;
+            }
+
+            .logoTarjet{
+                width: 25%;
+
+                @media screen and (max-width: 575px){
+                    width: 40%;
+                }
+            }
+            h5{
+                margin-bottom: 25px;
+                span{
+                    color: #2b5035;
+                    font-weight: bold;
+                }
+            }
+            .contact{
+                color: #57585f;
+                margin-bottom: 20px;
+            }
+            a{
+                padding: 10px 20px;
+                border-radius: 10px;
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+                display: block;
+                width: 70%;
+                margin: auto;
+                margin-bottom: 20px;
+                
+                @media screen and (max-width: 575px){
+                    width: 100%;
+                }
+
+                br{
+                    display: none;
+                    @media screen and (max-width: 575px){
+                        display: block;
+                    }
+                }
+
+                span{
+                    font-weight: 400;
+                }
+            }
+            .btn-verde{
+                background: #03894a;
+            }
+            .btn-naranja{
+                background: #ff6b0f;
+            }
+            .btn-morado{
+                background: #5f6e9f;
+                margin-bottom: 0;
+            }
+            .img-promo{
+                width: 40%;
+
+                @media screen and (max-width: 575px){
+                    width: 70%;
+                }
+            }
+        }
+    }
+
+    .teInvitamos{
+        a{
+            display: block;
+            margin: auto;
+            text-align: center;
+            color: #038950;
+            text-decoration: underline;
+            font-size: 1.2rem;
+        }
+    }
+    
     .masServicios{
         i{
             color: #212529;

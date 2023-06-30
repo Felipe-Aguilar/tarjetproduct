@@ -18,6 +18,26 @@ import iconoTiktok from '../../assets/iconoTiktok.png';
 import iconoTarjet from '../../assets/iconoTarjet.png';
 
 import perfilTemporal from '../../assets/perfiltemporal.jpg';
+import IconServicios from '../../assets/iconos-servicios-site-tarjet.svg';
+import IconFolleto from '../../assets/iconos-folleto-site-tarjet.svg';
+import imgServicio from '../../assets/servicioRediseño.jpg';
+import socialFacebook from '../../assets/icono-face-on-site.svg';
+import socialFacebookOff from '../../assets/icono-face-off-site.svg';
+import socialInstagram from '../../assets/icono-insta-on-site.svg';
+import socialInstagramOff from '../../assets/icono-insta-off-site.svg';
+import socialTikTok from '../../assets/icono-tiktok-on-site.svg';
+import socialTikTokOff from '../../assets/icono-tiktok-off-site.svg';
+import socialTwitter from '../../assets/icono-twitter-on-site.svg';
+import socialTwitterOff from '../../assets/icono-twitter-off-site.svg';
+import socialYoutube from '../../assets/icono-youtube-on-site.svg';
+import socialYoutubeOff from '../../assets/icono-youtube-off-site.svg';
+import socialLinkedIn from '../../assets/icono-linkedin-on-site.svg';
+import socialLinkedInOff from '../../assets/icono-linkedin-off-site.svg';
+import socialTelegram from '../../assets/icono-telegram-om-site.svg';
+import socialTelegramOff from '../../assets/icono-telegram-off-site.svg';
+import socialTarjet from '../../assets/icono-tarjet-on-site.svg';
+import logoTarjet from '../../assets/logo-tarjet.svg';
+import promoImg from '../../assets/tarjeta-promo.webp';
 
 
 const TarjetSite = () => {
@@ -329,7 +349,163 @@ END:VCARD`;
                 </div>
             </div>
 
-            { servicios.length > 0 &&
+            <div className='row justify-content-center Servicios1'>
+                <div className='col-11 col-md-4'>
+                    <h5>Estética profesional canina</h5>
+                    <img src={IconServicios} />
+                    <h6>Servicios</h6>
+                    <ul>
+                        <li>Hospedaje y guardería</li>
+                        <li>Estética canina - boutique</li>
+                        <li>Accesorios para tu mascota</li>
+                        <li>Productos de higiene</li>
+                        <li>Juguetes</li>
+                        <li>Alimento</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div className='row justify-content-center'>
+                <div className='col-11 col-md-4 p-0'>
+                    <hr/>
+                </div>
+            </div>
+
+            <div className='row justify-content-center Servicios2'>
+                <div className='col-11 col-md-4'>
+                    <div className='icon'>
+                        <img src={IconFolleto} />
+                    </div>
+                    <h5>¡Ven y dale a tu mascota un apapacho de amor!</h5>
+                    <img src={imgServicio} />
+                    <h6>Transformando a tu mascota en una obra de arte.</h6>
+                </div>
+            </div>
+
+            <div className='row justify-content-center'>
+                <div className='col-11 col-md-4 p-0'>
+                    <hr/>
+                </div>
+            </div>
+
+            <div className='row justify-content-center redesRediseño'>
+                <div className='col-12 col-md-4'>
+                    <h5>Mis redes sociales</h5>
+                    <div className='iconos'>
+                        <a 
+                            href = {`https://www.facebook.com/${usuario.SiteFacebook}`}
+                            className={!usuario.SiteFacebook && 'desactivado'}
+                        >
+                            <img src={usuario.SiteFacebook ? socialFacebook : socialFacebookOff} />
+                        </a>
+
+                        <a 
+                            href = {`https://www.instagram.com/${usuario.SiteFacebook}`}
+                            className={!usuario.SiteInstagram && 'desactivado'}
+                        >
+                            <img src={usuario.SiteInstagram ? socialInstagram : socialInstagramOff} />
+                        </a>
+
+                        <a 
+                            href = {`https://www.tiktok.com/@${usuario.SiteTiktok}`}
+                            className={!usuario.SiteTiktok && 'desactivado'}
+                        >
+                            <img src={usuario.SiteTiktok ? socialTikTok : socialTikTokOff} />
+                        </a>
+
+                        <a 
+                            href = {`https://www.twitter.com/${usuario.SiteTwitter}`}
+                            className={!usuario.SiteTwitter && 'desactivado'}
+                        >
+                            <img src={usuario.SiteTwitter ? socialTwitter : socialTwitterOff} />
+                        </a>
+                    </div>
+                    <div className='iconos'>
+                        <a 
+                            href = {`https://www.youtube.com/${usuario.SiteYoutube}`}
+                            className={!usuario.SiteYoutube && 'desactivado'}
+                        >
+                            <img src={usuario.SiteYoutube ? socialYoutube : socialYoutubeOff} />
+                        </a>
+
+                        <a 
+                            href = {`https://www.linkedin.com/${usuario.SiteLinkedin}`}
+                            className={!usuario.SiteLinkedin && 'desactivado'}
+                        >
+                            <img src={usuario.SiteLinkedin ? socialLinkedIn : socialLinkedInOff} />
+                        </a>
+
+                        <a 
+                            href = {`https://msng.link/o?${usuario.SiteTelegram}=tg`}
+                            className={!usuario.SiteTelegram && 'desactivado'}
+                        >
+                            <img src={usuario.SiteTelegram ? socialTelegram : socialTelegramOff} />
+                        </a>
+                        
+                        <a onClick={()=> navigate("/"+btoa(token))}>
+                            <img src={socialTarjet} />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div className='row justify-content-center'>
+                <div className='col-11 col-md-4 p-0'>
+                    <hr/>
+                </div>
+            </div>
+
+            <div className='row justify-content-center Promo'>
+                <div className='col-11 col-md-4'>
+                    <h4>Gracias por visitarme</h4>
+                    <p>Tarjeta digital tarjet</p>
+                    <p>Nombre de usuario en directorio tarjet:</p>
+                    <p>
+                        <span>@usuariotarjet</span>
+                    </p>
+
+                    <div className='cuerpo'>
+                        <img src={logoTarjet} className='logoTarjet' />
+                        <h5 className='contact'>Contectamos a personas con tu negocio</h5>
+                        <h5>
+                            Te agradó esta tarjeta digital <br/>
+                            <span>Tú también puedes tener la tuya</span>
+                        </h5>
+                        <a href="" className='btn-verde'>
+                            Solicita gratuitamente <br/> tu tarjeta digital Tarjet
+                        </a>
+                        <h5>
+                            Actualízate <br/>
+                            <span>Genera un impacto positivo con tu tarjeta Física Tarjet</span>
+                        </h5>
+                        <img src={promoImg} className='img-promo'/>
+                        <a href="" className='btn-naranja'>
+                            Compra tu <br/>
+                            tarjeta física Tarjet con NFC <br className='d-block'/>
+                            <span>Es personalizada</span>
+                        </a>
+                        <h5>
+                            <span>Hagamos Networking</span> <br/>
+                            En nuestro directorio puedes ser encontrado fácilmente por personas que buscan lo que haces
+                        </h5>
+                        <a href="" className='btn-morado'>
+                            Regístrate gratuitamente <br/>
+                            <span>y accede a tu tarjetero digital tarjet</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div className='row justify-content-center teInvitamos'>
+                <div className='col-11 col-md-4'>
+                    <a href="">
+                        Te invitamos a conocernos, <br/>
+                        visita nuestro sitio oficial
+                    </a>
+                </div>
+            </div>
+
+            {/* { servicios.length > 0 &&
                 <>
                 <div className='row justify-content-center sliderServicios'>
                     <div className='col-11 col-md-4'>
@@ -369,9 +545,9 @@ END:VCARD`;
                     </div>
                 </div>
                 </>
-            }
+            } */}
 
-            {   descServicios.length > 0 &&
+            {/* {   descServicios.length > 0 &&
                 <>
                 <div className='row justify-content-center masServicios'>
                     <div className='col-11 col-md-4'>
@@ -397,6 +573,7 @@ END:VCARD`;
                                             autoPlay
                                             loop
                                             controls
+                                            muted
                                         ></video>
                                     </div>
                                     ))
@@ -465,9 +642,9 @@ END:VCARD`;
                     </div>
                 </div>
                 </>
-            }
+            } */}
 
-            <div className='row mt-1 justify-content-center'>
+            {/* <div className='row mt-1 justify-content-center'>
                 <div className='col-12 col-md-4 btn-contacto p-0'>
                     <button
                         onClick={()=>window.scrollTo({
@@ -479,79 +656,9 @@ END:VCARD`;
                     </button>
                     <hr/>
                 </div>
-            </div>
-
-
-            {/* <div className='row mt-2 justify-content-center redesSociales'>
-                <div className='col-12 col-md-4'>
-                    <h5 className='p-2'>Mis redes sociales</h5>
-                    <Slider {...settings2}>
-                    <div className='d-flex justify-content-around cuerpo'>
-
-                            <div>
-                                <button onClick={()=> navigate("/"+btoa(token))}>
-                                    <img src={iconoTarjet} className='img-fluid' />
-                                </button>
-                            </div>
-                            
-                            <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteFacebook} className={ usuario.SiteFacebook == '' ? 'desactivado' : ''}>
-                                    <img src={iconoFacebook} className='img-fluid' />
-                                </a>
-                            </div>    
-
-                            
-                            <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteInstagram} className={ usuario.SiteInstagram == '' ? 'desactivado' : ''}>
-                                    <img src={iconoInstagram} className='img-fluid' />
-                                </a>
-                            </div>
-                                
-
-                            <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteTelegram} className={ usuario.SiteTelegram == undefined ? 'desactivado' : ''}>
-                                    <img 
-                                        src={iconoTelegram} 
-                                        className='img-fluid'
-                                    />
-                                </a>
-                            </div>
-                            
-                    </div>
-                    <div className='d-flex justify-content-around cuerpo'>
-
-                        { !usuario.SiteTwitter == '' &&
-                            <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteTwitter} >
-                                    <img src={iconoTwitter} className='img-fluid' />
-                                </a>
-                            </div>
-                        }
-                        
-                        { !usuario.SiteYoutube == '' &&
-                            <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteYoutube} >
-                                    <img 
-                                        src={iconoYoutube} 
-                                        className='img-fluid' 
-                                    />
-                                </a>
-                            </div>       
-                        }
-                        
-                        { !usuario.SiteInstagram == '' &&
-                            <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteInstagram} >
-                                    <img src={iconoTiktok} className='img-fluid' />
-                                </a>
-                            </div>
-                        }
-                    </div>
-                    </Slider>
-                </div>
             </div> */}
 
-            <div className='row mt-2 justify-content-center redesSociales2'>
+            {/* <div className='row mt-2 justify-content-center redesSociales2'>
                 <div className='col-12 col-md-4 contenedor'>
                     <h5 className='p-2'>Mis redes sociales</h5>
                     <div className='d-flex cuerpo'>
@@ -626,39 +733,9 @@ END:VCARD`;
                                     </a>
                                 </div>
                             }
-                    </div>
-                    {/* <div className='d-flex justify-content-around cuerpo'>
-
-                        { !usuario.SiteTwitter == '' &&
-                            <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteTwitter} >
-                                    <img src={iconoTwitter} className='img-fluid' />
-                                </a>
-                            </div>
-                        }
-                        
-                        { !usuario.SiteYoutube == '' &&
-                            <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteYoutube} >
-                                    <img 
-                                        src={iconoYoutube} 
-                                        className='img-fluid' 
-                                    />
-                                </a>
-                            </div>       
-                        }
-                        
-                        { !usuario.SiteInstagram == '' &&
-                            <div className='d-flex align-items-center'>
-                                <a href={usuario.SiteInstagram} >
-                                    <img src={iconoTiktok} className='img-fluid' />
-                                </a>
-                            </div>
-                        }
-                    </div> */}
-                    
+                    </div>                    
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }
