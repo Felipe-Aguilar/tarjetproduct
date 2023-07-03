@@ -2,20 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import FileSaver from 'file-saver';
-
-
-import ImageModal from './ImageModal';
-import iconoFacebook from '../../assets/iconoFacebook.png';
-import iconoInstagram from '../../assets/iconoInstagram.png';
-import iconoTelegram from '../../assets/iconoTelegram.png';
-import iconoTwitter from '../../assets/iconoTwitter.png';
-import iconoYoutube from '../../assets/iconoYoutube.png';
-import iconoTiktok from '../../assets/iconoTiktok.png';
-import iconoTarjet from '../../assets/iconoTarjet.png';
 
 import perfilTemporal from '../../assets/perfiltemporal.jpg';
 import IconServicios from '../../assets/iconos-servicios-site-tarjet.svg';
@@ -38,6 +25,13 @@ import socialTelegramOff from '../../assets/icono-telegram-off-site.svg';
 import socialTarjet from '../../assets/icono-tarjet-on-site.svg';
 import logoTarjet from '../../assets/logo-tarjet.svg';
 import promoImg from '../../assets/tarjeta-promo.webp';
+import IconBtnGuardar from '../../assets/boton-contacto-site.svg';
+import IconBtnWhats from '../../assets/boton-whats-site.svg';
+import IconBtnUbi from '../../assets/boton-ubicacion-site.svg';
+import IconBtnCompartir from '../../assets/boton-compartir-site.svg';
+import IconBtnCorreo from '../../assets/boton-correo-site.svg';
+import IconBtnWeb from '../../assets/boton-web-site.svg';
+import IconBtnRedes from '../../assets/boton-redes-site.svg';
 
 
 const TarjetSite = () => {
@@ -210,7 +204,7 @@ END:VCARD`;
                             className='icon save'
                             style={usuario.SiteColorBton2 ? {background: `${usuario.SiteColorBton2}`} : {background: '#4186a0'}}
                         >
-                            <i className="bi bi-download"></i>
+                            <img src={IconBtnGuardar}/>
                         </a>
                     </motion.div>
 
@@ -225,7 +219,7 @@ END:VCARD`;
                                 Envíame un WhatsApp
                             </a>
                             <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"} className='icon' style={{background: '#00943e'}}>
-                                <i className="bi bi-whatsapp"></i>
+                                <img src={IconBtnWhats}/>
                             </a>
                         </motion.div>
                     }
@@ -241,7 +235,7 @@ END:VCARD`;
                                 Envíame un WhatsApp
                             </a>
                             <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"} className='icon' style={{background: '#00943e'}}>
-                                <i className="bi bi-whatsapp"></i>
+                                <img src={IconBtnWhats}/>
                             </a>
                         </motion.div>
                     }
@@ -258,7 +252,7 @@ END:VCARD`;
                                 {usuario.UsuColonia}
                             </a>
                             <a href={urlMaps} target={"_blank"} className='icon' style={{background: '#ffa200'}}>
-                                <i className="bi bi-geo-alt-fill"></i>
+                                <img src={IconBtnUbi}/>
                             </a>
                         </motion.div>
                     }
@@ -273,7 +267,7 @@ END:VCARD`;
                                 Comparte mi tarjeta
                             </a>
                             <a href={urlMaps} target={"_blank"} className='icon' style={{background: '#5060c6'}}>
-                                <i className="bi bi-geo-alt-fill"></i>
+                                <img src={IconBtnCompartir}/>
                             </a>
                         </motion.div>
 
@@ -288,7 +282,7 @@ END:VCARD`;
                                 {usuario.SiteMail}
                             </a>
                             <a href={"mailto: "+usuario.SiteMail} className='icon' style={{background: '#0073ce'}}>
-                                <i className="bi bi-envelope-fill"></i>
+                                <img src={IconBtnCorreo}/>
                             </a>
                         </motion.div>
                     }
@@ -304,7 +298,7 @@ END:VCARD`;
                             {usuario.SiteWeb}
                             </a>
                             <a href={`https://${usuario.SiteWeb}`} target='_blank' className='icon' style={{background: '#5060c6'}}>
-                                <i className="bi bi-globe-americas"></i>
+                                <img src={IconBtnWeb}/>
                             </a>
                         </motion.div>
                     }
@@ -336,7 +330,7 @@ END:VCARD`;
                             className='icon save'
                             style={{background: '#9b034f'}}
                         >
-                            <i className="bi bi-link-45deg"></i>
+                            <img src={IconBtnRedes}/>
                         </a>
                     </motion.div>
 

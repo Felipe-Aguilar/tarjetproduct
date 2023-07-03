@@ -244,6 +244,14 @@ $colorRadar: #cfaa06;
                 // background: #0F8C54;
                 justify-content: center;
                 border-radius: 0px 15px 15px 0px;
+
+                img{
+                    width: 70%;
+
+                    @media screen and (max-width: 575px){
+                        width: 75%;
+                    }
+                }
             }
             .save{
                 cursor: pointer;
