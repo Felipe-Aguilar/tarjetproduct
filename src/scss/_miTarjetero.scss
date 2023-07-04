@@ -95,6 +95,182 @@ $BordeColor: #c0c0c0aa;
         }
     }
 
+    .TuTarjetero{
+        h5{
+            text-align: center;
+            font-weight: bold;
+        }
+        p{
+            text-align: center;
+            color: #57585b;
+            span{
+                text-decoration: underline;
+            }
+        }
+        .cuerpo{
+            background: #e5e8e8;
+            border-radius: 20px;
+            padding: 15px 5px;
+            margin-top: 20px;
+
+            h5{
+                font-size: 1.15rem;
+                margin-bottom: 15px;
+            }
+            div{
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                align-items: center;
+
+                button{
+                    border-radius: 10px;
+                    padding: 3px 20px;
+                    border:transparent;
+                    transition: 1s all ease;
+                    background: transparent;
+                }
+                .active{
+                    background: #9dc85a;
+                }
+            }
+        }
+
+        .buscar{
+            div{
+                gap: 0;
+                align-items: start;
+
+                label{
+                    background: #fff;
+                    width: 10%;
+                    padding: 5px;
+                    display: flex;
+                    justify-content: center;
+                    border-radius: 10px 0 0 10px;
+                }
+                input{
+                    width: 70%;
+                    outline: none;
+                    border: transparent;
+                    padding: 5px;
+                    border-radius: 0px 10px 10px 0px;
+
+                    @media screen and (max-width: 575px){
+                        width: 75%;
+                    }
+                }
+            }
+        }
+
+        .resultados{
+            margin-top: 20px;
+
+            .resultado{
+                border-bottom: 2px solid #d4e7f3;
+
+                .body{
+                    width: 85%;
+                    background: #d7eedc;
+                    display: block;
+                    margin: auto;
+                    padding: 15px 10px;
+                    border-radius: 20px 20px 0 0;
+
+                    @media screen and (max-width: 575px){
+                        width: 90%;
+                    }
+
+                    .title{
+                        display: flex;
+                        gap: 25px;
+                        align-items: center;
+                        
+                        .img{
+                            width: 20%;
+                            img{
+                                width: 100%;
+                                border-radius: 100%;
+                            }
+                        }
+                        h5{
+                            margin-bottom: 0;
+                            text-align: left;
+
+                            span{
+                                font-weight: 400;
+                                text-transform: uppercase;
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
+
+                .body2{
+                    width: 85%;
+                    background: #d7eedc;
+                    display: block;
+                    margin: auto;
+                    border-radius: 0 0 20px 20px;
+
+                    @media screen and (max-width: 575px){
+                        width: 90%;
+                    }
+
+                    img{
+                        width: 100%;
+                        cursor: pointer;
+                    }
+
+                    .info{
+                        padding: 15px 10px;
+
+                        p{
+                            margin: 0;
+                            text-align: center;
+                            text-transform: uppercase;
+                            font-size: 0.8rem;
+                        }
+                        .qr{
+                            width: 50%;
+                            display: block;
+                            margin: auto;
+                            padding: 20px 0;
+
+                            @media screen and (max-width: 575px){
+                                width: 60%;
+                            }
+                        }
+                        .escanea{
+                            text-transform: none;
+                            font-size: 1rem;
+                        }
+                        .buttons{
+                            display: flex;
+                            margin-top: 20px;
+
+                            button{
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 5px;
+                                line-height: 15px;
+                                padding: 5px 0;
+                                border: none;
+                                background: transparent;
+                                outline: none;
+
+                                img{
+                                    width: 20%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .tarjeta{
         width: 397px;
         height: 227px;

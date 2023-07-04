@@ -35,6 +35,8 @@ import BtnCompartir from '../../assets/boton-compartir-tarjetero.svg';
 import BtnCopiar from '../../assets/boton-enlace-tarjetero.svg';
 import BtnDirectorio from '../../assets/boton-directorio-tarjetero.svg';
 import rostro from '../../assets/rostro-04.jpg';
+import logoApacha from '../../assets/logo-apapachadogs.jpg';
+import qrpng from '../../assets/qr.png';
 
 const MiTarjetero = () => {
 
@@ -337,6 +339,85 @@ const MiTarjetero = () => {
                                 <img src={rostro} />
                                 <img src={rostro} />
                                 <img src={rostro} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Tu tarjetero */}
+                <div className='row justify-content-center TuTarjetero'>
+                    <div className='col-11 col-lg-4'>
+                        <h5>Tu tarjetero</h5>
+                        <p>Actualmente tienes <span>{datosMiTarjetero.length}</span> Tarjets</p>
+
+                        <div className='cuerpo'>
+                            <h5>Ordenar por</h5>
+                            <div>
+                                <button className='active'>
+                                    Alfabeto A-Z
+                                </button>
+
+                                <button>
+                                    Giro comercial
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className='cuerpo buscar'>
+                            <h5>Búsqueda</h5>
+                            <div>
+                                <label>
+                                    <i className="bi bi-search"></i>
+                                </label>
+                                <input type="text" placeholder='Escribe el nombre ó giro comercial'/>
+                            </div>
+                            <div>
+                                <button className='active mt-2'>
+                                    Buscar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className='resultados'>
+                            <div className='resultado'>
+                                <div className='body'>
+                                    <div className='title'>
+                                        <div className='img'>
+                                            <img src={logoApacha} />
+                                        </div>
+                                        <div>
+                                            <h5>
+                                                Felipe Aguilar García <br/>
+                                                <span>Desarrollador Front</span>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='body2'>
+                                    <img 
+                                        src={`https://tarjet.site/imagenes/${usuario.UsuFondoF}`}
+                                    />
+                                    <div className='info'>
+                                        <p>
+                                            Da click sobre la imagen para ver tarjeta digital
+                                        </p>
+                                        <img src={qrpng} className='qr' />
+                                        <p className='escanea'>
+                                            Escanea con tu smartphone
+                                        </p>
+                                        <div className='buttons'>
+                                            <button>
+                                                <img src={BtnQr} />
+                                                Compartir tarjeta
+                                            </button>
+
+                                            <button>
+                                                <img src={BtnCopiar} />
+                                                Copiar enlace
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
