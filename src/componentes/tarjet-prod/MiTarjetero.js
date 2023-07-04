@@ -420,6 +420,16 @@ const MiTarjetero = () => {
                                 </div>
                             </div>
                         </div>
+
+                        <div className='paginacion'>
+                            <p>
+                                Hoja <span>1</span> de 10
+                            </p>
+                            <p>
+                                Siguiente
+                                <i className="bi bi-chevron-right"></i>
+                            </p>
+                        </div>
                     </div>
                 </div>
 

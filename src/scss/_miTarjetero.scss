@@ -269,6 +269,13 @@ $BordeColor: #c0c0c0aa;
                 }
             }
         }
+
+        .paginacion{
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
     }
 
     .tarjeta{
