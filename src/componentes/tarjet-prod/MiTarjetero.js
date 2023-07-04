@@ -27,9 +27,14 @@ import icono2 from '../../assets/icono2.png';
 import icono3 from '../../assets/icono3.png';
 import icono4 from '../../assets/icono4.png';
 import icono5 from '../../assets/icono5.png';
-import icono6 from '../../assets/icono6.png';
-import miniTarjetero from '../../assets/miniTarjetero.jpg';
 import MiTarjeteroTitulo from '../../assets/MiTarjetero.png';
+
+import PortadaTarjet from '../../assets/im-portada-tarjetero-tarjet.jpg';
+import BtnQr from '../../assets/boton-tuqr-tarjetero.svg';
+import BtnCompartir from '../../assets/boton-compartir-tarjetero.svg';
+import BtnCopiar from '../../assets/boton-enlace-tarjetero.svg';
+import BtnDirectorio from '../../assets/boton-directorio-tarjetero.svg';
+import rostro from '../../assets/rostro-04.jpg';
 
 const MiTarjetero = () => {
 
@@ -170,26 +175,55 @@ const MiTarjetero = () => {
 
     return (
 
-        <div className='container-fluid'>
+        <div className='container-fluid p-0'>
 
             <div className='miTarjetero' >
                 { !busquedaUsuario ?
-                    <div 
-                        className='row justify-content-center tarjeta' 
-                        style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+ usuario.UsuFondoF})`}}
-                        onClick={()=>navigate('/st/'+btoa(usuario.UsuToken))}
-                    >
-                        <div className='col-11 col-md-4 p-0'>
-                            <img src={CirculoLink} className="circulo"/>
-                            <motion.img 
-                                src={Mano3D} 
-                                className="mano"
-                                animate={{rotate: [0,20,0]}}
-                                transition={{repeat: Infinity, repeatDelay:2}}
-                            />
+                <>
+                    {/* Rediseño foto encabezado perfil normal */}
+                    <div className='row justify-content-center encabezadoFoto'>
+                        <div className='col-12 col-lg-4 '>
+                            <img src={PortadaTarjet}/>
+                            <h5>
+                                Hola @nombreusuario <br/>
+                                <span>Bienvenido a tu</span>
+                            </h5>
+                            <h4>
+                                Tarjetero Tarjet
+                            </h4>
                         </div>
                     </div>
+
+                    {/* Tarjeta */}
+                        {/* <div 
+                            className='row justify-content-center tarjeta' 
+                            style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+ usuario.UsuFondoF})`}}
+                            onClick={()=>navigate('/st/'+btoa(usuario.UsuToken))}
+                        >
+                            <div className='col-11 col-md-4 p-0'>
+                                <img src={CirculoLink} className="circulo"/>
+                                <motion.img 
+                                    src={Mano3D} 
+                                    className="mano"
+                                    animate={{rotate: [0,20,0]}}
+                                    transition={{repeat: Infinity, repeatDelay:2}}
+                                />
+                            </div>
+                        </div> */}
+                    <div className='row justify-content-center tarjeta2'>
+                        <div className='col-11 col-lg-4'>
+                            <img 
+                                src={`https://tarjet.site/imagenes/${usuario.UsuFondoF}`}
+                                onClick={()=>navigate('/st/'+btoa(usuario.UsuToken))}
+                            />
+                            <p>
+                                Da click sobre la imagen para ver tu tarjeta digital
+                            </p>
+                        </div>
+                    </div>
+                </>
                 :
+                <>
                     <div 
                         className='row justify-content-center tarjeta' 
                         style={{backgroundImage: `url(${'https://tarjet.site/imagenes/'+usuarioBuscado.UsuFondoF})`}}
@@ -205,55 +239,46 @@ const MiTarjetero = () => {
                             />
                         </div>
                     </div>
-                }
-
-                {/* Opciones de tarjetero antiguas */}
-                {/* <div className='row mt-4 justify-content-center opciones'>
-                    <div className='col-11 col-md-4'>
-                        <div className='d-flex justify-content-between align-items-center cuerpo'>
-                            <div>
-                                <img 
-                                    src={icono2} 
-                                    onClick={GuardarTarjetero}
-                                />
-                                <Toaster />
-                            </div>
-                            <div>
-                                <img 
-                                    src={icono1} 
-                                    onClick={()=>{
-                                        navigate('/'+btoa(usuarioSesion.UsuToken)); 
-                                        window.location.reload();
-                                    }}
-                                />
-                            </div>
-                            <div>
-                                <img src={icono3}/>
-                            </div>
-                            <div>
-                                <img src={icono4}/>
-                            </div>
-                            <div>
-                                <img src={icono5} onClick={()=>setCompartir(!compartir)}/>
-                                    
-                                { compartir &&
-                                    <motion.div className='compartir'
-                                        initial={{scale:0}}
-                                        animate={{scale: 1}}
-                                    >
-                                        <i className="bi bi-facebook facebook"></i>
-                                        <i className="bi bi-whatsapp whats"></i>
-                                        <i className="bi bi-instagram instagram"></i>
-                                        <i className="bi bi-telegram telegram"></i>
-                                        <i className="bi bi-twitter twitter"></i>
-                                    </motion.div>
-                                }
-                            </div>
+                    
+                    {/* Rediseño foto encabezado búsqueda */}
+                    <div className='row justify-content-center encabezadoFoto'>
+                        <div className='col-12 col-lg-4'>
+                            <img src={PortadaTarjet}/>
                         </div>
                     </div>
-                </div> */}
+                </>
+                }
 
-                <div className='row mt-4 justify-content-center opciones2'>
+                {/* Controles rediseño */}
+                <div className='row justify-content-center controles'>
+                    <div className='col-11 col-lg-4 contenedor'>
+                        <button onClick={()=>setQr(true)}>
+                            <img src={BtnQr}/>
+                            Tu Qr
+                        </button>
+                        { qr &&
+                            <Qr showQr={qr} cerrarQr={setQrEstado} usuarioQr={usuario.UsuToken} busquedaUsuario={busquedaUsuario} buscadoQr={usuarioBuscado.UsuToken}/>
+                        }
+
+                        <button>
+                            <img src={BtnCompartir}/>
+                            Compartir tu tarjeta
+                        </button>
+
+                        <button onClick={copiarPortapapeles}>
+                            <img src={BtnCopiar}/>
+                            Copiar enlace
+                        </button>
+
+                        <button>
+                            <img src={BtnDirectorio}/>
+                            Visitar directorio
+                        </button>
+                    </div>
+                </div>
+
+                {/* Controles antiguos */}
+                {/* <div className='row mt-4 justify-content-center opciones2'>
                     <div className='col-11 col-md-4 p-0'>
 
                         <div className='d-flex justify-content-between'>
@@ -300,49 +325,22 @@ const MiTarjetero = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-
-                {/* Mi tarjetero opciones */}
-                {/* <div className='row mt-4 justify-content-center MiTarjeteroPersonal'>
-                    <div className='col-11 col-md-4'>
-                        <div className='cuerpo'>
-                            <h5>Mi Tarjetero personal ({datosMiTarjetero.length})</h5>
-                            <hr/>
-
-                            <form>
-                                <label>Mostrar por:</label>
-                                <select value={opcionSelected} onChange={(e)=>setOpcionSelected(e.target.value)}>
-                                    <option value="">Seleccione</option>
-                                    <option value="segmento">Segmento</option>
-                                    <option value="nombre">Nombre</option>
-                                </select>
-                            </form>
-                            <form>
-                                <div className='d-flex align-items-center mt-2'>
-                                    <label>Buscar por nombre:</label>
-                                    { opcionSelected == 'segmento' | opcionSelected == '' ? 
-                                        <input type="text" value={capturaNombre} disabled/>
-                                    :
-                                        <input 
-                                            type="text"
-                                            value={capturaNombre}
-                                            onChange={ConsultaNombre}
-                                        />
-                                    }
-                                </div>
-                                <div className='mt-2'>
-                                    <label>Resultados por página: </label>
-                                    <select>
-                                        <option value="5" >5</option>
-                                        <option value="5" >10</option>
-                                        <option value="5" >15</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                 </div> */}
 
+                {/* Últimas consultas */}
+                <div className='row justify-content-center consultas'>
+                    <div className='col-11 col-lg-4'>
+                        <div className='cuerpo'>
+                            <h5>Últimas consultas</h5>
+                            <div>
+                                <img src={rostro} />
+                                <img src={rostro} />
+                                <img src={rostro} />
+                                <img src={rostro} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div className='row mt-4 justify-content-center MiTarjeteroPersonal2'>
                     <div className='col-12 col-md-4 p-0'>
