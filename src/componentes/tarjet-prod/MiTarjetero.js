@@ -96,19 +96,6 @@ const MiTarjetero = () => {
         setNomSeg(resultadosSegmento.SDTTarjetsG[0].SegmentoDesc);
     }
 
-    const [capturaNombre, setCapturaNombre] = useState('');
-    const [busquedaNombre, setBusquedaNombre ] = useState(false);
-    const [reBusNombre, setReBusNombre] = useState([]);
-
-    const ConsultaNombre = async (e) => {
-        setBusquedaNombre(true);
-        setCapturaNombre(e.target.value);
-        
-        const resultadoNombre = await ConsultaTarjeteroNombre(idUsuarioSesion.usuId, capturaNombre);
-
-        setReBusNombre(resultadoNombre.SDTTarjetsG);
-    }
-
     const [busquedaUsuario, setBusquedaUsuario] = useState(false);
     const [usuarioBuscado, setUsuarioBuscado] = useState([]);
 
@@ -172,14 +159,42 @@ const MiTarjetero = () => {
         });
     }
 
+    // Resultados por A-Z
     const [orden, setOrden] = useState('');
     const [resultadoOpen, setResultadoOpen] = useState(null);
     const resultadoVariante = {
         open: {height: 'auto'},
         closed: {height: 0}
     }
+    const reAlfabeto = () =>{
+        setOrden('alfabeto');
+        setCapturaNombre('');
+    }
+
+    // Resultados Giro comercial
+    const reGiro = () =>{
+        setOrden('giro');
+        setCapturaNombre('');
+    }
+
+    // Animación de resultado
     const resultadoClick = (index) =>{
         setResultadoOpen(index === resultadoOpen ? null : index);
+    }
+
+    // Busqueda nombre
+    const [capturaNombre, setCapturaNombre] = useState('');
+    const [busquedaNombre, setBusquedaNombre ] = useState(false);
+    const [reBusNombre, setReBusNombre] = useState([]);
+
+    const ConsultaNombre = async (e) => {
+        setOrden('');
+        setBusquedaNombre(true);
+        setCapturaNombre(e.target.value);
+        
+        const resultadoNombre = await ConsultaTarjeteroNombre(idUsuarioSesion.usuId, capturaNombre);
+
+        setReBusNombre(resultadoNombre.SDTTarjetsG);
     }
 
     // Comprobando si existe o no
@@ -365,14 +380,14 @@ const MiTarjetero = () => {
                             <div>
                                 <button 
                                     className={orden == 'alfabeto' ? 'active' : ''} 
-                                    onClick={()=>setOrden('alfabeto')}
+                                    onClick={reAlfabeto}
                                 >
                                     Alfabeto A-Z
                                 </button>
 
                                 <button 
                                     className={orden == 'giro' ? 'active' : ''} 
-                                    onClick={()=>setOrden('giro')}
+                                    onClick={reGiro}
                                 >
                                     Giro comercial
                                 </button>
@@ -385,7 +400,12 @@ const MiTarjetero = () => {
                                 <label>
                                     <i className="bi bi-search"></i>
                                 </label>
-                                <input type="text" placeholder='Escribe el nombre ó giro comercial'/>
+                                <input 
+                                    type="text" 
+                                    placeholder='Escribe el nombre ó giro comercial'
+                                    value={capturaNombre}
+                                    onChange={ConsultaNombre}
+                                />
                             </div>
                             <div>
                                 <button className='active mt-2'>
@@ -397,6 +417,58 @@ const MiTarjetero = () => {
                         <div className='resultados'>
                             { orden == 'alfabeto' &&
                                 datosMiTarjetero.map((resultado, index)=>(
+                                    <div className='resultado' key={resultado.IdUsuario}>
+                                        <div className='body' onClick={()=>resultadoClick(index)}>
+                                            <div className='title'>
+                                                <div className='img'>
+                                                    <img src={logoApacha} />
+                                                </div>
+                                                <div>
+                                                    <h5>
+                                                        {resultado.NombreCompleto}<br/>
+                                                        <span>{resultado.UsuEncabezado}</span>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        { resultadoOpen === index &&
+                                            <motion.div 
+                                                className='body2'
+                                                initial="closed"
+                                                animate="open"
+                                                exit="closed"
+                                                variants={resultadoVariante}
+                                            >
+                                                <img 
+                                                    src={`https://tarjet.site/imagenes/${resultado.UsuFondoF}`}
+                                                />
+                                                <div className='info'>
+                                                    <p>
+                                                        Da click sobre la imagen para ver tarjeta digital
+                                                    </p>
+                                                    <img src={qrpng} className='qr' />
+                                                    <p className='escanea'>
+                                                        Escanea con tu smartphone
+                                                    </p>
+                                                    <div className='buttons'>
+                                                        <button>
+                                                            <img src={BtnQr} />
+                                                            Compartir tarjeta
+                                                        </button>
+
+                                                        <button>
+                                                            <img src={BtnCopiar} />
+                                                            Copiar enlace
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        }
+                                    </div>
+                                ))
+                            }
+                            { busquedaNombre &&
+                                reBusNombre.map((resultado, index)=>(
                                     <div className='resultado' key={resultado.IdUsuario}>
                                         <div className='body' onClick={()=>resultadoClick(index)}>
                                             <div className='title'>
