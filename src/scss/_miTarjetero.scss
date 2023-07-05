@@ -129,6 +129,7 @@ $BordeColor: #c0c0c0aa;
                     border:transparent;
                     transition: 1s all ease;
                     background: transparent;
+                    outline: none!important;
                 }
                 .active{
                     background: #9dc85a;
@@ -165,6 +166,12 @@ $BordeColor: #c0c0c0aa;
 
         .resultados{
             margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+
+            > * + * {
+                margin-top: 20px;
+            }
 
             .resultado{
                 border-bottom: 2px solid #d4e7f3;
@@ -176,6 +183,7 @@ $BordeColor: #c0c0c0aa;
                     margin: auto;
                     padding: 15px 10px;
                     border-radius: 20px 20px 0 0;
+                    cursor: pointer;
 
                     @media screen and (max-width: 575px){
                         width: 90%;

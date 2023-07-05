@@ -172,6 +172,16 @@ const MiTarjetero = () => {
         });
     }
 
+    const [orden, setOrden] = useState('');
+    const [resultadoOpen, setResultadoOpen] = useState(null);
+    const resultadoVariante = {
+        open: {height: 'auto'},
+        closed: {height: 0}
+    }
+    const resultadoClick = (index) =>{
+        setResultadoOpen(index === resultadoOpen ? null : index);
+    }
+
     // Comprobando si existe o no
     if(comprobarUsuario.usuId === 0) return null;
 
@@ -353,11 +363,17 @@ const MiTarjetero = () => {
                         <div className='cuerpo'>
                             <h5>Ordenar por</h5>
                             <div>
-                                <button className='active'>
+                                <button 
+                                    className={orden == 'alfabeto' ? 'active' : ''} 
+                                    onClick={()=>setOrden('alfabeto')}
+                                >
                                     Alfabeto A-Z
                                 </button>
 
-                                <button>
+                                <button 
+                                    className={orden == 'giro' ? 'active' : ''} 
+                                    onClick={()=>setOrden('giro')}
+                                >
                                     Giro comercial
                                 </button>
                             </div>
@@ -379,46 +395,58 @@ const MiTarjetero = () => {
                         </div>
 
                         <div className='resultados'>
-                            <div className='resultado'>
-                                <div className='body'>
-                                    <div className='title'>
-                                        <div className='img'>
-                                            <img src={logoApacha} />
+                            { orden == 'alfabeto' &&
+                                datosMiTarjetero.map((resultado, index)=>(
+                                    <div className='resultado' key={resultado.IdUsuario}>
+                                        <div className='body' onClick={()=>resultadoClick(index)}>
+                                            <div className='title'>
+                                                <div className='img'>
+                                                    <img src={logoApacha} />
+                                                </div>
+                                                <div>
+                                                    <h5>
+                                                        {resultado.NombreCompleto}<br/>
+                                                        <span>{resultado.UsuEncabezado}</span>
+                                                    </h5>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h5>
-                                                Felipe Aguilar García <br/>
-                                                <span>Desarrollador Front</span>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='body2'>
-                                    <img 
-                                        src={`https://tarjet.site/imagenes/${usuario.UsuFondoF}`}
-                                    />
-                                    <div className='info'>
-                                        <p>
-                                            Da click sobre la imagen para ver tarjeta digital
-                                        </p>
-                                        <img src={qrpng} className='qr' />
-                                        <p className='escanea'>
-                                            Escanea con tu smartphone
-                                        </p>
-                                        <div className='buttons'>
-                                            <button>
-                                                <img src={BtnQr} />
-                                                Compartir tarjeta
-                                            </button>
+                                        { resultadoOpen === index &&
+                                            <motion.div 
+                                                className='body2'
+                                                initial="closed"
+                                                animate="open"
+                                                exit="closed"
+                                                variants={resultadoVariante}
+                                            >
+                                                <img 
+                                                    src={`https://tarjet.site/imagenes/${resultado.UsuFondoF}`}
+                                                />
+                                                <div className='info'>
+                                                    <p>
+                                                        Da click sobre la imagen para ver tarjeta digital
+                                                    </p>
+                                                    <img src={qrpng} className='qr' />
+                                                    <p className='escanea'>
+                                                        Escanea con tu smartphone
+                                                    </p>
+                                                    <div className='buttons'>
+                                                        <button>
+                                                            <img src={BtnQr} />
+                                                            Compartir tarjeta
+                                                        </button>
 
-                                            <button>
-                                                <img src={BtnCopiar} />
-                                                Copiar enlace
-                                            </button>
-                                        </div>
+                                                        <button>
+                                                            <img src={BtnCopiar} />
+                                                            Copiar enlace
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        }
                                     </div>
-                                </div>
-                            </div>
+                                ))
+                            }
                         </div>
 
                         <div className='paginacion'>
