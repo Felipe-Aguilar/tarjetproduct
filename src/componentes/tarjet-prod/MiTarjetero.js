@@ -38,6 +38,8 @@ import rostro from '../../assets/rostro-04.jpg';
 import logoApacha from '../../assets/logo-apapachadogs.jpg';
 import qrpng from '../../assets/qr.png';
 
+import { QRCodeSVG } from 'qrcode.react';
+
 const MiTarjetero = () => {
 
     const { pageId } = useParams();
@@ -88,13 +90,7 @@ const MiTarjetero = () => {
     const [reBusSegmento, setReBusSegmento ] = useState([]);
     const [nomSeg, setNomSeg] = useState();
 
-    const ConsultaFiltroSegmento = async(SegmentoId) =>{
-        setBusquedaSegmento(true);
-        const resultadosSegmento = await ConsultaTarjeteroFiltro(idUsuarioSesion.usuId , SegmentoId);
-
-        setReBusSegmento(resultadosSegmento.SDTTarjetsG);
-        setNomSeg(resultadosSegmento.SDTTarjetsG[0].SegmentoDesc);
-    }
+    
 
     const [busquedaUsuario, setBusquedaUsuario] = useState(false);
     const [usuarioBuscado, setUsuarioBuscado] = useState([]);
@@ -137,49 +133,17 @@ const MiTarjetero = () => {
 
     const copiarPortapapeles = () => {
 
-        if (!busquedaUsuario) {
-            const el = document.createElement('textarea');
-            el.value = window.location.href;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-        }else{
-            const el = document.createElement('textarea');
-            el.value = 'https://tarjet.site/#/' + btoa(usuarioBuscado.UsuToken);
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-
-        }
         toast('Copiado en el portapapeles',{
             duration: 4500,
-            position: 'top-center',
+            position: 'bottom-center',
         });
-    }
 
-    // Resultados por A-Z
-    const [orden, setOrden] = useState('');
-    const [resultadoOpen, setResultadoOpen] = useState(null);
-    const resultadoVariante = {
-        open: {height: 'auto'},
-        closed: {height: 0}
-    }
-    const reAlfabeto = () =>{
-        setOrden('alfabeto');
-        setCapturaNombre('');
-    }
-
-    // Resultados Giro comercial
-    const reGiro = () =>{
-        setOrden('giro');
-        setCapturaNombre('');
-    }
-
-    // Animación de resultado
-    const resultadoClick = (index) =>{
-        setResultadoOpen(index === resultadoOpen ? null : index);
+        const el = document.createElement('textarea');
+        el.value = window.location.href;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
     }
 
     // Busqueda nombre
@@ -195,6 +159,41 @@ const MiTarjetero = () => {
         const resultadoNombre = await ConsultaTarjeteroNombre(idUsuarioSesion.usuId, capturaNombre);
 
         setReBusNombre(resultadoNombre.SDTTarjetsG);
+    }
+
+    // Resultados por A-Z
+    const [orden, setOrden] = useState('');
+    const [resultadoOpen, setResultadoOpen] = useState(null);
+    const resultadoVariante = {
+        open: {height: 'auto'},
+        closed: {height: 0}
+    }
+    const reAlfabeto = () =>{
+        setOrden('alfabeto');
+        setCapturaNombre('');
+        setBusquedaNombre(false);
+    }
+
+    // Resultados Giro comercial
+    const reGiro = () =>{
+        setOrden('giro');
+        setCapturaNombre('');
+        setBusquedaNombre(false);
+    }
+
+    const [indexSegmento, setIndexSegmento] = useState(null);
+
+    const ConsultaFiltroSegmento = async(SegmentoId) =>{
+        setIndexSegmento(SegmentoId === indexSegmento ? null : SegmentoId);
+        const resultadosSegmento = await ConsultaTarjeteroFiltro(idUsuarioSesion.usuId , SegmentoId);
+
+        setReBusSegmento(resultadosSegmento.SDTTarjetsG);
+        setNomSeg(resultadosSegmento.SDTTarjetsG[0].SegmentoDesc);
+    }
+
+    // Animación de resultado
+    const resultadoClick = (index) =>{
+        setResultadoOpen(index === resultadoOpen ? null : index);
     }
 
     // Comprobando si existe o no
@@ -421,7 +420,7 @@ const MiTarjetero = () => {
                                         <div className='body' onClick={()=>resultadoClick(index)}>
                                             <div className='title'>
                                                 <div className='img'>
-                                                    <img src={logoApacha} />
+                                                    <img src={logoApacha}/>
                                                 </div>
                                                 <div>
                                                     <h5>
@@ -441,12 +440,17 @@ const MiTarjetero = () => {
                                             >
                                                 <img 
                                                     src={`https://tarjet.site/imagenes/${resultado.UsuFondoF}`}
+                                                    onClick={()=>navigate('/st/'+btoa(resultado.UsuToken))}
                                                 />
                                                 <div className='info'>
                                                     <p>
                                                         Da click sobre la imagen para ver tarjeta digital
                                                     </p>
-                                                    <img src={qrpng} className='qr' />
+                                                    <QRCodeSVG 
+                                                        value={`https://tarjet.site/#/st/${btoa(resultado.UsuToken)}`}
+                                                        size={'50%'}
+                                                        style={{display: 'block', margin: 'auto', padding: '20px 0'}}
+                                                    />
                                                     <p className='escanea'>
                                                         Escanea con tu smartphone
                                                     </p>
@@ -466,6 +470,75 @@ const MiTarjetero = () => {
                                         }
                                     </div>
                                 ))
+                            }
+                            { orden == 'giro' &&
+
+                                datosSegmentos.map((segmento)=>(
+                                    <>
+                                        <div className='giro' key={segmento.SegmentoId}>
+                                            <div 
+                                                className='giro-body'
+                                                onClick={() => ConsultaFiltroSegmento(segmento.SegmentoId)}
+                                            >
+                                                {segmento.SegmentoDesc}
+                                            </div>
+                                        </div>
+
+                                        {   indexSegmento === segmento.SegmentoId &&
+                                            reBusSegmento.map((resultado,index)=>(
+                                                <div className='resultado' key={resultado.IdUsuario}>
+                                                    <div className='body' onClick={()=>resultadoClick(index)}>
+                                                        <div className='title'>
+                                                            <div className='img'>
+                                                                <img src={logoApacha} />
+                                                            </div>
+                                                            <div>
+                                                                <h5>
+                                                                    {resultado.NombreCompleto}<br/>
+                                                                    <span>{resultado.UsuEncabezado}</span>
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    { resultadoOpen === index &&
+                                                        <motion.div 
+                                                            className='body2'
+                                                            initial="closed"
+                                                            animate="open"
+                                                            exit="closed"
+                                                            variants={resultadoVariante}
+                                                        >
+                                                            <img 
+                                                                src={`https://tarjet.site/imagenes/${resultado.UsuFondoF}`}
+                                                            />
+                                                            <div className='info'>
+                                                                <p>
+                                                                    Da click sobre la imagen para ver tarjeta digital
+                                                                </p>
+                                                                <img src={qrpng} className='qr' />
+                                                                <p className='escanea'>
+                                                                    Escanea con tu smartphone
+                                                                </p>
+                                                                <div className='buttons'>
+                                                                    <button>
+                                                                        <img src={BtnQr} />
+                                                                        Compartir tarjeta
+                                                                    </button>
+
+                                                                    <button>
+                                                                        <img src={BtnCopiar} />
+                                                                        Copiar enlace
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </motion.div>
+                                                    }
+                                                </div>
+                                            ))                   
+                                        }
+                                    </>
+                                ))
+
                             }
                             { busquedaNombre &&
                                 reBusNombre.map((resultado, index)=>(

@@ -276,6 +276,24 @@ $BordeColor: #c0c0c0aa;
                     }
                 }
             }
+
+            .giro{
+                display: flex;
+                justify-content: center;
+                
+                .giro-body{
+                    background: #d7eedc;
+                    padding: 15px;
+                    width: 70%;
+                    text-align: center;
+                    border-radius: 15px 15px 0 0;
+                    cursor: pointer;
+                }
+
+                > * + * {
+                    margin-top: 20px;
+                }
+            }
         }
 
         .paginacion{
