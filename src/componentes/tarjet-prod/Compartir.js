@@ -6,12 +6,10 @@ import IconTelegram from '../../assets/icono-telegram-om-site.svg';
 
 const Compartir = (props) => {
 
-    var url = '';
+    var url = `https://tarjet.site/#/st/${btoa(props.usuario.UsuToken)}`;
 
-    if (!props.busquedaUsuario) {
-        url = window.location.href;
-    }else{
-        url = 'https://tarjet.site/#/'+btoa(props.usuarioBuscado.UsuToken);
+    if (props.resuCompartir) {
+        url = `https://tarjet.site/#/st/${btoa(props.resuCompartir)}`;
     }
 
     return (

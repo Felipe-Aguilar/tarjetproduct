@@ -121,12 +121,21 @@ const MiTarjetero = () => {
     }
 
     const [qr, setQr] = useState(false);
-    const [compartir, setCompartir] = useState(false);
-
+    
     const setQrEstado = () => {
         setQr(!qr);
     }
+    
+    // Compartir
+    const [compartir, setCompartir] = useState(false);
+    const [resuCompartir, setResuCompartir] = useState('');
 
+    const btnResuComp = (resultadoUsuToken) => {
+        setCompartir(true);
+        setResuCompartir(resultadoUsuToken);
+    }
+
+    // Btn de cerrar Compartir modal
     const setCompartirEstado = () => {
         setCompartir(!compartir);
     }
@@ -304,7 +313,7 @@ const MiTarjetero = () => {
                         </button>
 
                         { compartir &&
-                            <Compartir cerrarCompartir={setCompartirEstado} busquedaUsuario={busquedaUsuario} usuarioBuscado={usuarioBuscado}/>
+                            <Compartir cerrarCompartir={setCompartirEstado} usuario={usuario} resuCompartir={resuCompartir}/>
                         }
 
                         <button onClick={copiarPortapapeles}>
@@ -471,7 +480,9 @@ const MiTarjetero = () => {
                                                         Escanea con tu smartphone
                                                     </p>
                                                     <div className='buttons'>
-                                                        <button>
+                                                        <button 
+                                                            onClick={()=> btnResuComp(resultado.UsuToken)}
+                                                        >
                                                             <img src={BtnQr} />
                                                             Compartir tarjeta
                                                         </button>
@@ -541,13 +552,17 @@ const MiTarjetero = () => {
                                                                     Escanea con tu smartphone
                                                                 </p>
                                                                 <div className='buttons'>
-                                                                    <button>
+                                                                    <button
+                                                                        onClick={()=> btnResuComp(resultado.UsuToken)}
+                                                                    >
                                                                         <img src={BtnQr} />
                                                                         Compartir tarjeta
                                                                     </button>
 
-                                                                    <button>
-                                                                        <img src={BtnCopiar} onClick={copiarResultado(resultado.UsuToken)}/>
+                                                                    <button
+                                                                        onClick={copiarResultado(resultado.UsuToken)}
+                                                                    >
+                                                                        <img src={BtnCopiar} />
                                                                         Copiar enlace
                                                                     </button>
                                                                 </div>
@@ -602,13 +617,17 @@ const MiTarjetero = () => {
                                                         Escanea con tu smartphone
                                                     </p>
                                                     <div className='buttons'>
-                                                        <button>
+                                                        <button
+                                                            onClick={()=> btnResuComp(resultado.UsuToken)}
+                                                        >
                                                             <img src={BtnQr} />
                                                             Compartir tarjeta
                                                         </button>
 
-                                                        <button>
-                                                            <img src={BtnCopiar} onClick={copiarResultado(resultado.UsuToken)}/>
+                                                        <button
+                                                            onClick={copiarResultado(resultado.UsuToken)}
+                                                        >
+                                                            <img src={BtnCopiar}/>
                                                             Copiar enlace
                                                         </button>
                                                     </div>
