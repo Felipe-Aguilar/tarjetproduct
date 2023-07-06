@@ -304,7 +304,7 @@ const MiTarjetero = () => {
                             Tu Qr
                         </button>
                         { qr &&
-                            <Qr showQr={qr} cerrarQr={setQrEstado} usuarioQr={usuario.UsuToken} busquedaUsuario={busquedaUsuario} buscadoQr={usuarioBuscado.UsuToken}/>
+                            <Qr cerrarQr={setQrEstado} usuario={usuario}/>
                         }
 
                         <button>

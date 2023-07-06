@@ -3,6 +3,7 @@ import { FacebookShareButton, WhatsappShareButton,TelegramShareButton} from "rea
 
 import IconFacebook from '../../assets/icono-face-on-site.svg';
 import IconTelegram from '../../assets/icono-telegram-om-site.svg';
+import IconWhats from '../../assets/icono-whatsapp-on-site.svg';
 
 const Compartir = (props) => {
 
@@ -28,9 +29,9 @@ const Compartir = (props) => {
                         <FacebookShareButton url={url}>
                             <img src={IconFacebook} className="img-fluid" />
                         </FacebookShareButton>
-                        {/* <WhatsappShareButton className="whats" url={url}>
-                            <i className="bi bi-whatsapp"></i>
-                        </WhatsappShareButton> */}
+                        <WhatsappShareButton className="whats" url={url}>
+                            <img src={IconWhats} className="img-fluid" />
+                        </WhatsappShareButton>
                         <TelegramShareButton url={url}>
                             <img src={IconTelegram} className="img-fluid" />
                         </TelegramShareButton>

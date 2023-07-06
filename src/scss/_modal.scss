@@ -10,26 +10,40 @@
     justify-content: center;
     align-items: center;
 
+    @media screen and (max-width: 575px){
+        padding: 0 20px;
+    }
+
     .cuerpo-modal{
         background-color: white;
         border-radius: 20px;
-        padding: 20px;
-        width: 30%;
+        padding: 25px;
 
-        @media screen and (max-width: 575px){
-            width: 80%;
+        h5{
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 25px;
         }
-
         p{
             text-align: center;
-            margin-top: 10px;
+            margin-top: 20px;
+            margin-bottom: 0;
+            color: #57585b;
         }
+    }
+    .cerrar-btn{
+        display: block;
+        justify-content: center;
 
-        button{
-            border: none;
-            outline: none;
-            background-color: transparent;
-            font-size: 20px;
+        .btn-close{
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            font-size: 1.1rem!important;
+            line-height: 25px!important;
         }
     }
 }
