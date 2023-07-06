@@ -487,8 +487,8 @@ const MiTarjetero = () => {
                                                             Compartir tarjeta
                                                         </button>
 
-                                                        <button>
-                                                            <img src={BtnCopiar} onClick={copiarResultado(resultado.UsuToken)}/>
+                                                        <button onClick={copiarResultado(resultado.UsuToken)}>
+                                                            <img src={BtnCopiar}/>
                                                             Copiar enlace
                                                         </button>
                                                     </div>

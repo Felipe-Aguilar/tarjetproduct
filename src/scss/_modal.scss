@@ -46,14 +46,14 @@
     justify-content: center;
     align-items: center;
 
+    @media screen and (max-width: 575px){
+        padding: 0 20px;
+    }
+
     .cuerpo-share{
         background-color: white;
         border-radius: 20px;
         padding: 25px;
-
-        @media screen and (max-width: 575px){
-            width: 80%;
-        }
 
         h5{
             font-weight: bold;
@@ -69,6 +69,10 @@
             button{
                 width: 10%;
                 background: #e8ecf1;
+
+                @media screen and (max-width: 575px){
+                    width: 15%;
+                }
             }
         }
     }
