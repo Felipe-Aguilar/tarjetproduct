@@ -131,6 +131,8 @@ const MiTarjetero = () => {
         setCompartir(!compartir);
     }
 
+
+    // Copiar link portapapeles
     const copiarPortapapeles = () => {
 
         toast('Copiado en el portapapeles',{
@@ -140,6 +142,16 @@ const MiTarjetero = () => {
 
         const el = document.createElement('textarea');
         el.value = window.location.href;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+    }
+
+    // Copiar link portapapeles Resultados
+    const copiarResultado = (token) => {
+        const el = document.createElement('textarea');
+        el.value = `https://tarjet.site/#/st/${btoa(token)}`;
         document.body.appendChild(el);
         el.select();
         document.execCommand('copy');
@@ -287,9 +299,13 @@ const MiTarjetero = () => {
                         }
 
                         <button>
-                            <img src={BtnCompartir}/>
+                            <img src={BtnCompartir} onClick={()=>setCompartir(true)}/>
                             Compartir tu tarjeta
                         </button>
+
+                        { compartir &&
+                            <Compartir cerrarCompartir={setCompartirEstado} busquedaUsuario={busquedaUsuario} usuarioBuscado={usuarioBuscado}/>
+                        }
 
                         <button onClick={copiarPortapapeles}>
                             <img src={BtnCopiar}/>
@@ -461,7 +477,7 @@ const MiTarjetero = () => {
                                                         </button>
 
                                                         <button>
-                                                            <img src={BtnCopiar} />
+                                                            <img src={BtnCopiar} onClick={copiarResultado(resultado.UsuToken)}/>
                                                             Copiar enlace
                                                         </button>
                                                     </div>
@@ -510,12 +526,17 @@ const MiTarjetero = () => {
                                                         >
                                                             <img 
                                                                 src={`https://tarjet.site/imagenes/${resultado.UsuFondoF}`}
+                                                                onClick={()=>navigate('/st/'+btoa(resultado.UsuToken))}
                                                             />
                                                             <div className='info'>
                                                                 <p>
                                                                     Da click sobre la imagen para ver tarjeta digital
                                                                 </p>
-                                                                <img src={qrpng} className='qr' />
+                                                                <QRCodeSVG 
+                                                                    value={`https://tarjet.site/#/st/${btoa(resultado.UsuToken)}`}
+                                                                    size={'50%'}
+                                                                    style={{display: 'block', margin: 'auto', padding: '20px 0'}}
+                                                                />
                                                                 <p className='escanea'>
                                                                     Escanea con tu smartphone
                                                                 </p>
@@ -526,7 +547,7 @@ const MiTarjetero = () => {
                                                                     </button>
 
                                                                     <button>
-                                                                        <img src={BtnCopiar} />
+                                                                        <img src={BtnCopiar} onClick={copiarResultado(resultado.UsuToken)}/>
                                                                         Copiar enlace
                                                                     </button>
                                                                 </div>
@@ -566,12 +587,17 @@ const MiTarjetero = () => {
                                             >
                                                 <img 
                                                     src={`https://tarjet.site/imagenes/${resultado.UsuFondoF}`}
+                                                    onClick={()=>navigate('/st/'+btoa(resultado.UsuToken))}
                                                 />
                                                 <div className='info'>
                                                     <p>
                                                         Da click sobre la imagen para ver tarjeta digital
                                                     </p>
-                                                    <img src={qrpng} className='qr' />
+                                                    <QRCodeSVG 
+                                                        value={`https://tarjet.site/#/st/${btoa(resultado.UsuToken)}`}
+                                                        size={'50%'}
+                                                        style={{display: 'block', margin: 'auto', padding: '20px 0'}}
+                                                    />
                                                     <p className='escanea'>
                                                         Escanea con tu smartphone
                                                     </p>
@@ -582,7 +608,7 @@ const MiTarjetero = () => {
                                                         </button>
 
                                                         <button>
-                                                            <img src={BtnCopiar} />
+                                                            <img src={BtnCopiar} onClick={copiarResultado(resultado.UsuToken)}/>
                                                             Copiar enlace
                                                         </button>
                                                     </div>
@@ -606,7 +632,9 @@ const MiTarjetero = () => {
                     </div>
                 </div>
 
-                <div className='row mt-4 justify-content-center MiTarjeteroPersonal2'>
+
+                {/* Antiguo tarjetero */}
+                {/* <div className='row mt-4 justify-content-center MiTarjeteroPersonal2'>
                     <div className='col-12 col-md-4 p-0'>
                         <div className='imagen-titulo'>
                             <img src={MiTarjeteroTitulo} />
@@ -617,7 +645,7 @@ const MiTarjetero = () => {
                                     <h6>Actualmente ({datosMiTarjetero.length}) Tarjets</h6>
                                 </div>
                             </div>
-                            {/* <div className='d-flex justify-content-start mb-2'>
+                            <div className='d-flex justify-content-start mb-2'>
                                 <div className='col-md-4 col-5 p-0'>
                                     <img src={miniTarjetero} className='img-fluid' />
                                 </div>
@@ -625,7 +653,7 @@ const MiTarjetero = () => {
                                     <h5>mi Tarjetero personal</h5>
                                     <h6>Actualmente ({datosMiTarjetero.length}) Tarjets</h6>
                                 </div>
-                            </div> */}
+                            </div>
 
                             <form>
                                 <label>Mostrar por:</label>
@@ -648,22 +676,23 @@ const MiTarjetero = () => {
                                         />
                                     }
                                 </div>
-                                {/* <div className='mt-2'>
+                                <div className='mt-2'>
                                     <label>Resultados por página: </label>
                                     <select>
                                         <option value="5" >5</option>
                                         <option value="5" >10</option>
                                         <option value="5" >15</option>
                                     </select>
-                                </div> */}
+                                </div>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
-                <div className='row mt-4 my-4 justify-content-center Datos'>
+                {/* Antiguos resultados */}
+                {/* <div className='row mt-4 my-4 justify-content-center Datos'>
                     <div className='col-11 col-md-4'>
-                        {/* { opcionSelected == '' &&
+                        { opcionSelected == '' &&
                             <>
                                 <h6>
                                     <i className="bi bi-search"></i>
@@ -674,13 +703,13 @@ const MiTarjetero = () => {
                                     Para mostrar los resultados de búsqueda seleccione una opción mostrar por: (segmento o nombre).
                                 </p>
                             </>
-                        } */}
+                        }
                         {  opcionSelected == 'segmento' &&
                             <>
-                                {/* <h6>
+                                <h6>
                                     <i className="bi bi-search"></i>
                                     Resultados de búsqueda por segmento
-                                </h6> */}
+                                </h6>
                                 { !busquedaSegmento &&
                                     <>
                                         <p>Mostrando: Todos</p>
@@ -724,10 +753,10 @@ const MiTarjetero = () => {
                         }
                         { opcionSelected == 'nombre' && 
                             <>
-                                {/* <h6>
+                                <h6>
                                     <i className="bi bi-search"></i>
                                     Resultados de búsqueda por nombre
-                                </h6> */}
+                                </h6>
                                 { !busquedaNombre &&
                                     <>
                                         <p>Mostrando: Todos</p>
@@ -775,7 +804,7 @@ const MiTarjetero = () => {
                             </>
                         }
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

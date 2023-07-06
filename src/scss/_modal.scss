@@ -49,26 +49,42 @@
     .cuerpo-share{
         background-color: white;
         border-radius: 20px;
-        padding: 20px;
-        width: 30%;
+        padding: 25px;
 
         @media screen and (max-width: 575px){
             width: 80%;
         }
 
-        p{
+        h5{
+            font-weight: bold;
             text-align: center;
-            margin-top: 10px;
         }
 
-        button{
-            border: none;
-            outline: none;
-            background-color: transparent;
-            font-size: 20px;
+        .btns{
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 30px;
+
+            button{
+                width: 10%;
+                background: #e8ecf1;
+            }
+        }
+    }
+    .cerrar-btn{
+        display: block;
+        justify-content: center;
+
+        .btn-close{
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
             display: block;
             margin: auto;
-            width: 100%;
+            margin-top: 20px;
+            font-size: 1.1rem!important;
+            line-height: 25px!important;
         }
     }
 }

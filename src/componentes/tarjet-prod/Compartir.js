@@ -1,5 +1,8 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TelegramShareButton, TelegramIcon } from "react-share";
+import { motion } from "framer-motion";
+import { FacebookShareButton, WhatsappShareButton,TelegramShareButton} from "react-share";
+
+import IconFacebook from '../../assets/icono-face-on-site.svg';
+import IconTelegram from '../../assets/icono-telegram-om-site.svg';
 
 const Compartir = (props) => {
 
@@ -11,37 +14,38 @@ const Compartir = (props) => {
         url = 'https://tarjet.site/#/'+btoa(props.usuarioBuscado.UsuToken);
     }
 
-    return ( 
-        <AnimatePresence>
+    return (
+        <div className="modal-share">
+            <div className="dd">
+                <motion.div 
+                    className="cuerpo-share"
+                    initial={{opacity:0, scale:0}}
+                    animate={{opacity:1, scale:1}}
+                >
+                    <h5>
+                        Comparte tú perfil Tarjet en las siguientes plataformas
+                    </h5>
 
-            <div className="modal-share" onClick={props.cerrarCompartir}>
-                <div className="cuerpo-share">
-                    <div className="d-flex justify-content-around">
-                        <div>
-                            <FacebookShareButton url={url}>
-                                <FacebookIcon size={50} round={true}/>
-                            </FacebookShareButton>
-                        </div>
-                        <div>
-                            <WhatsappShareButton url={url}>
-                                <WhatsappIcon size={50} round={true}/>
-                            </WhatsappShareButton>
-                        </div>
-                        <div>
-                            <TelegramShareButton url={url}>
-                                <TelegramIcon size={50} round={true}/>
-                            </TelegramShareButton>
-                        </div>
+                    <div className="btns">
+                        <FacebookShareButton url={url}>
+                            <img src={IconFacebook} className="img-fluid" />
+                        </FacebookShareButton>
+                        {/* <WhatsappShareButton className="whats" url={url}>
+                            <i className="bi bi-whatsapp"></i>
+                        </WhatsappShareButton> */}
+                        <TelegramShareButton url={url}>
+                            <img src={IconTelegram} className="img-fluid" />
+                        </TelegramShareButton>
                     </div>
-                    <div>
-                        <hr/>
-                        <button>
-                            Listo
-                        </button>
-                    </div>
+                </motion.div>
+                <div className="cerrar-btn">
+                    <button className="btn-close" onClick={props.cerrarCompartir}>
+                        Cerrar <br/>
+                        <i className="bi bi-x-lg"></i>
+                    </button>
                 </div>
             </div>
-        </AnimatePresence>
+        </div>
     );
 }
 
