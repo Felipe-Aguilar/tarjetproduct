@@ -560,7 +560,7 @@ const MiTarjetero = () => {
                                                                     </button>
 
                                                                     <button
-                                                                        onClick={copiarResultado(resultado.UsuToken)}
+                                                                        onClick={()=> copiarResultado(resultado.UsuToken)}
                                                                     >
                                                                         <img src={BtnCopiar} />
                                                                         Copiar enlace
@@ -625,7 +625,7 @@ const MiTarjetero = () => {
                                                         </button>
 
                                                         <button
-                                                            onClick={copiarResultado(resultado.UsuToken)}
+                                                            onClick={() => copiarResultado(resultado.UsuToken)}
                                                         >
                                                             <img src={BtnCopiar}/>
                                                             Copiar enlace
