@@ -431,11 +431,11 @@ const MiTarjetero = () => {
                                     onChange={ConsultaNombre}
                                 />
                             </div>
-                            <div>
+                            {/* <div>
                                 <button className='active mt-2'>
                                     Buscar
                                 </button>
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className='resultados'>
@@ -483,7 +483,7 @@ const MiTarjetero = () => {
                                                         <button 
                                                             onClick={()=> btnResuComp(resultado.UsuToken)}
                                                         >
-                                                            <img src={BtnQr} />
+                                                            <img src={BtnCompartir} />
                                                             Compartir tarjeta
                                                         </button>
 
@@ -555,7 +555,7 @@ const MiTarjetero = () => {
                                                                     <button
                                                                         onClick={()=> btnResuComp(resultado.UsuToken)}
                                                                     >
-                                                                        <img src={BtnQr} />
+                                                                        <img src={BtnCompartir} />
                                                                         Compartir tarjeta
                                                                     </button>
 
@@ -620,7 +620,7 @@ const MiTarjetero = () => {
                                                         <button
                                                             onClick={()=> btnResuComp(resultado.UsuToken)}
                                                         >
-                                                            <img src={BtnQr} />
+                                                            <img src={BtnCompartir} />
                                                             Compartir tarjeta
                                                         </button>
 
