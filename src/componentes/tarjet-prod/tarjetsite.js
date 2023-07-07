@@ -55,6 +55,9 @@ const TarjetSite = () => {
 
     const [popGuardar, setPopGuardar] = useState(false);
     const localSesion = localStorage.getItem('UsuarioSesion');
+
+    // console.log(datos);
+    // console.log(usuario);
     
     useEffect(()=>{
 
@@ -80,7 +83,7 @@ const TarjetSite = () => {
             setDescServicios(datosServiciosImagen);
 
             // Servicios Imagen
-            const imagenServiciosImagen = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 2).map(servicio => servicio.SiteServIMG);
+            const imagenServiciosImagen = datosUsuarios.SDTSite.Serv.filter(servicio => servicio.TipoServSiteId === 2).map(servicio => servicio);
             setImagenServicios(imagenServiciosImagen);
 
             // Servicios Imagen subtítulo
@@ -345,16 +348,15 @@ END:VCARD`;
 
             <div className='row justify-content-center Servicios1'>
                 <div className='col-11 col-md-4'>
-                    <h5>Estética profesional canina</h5>
+                    <h5>{datos.UsuActividad}</h5>
                     <img src={IconServicios} />
-                    <h6>Servicios</h6>
+                    <h6>{usuario.SiteTituloServ2}</h6>
                     <ul>
-                        <li>Hospedaje y guardería</li>
-                        <li>Estética canina - boutique</li>
-                        <li>Accesorios para tu mascota</li>
-                        <li>Productos de higiene</li>
-                        <li>Juguetes</li>
-                        <li>Alimento</li>
+                        {
+                            servicios.map((servicio, index)=>(
+                                <li key={index}>{servicio.SiteServDescrip}</li>
+                            ))
+                        }
                     </ul>
                 </div>
             </div>
@@ -365,7 +367,32 @@ END:VCARD`;
                 </div>
             </div>
 
-            <div className='row justify-content-center Servicios2'>
+            { 
+                imagenServicios.map((servicio, index)=>(
+                    <>
+                        <div className='row justify-content-center Servicios2' key={servicio.SiteServNum}>
+                            <div className='col-11 col-md-4'>
+                                { servicio.Icono &&
+                                    <div className='icon'>
+                                        <img src={IconFolleto} />
+                                    </div>
+                                }
+                                <h5>{servicio.SiteServSubTitulo}</h5>
+                                <img src={`https://tarjet.site/imagenes/servicios/${servicio.SiteServIMG}`} />
+                                <h6>{servicio.SiteServDescrip}</h6>
+                            </div>
+                        </div>
+
+                        <div className='row justify-content-center' key={index}>
+                            <div className='col-11 col-md-4 p-0'>
+                                <hr/>
+                            </div>
+                        </div>
+                    </>
+                ))
+            }
+
+            {/* <div className='row justify-content-center Servicios2'>
                 <div className='col-11 col-md-4'>
                     <div className='icon'>
                         <img src={IconFolleto} />
@@ -380,7 +407,7 @@ END:VCARD`;
                 <div className='col-11 col-md-4 p-0'>
                     <hr/>
                 </div>
-            </div>
+            </div> */}
 
             <div className='row justify-content-center redesRediseño'>
                 <div className='col-12 col-md-4'>
