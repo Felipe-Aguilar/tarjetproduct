@@ -55,9 +55,6 @@ const TarjetSite = () => {
 
     const [popGuardar, setPopGuardar] = useState(false);
     const localSesion = localStorage.getItem('UsuarioSesion');
-
-    // console.log(datos);
-    // console.log(usuario);
     
     useEffect(()=>{
 
@@ -325,7 +322,7 @@ END:VCARD`;
                         transition={{delay: 1.6}}
                         style={{background: '#f1d1d9'}}
                     >
-                        <a onClick={redesSociales} className='save'>
+                        <a className='save'>
                             Mis Redes Sociales
                         </a>
                         <a 
@@ -409,66 +406,68 @@ END:VCARD`;
                 </div>
             </div> */}
 
-            <div className='row justify-content-center redesRediseño'>
-                <div className='col-12 col-md-4'>
-                    <h5>Mis redes sociales</h5>
-                    <div className='iconos'>
-                        <a 
-                            href = {`https://www.facebook.com/${usuario.SiteFacebook}`}
-                            className={!usuario.SiteFacebook && 'desactivado'}
-                        >
-                            <img src={usuario.SiteFacebook ? socialFacebook : socialFacebookOff} />
-                        </a>
+            <section id="seccion1">
+                <div className='row justify-content-center redesRediseño'>
+                    <div className='col-12 col-md-4'>
+                        <h5>Mis redes sociales</h5>
+                        <div className='iconos'>
+                            <a 
+                                href = {`https://www.facebook.com/${usuario.SiteFacebook}`}
+                                className={!usuario.SiteFacebook && 'desactivado'}
+                            >
+                                <img src={usuario.SiteFacebook ? socialFacebook : socialFacebookOff} />
+                            </a>
 
-                        <a 
-                            href = {`https://www.instagram.com/${usuario.SiteFacebook}`}
-                            className={!usuario.SiteInstagram && 'desactivado'}
-                        >
-                            <img src={usuario.SiteInstagram ? socialInstagram : socialInstagramOff} />
-                        </a>
+                            <a 
+                                href = {`https://www.instagram.com/${usuario.SiteFacebook}`}
+                                className={!usuario.SiteInstagram && 'desactivado'}
+                            >
+                                <img src={usuario.SiteInstagram ? socialInstagram : socialInstagramOff} />
+                            </a>
 
-                        <a 
-                            href = {`https://www.tiktok.com/@${usuario.SiteTiktok}`}
-                            className={!usuario.SiteTiktok && 'desactivado'}
-                        >
-                            <img src={usuario.SiteTiktok ? socialTikTok : socialTikTokOff} />
-                        </a>
+                            <a 
+                                href = {`https://www.tiktok.com/@${usuario.SiteTiktok}`}
+                                className={!usuario.SiteTiktok && 'desactivado'}
+                            >
+                                <img src={usuario.SiteTiktok ? socialTikTok : socialTikTokOff} />
+                            </a>
 
-                        <a 
-                            href = {`https://www.twitter.com/${usuario.SiteTwitter}`}
-                            className={!usuario.SiteTwitter && 'desactivado'}
-                        >
-                            <img src={usuario.SiteTwitter ? socialTwitter : socialTwitterOff} />
-                        </a>
-                    </div>
-                    <div className='iconos'>
-                        <a 
-                            href = {`https://www.youtube.com/${usuario.SiteYoutube}`}
-                            className={!usuario.SiteYoutube && 'desactivado'}
-                        >
-                            <img src={usuario.SiteYoutube ? socialYoutube : socialYoutubeOff} />
-                        </a>
+                            <a 
+                                href = {`https://www.twitter.com/${usuario.SiteTwitter}`}
+                                className={!usuario.SiteTwitter && 'desactivado'}
+                            >
+                                <img src={usuario.SiteTwitter ? socialTwitter : socialTwitterOff} />
+                            </a>
+                        </div>
+                        <div className='iconos'>
+                            <a 
+                                href = {`https://www.youtube.com/${usuario.SiteYoutube}`}
+                                className={!usuario.SiteYoutube && 'desactivado'}
+                            >
+                                <img src={usuario.SiteYoutube ? socialYoutube : socialYoutubeOff} />
+                            </a>
 
-                        <a 
-                            href = {`https://www.linkedin.com/${usuario.SiteLinkedin}`}
-                            className={!usuario.SiteLinkedin && 'desactivado'}
-                        >
-                            <img src={usuario.SiteLinkedin ? socialLinkedIn : socialLinkedInOff} />
-                        </a>
+                            <a 
+                                href = {`https://www.linkedin.com/${usuario.SiteLinkedin}`}
+                                className={!usuario.SiteLinkedin && 'desactivado'}
+                            >
+                                <img src={usuario.SiteLinkedin ? socialLinkedIn : socialLinkedInOff} />
+                            </a>
 
-                        <a 
-                            href = {`https://msng.link/o?${usuario.SiteTelegram}=tg`}
-                            className={!usuario.SiteTelegram && 'desactivado'}
-                        >
-                            <img src={usuario.SiteTelegram ? socialTelegram : socialTelegramOff} />
-                        </a>
-                        
-                        <a onClick={()=> navigate("/"+btoa(token))}>
-                            <img src={socialTarjet} />
-                        </a>
+                            <a 
+                                href = {`https://msng.link/o?${usuario.SiteTelegram}=tg`}
+                                className={!usuario.SiteTelegram && 'desactivado'}
+                            >
+                                <img src={usuario.SiteTelegram ? socialTelegram : socialTelegramOff} />
+                            </a>
+                            
+                            <a onClick={()=> navigate("/"+btoa(token))}>
+                                <img src={socialTarjet} />
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <div className='row justify-content-center'>
                 <div className='col-11 col-md-4 p-0'>

@@ -14,6 +14,7 @@ import BannerPrincipal from './componentes/tarjet-prod/BannerPrincipal';
 import VistaSesion from './componentes/VistaSesion';
 import Error from './componentes/404';
 import AvisoPrivacidad from './componentes/AvisoPrivacidad';
+import Perfilmxm from './componentes/tarjet-prod/Perfilmxm';
 
 
 const App = () => {
@@ -34,7 +35,8 @@ const App = () => {
 
           <Route path='/:pageId' element={<VistaSesion />}/>   
           <Route path='/st/:pageId' element={<TarjetSiteProd />}/>
-          {/* <Route path='/empresas/:pageId' element={<TarjetSiteProd />}/> */}
+          <Route path='/st/bXhtdGFyamV0' element={<Perfilmxm />}/>
+          
           <Route path='/empresas/001' element={<Empresas />}/>
           
           <Route path='/aviso-privacidad' element={<AvisoPrivacidad />}/>
