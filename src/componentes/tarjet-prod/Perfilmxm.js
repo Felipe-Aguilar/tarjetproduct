@@ -189,6 +189,18 @@ END:VCARD`;
         return vendedoresAleatorios
     }
 
+    const [playVideo, setPlayVideo] = useState(false);
+
+    useEffect(() => {
+        // Comienza la reproducción del video cuando se monta el componente
+        setPlayVideo(true);
+    
+        // Detiene la reproducción del video cuando se desmonta el componente
+        return () => {
+          setPlayVideo(false);
+        };
+    }, []);
+
     return ( 
         <div className='tarjetSite' style={{background: '#fff'}}>
             <div className='row justify-content-center encabezado bgMxm'>
@@ -403,9 +415,12 @@ END:VCARD`;
                         </h5>
                         {personalAleatorio().map((vendedor)=>(
                             <div key={vendedor.id}>
-                                <video autoPlay loop>
-                                    <source src={vendedor.video}/>
-                                </video>
+                                { playVideo && (
+                                    <video autoPlay loop>
+                                        <source src={vendedor.video}/>
+                                    </video>
+                                )
+                                }
                                 <img src={logoPequeño} className='logo-pequeño'/>
                                 <p className='frase'>
                                     {vendedor.frase}
