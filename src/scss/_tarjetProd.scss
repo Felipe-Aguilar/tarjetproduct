@@ -322,6 +322,77 @@ $colorRadar: #cfaa06;
             text-align: center;
             font-size: 1.2rem;
         }
+
+        .card-mxm{
+            background: #000;
+            margin-top: 20px;
+            border-radius: 50px 50px 0 0;
+            color: #fff;
+            padding: 40px 0 20px 0;
+
+            .mxm-title-h5{
+                font-family: 'IvyModeLight';
+                line-height: 28px;
+                padding: 0;
+
+                span{
+                    font-family: 'Times New Roman', Times, serif;
+                    font-weight: lighter;
+                    text-transform: uppercase;
+                    letter-spacing: 5px;
+                    font-size: 1.35rem;
+                }
+            }
+            video{
+                width: 100%;
+            }
+            .logo-pequeño{
+                width: 10%;
+                border-radius: 0;
+                margin-bottom: 0;
+            }
+            .frase{
+                text-align: center;
+                padding: 20px 0;
+                font-family: 'IvyModeLight';
+                margin-bottom: 0;
+                letter-spacing: 3px;
+            }
+            .nombre-title{
+                font-family: 'Times New Roman', Times, serif;
+                text-transform: uppercase;
+                padding: 0;
+                font-size: 1.70rem;
+                letter-spacing: 5px;
+                font-weight: lighter;
+            }
+            .btn-mxm{
+                display: block;
+                margin: auto;
+                padding: 7px;
+                margin-top: 20px;
+                width: 35%;
+                outline: none!important;
+                border: none;
+                font-family: 'IvyModeLight';
+                color: #fff;
+                background: #1c1f2a;
+                border-radius: 10px;
+                letter-spacing: 3px;
+            }
+            .hr-mxm{
+                margin-top: 50px;
+                border-color: #656464;
+                width: 90%;
+            }
+        }
+    }
+
+    .img-promo{
+        margin-bottom: 20px;
+        img{
+            width: 100%;
+        }
     }
 
     .redesRediseño{
@@ -645,4 +716,8 @@ $colorRadar: #cfaa06;
             }
         }
     }
+}
+
+.bgMxm{
+    background: #F2E6E2;
 }

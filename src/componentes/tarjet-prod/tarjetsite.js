@@ -7,7 +7,6 @@ import FileSaver from 'file-saver';
 import perfilTemporal from '../../assets/perfiltemporal.jpg';
 import IconServicios from '../../assets/iconos-servicios-site-tarjet.svg';
 import IconFolleto from '../../assets/iconos-folleto-site-tarjet.svg';
-import imgServicio from '../../assets/servicioRediseño.jpg';
 import socialFacebook from '../../assets/icono-face-on-site.svg';
 import socialFacebookOff from '../../assets/icono-face-off-site.svg';
 import socialInstagram from '../../assets/icono-insta-on-site.svg';
@@ -96,8 +95,6 @@ const TarjetSite = () => {
     },[]);
 
     const imagenSRC = 'https://tarjet.site/imagenes/encabezados/';
-    const imagenServicio = 'https://tarjet.site/imagenes/servicios/';
-    const videoURL = 'https://tarjet.site/imagenes/videos/';
 
     const urlMaps = `https://www.google.com/maps?q=${usuario.UsuMapsCoord}`;
     
@@ -154,9 +151,18 @@ END:VCARD`;
     }
 
     const redesSociales = () => {
+        const seccDestino = document.getElementById('redesSocialesSecc');
+        const offset = 100;
+
+        const scrollToOptions = {
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+        }
+
         window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: 'smooth'
+            top: seccDestino.offsetTop - offset,
+            ...scrollToOptions
         });
     }
 
@@ -318,6 +324,7 @@ END:VCARD`;
                     </motion.div>
 
                     <motion.div 
+                        onClick={redesSociales}
                         {...animacionBtn}
                         transition={{delay: 1.6}}
                         style={{background: '#f1d1d9'}}
@@ -406,68 +413,66 @@ END:VCARD`;
                 </div>
             </div> */}
 
-            <section id="seccion1">
-                <div className='row justify-content-center redesRediseño'>
-                    <div className='col-12 col-md-4'>
-                        <h5>Mis redes sociales</h5>
-                        <div className='iconos'>
-                            <a 
-                                href = {`https://www.facebook.com/${usuario.SiteFacebook}`}
-                                className={!usuario.SiteFacebook && 'desactivado'}
-                            >
-                                <img src={usuario.SiteFacebook ? socialFacebook : socialFacebookOff} />
-                            </a>
+            <div className='row justify-content-center redesRediseño' id='redesSocialesSecc'>
+                <div className='col-12 col-md-4'>
+                    <h5>Mis redes sociales</h5>
+                    <div className='iconos'>
+                        <a 
+                            href = {`https://www.facebook.com/${usuario.SiteFacebook}`}
+                            className={!usuario.SiteFacebook && 'desactivado'}
+                        >
+                            <img src={usuario.SiteFacebook ? socialFacebook : socialFacebookOff} />
+                        </a>
 
-                            <a 
-                                href = {`https://www.instagram.com/${usuario.SiteFacebook}`}
-                                className={!usuario.SiteInstagram && 'desactivado'}
-                            >
-                                <img src={usuario.SiteInstagram ? socialInstagram : socialInstagramOff} />
-                            </a>
+                        <a 
+                            href = {`https://www.instagram.com/${usuario.SiteFacebook}`}
+                            className={!usuario.SiteInstagram && 'desactivado'}
+                        >
+                            <img src={usuario.SiteInstagram ? socialInstagram : socialInstagramOff} />
+                        </a>
 
-                            <a 
-                                href = {`https://www.tiktok.com/@${usuario.SiteTiktok}`}
-                                className={!usuario.SiteTiktok && 'desactivado'}
-                            >
-                                <img src={usuario.SiteTiktok ? socialTikTok : socialTikTokOff} />
-                            </a>
+                        <a 
+                            href = {`https://www.tiktok.com/@${usuario.SiteTiktok}`}
+                            className={!usuario.SiteTiktok && 'desactivado'}
+                        >
+                            <img src={usuario.SiteTiktok ? socialTikTok : socialTikTokOff} />
+                        </a>
 
-                            <a 
-                                href = {`https://www.twitter.com/${usuario.SiteTwitter}`}
-                                className={!usuario.SiteTwitter && 'desactivado'}
-                            >
-                                <img src={usuario.SiteTwitter ? socialTwitter : socialTwitterOff} />
-                            </a>
-                        </div>
-                        <div className='iconos'>
-                            <a 
-                                href = {`https://www.youtube.com/${usuario.SiteYoutube}`}
-                                className={!usuario.SiteYoutube && 'desactivado'}
-                            >
-                                <img src={usuario.SiteYoutube ? socialYoutube : socialYoutubeOff} />
-                            </a>
+                        <a 
+                            href = {`https://www.twitter.com/${usuario.SiteTwitter}`}
+                            className={!usuario.SiteTwitter && 'desactivado'}
+                        >
+                            <img src={usuario.SiteTwitter ? socialTwitter : socialTwitterOff} />
+                        </a>
+                    </div>
+                    <div className='iconos'>
+                        <a 
+                            href = {`https://www.youtube.com/${usuario.SiteYoutube}`}
+                            className={!usuario.SiteYoutube && 'desactivado'}
+                        >
+                            <img src={usuario.SiteYoutube ? socialYoutube : socialYoutubeOff} />
+                        </a>
 
-                            <a 
-                                href = {`https://www.linkedin.com/${usuario.SiteLinkedin}`}
-                                className={!usuario.SiteLinkedin && 'desactivado'}
-                            >
-                                <img src={usuario.SiteLinkedin ? socialLinkedIn : socialLinkedInOff} />
-                            </a>
+                        <a 
+                            href = {`https://www.linkedin.com/${usuario.SiteLinkedin}`}
+                            className={!usuario.SiteLinkedin && 'desactivado'}
+                        >
+                            <img src={usuario.SiteLinkedin ? socialLinkedIn : socialLinkedInOff} />
+                        </a>
 
-                            <a 
-                                href = {`https://msng.link/o?${usuario.SiteTelegram}=tg`}
-                                className={!usuario.SiteTelegram && 'desactivado'}
-                            >
-                                <img src={usuario.SiteTelegram ? socialTelegram : socialTelegramOff} />
-                            </a>
-                            
-                            <a onClick={()=> navigate("/"+btoa(token))}>
-                                <img src={socialTarjet} />
-                            </a>
-                        </div>
+                        <a 
+                            href = {`https://msng.link/o?${usuario.SiteTelegram}=tg`}
+                            className={!usuario.SiteTelegram && 'desactivado'}
+                        >
+                            <img src={usuario.SiteTelegram ? socialTelegram : socialTelegramOff} />
+                        </a>
+                        
+                        <a onClick={()=> navigate("/"+btoa(token))}>
+                            <img src={socialTarjet} />
+                        </a>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <div className='row justify-content-center'>
                 <div className='col-11 col-md-4 p-0'>
