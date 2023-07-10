@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
 import FileSaver from 'file-saver';
 
+import IntersectionObserver from 'intersection-observer';
+
 import IconServicios from '../../assets/iconos-servicios-site-tarjet.svg';
 import IconFolleto from '../../assets/iconos-folleto-site-tarjet.svg';
 import socialFacebook from '../../assets/icono-face-on-site.svg';
@@ -189,7 +191,8 @@ END:VCARD`;
         return vendedoresAleatorios
     }
 
-
+    // Reproducir videos en pantalla
+    
 
     return ( 
         <div className='tarjetSite' style={{background: '#fff'}}>
@@ -406,7 +409,7 @@ END:VCARD`;
                         {personalAleatorio().map((vendedor)=>(
                             <div key={vendedor.id}>
 
-                                <video autoPlay loop controls>
+                                <video autoPlay loop>
                                     <source src={vendedor.video}/>
                                 </video>
                                 <img src={logoPequeño} className='logo-pequeño'/>
