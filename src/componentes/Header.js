@@ -27,12 +27,12 @@ const Header = () => {
                             className='Icon'
                             transition={{duration:0.03}}
                             whileInView={{
-                                opacity:1,
-                                background: '#fff'
+                                opacity:1
                             }}
                         >
                             <button onClick={()=> cambioMenu(false)}>
-                                <i className="bi bi-list"></i>
+                                {/* <i className="bi bi-list"></i> */}
+                                MENÚ
                             </button>
                         </motion.div>
                     :
@@ -41,12 +41,11 @@ const Header = () => {
                             initial={{opacity:0}}
                             transition={{duration:0.03}}
                             whileInView={{
-                                opacity:1,
-                                background: '#191c1f'
+                                opacity:1
                             }}
                         >
                             <button onClick={()=> cambioMenu(true)}>
-                                <i className="bi bi-x" style={{color: '#fff'}}></i>
+                                <i className="bi bi-x" style={{color: '#272527'}}></i>
                             </button>
                         </motion.div>
                     }
@@ -92,10 +91,14 @@ const Encabezado = styled.div`
     }
 
     .Icon{
-        background: #fff;
+        /* background: #fff; */
         padding: 3px 3px;
-        border-radius: 12px;
+        /* border-radius: 12px; */
         transition: all .3s ease;
+
+        /* Nuevo dieseño */
+        text-transform: uppercase;
+        border-bottom: 1px solid #272527;
 
         button{
             border:none;

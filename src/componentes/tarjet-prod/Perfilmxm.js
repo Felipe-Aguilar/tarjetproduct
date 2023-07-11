@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
 import FileSaver from 'file-saver';
 
@@ -36,13 +36,13 @@ import PerfilLogo from '../../assets/mxm/logotipo-perfil.webp';
 import logoPequeño from '../../assets/mxm/mxm-collection.svg';
 import ImagenSite from '../../assets/mxm/imagen-site-mxm.webp';
 
-import CinthiaVideo from '../../assets/mxm/mxmcinthia.mp4';
-import CitlalliVideo from '../../assets/mxm/mxmcitlalli.mp4';
-import ElyVideo from '../../assets/mxm/mxmely.mp4';
-import MarleneVideo from '../../assets/mxm/mxmmarlene.mp4';
-import MonseVideo from '../../assets/mxm/mxmmonse.mp4';
-import PaulaVideo from '../../assets/mxm/mxmpaula.mp4';
-import RobertoVideo from '../../assets/mxm/mxmroberto.mp4';
+import CinthiaVideo from '../../assets/mxm/mxmcinthia.gif';
+import CitlalliVideo from '../../assets/mxm/mxmcitlalli.gif';
+import ElyVideo from '../../assets/mxm/mxmely.gif';
+import MarleneVideo from '../../assets/mxm/mxmmarlene.gif';
+import MonseVideo from '../../assets/mxm/mxmmonse.gif';
+import PaulaVideo from '../../assets/mxm/mxmpaula.gif';
+import RobertoVideo from '../../assets/mxm/mxmroberto.gif';
 
 const Perfilmxm = () => {
     const navigate = useNavigate();
@@ -173,10 +173,6 @@ END:VCARD`;
         vendedoresAleatorios.sort(() => Math.random()-0.5);
         return vendedoresAleatorios
     }
-
-    // Reproducir videos en pantalla
-    const ref = useRef(null);
-    const view = useInView(ref);
 
     return ( 
         <div className='tarjetSite' style={{background: '#fff'}}>
@@ -392,13 +388,8 @@ END:VCARD`;
                         </h5>
 
                         {personalAleatorio().map((vendedor)=>(
-                            <div key={vendedor.id} ref={ref}>
-                                { view &&
-                                    <video autoPlay loop>
-                                        <source src={vendedor.video}/>
-                                    </video>
-                                }
-                                {/* <img src={vendedor.video} className='img-fluid' /> */}
+                            <div key={vendedor.id}>
+                                <img src={vendedor.video} className='img-fluid' />
                                 <img src={logoPequeño} className='logo-pequeño'/>
                                 <p className='frase'>
                                     {vendedor.frase}
