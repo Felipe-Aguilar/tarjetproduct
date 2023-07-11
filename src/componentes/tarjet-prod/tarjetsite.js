@@ -58,6 +58,9 @@ const TarjetSite = () => {
     useEffect(()=>{
 
         const ConsultaUsuario = async () => {
+
+            window.scrollTo(0, 0);
+
             const comprobar = await ComprobarUsuario(atob(pageId));
             setComprobarUsuario(comprobar);
 
