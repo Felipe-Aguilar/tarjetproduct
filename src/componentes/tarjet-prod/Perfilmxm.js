@@ -36,13 +36,13 @@ import PerfilLogo from '../../assets/mxm/logotipo-perfil.webp';
 import logoPequeño from '../../assets/mxm/mxm-collection.svg';
 import ImagenSite from '../../assets/mxm/imagen-site-mxm.webp';
 
-import CinthiaVideo from '../../assets/mxm/mxmcinthia.mp4';
-import CitlalliVideo from '../../assets/mxm/mxmcitlalli.mp4';
-import ElyVideo from '../../assets/mxm/mxmely.mp4';
-import MarleneVideo from '../../assets/mxm/mxmmarlene.mp4';
-import MonseVideo from '../../assets/mxm/mxmmonse.mp4';
-import PaulaVideo from '../../assets/mxm/mxmpaula.mp4';
-import RobertoVideo from '../../assets/mxm/mxmroberto.mp4';
+import CinthiaVideo from '../../assets/mxm/mxmcinthia.gif';
+import CitlalliVideo from '../../assets/mxm/mxmcitlalli.gif';
+import ElyVideo from '../../assets/mxm/mxmely.gif';
+import MarleneVideo from '../../assets/mxm/mxmmarlene.gif';
+import MonseVideo from '../../assets/mxm/mxmmonse.gif';
+import PaulaVideo from '../../assets/mxm/mxmpaula.gif';
+import RobertoVideo from '../../assets/mxm/mxmroberto.gif';
 
 const Perfilmxm = () => {
     const navigate = useNavigate();
@@ -159,13 +159,13 @@ END:VCARD`;
 
     // Vendedores
     const personal = [
-        { id:1, nombre: 'cinthia', video: CinthiaVideo, frase:'Con actitud positiva'},
-        { id:2, nombre: 'citlalli', video: CitlalliVideo, frase:'Con gusto por los detalles'},
-        { id:3, nombre: 'ely', video: ElyVideo, frase:'Con sentido de la moda'},
-        { id:4, nombre: 'marlene', video: MarleneVideo, frase:'Encatadora y creativa'},
-        { id:5, nombre: 'monse', video: MonseVideo, frase:'Con estilo y carismática'},
-        { id:6, nombre: 'paula', video: PaulaVideo, frase:'Eficiente y amigable'},
-        { id:7, nombre: 'roberto', video: RobertoVideo, frase:'Organizado y detallista'},
+        { id:1, nombre: 'cinthia', video: CinthiaVideo, frase:'Competitiva y eficaz', link: 'N2ZhZmQwZTFl'},
+        { id:2, nombre: 'citlalli', video: CitlalliVideo, frase:'Inteligente y optimista', link: 'ZGQxYmYzNGZi'},
+        { id:3, nombre: 'ely', video: ElyVideo, frase:'Comprometida y perseverante', link: 'YjkzYWM0YTQ1'},
+        { id:4, nombre: 'marlene', video: MarleneVideo, frase:'Propositiva y trabajadora', link: 'YjIxMzg0MDE3'},
+        { id:5, nombre: 'monse', video: MonseVideo, frase:'Creativa y entusiasta', link: 'MWY3Y2UwOTNl'},
+        { id:6, nombre: 'paula', video: PaulaVideo, frase:'Eficiente y amigable', link: 'NjZkM2ViZWYw'},
+        { id:7, nombre: 'roberto', video: RobertoVideo, frase:'Empático y diligente', link: 'YjI5ZDFmNjY1'},
     ]
     // Vendedores aleatorios
     const personalAleatorio = () => {
@@ -402,7 +402,10 @@ END:VCARD`;
                                 <h5 className='nombre-title'>
                                     {vendedor.nombre}
                                 </h5>
-                                <button className='btn-mxm'>
+                                <button 
+                                    className='btn-mxm'
+                                    onClick={()=>navigate(`/st/${vendedor.link}`)}
+                                >
                                     { vendedor.id != 7 ?
                                         'Contactarla'
                                     :
