@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 import { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
 import FileSaver from 'file-saver';
 
-import IntersectionObserver from 'intersection-observer';
-
 import IconServicios from '../../assets/iconos-servicios-site-tarjet.svg';
 import IconFolleto from '../../assets/iconos-folleto-site-tarjet.svg';
 import socialFacebook from '../../assets/icono-face-on-site.svg';
@@ -70,7 +68,7 @@ const Perfilmxm = () => {
     useEffect(()=>{
 
         const ConsultaUsuario = async () => {
-            const comprobar = await ComprobarUsuario(atob(pageId));
+            const comprobar = await ComprobarUsuario(pageId);
             setComprobarUsuario(comprobar);
 
 
@@ -106,23 +104,8 @@ const Perfilmxm = () => {
         ConsultaUsuario();
     },[]);
 
-    const imagenSRC = 'https://tarjet.site/imagenes/encabezados/';
-
     const urlMaps = `https://www.google.com/maps?q=${usuario.UsuMapsCoord}`;
     
-    // Comprobando si existe o no
-    if(comprobarUsuario.usuId === 0) return null;
-
-    const settings = {
-        dots: true,
-        arrows: false,
-        infinite: true,
-        autoplaySpeed: 6000,
-        autoplay: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        rtl: true
-    };
 
     // Guardar contacto
     const GuardaContacto = () => {
@@ -192,7 +175,7 @@ END:VCARD`;
     }
 
     // Reproducir videos en pantalla
-    
+
 
     return ( 
         <div className='tarjetSite' style={{background: '#fff'}}>
@@ -403,12 +386,12 @@ END:VCARD`;
                     <div className='card-mxm'>
                         <h5 className='mxm-title-h5'>
                             ¡Elige a tu <br/>
-                            <span>Asesora MXM</span> <br/>
+                            <span>Agente MXM</span> <br/>
                             ideal para tí! 
                         </h5>
+
                         {personalAleatorio().map((vendedor)=>(
                             <div key={vendedor.id}>
-
                                 <video autoPlay loop>
                                     <source src={vendedor.video}/>
                                 </video>
