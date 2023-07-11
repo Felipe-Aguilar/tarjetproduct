@@ -392,9 +392,10 @@ END:VCARD`;
 
                         {personalAleatorio().map((vendedor)=>(
                             <div key={vendedor.id}>
-                                <video autoPlay loop>
+                                {/* <video autoPlay loop>
                                     <source src={vendedor.video}/>
-                                </video>
+                                </video> */}
+                                <img src={vendedor.video} className='img-fluid' />
                                 <img src={logoPequeño} className='logo-pequeño'/>
                                 <p className='frase'>
                                     {vendedor.frase}

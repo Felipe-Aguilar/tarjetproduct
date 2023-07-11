@@ -380,6 +380,10 @@ $colorRadar: #cfaa06;
                 border-radius: 10px;
                 letter-spacing: 3px;
                 font-size: 1.10rem;
+
+                @media screen and (max-width: 575px){
+                    width: 45%;
+                }
             }
             .hr-mxm{
                 margin-top: 50px;
