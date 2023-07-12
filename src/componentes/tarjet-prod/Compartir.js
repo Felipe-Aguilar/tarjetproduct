@@ -13,6 +13,10 @@ const Compartir = (props) => {
         url = `https://tarjet.site/#/st/${btoa(props.resuCompartir)}`;
     }
 
+    if (props.mxmPerfil) {
+        url = `https://tarjet.site/#/st/${props.mxmPerfil}`;
+    }
+
     return (
         <div className="modal-share">
             <div className="dd">

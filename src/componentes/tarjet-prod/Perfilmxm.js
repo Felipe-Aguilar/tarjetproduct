@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
 import FileSaver from 'file-saver';
+import Compartir from './Compartir';
 
 import IconServicios from '../../assets/iconos-servicios-site-tarjet.svg';
 import IconFolleto from '../../assets/iconos-folleto-site-tarjet.svg';
@@ -127,7 +128,7 @@ FN:${'MxmCollection'}
 TITLE:${'Fabrticantes de ropa de moda para dama'};
 EMAIL;type=INTERNET;type=pref:${usuario.SiteMail}
 TEL;type=MAIN:${'Fabrticantes de ropa de moda para dama'}
-TEL;type=CELL;type=VOICE;type=pref:${usuario.SiteTelefono2}
+TEL;type=CELL;type=VOICE;type=pref:${'3314238693'}
 ADR;type=WORK;type=pref:;;;${''};;;
 END:VCARD`;
 
@@ -174,6 +175,14 @@ END:VCARD`;
         return vendedoresAleatorios
     }
 
+    // Compartir
+    const [compartir, setCompartir] = useState(false);
+
+    // Btn de cerrar Compartir modal
+    const setCompartirEstado = () => {
+        setCompartir(!compartir);
+    }
+
     return ( 
         <div className='tarjetSite' style={{background: '#fff'}}>
             <div className='row justify-content-center encabezado bgMxm'>
@@ -199,7 +208,7 @@ END:VCARD`;
                 <div className='col-md-4 contacto2'>
 
                     <motion.div 
-                        className='mb-3'
+                        className='mb-3 contacto-div'
                         {...animacionBtn}
                         transition={{delay: 0.2}}
                         style={usuario.SiteColorBton1 ? {background: `${usuario.SiteColorBton1}`} : {background: '#dce6ec'}}
@@ -216,23 +225,21 @@ END:VCARD`;
                         </a>
                     </motion.div>
 
-                    { !usuario.SiteTelefono2 == '' &&
-                        <motion.div 
-                            className='mb-3' 
-                            style={{background: '#d0ead6'}}
-                            {...animacionBtn}
-                            transition={{delay: 0.4}}
-                        >
-                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"}>
-                                Envíame un WhatsApp
-                            </a>
-                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"} className='icon' style={{background: '#00943e'}}>
-                                <img src={IconBtnWhats}/>
-                            </a>
-                        </motion.div>
-                    }
+                    <motion.div 
+                        className='mb-3 contacto-div' 
+                        style={{background: '#d0ead6'}}
+                        {...animacionBtn}
+                        transition={{delay: 0.4}}
+                    >
+                        <a href={"https://wa.me/3314238693"} target={"_blank"}>
+                            Envíame un WhatsApp
+                        </a>
+                        <a href={"https://wa.me/3314238693"} target={"_blank"} className='icon' style={{background: '#00943e'}}>
+                            <img src={IconBtnWhats}/>
+                        </a>
+                    </motion.div>
 
-                    { !usuario.SiteTelefono3 == '' &&
+                    {/* { !usuario.SiteTelefono3 == '' &&
                         <motion.div 
                             className='mb-3' 
                             style={{background: '#d0ead6'}}
@@ -246,9 +253,9 @@ END:VCARD`;
                                 <img src={IconBtnWhats}/>
                             </a>
                         </motion.div>
-                    }
+                    } */}
 
-                    { usuario.SiteVerUbica == 1 &&
+                    {/* { usuario.SiteVerUbica == 1 &&
                         <motion.div 
                             className='mb-3' 
                             style={{background: '#ffecd2'}}
@@ -263,23 +270,29 @@ END:VCARD`;
                                 <img src={IconBtnUbi}/>
                             </a>
                         </motion.div>
+                    } */}
+
+                    <motion.div 
+                        className='mb-3 contacto-div' 
+                        style={{background: '#e1dcf4'}}
+                        {...animacionBtn}
+                        transition={{delay: 0.6}}
+                    >
+                        <a onClick={()=>setCompartir(true)}>
+                            Comparte mi tarjeta
+                        </a>
+                        <a onClick={()=>setCompartir(true)} className='icon' style={{background: '#5060c6'}}>
+                            <img src={IconBtnCompartir}/>
+                        </a>
+                    </motion.div>
+
+                    { compartir &&
+                        <Compartir cerrarCompartir={setCompartirEstado} usuario={datos} 
+                            mxmPerfil={'bXhtdGFyamV0'}
+                        />
                     }
 
-                        <motion.div 
-                            className='mb-3' 
-                            style={{background: '#e1dcf4'}}
-                            {...animacionBtn}
-                            transition={{delay: 0.8}}
-                        >
-                            <a href={urlMaps} target={"_blank"}>
-                                Comparte mi tarjeta
-                            </a>
-                            <a href={urlMaps} target={"_blank"} className='icon' style={{background: '#5060c6'}}>
-                                <img src={IconBtnCompartir}/>
-                            </a>
-                        </motion.div>
-
-                    { !usuario.SiteMail == '' &&
+                    {/* { !usuario.SiteMail == '' &&
                         <motion.div 
                             className='mb-3'
                             {...animacionBtn}
@@ -293,25 +306,23 @@ END:VCARD`;
                                 <img src={IconBtnCorreo}/>
                             </a>
                         </motion.div>
-                    }
-
-                    { !usuario.SiteWeb == '' &&
-                        <motion.div 
-                            className='mb-3'
-                            style={{background: '#e1dcf4'}}
-                            {...animacionBtn}
-                            transition={{delay: 1.2}}
-                        >
-                            <a href={`https://${usuario.SiteWeb}`} target='_blank'>
-                            {usuario.SiteWeb}
-                            </a>
-                            <a href={`https://${usuario.SiteWeb}`} target='_blank' className='icon' style={{background: '#5060c6'}}>
-                                <img src={IconBtnWeb}/>
-                            </a>
-                        </motion.div>
-                    }
+                    } */}
 
                     <motion.div 
+                        className='mb-3 contacto-div'
+                        style={{background: '#e1dcf4'}}
+                        {...animacionBtn}
+                        transition={{delay: 0.8}}
+                    >
+                        <a href={`https://tarjet.site/#/st/bXhtdGFyamV0`} >
+                            Sitio web
+                        </a>
+                        <a href={`https://tarjet.site/#/st/bXhtdGFyamV0`} className='icon' style={{background: '#5060c6'}}>
+                            <img src={IconBtnWeb}/>
+                        </a>
+                    </motion.div>
+
+                    {/* <motion.div 
                         className='mb-3'
                         {...animacionBtn}
                         transition={{delay: 1.4}}
@@ -323,12 +334,13 @@ END:VCARD`;
                         <a onClick={()=>navigate("/"+btoa(token))} className='icon save' style={{background: '#678731'}}>
                             <i className="bi bi-person-vcard"></i>
                         </a>
-                    </motion.div>
+                    </motion.div> */}
 
-                    <motion.div 
+                    <motion.div
+                        className='contacto-div'
                         onClick={redesSociales}
                         {...animacionBtn}
-                        transition={{delay: 1.6}}
+                        transition={{delay: 1}}
                         style={{background: '#f1d1d9'}}
                     >
                         <a className='save'>
@@ -426,24 +438,24 @@ END:VCARD`;
                     <h5>Mis redes sociales</h5>
                     <div className='iconos'>
                         <a 
-                            href = {`https://www.facebook.com/${usuario.SiteFacebook}`}
-                            className={!usuario.SiteFacebook && 'desactivado'}
+                            href = {`https://www.facebook.com/MXMCOLLECTIONFABRICANTES`}
+                            target='_blank'
                         >
-                            <img src={usuario.SiteFacebook ? socialFacebook : socialFacebookOff} />
+                            <img src={socialFacebook} />
                         </a>
 
                         <a 
-                            href = {`https://www.instagram.com/${usuario.SiteFacebook}`}
-                            className={!usuario.SiteInstagram && 'desactivado'}
+                            href = {`https://www.instagram.com/mxmcollection`}
+                            target='_blank'
                         >
-                            <img src={usuario.SiteInstagram ? socialInstagram : socialInstagramOff} />
+                            <img src={socialInstagram} />
                         </a>
 
                         <a 
-                            href = {`https://www.tiktok.com/@${usuario.SiteTiktok}`}
-                            className={!usuario.SiteTiktok && 'desactivado'}
+                            href = {`https://www.tiktok.com/@mxmcollectionofficial`}
+                            target='_blank'
                         >
-                            <img src={usuario.SiteTiktok ? socialTikTok : socialTikTokOff} />
+                            <img src={socialTikTok} />
                         </a>
 
                         <a 
@@ -475,7 +487,7 @@ END:VCARD`;
                             <img src={usuario.SiteTelegram ? socialTelegram : socialTelegramOff} />
                         </a>
                         
-                        <a onClick={()=> navigate("/"+btoa(token))}>
+                        <a href='https://tarjet.site/#/st/bXhtdGFyamV0'>
                             <img src={socialTarjet} />
                         </a>
                     </div>
@@ -494,7 +506,7 @@ END:VCARD`;
                     <p>Tarjeta digital tarjet</p>
                     <p>Nombre de usuario en directorio tarjet:</p>
                     <p>
-                        <span>@usuariotarjet</span>
+                        <span>@mxmcollection</span>
                     </p>
 
                     <div className='cuerpo'>

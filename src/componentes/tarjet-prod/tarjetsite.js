@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ComprobarUsuario, DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
 import FileSaver from 'file-saver';
+import Compartir from './Compartir';
 
 import perfilTemporal from '../../assets/perfiltemporal.jpg';
 import IconServicios from '../../assets/iconos-servicios-site-tarjet.svg';
@@ -22,6 +23,7 @@ import socialLinkedInOff from '../../assets/icono-linkedin-off-site.svg';
 import socialTelegram from '../../assets/icono-telegram-om-site.svg';
 import socialTelegramOff from '../../assets/icono-telegram-off-site.svg';
 import socialTarjet from '../../assets/icono-tarjet-on-site.svg';
+import socialTarjetOff from '../../assets/icono-tarjet-off-site.svg';
 import logoTarjet from '../../assets/logo-tarjet.svg';
 import promoImg from '../../assets/tarjeta-promo.webp';
 import IconBtnGuardar from '../../assets/boton-contacto-site.svg';
@@ -175,6 +177,20 @@ END:VCARD`;
         viewport: {once:true}
     }
 
+    // console.log(datos);
+    // console.log(usuario);
+
+    // Compartir
+    const [compartir, setCompartir] = useState(false);
+
+    // Btn de cerrar Compartir modal
+    const setCompartirEstado = () => {
+        setCompartir(!compartir);
+    }
+
+    // Sesion para btn social tarjet
+    const sesion = localStorage.getItem('UsuarioSesion');
+
     return ( 
         <div className='tarjetSite' style={{background: usuario.SiteFondo}}>
             <div className='row justify-content-center encabezado'>
@@ -186,7 +202,7 @@ END:VCARD`;
             <div className='row justify-content-center perfil'>
                 <div className='col-12 col-md-4 contenedor'>
                     { usuario.ImgFoto ?
-                        <img src={`https://tarjet.site/imagenes/perfil-imagenes${usuario.ImgFoto}`}/>
+                        <img src={`https://tarjet.site/imagenes/perfil-imagenes/${usuario.ImgFoto}`}/>
                     :
                         <img src={perfilTemporal} />
                     }
@@ -204,7 +220,7 @@ END:VCARD`;
                 <div className='col-md-4 contacto2'>
 
                     <motion.div 
-                        className='mb-3'
+                        className='mb-3 contacto-div'
                         {...animacionBtn}
                         transition={{delay: 0.2}}
                         style={usuario.SiteColorBton1 ? {background: `${usuario.SiteColorBton1}`} : {background: '#dce6ec'}}
@@ -223,7 +239,7 @@ END:VCARD`;
 
                     { !usuario.SiteTelefono2 == '' &&
                         <motion.div 
-                            className='mb-3' 
+                            className='mb-3 contacto-div' 
                             style={{background: '#d0ead6'}}
                             {...animacionBtn}
                             transition={{delay: 0.4}}
@@ -239,7 +255,7 @@ END:VCARD`;
 
                     { !usuario.SiteTelefono3 == '' &&
                         <motion.div 
-                            className='mb-3' 
+                            className='mb-3 contacto-div' 
                             style={{background: '#d0ead6'}}
                             {...animacionBtn}
                             transition={{delay: 0.5}}
@@ -255,7 +271,7 @@ END:VCARD`;
 
                     { usuario.SiteVerUbica == 1 &&
                         <motion.div 
-                            className='mb-3' 
+                            className='mb-3 contacto-div' 
                             style={{background: '#ffecd2'}}
                             {...animacionBtn}
                             transition={{delay: 0.6}}
@@ -270,23 +286,27 @@ END:VCARD`;
                         </motion.div>
                     }
 
-                        <motion.div 
-                            className='mb-3' 
-                            style={{background: '#e1dcf4'}}
-                            {...animacionBtn}
-                            transition={{delay: 0.8}}
-                        >
-                            <a href={urlMaps} target={"_blank"}>
-                                Comparte mi tarjeta
-                            </a>
-                            <a href={urlMaps} target={"_blank"} className='icon' style={{background: '#5060c6'}}>
-                                <img src={IconBtnCompartir}/>
-                            </a>
-                        </motion.div>
+                    <motion.div 
+                        className='mb-3 contacto-div' 
+                        style={{background: '#e1dcf4'}}
+                        {...animacionBtn}
+                        transition={{delay: 0.8}}
+                    >
+                        <a onClick={()=>setCompartir(true)}>
+                            Comparte mi tarjeta
+                        </a>
+                        <a onClick={()=>setCompartir(true)} className='icon' style={{background: '#5060c6'}}>
+                            <img src={IconBtnCompartir}/>
+                        </a>
+                    </motion.div>
+                    
+                    { compartir &&
+                        <Compartir cerrarCompartir={setCompartirEstado} usuario={datos} />
+                    }
 
                     { !usuario.SiteMail == '' &&
                         <motion.div 
-                            className='mb-3'
+                            className='mb-3 contacto-div'
                             {...animacionBtn}
                             transition={{delay: 1}}
                             style={{background: '#d4e0f6'}}
@@ -302,7 +322,7 @@ END:VCARD`;
 
                     { !usuario.SiteWeb == '' &&
                         <motion.div 
-                            className='mb-3'
+                            className='mb-3 contacto-div'
                             style={{background: '#e1dcf4'}}
                             {...animacionBtn}
                             transition={{delay: 1.2}}
@@ -316,8 +336,8 @@ END:VCARD`;
                         </motion.div>
                     }
 
-                    <motion.div 
-                        className='mb-3'
+                    {/* <motion.div 
+                        className='mb-3 contacto-div'
                         {...animacionBtn}
                         transition={{delay: 1.4}}
                         style={{background: '#99c748'}}
@@ -328,9 +348,10 @@ END:VCARD`;
                         <a onClick={()=>navigate("/"+btoa(token))} className='icon save' style={{background: '#678731'}}>
                             <i className="bi bi-person-vcard"></i>
                         </a>
-                    </motion.div>
+                    </motion.div> */}
 
                     <motion.div 
+                        className='contacto-div'
                         onClick={redesSociales}
                         {...animacionBtn}
                         transition={{delay: 1.6}}
@@ -474,8 +495,11 @@ END:VCARD`;
                             <img src={usuario.SiteTelegram ? socialTelegram : socialTelegramOff} />
                         </a>
                         
-                        <a onClick={()=> navigate("/"+btoa(token))}>
-                            <img src={socialTarjet} />
+                        <a 
+                            className={!sesion && 'desactivado'}
+                            onClick={()=> navigate("/"+btoa(token))}
+                        >
+                            <img src={sesion ? socialTarjet : socialTarjetOff}/>
                         </a>
                     </div>
                 </div>
@@ -493,7 +517,7 @@ END:VCARD`;
                     <p>Tarjeta digital tarjet</p>
                     <p>Nombre de usuario en directorio tarjet:</p>
                     <p>
-                        <span>@usuariotarjet</span>
+                        <span>{usuario.Cuenta}</span>
                     </p>
 
                     <div className='cuerpo'>

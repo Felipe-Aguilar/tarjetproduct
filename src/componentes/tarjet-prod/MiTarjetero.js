@@ -6,7 +6,7 @@ import { ConsultaTarjetero, ConsultaTarjeteroFiltro, ConsultaTarjeteroNombre } f
 import { ConsultaSegmento } from '../contextos/ConsultaSegmento';
 import { ConsultaClicUsuario } from '../contextos/ConsultaClicUsuario';
 
-import { ComprobarUsuario , DatosUsuario } from '../contextos/ComprobarUsuario';
+import { ComprobarUsuario , DatosUsuario, DatosUsuarioTarjetSite } from '../contextos/ComprobarUsuario';
 
 import { GuardarTarjet } from '../contextos/GuardarTarjet';
 
@@ -45,6 +45,7 @@ const MiTarjetero = () => {
     const { pageId } = useParams();
     const [comprobarUsuario, setComprobarUsuario] = useState([]);
     const [ usuario, setUsuario ] = useState([]);
+    const [datos, setDatos] = useState([]);
 
     const usuarioSesion = JSON.parse(localStorage.getItem('DatosSesion'));
     const idUsuarioSesion = JSON.parse(localStorage.getItem('IdDatosSesion'));
@@ -65,6 +66,9 @@ const MiTarjetero = () => {
             
             const resultados = await DatosUsuario(comprobarUsuario.usuId);
             setUsuario(resultados);
+
+            const datosUsuarios = await DatosUsuarioTarjetSite(comprobarUsuario.usuId);
+            setDatos(datosUsuarios.SDTSite);
         }
 
         const ConsultaMiTarjetero = async () =>{
@@ -232,7 +236,7 @@ const MiTarjetero = () => {
                         <div className='col-12 col-lg-4 '>
                             <img src={PortadaTarjet}/>
                             <h5>
-                                Hola @nombreusuario <br/>
+                                Hola {datos.Cuenta}<br/>
                                 <span>Bienvenido a tu</span>
                             </h5>
                             <h4>
@@ -445,7 +449,9 @@ const MiTarjetero = () => {
                                         <div className='body' onClick={()=>resultadoClick(index)}>
                                             <div className='title'>
                                                 <div className='img'>
-                                                    <img src={logoApacha}/>
+                                                    <img 
+                                                        src={logoApacha}
+                                                    />
                                                 </div>
                                                 <div>
                                                     <h5>
