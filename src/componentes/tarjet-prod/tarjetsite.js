@@ -102,9 +102,6 @@ const TarjetSite = () => {
     const imagenSRC = 'https://tarjet.site/imagenes/encabezados/';
 
     const urlMaps = `https://www.google.com/maps?q=${usuario.UsuMapsCoord}`;
-    
-    // Comprobando si existe o no
-    if(comprobarUsuario.usuId === 0) return null;
 
     const settings = {
         dots: true,
@@ -190,6 +187,9 @@ END:VCARD`;
 
     // Sesion para btn social tarjet
     const sesion = localStorage.getItem('UsuarioSesion');
+
+    // Comprobando si existe o no
+    if(comprobarUsuario.usuId === 0) return null;
 
     return ( 
         <div className='tarjetSite' style={{background: usuario.SiteFondo}}>
