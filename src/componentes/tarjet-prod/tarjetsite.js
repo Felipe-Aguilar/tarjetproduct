@@ -244,10 +244,18 @@ END:VCARD`;
                             {...animacionBtn}
                             transition={{delay: 0.4}}
                         >
-                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"}>
+                            <a 
+                                href={`https://wa.me/${usuario.SiteTelefono2}?text=¡Hola! te contacto desde tu tarjeta, Tarjet`} 
+                                target={"_blank"}
+                            >
                                 Envíame un WhatsApp
                             </a>
-                            <a href={"https://wa.me/"+usuario.SiteTelefono2} target={"_blank"} className='icon' style={{background: '#00943e'}}>
+                            <a 
+                                href={`https://wa.me/${usuario.SiteTelefono2}?text=¡Hola! te contacto desde tu tarjeta, Tarjet`} 
+                                target={"_blank"} 
+                                className='icon' 
+                                style={{background: '#00943e'}}
+                            >
                                 <img src={IconBtnWhats}/>
                             </a>
                         </motion.div>
@@ -260,10 +268,18 @@ END:VCARD`;
                             {...animacionBtn}
                             transition={{delay: 0.5}}
                         >
-                            <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"}>
+                            <a 
+                                href={`https://wa.me/${usuario.SiteTelefono3}?text=¡Hola! te contacto desde tu tarjeta, Tarjet`} 
+                                target={"_blank"}
+                            >
                                 Envíame un WhatsApp
                             </a>
-                            <a href={"https://wa.me/"+usuario.SiteTelefono3} target={"_blank"} className='icon' style={{background: '#00943e'}}>
+                            <a 
+                                href={`https://wa.me/${usuario.SiteTelefono3}?text=¡Hola! te contacto desde tu tarjeta, Tarjet`} 
+                                target={"_blank"} 
+                                className='icon' 
+                                style={{background: '#00943e'}}
+                            >
                                 <img src={IconBtnWhats}/>
                             </a>
                         </motion.div>

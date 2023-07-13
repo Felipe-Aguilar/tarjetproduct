@@ -110,23 +110,13 @@ const Perfilmxm = () => {
 
     // Guardar contacto
     const GuardaContacto = () => {
-        console.log(datos);
-        const data = {
-            firstName: 'Felipe',
-            lastName: 'Aguilar',
-            title: 'Desarrollador Web',
-            email: 'felipe@correo.com',
-            mobile: '5560078218',
-            work: 'TekRobot',
-            location: 'México'
-        };
 
         const content = `BEGIN:VCARD
 VERSION:3.0
 N:${'MxmCollection'};;;
 FN:${'MxmCollection'}
 TITLE:${'Fabrticantes de ropa de moda para dama'};
-EMAIL;type=INTERNET;type=pref:${usuario.SiteMail}
+EMAIL;type=INTERNET;type=pref:${''}
 TEL;type=MAIN:${'Fabrticantes de ropa de moda para dama'}
 TEL;type=CELL;type=VOICE;type=pref:${'3314238693'}
 ADR;type=WORK;type=pref:;;;${''};;;
@@ -231,10 +221,10 @@ END:VCARD`;
                         {...animacionBtn}
                         transition={{delay: 0.4}}
                     >
-                        <a href={"https://wa.me/3314238693"} target={"_blank"}>
+                        <a href={"https://wa.me/3314238693?text=¡Hola! te contacto desde tu tarjeta, Tarjet"} target={"_blank"}>
                             Envíame un WhatsApp
                         </a>
-                        <a href={"https://wa.me/3314238693"} target={"_blank"} className='icon' style={{background: '#00943e'}}>
+                        <a href={"https://wa.me/3314238693?text=¡Hola! te contacto desde tu tarjeta, Tarjet"} target={"_blank"} className='icon' style={{background: '#00943e'}}>
                             <img src={IconBtnWhats}/>
                         </a>
                     </motion.div>
