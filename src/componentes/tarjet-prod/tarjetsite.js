@@ -570,7 +570,7 @@ END:VCARD`;
 
             <div className='row justify-content-center teInvitamos'>
                 <div className='col-11 col-md-4'>
-                    <a href="">
+                    <a href="https://tarjet.mx/">
                         Te invitamos a conocernos, <br/>
                         visita nuestro sitio oficial
                     </a>
