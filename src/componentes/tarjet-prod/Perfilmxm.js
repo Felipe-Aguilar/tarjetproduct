@@ -32,11 +32,12 @@ import IconBtnCompartir from '../../assets/boton-compartir-site.svg';
 import IconBtnCorreo from '../../assets/boton-correo-site.svg';
 import IconBtnWeb from '../../assets/boton-web-site.svg';
 import IconBtnRedes from '../../assets/boton-redes-site.svg';
+import IconBtnCatalogo from '../../assets/mxm/boton-catalogo-site.svg';
 
-import PortadaMxm from '../../assets/mxm/portada-mxm.webp';
+import PortadaMxm from '../../assets/mxm/portada-mxm.jpg';
 import PerfilLogo from '../../assets/mxm/logotipo-perfil.webp';
 import logoPequeño from '../../assets/mxm/mxm-collection.svg';
-import ImagenSite from '../../assets/mxm/imagen-site-mxm.webp';
+import ImagenSite from '../../assets/mxm/imagen-site-mxm.jpg';
 
 import CinthiaVideo from '../../assets/mxm/mxmcinthia.gif';
 import CitlalliVideo from '../../assets/mxm/mxmcitlalli.gif';
@@ -156,7 +157,7 @@ END:VCARD`;
         { id:3, nombre: 'ely', video: ElyVideo, frase:'Comprometida y perseverante', link: 'YjkzYWM0YTQ1'},
         { id:4, nombre: 'marlene', video: MarleneVideo, frase:'Propositiva y trabajadora', link: 'YjIxMzg0MDE3'},
         { id:5, nombre: 'monse', video: MonseVideo, frase:'Creativa y entusiasta', link: 'MWY3Y2UwOTNl'},
-        { id:6, nombre: 'paula', video: PaulaVideo, frase:'Eficiente y amigable', link: 'NjZkM2ViZWYw'},
+        { id:6, nombre: 'paula', video: PaulaVideo, frase:'Apasionada y persistente', link: 'NjZkM2ViZWYw'},
         { id:7, nombre: 'roberto', video: RobertoVideo, frase:'Empático y diligente', link: 'YjI5ZDFmNjY1'},
     ]
     // Vendedores aleatorios
@@ -214,7 +215,7 @@ END:VCARD`;
 
                     <div className='col-md-4 contacto2'>
 
-                        <motion.div 
+                        {/* <motion.div 
                             className='mb-3 contacto-div'
                             {...animacionBtn}
                             transition={{delay: 0.2}}
@@ -230,9 +231,9 @@ END:VCARD`;
                             >
                                 <img src={IconBtnGuardar}/>
                             </a>
-                        </motion.div>
+                        </motion.div> */}
 
-                        <motion.div 
+                        {/* <motion.div 
                             className='mb-3 contacto-div' 
                             style={{background: '#d0ead6'}}
                             {...animacionBtn}
@@ -244,7 +245,7 @@ END:VCARD`;
                             <a href={"https://wa.me/3314238693?text=¡Hola! te contacto desde tu tarjeta, Tarjet"} target={"_blank"} className='icon' style={{background: '#00943e'}}>
                                 <img src={IconBtnWhats}/>
                             </a>
-                        </motion.div>
+                        </motion.div> */}
 
                         {/* { !usuario.SiteTelefono3 == '' &&
                             <motion.div 
@@ -283,7 +284,7 @@ END:VCARD`;
                             className='mb-3 contacto-div' 
                             style={{background: '#e1dcf4'}}
                             {...animacionBtn}
-                            transition={{delay: 0.6}}
+                            transition={{delay: 0.2}}
                         >
                             <a onClick={()=>setCompartir(true)}>
                                 Comparte mi tarjeta
@@ -315,7 +316,7 @@ END:VCARD`;
                             </motion.div>
                         } */}
 
-                        <motion.div 
+                        {/* <motion.div 
                             className='mb-3 contacto-div'
                             style={{background: '#e1dcf4'}}
                             {...animacionBtn}
@@ -327,7 +328,7 @@ END:VCARD`;
                             <a href={`https://tarjet.site/#/st/bXhtdGFyamV0`} className='icon' style={{background: '#5060c6'}}>
                                 <img src={IconBtnWeb}/>
                             </a>
-                        </motion.div>
+                        </motion.div> */}
 
                         {/* <motion.div 
                             className='mb-3'
@@ -344,10 +345,10 @@ END:VCARD`;
                         </motion.div> */}
 
                         <motion.div
-                            className='contacto-div'
+                            className='contacto-div mb-3'
                             onClick={redesSociales}
                             {...animacionBtn}
-                            transition={{delay: 1}}
+                            transition={{delay: 0.4}}
                             style={{background: '#f1d1d9'}}
                         >
                             <a className='save'>
@@ -359,6 +360,26 @@ END:VCARD`;
                                 style={{background: '#9b034f'}}
                             >
                                 <img src={IconBtnRedes}/>
+                            </a>
+                        </motion.div>
+
+                        <motion.div
+                            className='contacto-div'
+                            // onClick={redesSociales}
+                            {...animacionBtn}
+                            transition={{delay: 0.6}}
+                            style={{background: '#cdd1de'}}
+                        >
+                            <a className='save' href='https://tarjet.site/mxm/NEWDROPSMXMCOLLECTION.pdf' target='_blank'>
+                                Descargar catálogo
+                            </a>
+                            <a 
+                                href='https://tarjet.site/mxm/NEWDROPSMXMCOLLECTION.pdf'
+                                target='_blank'
+                                className='icon save'
+                                style={{background: '#2a3e68'}}
+                            >
+                                <img src={IconBtnCatalogo} />
                             </a>
                         </motion.div>
 
@@ -377,10 +398,14 @@ END:VCARD`;
                         <img src={IconServicios} />
                         <h6>Servicios</h6>
                         <ul>
-                            <li>Fabricante de ropa 100% mexicanos</li>
-                            <li>Empoderando emprendedores</li>
-                            <li>Venta exclusiva por mayoreo</li>
-                            <li>18 años de experiencia</li>
+                            <li>Tendencia y modelos exclusivos todos los días</li>
+                            <li>La mejor calidad del mercado a precios competitivos para que lleves tu negocio a otro nivel</li>
+                            <li>Envíos Express nacionales e internacionales</li>
+                            <li>Asesoría personalizada con ejecutivos expertos en ventas</li>
+                            <li>Desarrollo de modelos personalizados y exclusivos con tu propia etiqueta</li>
+                            <li>Producciones limitadas garantizando tu mejor margen de ganancia</li>
+                            <li>Compras sólo lo que necesites no corridas no paquetes</li>
+                            <li>Productos 100% nacionales</li>
                         </ul>
                     </div>
                 </div>

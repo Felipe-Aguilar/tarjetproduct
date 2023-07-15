@@ -33,6 +33,7 @@ import IconBtnCompartir from '../../assets/boton-compartir-site.svg';
 import IconBtnCorreo from '../../assets/boton-correo-site.svg';
 import IconBtnWeb from '../../assets/boton-web-site.svg';
 import IconBtnRedes from '../../assets/boton-redes-site.svg';
+import IconBtnCatalogo from '../../assets/mxm/boton-catalogo-site.svg';
 
 
 const TarjetSite = () => {
@@ -385,6 +386,37 @@ END:VCARD`;
                         </a>
                     </motion.div>
 
+                    { btoa(datos.UsuToken) === 'YjI5ZDFmNjY1' || 
+                        btoa(datos.UsuToken) === 'MWY3Y2UwOTNl' ||
+                        btoa(datos.UsuToken) === 'N2ZhZmQwZTFl' ||
+                        btoa(datos.UsuToken) === 'NjZkM2ViZWYw' ||
+                        btoa(datos.UsuToken) === 'ZGQxYmYzNGZi' ||
+                        btoa(datos.UsuToken) === 'YjkzYWM0YTQ1' ||
+                        btoa(datos.UsuToken) === 'YjIxMzg0MDE3'
+                        ?
+                        <motion.div
+                            className='contacto-div mt-3'
+                            // onClick={redesSociales}
+                            {...animacionBtn}
+                            transition={{delay: 1.8}}
+                            style={{background: '#cdd1de'}}
+                        >
+                            <a className='save' href='https://tarjet.site/mxm/NEWDROPSMXMCOLLECTION.pdf' target='_blank'>
+                                Descargar catálogo
+                            </a>
+                            <a 
+                                href='https://tarjet.site/mxm/NEWDROPSMXMCOLLECTION.pdf'
+                                target='_blank'
+                                className='icon save'
+                                style={{background: '#2a3e68'}}
+                            >
+                                <img src={IconBtnCatalogo} />
+                            </a>
+                        </motion.div>
+                        :
+                        null
+                    }
+
                 </div>
             </div>
 
@@ -469,7 +501,7 @@ END:VCARD`;
                         </a>
 
                         <a 
-                            href = {`https://www.instagram.com/${usuario.SiteFacebook}`}
+                            href = {`https://www.instagram.com/${usuario.SiteInstagram}`}
                             className={!usuario.SiteInstagram && 'desactivado'}
                         >
                             <img src={usuario.SiteInstagram ? socialInstagram : socialInstagramOff} />
