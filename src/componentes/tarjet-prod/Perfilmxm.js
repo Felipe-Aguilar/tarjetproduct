@@ -144,6 +144,22 @@ END:VCARD`;
         });
     }
 
+    const vendedoresSection = () => {
+        const seccDestino = document.getElementById('vendedoresSecc');
+        const offset = 0;
+
+        const scrollToOptions = {
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+        }
+
+        window.scrollTo({
+            top: seccDestino.offsetTop - offset,
+            ...scrollToOptions
+        });
+    }
+
     const animacionBtn = {
         initial :{opacity:0 , y: -20},
         whileInView:{y:0, opacity: 1},
@@ -363,9 +379,24 @@ END:VCARD`;
                             </a>
                         </motion.div>
 
+                        <motion.div 
+                            onClick={vendedoresSection}
+                            className='mb-3 contacto-div'
+                            style={{background: '#dce6ec'}}
+                            {...animacionBtn}
+                            transition={{delay: 0.8}}
+                        >
+                            <a  >
+                                Elige a tu vendedor
+                            </a>
+                            <a  className='icon' style={{background: '#4186a0'}} onClick={vendedoresSection}>
+                                {/* <img src={IconBtnWeb}/> */}
+                                <i className="bi bi-bag" style={{color: '#fff'}}></i>
+                            </a>
+                        </motion.div>
+
                         <motion.div
                             className='contacto-div'
-                            // onClick={redesSociales}
                             {...animacionBtn}
                             transition={{delay: 0.6}}
                             style={{background: '#cdd1de'}}
@@ -417,7 +448,7 @@ END:VCARD`;
                 </div>
 
                 
-                <div className='row justify-content-center Servicios2 bgMxm pb-0'>
+                <div className='row justify-content-center Servicios2 bgMxm pb-0' id='vendedoresSecc'>
                     <div className='col-11 col-md-4'>
                         
                         <div className='icon'>
