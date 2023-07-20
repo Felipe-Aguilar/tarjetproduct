@@ -190,20 +190,19 @@ END:VCARD`;
     const sesion = localStorage.getItem('UsuarioSesion');
 
     // WhatsMxm vendedores
+    // useEffect(()=>{
+        
+    //     const url = btoa(datos.UsuToken);
+        
+    //     if (url === 'MWY3Y2UwOTNl' || url === 'N2ZhZmQwZTFl' || url === 'NjZkM2ViZWYw' || url === 'ZGQxYmYzNGZi' || url === 'YjkzYWM0YTQ1' || url === 'YjIxMzg0MDE3') {
+    //         setTimeout(()=>{
+    //             const button = document.getElementById('btnWhats');
+    //             button.click();
+    //         }, 3000);
+    //     }
 
-    useEffect(()=>{
         
-        const url = btoa(datos.UsuToken);
-        
-        if (url === 'MWY3Y2UwOTNl' || url === 'N2ZhZmQwZTFl' || url === 'NjZkM2ViZWYw' || url === 'ZGQxYmYzNGZi' || url === 'YjkzYWM0YTQ1' || url === 'YjIxMzg0MDE3') {
-            setTimeout(()=>{
-                const button = document.getElementById('btnWhats');
-                button.click();
-            }, 3000);
-        }
-
-        
-    },[datos]);
+    // },[datos]);
 
     // Comprobando si existe o no
     if(comprobarUsuario.usuId === 0) return null;
@@ -277,6 +276,7 @@ END:VCARD`;
                             </a>
                         </motion.div>
                     }
+                        {/* Boton MXM WHATS */}
                         <a 
                             style={{display: 'none'}}
                             // href={`https://api.whatsapp.com/send?phone=+52${usuario.SiteTelefono2}&text=¡Hola!%20Te%20contacto%20a%20través%20de%20tu%20tarjeta%20digital:%20https://tarjet.site/#/st/${btoa(datos.UsuToken)}.`}
