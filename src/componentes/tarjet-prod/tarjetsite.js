@@ -189,6 +189,22 @@ END:VCARD`;
     // Sesion para btn social tarjet
     const sesion = localStorage.getItem('UsuarioSesion');
 
+    // WhatsMxm vendedores
+
+    useEffect(()=>{
+        
+        const url = btoa(datos.UsuToken);
+        
+        if (url === 'MWY3Y2UwOTNl' || url === 'N2ZhZmQwZTFl' || url === 'NjZkM2ViZWYw' || url === 'ZGQxYmYzNGZi' || url === 'YjkzYWM0YTQ1' || url === 'YjIxMzg0MDE3') {
+            setTimeout(()=>{
+                const button = document.getElementById('btnWhats');
+                button.click();
+            }, 3000);
+        }
+
+        
+    },[datos]);
+
     // Comprobando si existe o no
     if(comprobarUsuario.usuId === 0) return null;
 
@@ -245,14 +261,14 @@ END:VCARD`;
                             {...animacionBtn}
                             transition={{delay: 0.4}}
                         >
-                            <a 
-                                href={`https://wa.me/${usuario.SiteTelefono2}?text=¡Hola! te contacto desde tu tarjeta, Tarjet`} 
+                            <a
+                                href={`https://api.whatsapp.com/send?phone=+52${usuario.SiteTelefono2}&text=¡Hola!%20te%20contacto%20desde%20tu%20tarjeta.`} 
                                 target={"_blank"}
                             >
                                 Envíame un WhatsApp
                             </a>
                             <a 
-                                href={`https://wa.me/${usuario.SiteTelefono2}?text=¡Hola! te contacto desde tu tarjeta, Tarjet`} 
+                                href={`https://api.whatsapp.com/send?phone=+52${usuario.SiteTelefono2}&text=¡Hola!%20te%20contacto%20desde%20tu%20tarjeta.`}
                                 target={"_blank"} 
                                 className='icon' 
                                 style={{background: '#00943e'}}
@@ -261,6 +277,15 @@ END:VCARD`;
                             </a>
                         </motion.div>
                     }
+                        <a 
+                            style={{display: 'none'}}
+                            // href={`https://api.whatsapp.com/send?phone=+52${usuario.SiteTelefono2}&text=¡Hola!%20Te%20contacto%20a%20través%20de%20tu%20tarjeta%20digital:%20https://tarjet.site/#/st/${btoa(datos.UsuToken)}.`}
+                            href={`https://wa.me/${usuario.SiteTelefono2}?text=¡Hola! Te contacto a través de tu tarjeta digital: https://tarjet.site/${encodeURIComponent('#')}/st/${btoa(datos.UsuToken)}`}
+                            target='_blank'
+                            id='btnWhats'
+                        >
+                            Contacto Whats Mxmx
+                        </a>
 
                     { !usuario.SiteTelefono3 == '' &&
                         <motion.div 
@@ -302,20 +327,6 @@ END:VCARD`;
                             </a>
                         </motion.div>
                     }
-
-                    <motion.div 
-                        className='mb-3 contacto-div' 
-                        style={{background: '#e1dcf4'}}
-                        {...animacionBtn}
-                        transition={{delay: 0.8}}
-                    >
-                        <a onClick={()=>setCompartir(true)}>
-                            Comparte mi tarjeta
-                        </a>
-                        <a onClick={()=>setCompartir(true)} className='icon' style={{background: '#5060c6'}}>
-                            <img src={IconBtnCompartir}/>
-                        </a>
-                    </motion.div>
                     
                     { compartir &&
                         <Compartir cerrarCompartir={setCompartirEstado} usuario={datos} />
@@ -416,6 +427,20 @@ END:VCARD`;
                         :
                         null
                     }
+
+                    <motion.div 
+                        className='mt-3 contacto-div' 
+                        style={{background: '#e1dcf4'}}
+                        {...animacionBtn}
+                        transition={{delay: 0.8}}
+                    >
+                        <a onClick={()=>setCompartir(true)}>
+                            Comparte mi tarjeta
+                        </a>
+                        <a onClick={()=>setCompartir(true)} className='icon' style={{background: '#5060c6'}}>
+                            <img src={IconBtnCompartir}/>
+                        </a>
+                    </motion.div>
 
                 </div>
             </div>
