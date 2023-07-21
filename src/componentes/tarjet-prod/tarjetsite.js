@@ -261,13 +261,13 @@ END:VCARD`;
                             transition={{delay: 0.4}}
                         >
                             <a
-                                href={`https://api.whatsapp.com/send?phone=+52${usuario.SiteTelefono2}&text=¡Hola!%20te%20contacto%20desde%20tu%20tarjeta.`} 
+                                href={`https://api.whatsapp.com/send?phone=+52${usuario.SiteTelefono2}&text=¡Hola!%20te%20contacto%20desde%20tu%20tarjeta%20tarjet.`} 
                                 target={"_blank"}
                             >
                                 Envíame un WhatsApp
                             </a>
                             <a 
-                                href={`https://api.whatsapp.com/send?phone=+52${usuario.SiteTelefono2}&text=¡Hola!%20te%20contacto%20desde%20tu%20tarjeta.`}
+                                href={`https://api.whatsapp.com/send?phone=+52${usuario.SiteTelefono2}&text=¡Hola!%20te%20contacto%20desde%20tu%20tarjeta%20tarjet.`}
                                 target={"_blank"} 
                                 className='icon' 
                                 style={{background: '#00943e'}}
@@ -277,7 +277,7 @@ END:VCARD`;
                         </motion.div>
                     }
                         {/* Boton MXM WHATS */}
-                        <a 
+                        {/* <a 
                             style={{display: 'none'}}
                             // href={`https://api.whatsapp.com/send?phone=+52${usuario.SiteTelefono2}&text=¡Hola!%20Te%20contacto%20a%20través%20de%20tu%20tarjeta%20digital:%20https://tarjet.site/#/st/${btoa(datos.UsuToken)}.`}
                             href={`https://wa.me/${usuario.SiteTelefono2}?text=¡Hola! Te contacto a través de tu tarjeta digital: https://tarjet.site/${encodeURIComponent('#')}/st/${btoa(datos.UsuToken)}`}
@@ -285,7 +285,7 @@ END:VCARD`;
                             id='btnWhats'
                         >
                             Contacto Whats Mxmx
-                        </a>
+                        </a> */}
 
                     { !usuario.SiteTelefono3 == '' &&
                         <motion.div 
