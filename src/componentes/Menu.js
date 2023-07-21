@@ -25,7 +25,7 @@ const Menu = ({cambioMenu}) => {
                     
                     <a href='https://tarjet.mx'>Inicio</a>
                     <a href="https://tarjet.mx/#/que-es-tarjet">¿Qué es Tarjet?</a>
-                    <a href="https://tarjet.mx/#/tienda" className='disabled'>Tienda de Porductos</a>
+                    <a href="https://shop.tarjet.mx/" target='_blank'>Tienda de Porductos</a>
                     <a href="https://tarjet.mx/#/empresas" className='disabled'>Empresas</a>
                     <a href="https://tarjet.mx/#/hazte-premium">
                         Hazte Premium
