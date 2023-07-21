@@ -37,6 +37,7 @@ import BtnDirectorio from '../../assets/boton-directorio-tarjetero.svg';
 import rostro from '../../assets/rostro-04.jpg';
 import logoApacha from '../../assets/logo-apapachadogs.jpg';
 import qrpng from '../../assets/qr.png';
+import perfilGenerico from '../../assets/perfiltemporal.jpg';
 
 import { QRCodeSVG } from 'qrcode.react';
 
@@ -220,6 +221,8 @@ const MiTarjetero = () => {
     const resultadoClick = (index) =>{
         setResultadoOpen(index === resultadoOpen ? null : index);
     }
+
+    console.log(datosMiTarjetero);
 
     // Comprobando si existe o no
     if(comprobarUsuario.usuId === 0) return null;
@@ -450,7 +453,12 @@ const MiTarjetero = () => {
                                             <div className='title'>
                                                 <div className='img'>
                                                     <img 
-                                                        src={logoApacha}
+                                                        src={
+                                                            resultado.ImgFoto ?
+                                                            `https://tarjet.site/imagenes/perfil-imagenes/${resultado.ImgFoto}`
+                                                            :
+                                                            perfilGenerico
+                                                        }
                                                     />
                                                 </div>
                                                 <div>
@@ -523,7 +531,12 @@ const MiTarjetero = () => {
                                                     <div className='body' onClick={()=>resultadoClick(index)}>
                                                         <div className='title'>
                                                             <div className='img'>
-                                                                <img src={logoApacha} />
+                                                                <img src={
+                                                                    resultado.ImgFoto ?
+                                                                    `https://tarjet.site/imagenes/perfil-imagenes/${resultado.ImgFoto}`
+                                                                    :
+                                                                    perfilGenerico
+                                                                }/>
                                                             </div>
                                                             <div>
                                                                 <h5>
@@ -588,7 +601,12 @@ const MiTarjetero = () => {
                                         <div className='body' onClick={()=>resultadoClick(index)}>
                                             <div className='title'>
                                                 <div className='img'>
-                                                    <img src={logoApacha} />
+                                                    <img src={
+                                                        resultado.ImgFoto ?
+                                                        `https://tarjet.site/imagenes/perfil-imagenes/${resultado.ImgFoto}`
+                                                        :
+                                                        perfilGenerico
+                                                    } />
                                                 </div>
                                                 <div>
                                                     <h5>
