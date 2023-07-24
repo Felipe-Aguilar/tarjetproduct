@@ -15,7 +15,7 @@ const Header = () => {
 
     return (
         <>
-            <Encabezado className='row m-0 justify-content-between justify-content-md-around align-items-center'>
+            <Encabezado className='row m-0 justify-content-between align-items-center'>
                 <div className='w-auto'>
                     <a href="https://tarjet.mx/">
                         <img src={LogoTarjet} alt="Tarjet | Tu tarjeta de presentación Online" onClick={()=> cambioMenu(true)}/>
