@@ -23,22 +23,29 @@ const Menu = ({cambioMenu}) => {
 
                 <div className='links'>
                     
-                    <a href='https://tarjet.mx'>Inicio</a>
-                    <a href="https://tarjet.mx/#/que-es-tarjet">¿Qué es Tarjet?</a>
-                    <a href="https://shop.tarjet.mx/" target='_blank'>Tienda de Porductos</a>
+                    {/* <a href='https://tarjet.mx'>Inicio</a> */}
+                    <a href="https://shop.tarjet.mx/" target='_blank'>Tienda</a>
                     <a href="https://tarjet.mx/#/empresas" className='disabled'>Empresas</a>
-                    <a href="https://tarjet.mx/#/hazte-premium">
-                        Hazte Premium
-                        <img src={Corona}/>
-                    </a>
-                    
-                    <a href="https://wa.me/5586763895" target='_blank'>Contacto</a>
+                    {/* <a href="https://tarjet.mx/#/que-es-tarjet">¿Qué es Tarjet?</a> */}
+                    <a href="https://tarjet.mx/#/hazte-premium">Premium </a>
                     { !sesionLocal ?
                         <NavLink to="/login" onClick={()=>cambioMenu(true)}>Iniciar Sesion</NavLink>
                     :
-                        <button onClick={()=>{sesionFalse(); cambioMenu(true);}}>Cerrar sesión</button>
+                        <button onClick={()=>{sesionFalse(); cambioMenu(true);}} style={{marginBottom: '20px'}}>Cerrar sesión</button>
                     }
+                    <a href="">Directorio Tarjet </a>
+                    
+                    <a href="https://wa.me/5586763895" target='_blank'>Contacto</a>
 
+                    <hr className='mt-5'/>
+                    <div className='social'>
+                        <a href="" target='_blank'>
+                            <i className="bi bi-facebook"></i>
+                        </a>
+                        <a href="" target='_blank'>
+                            <i className="bi bi-instagram"></i>
+                        </a>
+                    </div>
                 </div>
 
                 {/* <div className='sesion d-flex justify-content-center align-items-end'>
@@ -89,6 +96,16 @@ const MenuContenedor = styled.div`
         .desactivate{
             color: #696969;
             pointer-events: none;
+        }
+
+        .social{
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+
+            i{
+                font-size: 2rem;
+            }
         }
     }
 

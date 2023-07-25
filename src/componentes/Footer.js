@@ -27,6 +27,7 @@ const Footer = () => {
                 <a href="">Política de Devoluciones</a>
                 <a onClick={()=>navigate('/aviso-privacidad')}>Aviso de Privacidad</a>
                 <a href="">Facturación</a>
+                <a href="">Contacto</a>
             </div>
         </footer>
     );
